@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+
+  <configSections xdt:Transform="InsertIfMissing" >
+  </configSections>
+
+  <configSections>
+    <section name="fourth" type="Fourth.Automation.Framework.Configuration.FourthSection, Fourth.Automation.Framework.Core"  xdt:Locator="Condition([@name='fourth'])" xdt:Transform="InsertIfMissing"/>
+  </configSections>
+
+  <fourth driverType="" serverUrl="" driverDirectory="" xdt:Locator="Condition([@driverType!='' or @serverUrl!='' or @driverDirectory!='' or @driverType='' and @serverUrl='' and @driverDirectory=''])" xdt:Transform="InsertIfMissing">
+    <reporting keepScreenshot="false" takeScreenshotOnError="false" xdt:Transform="InsertIfMissing"/>
+    <timeout driverCommands="00:00:59" defaultWait="00:00:59" xdt:Transform="InsertIfMissing"/>
+    <capabilities xdt:Transform="InsertIfMissing">
+    </capabilities>
+  </fourth>
+
+  <specFlow xdt:Transform="InsertIfMissing">
+  </specFlow>
+
+  <specFlow>
+    <stepAssemblies xdt:Transform="InsertIfMissing">
+    </stepAssemblies>
+    <plugins xdt:Transform="Remove"/>
+  </specFlow>
+
+  <specFlow>
+    <stepAssemblies>
+      <stepAssembly assembly="Fourth.Automation.Framework.Core" xdt:Locator="Condition([@assembly='Fourth.Automation.Framework.Core'])" xdt:Transform="InsertIfMissing"/>
+      <stepAssembly assembly="Fourth.Automation.SpecFlow.Extensions" xdt:Locator="Condition([@assembly='Fourth.Automation.SpecFlow.Extensions'])" xdt:Transform="InsertIfMissing"/>
+    </stepAssemblies>
+  </specFlow>
+</configuration>

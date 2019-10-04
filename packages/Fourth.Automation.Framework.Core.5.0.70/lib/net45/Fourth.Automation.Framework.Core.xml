@@ -1,0 +1,1549 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Fourth.Automation.Framework.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Fourth.Automation.Framework.Configuration.MobileEmulationElement">
+            <summary>
+            Class to support mobile emulation on Crhome through App Config
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.MobileEmulationElement.DeviceName">
+            <summary>
+            Gets a name of the device to be emulated in Chrome Driver
+            </summary>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Configuration.ReportingElement">
+            <summary>
+            Class to support configurable timetous through App Config
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.ReportingElement.KeepScreenshot">
+            <summary>
+            Gets a value indicating whether a file should be kept in drive for the screenshot
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.ReportingElement.TakeScreenshotOnError">
+            <summary>
+            Gets a value indicating whether a screenshot should be taken when an error happens
+            </summary>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Configuration.TimeoutElement">
+            <summary>
+            Class to support configurable timetous through App Config
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.TimeoutElement.DriverCommands">
+            <summary>
+            Gets timeout for driver creation from your current app config.
+            Useful when your driver comes from a cloud service.
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.TimeoutElement.DefaultWait">
+            <summary>
+            Gets the timeout value for default waits from your current app config.
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.TimeoutElement.AlertWait">
+            <summary>
+            Gets the timeout value for default waits from your current app config.
+            </summary>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Configuration.Config">
+            <summary>
+            Configuration class to parse the configuration section
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Configuration.Config.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Fourth.Automation.Framework.Configuration.Config"/> class.
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.Config.Instance">
+            <summary>
+            Gets the framework configuration instance.
+            </summary>
+            <value>The configuration section instance.</value>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Configuration.FourthSection">
+            <summary>
+            Represents the main configuration section for the framework. Section should be called 'fourth'.
+            </summary>
+            <seealso cref="T:Fourth.Automation.Framework.Configuration.IDriverInfo" />
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.FourthSection.DriverType">
+            <summary>
+            Gets the type of the driver. See <see cref="T:Fourth.Automation.Framework.Core.DriverTypes"/> for list of driver types.
+            </summary>
+            <value>The type of the driver.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.FourthSection.RemoteAddress">
+            <summary>
+            Gets the remote web driver server address. Used when running on external selenium grids.
+            </summary>
+            <value>The remote web driver address.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.FourthSection.Timeout">
+            <summary>
+            Gets the web driver command timeout. Default is 60 seconds. Used when initializing the driver.
+            </summary>
+            <value>The command timeout.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.FourthSection.MobileEmulation">
+            <summary>
+            Gets the web driver command timeout. Default is 60 seconds. Used when initializing the driver.
+            </summary>
+            <value>The command timeout.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.FourthSection.Reporting">
+            <summary>
+            Gets reporting capabilities
+            </summary>
+            <value>The command timeout.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.FourthSection.DriverDirectory">
+            <summary>
+            Gets the driver path for the current driver according to specified in the app.config
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.FourthSection.RemoteOptions">
+            <summary>
+            Gets the capabilities for the remoteWebDriver from configuration file.
+            </summary>
+            <value>The web driver capabilities.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.FourthSection.Capabilities">
+            <summary>
+            Gets a key-value pair of web driver capabilities.
+            </summary>
+            <value>The web driver capabilities.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.FourthSection.CapabilitiesList">
+            <summary>
+            Gets the a list with all web driver capability keys. Useful when you need only keys without values.
+            </summary>
+            <value>The capabilities list.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.FourthSection.CapabilitiesInternal">
+            <summary>
+            Gets the web driver capabilities from configuration file.
+            </summary>
+            <value>The web driver capabilities.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.FourthSection.RemoteOptionsInternal">
+            <summary>
+            Gets the capabilities for the remoteWebDriver from configuration file.
+            </summary>
+            <value>The web driver capabilities.</value>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Configuration.IDriverInfo">
+            <summary>
+            Interface representing web driver configuration.
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.IDriverInfo.Capabilities">
+            <summary>
+            Gets a key-value pair of web driver capabilities.
+            </summary>
+            <value>The web driver capabilities.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.IDriverInfo.CapabilitiesList">
+            <summary>
+            Gets the a list with all web driver capability keys. Useful when you need only keys without values.
+            </summary>
+            <value>The capabilities list.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.IDriverInfo.DriverType">
+            <summary>
+            Gets the type of the driver. See <see cref="T:Fourth.Automation.Framework.Core.DriverTypes"/> for list of driver types.
+            </summary>
+            <value>The type of the driver.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.IDriverInfo.RemoteAddress">
+            <summary>
+            Gets the remote web driver server address. Used when running on external selenium grids.
+            </summary>
+            <value>The remote web driver address.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.IDriverInfo.Timeout">
+            <summary>
+            Gets the web driver command timeout. Default is 60 seconds. Used when initializing the driver.
+            </summary>
+            <value>The command timeout.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.IDriverInfo.MobileEmulation">
+            <summary>
+            Gets the Mobile Emulation to be set in a driver using ChromeDriver.
+            </summary>
+            <value>The Mobile Emulation</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Configuration.IDriverInfo.RemoteOptions">
+            <summary>
+            Gets a key-value pair of remote driver capabilities.
+            </summary>
+            <value>The remote driver capabilities.</value>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Controls.ColumnAttribute">
+            <summary>
+            Column name attribute, used bu <see cref="T:Fourth.Automation.Framework.Core.Controls.TableControl`1"/>. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.ColumnAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Core.Controls.ColumnAttribute"/> class.
+            </summary>
+            <param name="columnName">Name of the column.</param>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Controls.ColumnAttribute.ColumnName">
+            <summary>
+            Gets the name of the column.
+            </summary>
+            <value>The name of the column.</value>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Controls.ColumnExtensions">
+            <summary>
+            Extension methods to retrieve column names from class properties.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.ColumnExtensions.GetColumnNames``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}}[])">
+            <summary>
+            Gets the column names for given list of properties marked with <see cref="T:Fourth.Automation.Framework.Core.Controls.ColumnAttribute"/>.
+            </summary>
+            <typeparam name="T">Type fo the row, usually a class that implements <see cref="T:Fourth.Automation.Framework.Core.Controls.TableRow"/> and has properties with <see cref="T:Fourth.Automation.Framework.Core.Controls.ColumnAttribute"/>.</typeparam>
+            <param name="instance">The instance.</param>
+            <param name="expressions">The expressions with properties.</param>
+            <returns>IEnumerable&lt;System.String&gt;.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.ColumnExtensions.GetColumnName(System.Reflection.MemberInfo)">
+            <summary>
+            Gets the name of the column, if the member has attribute <see cref="T:Fourth.Automation.Framework.Core.Controls.ColumnAttribute"/>.
+            </summary>
+            <param name="self">The self.</param>
+            <returns>The name of the column, as specified in <see cref="T:Fourth.Automation.Framework.Core.Controls.ColumnAttribute"/>.</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Controls.IHeadersSequence">
+            <summary>
+            Interface to retrieve a sequence of headers used in table controls.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.IHeadersSequence.GetHeadersSequence">
+            <summary>
+            Gets the headers sequence.
+            </summary>
+            <returns>IEnumerable&lt;System.String&gt;.</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Controls.TableCells">
+            <summary>
+            Represents Table Cells collection for a Table Row.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.TableCells.#ctor(System.Collections.Generic.IEnumerable{OpenQA.Selenium.IWebElement},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Core.Controls.TableCells"/> class.
+            </summary>
+            <param name="elements">The cell elements.</param>
+            <param name="header">The table headers.</param>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Controls.TableCells.Item(System.String)">
+            <summary>
+            Gets the cell <see cref="T:OpenQA.Selenium.IWebElement"/> for the specified column.
+            </summary>
+            <param name="column">The column name.</param>
+            <returns>Instance of cell's IWebElement.</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Controls.TableControl`1">
+            <summary>
+            Represents a table control.
+            </summary>
+            <typeparam name="T">Type of the rows, implementation of <see cref="T:Fourth.Automation.Framework.Core.Controls.TableRow"/>.</typeparam>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.TableControl`1.#ctor(OpenQA.Selenium.IWebElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Core.Controls.TableControl`1"/> class.
+            </summary>
+            <param name="tableElement">The table element.</param>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Controls.TableControl`1.Header">
+            <summary>
+            Gets the headers(columns) of the table.
+            </summary>
+            <value>The list of header names.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Controls.TableControl`1.Rows">
+            <summary>
+            Gets the rows for this table.
+            </summary>
+            <value>The rows.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Controls.TableControl`1.Title">
+            <summary>
+            Gets the title of the table.
+            </summary>
+            <value>The title.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Controls.TableControl`1.HeaderSelector">
+            <summary>
+            Gets the header selector.
+            </summary>
+            <value>The header selector.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Controls.TableControl`1.RowsSelector">
+            <summary>
+            Gets the rows selector.
+            </summary>
+            <value>The rows selector.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Controls.TableControl`1.TitleSelector">
+            <summary>
+            Gets the title selector.
+            </summary>
+            <value>The title selector.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.TableControl`1.FindRow``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String)">
+            <summary>
+            Finds a row by given column value.
+            </summary>
+            <typeparam name="TProperty">The type of the rows.</typeparam>
+            <param name="expression">Expression to select the column property to search in.</param>
+            <param name="value">The expected value in the cell.</param>
+            <returns>When found instance of row <see cref="T:Fourth.Automation.Framework.Core.Controls.TableRow"/>; otherwise null.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.TableControl`1.FindRow``1(System.ValueTuple{System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String}[])">
+            <summary>
+            Finds a row by given column value.
+            </summary>
+            <typeparam name="TProperty">The type of the rows.</typeparam>
+            <param name="columnValues">Expression with column properties and values. Use <see cref="T:Fourth.Automation.Framework.Core.Controls.ColumnAttribute"/> to define the column name.</param>
+            <returns>When found instance of row <see cref="T:Fourth.Automation.Framework.Core.Controls.TableRow"/>; otherwise null.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.TableControl`1.FindRow(System.String,System.String)">
+            <summary>
+            Finds a row by given column value.
+            </summary>
+            <param name="column">The column name.</param>
+            <param name="value">The expected value in the cell.</param>
+            <returns>When found instance of row <see cref="T:Fourth.Automation.Framework.Core.Controls.TableRow"/>; otherwise null.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.TableControl`1.FindRow(System.ValueTuple{System.String,System.String}[])">
+            <summary>
+            Finds a row by given list of column values.
+            </summary>
+            <param name="columnValues">The column values. List of tuples with expected column and value.</param>
+            <returns>When found instance of row <see cref="T:Fourth.Automation.Framework.Core.Controls.TableRow"/>; otherwise null.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.TableControl`1.SelectRows(OpenQA.Selenium.By)">
+            <summary>
+            Selects the rows <see cref="T:Fourth.Automation.Framework.Core.Controls.TableRow"/> by given selector.
+            </summary>
+            <param name="rowsSelector">The rows selector.</param>
+            <returns>IList&lt;T&gt;.</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Controls.TableRow">
+            <summary>
+            Represents a table row.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.TableRow.#ctor(OpenQA.Selenium.IWebElement,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Core.Controls.TableRow"/> class.
+            </summary>
+            <param name="rowElement">The row element.</param>
+            <param name="header">The headers(column names).</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.TableRow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Core.Controls.TableRow"/> class.
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Controls.TableRow.Cells">
+            <summary>
+            Gets the cells for this row.
+            </summary>
+            <value>The cells.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Controls.TableRow.RowElement">
+            <summary>
+            Gets the row element. This is the container that holds cells(like tr).
+            </summary>
+            <value>The row element.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Controls.TableRow.CellSelector">
+            <summary>
+            Gets the cell selector.
+            </summary>
+            <value>The cell selector.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.TableRow.GetColumnValue(System.String)">
+            <summary>
+            Gets the column value.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <returns>System.String.</returns>
+            <exception cref="T:System.ArgumentException">Property name should not be empty</exception>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Controls.TableRow.Init(OpenQA.Selenium.IWebElement,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes the specified row element.
+            </summary>
+            <param name="rowElement">The row element.</param>
+            <param name="header">The header.</param>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.CoreModule">
+            <summary>
+            Automation Core module. Registers the WebDrivers.
+            </summary>
+            <seealso cref="T:Autofac.Module" />
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.CoreModule.Load(Autofac.ContainerBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.InvalidDriverTypeException">
+            <summary>
+            Represents an invalid driver type error. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.InvalidDriverTypeException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Core.InvalidDriverTypeException"/> class.
+            </summary>
+            <param name="driverType">Type of the driver.</param>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.MissingDriverNameException">
+            <summary>
+            Represents a missing driver type in configuration section. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.MissingDriverNameException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Core.MissingDriverNameException"/> class.
+            </summary>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Resolvers.SafariResolver">
+            <summary>
+            Provides instance of Google Chrome web driver.
+            </summary>
+            <seealso cref="T:Fourth.Automation.Framework.Core.IDriverResolver" />
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Resolvers.SafariResolver.Name">
+            <summary>
+            Gets the name of the supported browser.
+            </summary>
+            <value>The name of the supported browser.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Resolvers.SafariResolver.Resolve(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Resolves the specified web driver.
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Instance of a IWebDriver.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Resolvers.SafariResolver.SetCapabilities(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Set capabilities for safari driver
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Object with capabilities set</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Resolvers.ChromeResolver">
+            <summary>
+            Provides instance of Google Chrome web driver.
+            </summary>
+            <seealso cref="T:Fourth.Automation.Framework.Core.IDriverResolver" />
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Resolvers.ChromeResolver.Name">
+            <summary>
+            Gets the name of the supported browser.
+            </summary>
+            <value>The name of the supported browser.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Resolvers.ChromeResolver.Resolve(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Resolves the specified web driver.
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Instance of a IWebDriver.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Resolvers.ChromeResolver.SetCapabilities(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Set capabilities for chrome driver driver
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Object with capabilities set</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Resolvers.FirefoxResolver">
+            <summary>
+            Provides instance of Firefox web driver.
+            </summary>
+            <seealso cref="T:Fourth.Automation.Framework.Core.IDriverResolver" />
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Resolvers.FirefoxResolver.Name">
+            <summary>
+            Gets the name of the supported browser.
+            </summary>
+            <value>The name of the supported browser.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Resolvers.FirefoxResolver.Resolve(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Resolves the specified web driver.
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Instance of a IWebDriver.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Resolvers.FirefoxResolver.SetCapabilities(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Set capabilities for firefox driver
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Object with capabilities set</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Resolvers.InternetExplorerResolver">
+            <summary>
+            Provides instance of Internet Explorer web driver.
+            </summary>
+            <seealso cref="T:Fourth.Automation.Framework.Core.IDriverResolver" />
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Resolvers.InternetExplorerResolver.Name">
+            <summary>
+            Gets the name of the supported browser.
+            </summary>
+            <value>The name of the supported browser.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Resolvers.InternetExplorerResolver.Resolve(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Resolves the specified web driver.
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Instance of a IWebDriver.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Resolvers.InternetExplorerResolver.SetCapabilities(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Set capabilities for internet explorer driver
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Object with capabilities set</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Resolvers.RemoteDriverResolver">
+            <summary>
+            Provides instance of Remote web driver.
+            </summary>
+            <seealso cref="T:Fourth.Automation.Framework.Core.IDriverResolver" />
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Resolvers.RemoteDriverResolver.Name">
+            <summary>
+            Gets the name of the supported browser.
+            </summary>
+            <value>The name of the supported browser.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Resolvers.RemoteDriverResolver.Resolve(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Resolves the specified web driver.
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Instance of a IWebDriver.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Resolvers.RemoteDriverResolver.SetCapabilities(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Sets capabilities for the remote web driver
+            </summary>
+            <param name="driverInfo">The driver info object</param>
+            <returns>returns a object with the capabilities set</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Interfaces.ISystemLogin">
+            <summary>
+            Provides an interface to store user credentials
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Interfaces.ISystemLogin.Password">
+            <summary>
+            Gets a Password property
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Interfaces.ISystemLogin.Url">
+            <summary>
+            Gets an Url property
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Interfaces.ISystemLogin.User">
+            <summary>
+            Gets an User property
+            </summary>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.DriverFactory">
+            <summary>
+            Provides instance of a web driver based on the registered driver resolvers.
+            </summary>
+        </member>
+        <member name="F:Fourth.Automation.Framework.Core.DriverFactory.resolvers">
+            <summary>
+            List of web driver resolvers.
+            </summary>
+            <remarks>
+            See <see cref="T:Fourth.Automation.Framework.Core.IDriverResolver"/> for more info about resolvers. Any custom web driver resolvers should be added to this collection.
+            </remarks>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.DriverFactory.Resolvers">
+            <summary>
+            Gets or sets a resolver
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.DriverFactory.DriverInfo">
+            <summary>
+            Gets the Driver info from config.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.DriverFactory.Create">
+            <summary>
+            Creates web driver instance based on the registered driver resolvers.
+            </summary>
+            <returns>Instance of a IWebDriver.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.DriverFactory.Create(System.String)">
+            <summary>
+            Creates web driver instance based on the registered driver resolvers with providing the browser type.
+            </summary>
+            <param name="type">The browser type. Can be found in <code>DriverTypes</code> class.</param>
+            <returns>Instance of a IWebDriver.</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.DriverTypes">
+            <summary>
+            Holds a list of web driver types used in configuration.
+            </summary>
+        </member>
+        <member name="F:Fourth.Automation.Framework.Core.DriverTypes.InternetExplorer">
+            <summary>
+            Internet Explorer browser name.
+            </summary>
+        </member>
+        <member name="F:Fourth.Automation.Framework.Core.DriverTypes.Chrome">
+            <summary>
+            Google Chrome browser name.
+            </summary>
+        </member>
+        <member name="F:Fourth.Automation.Framework.Core.DriverTypes.Firefox">
+            <summary>
+            Firefox Browser name.
+            </summary>
+        </member>
+        <member name="F:Fourth.Automation.Framework.Core.DriverTypes.RemoteDriver">
+            <summary>
+            Remote browser name.
+            </summary>
+        </member>
+        <member name="F:Fourth.Automation.Framework.Core.DriverTypes.Safari">
+            <summary>
+            Safari browser name.
+            </summary>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.IDriverResolver">
+            <summary>
+            Represents a Driver Resolver. Implement to provide custom initialization of a web driver (or a new browser type).
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.IDriverResolver.Name">
+            <summary>
+            Gets the name of the supported browser. This a key for this implementation.
+            </summary>
+            <value>The name of the supported browser.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.IDriverResolver.Resolve(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Resolves the specified web driver.
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Instance of a IWebDriver.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.IDriverResolver.SetCapabilities(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Set capabilities for driver
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Object with capabilities set</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv">
+            <summary>
+            Reads and Create Csv
+            </summary>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvRow">
+            <summary>
+            Class to store one CSV row
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvRow.LineText">
+            <summary>
+            Gets or sets line text string
+            </summary>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvFileWriter">
+            <summary>
+            Class to write data to a CSV file
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvFileWriter.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvFileWriter"/> class
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvFileWriter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvFileWriter"/> class
+            </summary>
+            <param name="filename"></param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvFileWriter.WriteRow(Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvRow)">
+            <summary>
+            Writes a single row to a CSV file.
+            </summary>
+            <param name="row">The row to be written</param>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvFileReader">
+            <summary>
+            Class to read data from a CSV file
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvFileReader.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvFileReader"/> class
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvFileReader.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvFileReader"/> class
+            </summary>
+            <param name="filename"></param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvFileReader.ReadRow(Fourth.Automation.Framework.Core.Utilities.ReadWriteCsv.CsvRow)">
+            <summary>
+            Reads a row of data from a CSV file
+            </summary>
+            <param name="row"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Core.Utilities.SpecFlowAnalyzer">
+            <summary>
+            Analyzes cs files generated by SpecFlow
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Utilities.SpecFlowAnalyzer.#ctor(System.Reflection.Assembly)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Core.Utilities.SpecFlowAnalyzer"/> class.
+            </summary>
+            <param name="assembly">The assembly with specflow generated files.</param>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Core.Utilities.SpecFlowAnalyzer.FeatureDefinitions">
+            <summary>
+            Gets the feature definitions.
+            </summary>
+            <value>The feature definitions.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Utilities.SpecFlowAnalyzer.HasCategoryAttribute(System.Reflection.MethodInfo,System.String)">
+            <summary>
+            Determines whether a method has a NUnut Category Attribute with  a given value.
+            </summary>
+            <param name="method">The method.</param>
+            <param name="tag">The tag.</param>
+            <returns><c>true</c> if has CategoryAttribute; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Utilities.SpecFlowAnalyzer.IsCategoryAttribute(System.Reflection.CustomAttributeData,System.String)">
+            <summary>
+            Determines whether attribute is NUnut Category Attribute with given value.
+            </summary>
+            <param name="customAttributeData">The custom attribute data.</param>
+            <param name="value">The category value.</param>
+            <returns><c>true</c> if the attribute has a CategoryAttribute with the given value; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Utilities.SpecFlowAnalyzer.CountScenarios(System.String)">
+            <summary>
+            Counts the scenarios with a given tag.
+            </summary>
+            <param name="withTag">The tag.</param>
+            <returns>Count of scenarios with the tag.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Core.Utilities.SpecFlowAnalyzer.HasSpecFlowGeneratedAttribute(System.Reflection.TypeInfo)">
+            <summary>
+            Determines whether a type is generated by SpecFlow.
+            </summary>
+            <param name="type">The type.</param>
+            <returns><c>true</c> if generated by SpecFlow; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Extension.JavaScript">
+            <summary>
+            Provides a way to execute Javascript commands
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JavaScript.#ctor(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Extension.JavaScript"/> class.
+            </summary>
+            <param name="driver">The current webdriver</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JavaScript.ExecuteJavaScript(System.String)">
+            <summary>
+            Executes the specified Javascript command
+            </summary>
+            <param name="javaScript">Command to be executed as string</param>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Extension.JavaScriptDriverExtensions">
+            <summary>
+            Provides extension methods to interact with Javascript trhough a webDriver
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JavaScriptDriverExtensions.JavaScript(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Creates a new Javascript instance
+            </summary>
+            <param name="driver">webDriver as extension</param>
+            <returns>Returns a new Javascript object</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Extension.JQuery">
+            <summary>
+                If JQuery is present it uses Selenium's JS executor to execute the specified command.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.#ctor(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Extension.JQuery"/> class.
+            </summary>
+            <param name="driver">The current webdriver</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.ValidateFormFieldByIDUsingJQueryReturnsVal(System.String,System.String)">
+            <summary>
+            Validate form field by Id using JQuery returned element
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <param name="text">Text to be compared to the found element</param>
+            <returns>Returns a boolean stating if the text is equals or not the element</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.ValidateFormFieldByClassUsingJQuery(System.String,System.String)">
+            <summary>
+            Validate form field by Class using JQuery returned element
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <param name="text">Text to be compared to the found element</param>
+            <returns>Returns true if element and text are equal, otherwise throws an error</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.ValidateFormFieldByClassUsingJQuery(System.String,System.String,System.Int32)">
+            <summary>
+            Validate form field by Class using JQuery returned elements
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <param name="text">Text to be compared to the found element</param>
+            <param name="index">The position of the element when more than one is present</param>
+            <returns>Returns true if element and text are equal, otherwise throws an error</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.WaitUntilVisableJQuery(System.String,System.Int32,System.Int32)">
+            <summary>
+            Wait element to be visible
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <param name="index">The position of the element when more than one is present</param>
+            <param name="time">Time in seconds to wait for element</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.WaitJQuery(System.String)">
+            <summary>
+            Wait for element
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.WaitJQuery(System.String,System.Int32)">
+            <summary>
+            Wait an element for a specified time in seconds
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <param name="time">Time to wait for element in seconds</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.WaitJQuery(System.String,System.Int32,System.Int32)">
+            <summary>
+            Wait an element for a specified time in seconds
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <param name="index">The position of the element when more than one is present</param>
+            <param name="time">Time to wait for element in seconds</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.GetElementJqueryWait(System.String)">
+            <summary>
+            Wait for an element and then return it
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <returns>Returns an element with the specifed selector</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.GetElementJqueryWait(System.String,System.Int32)">
+            <summary>
+            Wait for an element and then return it
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <param name="index">The position of the element when more than one is present</param>
+            <returns>Returns a IWebElement found by the specified selector</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.GetElementJquery(System.String)">
+            <summary>
+            Find element and return
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <returns>Returns a IWebElement found by the specified selector</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.GetElementJquery(System.String,System.Int32)">
+            <summary>
+            Find element and return
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <param name="index">The position of the element when more than one is present</param>
+            <returns>Returns a IWebElement found by the specified selector</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.GetValue(System.String)">
+            <summary>
+            Gets the value of an element
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <returns>Value of an element as string</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.GetDropDownBoxJqueryAndSelect(System.String,System.Int32,System.String)">
+            <summary>
+            Find a DropDownBox element and select the specified value
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <param name="index">The position of the element when more than one is present</param>
+            <param name="selecttext">Text to be selected</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.GetElementJqueryAndSendKeys(System.String,System.String)">
+            <summary>
+            Find element and send a value
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <param name="keys">The value to be send</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.GetElementJqueryAndSendKeys(System.String,System.Int32,System.String)">
+            <summary>
+            Find element and send a value
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <param name="index">The position of the element when more than one is present</param>
+            <param name="keys">The value to be send</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.GetElementJqueryAndClick(System.String)">
+            <summary>
+            Find element and click
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQuery.GetElementJqueryAndClick(System.String,System.Int32)">
+            <summary>
+            Find element and click
+            </summary>
+            <param name="selector">The selector to be used to find the element</param>
+            <param name="index">The position of the element when more than one is present</param>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Extension.JQueryWebDriverExtensions">
+            <summary>
+            Provides extension methods to interact with JQueries trhough a webDriver
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.JQueryWebDriverExtensions.JQuery(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Creates a new JQuery instance
+            </summary>
+            <param name="driver">webDriver as extension</param>
+            <returns>Returns a new JQuery object</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Extension.IListWebElementExtensions">
+            <summary>
+            Provides extensions methods for List of IWebElements
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.IListWebElementExtensions.ElementByText(System.Collections.Generic.IList{OpenQA.Selenium.IWebElement},System.String)">
+            <summary>
+            Finds and returns an IWebElement from list by specified text
+            </summary>
+            <param name="self">The IWebElement list</param>
+            <param name="text">Text to find object</param>
+            <returns>A IWebElement</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.IListWebElementExtensions.ToPageObjectList``1(System.Collections.Generic.IList{OpenQA.Selenium.IWebElement},OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Converts a IWebElement list to a page object list.
+            </summary>
+            <remarks>
+            [FindsBySequence] and [FindsAll] might not work properly
+            </remarks>
+            <typeparam name="T">The page object entity</typeparam>
+            <param name="self">The IWebElement list</param>
+            <param name="driver">The IWebDriver</param>
+            <returns>A converted list</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.IListWebElementExtensions.GetBySelector(System.String,System.String)">
+            <summary>
+            Return a by equivalent to a string
+            </summary>
+            <param name="how">String representation of how element is selected</param>
+            <param name="selector">String represeting a selector</param>
+            <returns>Return a By object</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Extension.WebDriverExtensions">
+            <summary>
+            Provides extensions methods for WebDriver
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitIsClickable(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.IWebElement)">
+            <summary>
+            Wait for a element to be clickable
+            </summary>
+            <param name="driver">webDriver as extension</param>
+            <param name="element">Selenium IWebelement to wait</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitIsClickable(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.IWebElement,System.TimeSpan)">
+            <summary>
+            Wait for a element to be clickable
+            </summary>
+            <param name="driver">webDriver as extension</param>
+            <param name="element">Selenium IWebelement to wait</param>
+            <param name="time">Time to wait for element</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitElementToExists(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.IWebElement)">
+            <summary>
+            Wait for a element to exits
+            </summary>
+            <param name="driver">webDriver as extension</param>
+            <param name="element">Selenium IWebelement to wait</param>
+            <returns>Returns wether the element exists or not</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitUntilExists(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.By)">
+            <summary>
+            Wait for a element to exists and be visible
+            </summary>
+            <param name="driver">webDriver as extension</param>
+            <param name="by">By to look for the element</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitUntilClickable(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.By)">
+            <summary>
+            Wait for a element until it is clickable
+            </summary>
+            <param name="driver">webDriver as extension</param>
+            <param name="by">By to look for the element</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitUntilTextIsPresent(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.IWebElement,System.String)">
+            <summary>
+            Wait for a text to be present in an element
+            </summary>
+            <param name="driver">webDriver as extension</param>
+            <param name="element">IWebElement to wait</param>
+            <param name="text">Text that should be present in the element</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitElementToExists(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.IWebElement,System.TimeSpan)">
+            <summary>
+            Wait for a element to exits
+            </summary>
+            <param name="driver">webDriver as extension</param>
+            <param name="element">Selenium IWebelement to wait</param>
+            <param name="time">Time to wait for element</param>
+            <returns>Returns wether the element exists or not</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitListItemsLoad(OpenQA.Selenium.IWebDriver,System.Collections.Generic.IList{OpenQA.Selenium.IWebElement})">
+            <summary>
+            Waits the items from a list to load
+            </summary>
+            <param name="driver">The IWebElement list</param>
+            <param name="list">The list to wait for content</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitElementToDisappear(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.IWebElement)">
+            <summary>
+            Wait for a element to not be visible anymore
+            </summary>
+            <param name="driver">webDriver as extension</param>
+            <param name="element">Selenium IWebelement to wait</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitElementToDisappear(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.IWebElement,System.TimeSpan)">
+            <summary>
+            Wait for a element to not be visible anymore
+            </summary>
+            <param name="driver">webDriver as extension</param>
+            <param name="element">Selenium IWebelement to wait</param>
+            <param name="time">Time to wait for element</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitNewWindowOpen(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Wait for a new browser window to open
+            </summary>
+            <param name="driver">webDriver as extension</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitForDomToLoad(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Legacy code. Waits for page DOM to load
+            </summary>
+            <param name="driver">webDriver as extension</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitForDomToLoad(OpenQA.Selenium.IWebDriver,System.TimeSpan)">
+            <summary>
+            Legacy code. Waits for page DOM to load
+            </summary>
+            <param name="driver">webDriver as extension</param>
+            <param name="time">Time in seconds to wait for a response</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitElementAndClick(OpenQA.Selenium.IWebDriver,OpenQA.Selenium.IWebElement)">
+            <summary>
+            Waits for a element to be clickable and then clicks
+            </summary>
+            <param name="driver">Current driver</param>
+            <param name="element">Element to be clicked</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.WaitFrameAndSwitch(OpenQA.Selenium.IWebDriver,System.String)">
+            <summary>
+            Waits for the specified frame to display and automatically switches to it
+            </summary>
+            <param name="driver">Current driver</param>
+            <param name="frameName">Frame to wait and switch</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.AcceptAlert(OpenQA.Selenium.IWebDriver,System.Boolean)">
+            <summary>
+            Waits for an alert to be present and then accepts it
+            </summary>
+            <param name="driver">Current driver</param>
+            <param name="failIfNoAlert">Fails if no alert is present after a period of time</param>
+            <remarks> In order to avoid issues with newer versions of Selenium, this method ignores the InvalidOperationException</remarks>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebDriverExtensions.DismissAlert(OpenQA.Selenium.IWebDriver,System.Boolean)">
+            <summary>
+            Waits for an alert to be present and then dismiss it
+            </summary>
+            <param name="driver">Current driver</param>
+            <param name="failIfNoAlert">Fails if no alert is present after a period of time</param>
+            <remarks> In order to avoid issues with newer versions of Selenium, this method ignores the InvalidOperationException</remarks>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Extension.GeneralExtensions">
+            <summary>
+            Provides extension methods for a general types
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.GeneralExtensions.WithNumbericSufix(System.Int32)">
+            <summary>
+            Converts an int to its numerical order equivalent
+            </summary>
+            <param name="number">The number to be converted</param>
+            <returns>Returns the given number as a string with its numerical suffix.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.GeneralExtensions.AsAge(System.DateTime)">
+            <summary>
+            Converts a given DateTime into its relative age value.
+            </summary>
+            <param name="self">The DateTime to be converted</param>
+            <returns>Returns an int value representing the age</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.GeneralExtensions.AsAge(System.Nullable{System.DateTime})">
+            <summary>
+            Converts a given DateTime into its relative age value as string.
+            </summary>
+            <param name="self">The DateTime to be converted</param>
+            <returns>Returns a string represeting the age</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Extension.WebElementExtensions">
+            <summary>
+            Provides extension methods for a Selenium IWebElement
+            </summary>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Extension.WebElementExtensions.SelectBy">
+            <summary>
+            List all possible ways to select an item using a SelectElement
+            </summary>
+        </member>
+        <member name="F:Fourth.Automation.Framework.Extension.WebElementExtensions.SelectBy.Text">
+            <summary>
+            Use the Text property to select an element
+            </summary>
+        </member>
+        <member name="F:Fourth.Automation.Framework.Extension.WebElementExtensions.SelectBy.Id">
+            <summary>
+            Use the ID property to select an element
+            </summary>
+        </member>
+        <member name="F:Fourth.Automation.Framework.Extension.WebElementExtensions.SelectBy.Value">
+            <summary>
+            Use the Value property to select an element
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebElementExtensions.Exist(OpenQA.Selenium.IWebElement)">
+            <summary>
+            Check if an specified element exists in the DOM by validating if the element is Displayed and Enabled
+            </summary>
+            <param name="element">IWebelement to check</param>
+            <returns>Returns if an element is visible or not</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebElementExtensions.ClearAndSendKeys(OpenQA.Selenium.IWebElement,System.String)">
+            <summary>
+            Clear a text from a text area/box and send a specified new value
+            </summary>
+            <param name="element">Writable selenium element</param>
+            <param name="textToSend">What to write</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebElementExtensions.WaitMovementToEnd(OpenQA.Selenium.IWebElement)">
+            <summary>
+            Wait for an element to stop moving based on its Location (Y,X)
+            </summary>
+            <param name="element">Selenium IWebelement to wait</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebElementExtensions.SelectOption(OpenQA.Selenium.IWebElement,System.String,Fourth.Automation.Framework.Extension.WebElementExtensions.SelectBy)">
+            <summary>
+            Selects an options from drop down
+            </summary>
+            <remarks>
+            Tries to select the option by typing the value
+             If the value is not correct after typing, it uses the provided Select method to select the value.
+             If no Types.SelectTypes is provided, TEXT is chosen as default.
+            </remarks>
+            <param name="self">The element to be converted into a SelectElement</param>
+            <param name="value">The value to be selected. If Selecting by ID, send the id as string </param>
+            <param name="type">The type of Select you want to use. Default to TEXT</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebElementExtensions.SelectOptionByText(OpenQA.Selenium.IWebElement,System.String)">
+            <summary>
+            Selects an options from drop down, using SendKeys+Tab
+            </summary>
+            <param name="self">The Select element.</param>
+            <param name="value">Text value of the option to select.</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebElementExtensions.Enter(OpenQA.Selenium.IWebElement,System.String)">
+            <summary>
+            If the value is not null, Enters a string value, into a text box field. Used to safe enter of values.
+            </summary>
+            <param name="element">The element.</param>
+            <param name="value">The string value.</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebElementExtensions.Enter(OpenQA.Selenium.IWebElement,System.Nullable{System.Boolean})">
+            <summary>
+            If the value is not null, checks or un-checks a checkbox. Used to safe enter of values.
+            </summary>
+            <param name="element">The element.</param>
+            <param name="value">Marks the checkbox if true; otherwise un-checks the checkbox; null omits any actions.</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebElementExtensions.EnterOption(OpenQA.Selenium.IWebElement,System.String)">
+            <summary>
+            Selects option value by given text. Used to safe enter of values.
+            </summary>
+            <param name="element">The option element.</param>
+            <param name="value">Selects the text value; if null omits any actions.</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Extension.WebElementExtensions.Checkbox(OpenQA.Selenium.IWebElement,System.Boolean)">
+            <summary>
+            Checks a checkbox by given bool value.
+            </summary>
+            <param name="element">The checkbox element.</param>
+            <param name="isChecked">if <c>true</c> checkbox is checked; <c>false</c> un-checks the checkbox</param>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension">
+            <summary>
+            Provides exntesion methods for a DataReader
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeValue(System.Data.Common.DbDataReader,System.String,System.Boolean)">
+            <summary>
+                Returns a boolean value from a datareader for the specified column. If the db value is null the supplied default
+                value is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                A boolean value representing the column value in the datareader or the supplied default if no value is present
+                in the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeValue(System.Data.Common.DbDataReader,System.String,System.Int32)">
+            <summary>
+                Returns an integer value from a datareader for the specified column. If the db value is null the supplied default
+                value is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                An integer value representing the column value in the datareader or the supplied default if no value is
+                present in the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeValue(System.Data.Common.DbDataReader,System.String,System.String)">
+            <summary>
+                Returns a string value from a datareader for the specified column. If the db value is null the supplied default
+                value is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                A string value representing the column value in the datareader or the supplied default if no value is present
+                in the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeValue(System.Data.Common.DbDataReader,System.String,System.Char)">
+            <summary>
+                Returns a char value from a datareader for the specified column. If the db value is null the supplied default value
+                is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                A char value representing the column value in the datareader or the supplied default if no value is present in
+                the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeValue(System.Data.Common.DbDataReader,System.String,System.Decimal)">
+            <summary>
+                Returns a decimal value from a datareader for the specified column. If the db value is null the supplied default
+                value is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                A decimal value representing the column value in the datareader or the supplied default if no value is present
+                in the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeValue(System.Data.Common.DbDataReader,System.String,System.Double)">
+            <summary>
+                Returns a double value from a datareader for the specified column. If the db value is null the supplied default
+                value is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                A double value representing the column value in the datareader or the supplied default if no value is present
+                in the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeGuid(System.Data.Common.DbDataReader,System.String,System.Guid)">
+            <summary>
+            Returns a Guid value from a datareader for the specified column. If the db value is null the supplied default value is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                A Guid value representing the column value in the datareader or the supplied default if no value is present in the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeValue(System.Data.Common.DbDataReader,System.String,System.DateTime)">
+            <summary>
+                Returns a DateTime value from a datareader for the specified column. If the db value is null the supplied default
+                value is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                A DateTime value representing the column value in the datareader or the supplied default if no value is
+                present in the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeBool(System.Data.Common.DbDataReader,System.String,System.Boolean)">
+            <summary>
+                Returns a boolean value from a datareader for the specified column. If the db value is null the supplied default
+                value is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                A boolean value representing the column value in the datareader or the supplied default if no value is present
+                in the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeInt(System.Data.Common.DbDataReader,System.String,System.Int32)">
+            <summary>
+                Returns an integer value from a datareader for the specified column. If the db value is null the supplied default
+                value is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                An integer value representing the column value in the datareader or the supplied default if no value is
+                present in the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeString(System.Data.Common.DbDataReader,System.String,System.String)">
+            <summary>
+                Returns a string value from a datareader for the specified column. If the db value is null the supplied default
+                value is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                A string value representing the column value in the datareader or the supplied default if no value is present
+                in the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeChar(System.Data.Common.DbDataReader,System.String,System.Char)">
+            <summary>
+                Returns a char value from a datareader for the specified column. If the db value is null the supplied default value
+                is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                A char value representing the column value in the datareader or the supplied default if no value is present in
+                the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeDecimal(System.Data.Common.DbDataReader,System.String,System.Decimal)">
+            <summary>
+                Returns a decimal value from a datareader for the specified column. If the db value is null the supplied default
+                value is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                A decimal value representing the column value in the datareader or the supplied default if no value is present
+                in the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeDouble(System.Data.Common.DbDataReader,System.String,System.Double)">
+            <summary>
+                Returns a double value from a datareader for the specified column. If the db value is null the supplied default
+                value is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                A double value representing the column value in the datareader or the supplied default if no value is present
+                in the datareader
+            </returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.DbDataReaderExtension.SafeDateTime(System.Data.Common.DbDataReader,System.String,System.DateTime)">
+            <summary>
+                Returns a DateTime value from a datareader for the specified column. If the db value is null the supplied default
+                value is returned
+            </summary>
+            <param name="dr">The datareader from which the value is to be retrieved</param>
+            <param name="columnName">The name of the column in the datareader from which the value should be taken</param>
+            <param name="defaultValue">The default value to be used in the case where the db value is null</param>
+            <returns>
+                A DateTime value representing the column value in the datareader or the supplied default if no value is
+                present in the datareader
+            </returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Infrastructure.EmailSender">
+            <summary>
+            Provides a way to send e-mails
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.EmailSender.EmailNow(System.String,System.String)">
+            <summary>
+            Sends an e-mail
+            </summary>
+            <param name="subject">Subject of the e-mail</param>
+            <param name="body">Content of the e-mail</param>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Infrastructure.FtpHelper">
+            <summary>
+            Provides FTP helper methods
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.FtpHelper.UploadFile(System.String,System.String,System.String,System.String)">
+            <summary>
+            Uploads a file
+            </summary>
+            <param name="hostFullPathToSaveLocation">Save location full path </param>
+            <param name="inputFileLocationAndName">Full path for file location and its name</param>
+            <param name="userName">Username as string. Default: 'Anonymous'</param>
+            <param name="password">Password as string. Default:'' </param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Infrastructure.FtpHelper.UploadString(System.String,System.String,System.String,System.String)">
+            <summary>
+            Uploads a string
+            </summary>
+            <param name="hostFullPathToSaveLocation">Save location full path </param>
+            <param name="inputString">String value to be uploaded</param>
+            <param name="userName">Username as string. Default: 'Anonymous'</param>
+            <param name="password">Password as string. Default:'' </param>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Page.BasePage">
+            <summary>
+            Provides a base instance for Page Objects initializing the elements and assiging a driver.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Page.BasePage.#ctor(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Page.BasePage"/> class.
+            </summary>
+            <param name="driver">The current webdriver</param>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Page.BasePage.Driver">
+            <summary>
+            Gets instance of the webdriver
+            </summary>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Reporting.Artefacts">
+            <summary>
+            Provides methods to store artefacts into the reporting
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Reporting.Artefacts.#ctor(OpenQA.Selenium.IWebDriver,TechTalk.SpecFlow.ScenarioContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Reporting.Artefacts"/> class.
+            </summary>
+            <param name="driver">Current Driver instance</param>
+            <param name="context">Current Scenario Context</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Reporting.Artefacts.TakeScreenshot">
+            <summary>
+            Takes a screenshot from current view and adds to the Report under the proper step
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Reporting.Artefacts.Output(System.String)">
+            <summary>
+            Ouput messages to be stored into Report under proper step
+            </summary>
+            <param name="message">The message to store</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Reporting.Artefacts.GetEncodedScreenshot">
+            <summary>
+            Take scerenshot from current view and encode in a 64 bit string.
+            It also keep a copy from the screenshot case KeepScreenshot is set to true
+            </summary>
+            <returns>Returns a 64 Encoded Screenshot</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Reporting.Hooks">
+            <summary>
+            Defines default hooks for the tests
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Reporting.Hooks.#ctor(OpenQA.Selenium.IWebDriver,TechTalk.SpecFlow.ScenarioContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Reporting.Hooks"/> class.
+            </summary>
+            <param name="driver">The current driver context</param>
+            <param name="scenarioContext">The current scenario context</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Reporting.Hooks.AfterStep">
+            <summary>
+            Defines a After Step hook
+            </summary>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Reporting.IArtefacts">
+            <summary>
+            Provides a interface to store logs and screenshots
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Reporting.IArtefacts.TakeScreenshot">
+            <summary>
+            Take Screenshot from current browser/view.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Reporting.IArtefacts.Output(System.String)">
+            <summary>
+            Stores a output log
+            </summary>
+            <param name="message">Message to be stored</param>
+        </member>
+    </members>
+</doc>

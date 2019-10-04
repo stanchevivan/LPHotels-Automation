@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+
+	<configSections xdt:Transform="InsertIfMissing" >
+	</configSections>
+
+	<configSections>
+		<section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" xdt:Locator="Condition([@name='log4net'])" xdt:Transform="InsertIfMissing"/>
+	</configSections>
+
+	<log4net xdt:Transform="InsertIfMissing">
+		<appender name="RollingFile" type="log4net.Appender.RollingFileAppender">
+		  <file value="AppiumServerLogs.txt" />
+		  <appendToFile value="true" />
+		  <maximumFileSize value="100KB" />
+		  <maxSizeRollBackups value="2" />
+
+		  <layout type="log4net.Layout.PatternLayout">
+			<conversionPattern value="%level %thread %logger - %message%newline" />
+		  </layout>
+		</appender>
+
+		<logger name="Fourth.Automation.Framework.Mobile.Appium.AppiumServer">
+		  <level value="ALL" />
+		  <appender-ref ref="RollingFile" />
+		</logger>
+	</log4net>
+</configuration>
