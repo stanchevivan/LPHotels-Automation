@@ -1,0 +1,343 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Fourth.Automation.Framework.Mobile</name>
+    </assembly>
+    <members>
+        <member name="T:Fourth.Automation.Framework.Mobile.Appium.AppiumDebugServers">
+            <summary>
+            Starts supporting debug command line utilities for the current platform and device type.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Appium.AppiumDebugServers.#ctor(System.Collections.Generic.IEnumerable{Fourth.Automation.Framework.Mobile.TerminalCommand})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Mobile.Appium.AppiumDebugServers"/> class.
+            </summary>
+            <param name="commands">List with the available commands.</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Appium.AppiumDebugServers.Start(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Starts the command line utilities.
+            </summary>
+            <param name="driverInfo">The driver info.</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Appium.AppiumDebugServers.Stop">
+            <summary>
+            Stops the running command line utilities.
+            </summary>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Mobile.Appium.AppiumServer">
+            <summary>
+            Provides interaction with Appium Server
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Appium.AppiumServer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Mobile.Appium.AppiumServer"/> class.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Appium.AppiumServer.#ctor(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Mobile.Appium.AppiumServer"/> class.
+            </summary>
+            <param name="driverInfo">Driver info containing appium/selenium settings, driver capabilities.</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Appium.AppiumServer.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Mobile.Appium.AppiumServer"/> class.
+            </summary>
+            <param name="address">Address where Appium Server will be started</param>
+            <param name="port">Port where Appium Server will be started</param>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Mobile.Appium.AppiumServer.SupportedDrivers">
+            <summary>
+            Gets a list with supported drivers. Empty array in case all are supported.
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Mobile.Appium.AppiumServer.ServerAddress">
+            <summary>
+            Gets the server address.
+            </summary>
+            <value>The server address.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Appium.AppiumServer.BuildCommand">
+            <summary>
+            Builds the start appium command.
+            </summary>
+            <returns>Returns command line arguments as string.</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Mobile.Appium.IOSWebkitDebugProxy">
+            <summary>
+            Starts the iOS Webkit Debug Proxy.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Appium.IOSWebkitDebugProxy.#ctor(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Mobile.Appium.IOSWebkitDebugProxy"/> class.
+            </summary>
+            <param name="driverInfo">Driver info containing appium/selenium settings, driver capabilities.</param>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Mobile.Appium.IOSWebkitDebugProxy.SupportedDrivers">
+            <summary>
+            Gets a list with supported drivers.
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Mobile.Appium.IOSWebkitDebugProxy.SupportedPlatforms">
+            <summary>
+            Gets a list with supported platforms that the command can run on.
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Mobile.Appium.IOSWebkitDebugProxy.ServerAddress">
+            <summary>
+            Gets the server address.
+            </summary>
+            <value>The server address.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Appium.IOSWebkitDebugProxy.Supports(System.String,System.PlatformID)">
+            <summary>
+            Validates whether the command can be executed on the given platform and device type.
+            </summary>
+            <param name="driverType">The driver type.</param>
+            <param name="platform">The platform ID.</param>
+            <returns>Returns a value indicating whether the command can be executed.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Appium.IOSWebkitDebugProxy.BuildCommand">
+            <summary>
+            Override to provide command line arguments.
+            </summary>
+            <returns>Returns command line arguments as string.</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Mobile.DriverTypes">
+            <summary>
+            Mobile driver supported by the framework
+            </summary>
+        </member>
+        <member name="F:Fourth.Automation.Framework.Mobile.DriverTypes.Ios">
+            <summary>
+            iOS Appium Driver
+            </summary>
+        </member>
+        <member name="F:Fourth.Automation.Framework.Mobile.DriverTypes.Android">
+            <summary>
+            Android Appium Driver
+            </summary>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Mobile.MobileDriverExtensions">
+            <summary>
+            Provides extension methods for a webdriver in order to interact with mobile
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.MobileDriverExtensions.AsMobile(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Cast your current driver an AppiumDriver in order to interact with mobile commands.
+            </summary>
+            <param name="driver">The current web driver as extension</param>
+            <returns>Returns the current driver as AppiumDriver</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.MobileDriverExtensions.IsMobile(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Checks if your current driver is a mobile instance or not.
+            </summary>
+            <param name="driver">The current web driver as extension</param>
+            <returns>Returns a bool on either you are using a Mobile driver or not</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.MobileDriverExtensions.IsBrowser(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Checks if your current driver is a browser instance or not
+            </summary>
+            <remarks>
+            The method checks first if the driver is a mobile driver (Android or iOS).
+            In case it is, the second validation verifies if the driver is an app or a browser (Chrome or Safari) by checking the mandatory capability browserName.
+            </remarks>
+            <param name="driver">The current web driver as extension</param>
+            <returns>Returns a bool on either you are using a Mobile driver or not</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.MobileDriverExtensions.IsAndroid(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Checks if the current driver is an Android driver
+            </summary>
+            <param name="driver">The current driver as extension</param>
+            <returns>Returns a bool on either is an Android driver or not</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.MobileDriverExtensions.IsIos(OpenQA.Selenium.IWebDriver)">
+            <summary>
+            Checks if the current driver is an iOS driver
+            </summary>
+            <param name="driver">The current driver as extension</param>
+            <returns>Returns a bool on either is a iOS driver or not</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.MobileDriverExtensions.SwitchToNativeContext(OpenQA.Selenium.Appium.AppiumDriver{OpenQA.Selenium.Appium.AppiumWebElement})">
+            <summary>
+            Switch to native app context if not already set
+            </summary>
+            <param name="self">The current mobile driver</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.MobileDriverExtensions.SwitchToWebViewContext(OpenQA.Selenium.Appium.AppiumDriver{OpenQA.Selenium.Appium.AppiumWebElement})">
+            <summary>
+            Switch to the first webview inside mobile context
+            </summary>
+            <param name="self">The current mobile driver</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.MobileDriverExtensions.SwitchToContext(OpenQA.Selenium.Appium.AppiumDriver{OpenQA.Selenium.Appium.AppiumWebElement},System.String)">
+            <summary>
+            Switch to specified context IF not already set
+            </summary>
+            <param name="self">The current mobile driver</param>
+            <param name="contextName">The context name to switch</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.MobileDriverExtensions.IsMobileApp(OpenQA.Selenium.Appium.AppiumDriver{OpenQA.Selenium.Appium.AppiumWebElement})">
+            <summary>
+            Returns wether current driver is running as a Mobile App or Browser
+            </summary>
+            <param name="self">The current mobile driver</param>
+            <returns>Returns true if a mobile app is identified</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.MobileDriverExtensions.UninstallApp(OpenQA.Selenium.Appium.AppiumDriver{OpenQA.Selenium.Appium.AppiumWebElement})">
+            <summary>
+            Remove the app from the device using the keys from app config and without having to specify platform
+            </summary>
+            <param name="self">The current driver</param>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.MobileDriverExtensions.WaitForWebView(OpenQA.Selenium.Appium.AppiumDriver{OpenQA.Selenium.Appium.AppiumWebElement})">
+            <summary>
+            Waits for the context with the name specified to exist
+            </summary>
+            <param name="driver">The current driver</param>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Mobile.Resolvers.AndroidResolver">
+            <summary>
+            Provides instance of Android appium driver.
+            </summary>
+            <seealso cref="T:Fourth.Automation.Framework.Core.IDriverResolver" />
+        </member>
+        <member name="P:Fourth.Automation.Framework.Mobile.Resolvers.AndroidResolver.Name">
+            <summary>
+            Gets the name of the supported browser.
+            </summary>
+            <value>The name of the supported browser.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Resolvers.AndroidResolver.Resolve(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Resolves the specified web driver.
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Instance of a IWebDriver.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Resolvers.AndroidResolver.SetCapabilities(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Set capabilities for android driver
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Object with capabilities set</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Mobile.Resolvers.IOSResolver">
+            <summary>
+            Provides instance of iOS appium driver.
+            </summary>
+            <seealso cref="T:Fourth.Automation.Framework.Core.IDriverResolver" />
+        </member>
+        <member name="P:Fourth.Automation.Framework.Mobile.Resolvers.IOSResolver.Name">
+            <summary>
+            Gets the name of the supported browser.
+            </summary>
+            <value>The name of the supported browser.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Resolvers.IOSResolver.Resolve(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Resolves the specified web driver.
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Instance of a IWebDriver.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Resolvers.IOSResolver.SetCapabilities(Fourth.Automation.Framework.Configuration.IDriverInfo)">
+            <summary>
+            Set capabilities for ios driver
+            </summary>
+            <param name="driverInfo">The driver information.</param>
+            <returns>Object with capabilities set</returns>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Mobile.TerminalCommand">
+            <summary>
+            Represents a base class for command line utilities.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.TerminalCommand.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Mobile.TerminalCommand"/> class.
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Mobile.TerminalCommand.Running">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Fourth.Automation.Framework.Mobile.TerminalCommand"/> is running.
+            </summary>
+            <value><c>true</c> if process is running; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Mobile.TerminalCommand.SupportedDrivers">
+            <summary>
+            Gets a list with supported drivers. Empty array in case all are supported.
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Mobile.TerminalCommand.SupportedPlatforms">
+            <summary>
+            Gets a list with supported platforms that the command can run on.
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Mobile.TerminalCommand.Log">
+            <summary>
+            Gets an instance of the logger.
+            </summary>
+        </member>
+        <member name="P:Fourth.Automation.Framework.Mobile.TerminalCommand.ServerAddress">
+            <summary>
+            Gets the server address.
+            </summary>
+            <value>The server address.</value>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.TerminalCommand.Supports(System.String,System.PlatformID)">
+            <summary>
+            Validates whether the command can be executed on the given platform and device type.
+            </summary>
+            <param name="driverType">The driver type.</param>
+            <param name="platform">The platform ID.</param>
+            <returns>Returns a value indicating whether the command can be executed.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.TerminalCommand.Dispose">
+            <summary>
+            Stops the appium server and node process and disposes the object.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.TerminalCommand.Start">
+            <summary>
+            Starts the process.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.TerminalCommand.Stop">
+            <summary>
+            Stops the process.
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.TerminalCommand.BuildCommand">
+            <summary>
+            Override to provide command line arguments.
+            </summary>
+            <returns>Returns command line arguments as string.</returns>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.TerminalCommand.Dispose(System.Boolean)">
+            <summary>
+            Stops the appium server and node process and disposes the object.
+            </summary>
+            <param name="disposing">Indicates whether the object is already disposed. Avoids redundant dispose calls.</param>
+        </member>
+        <member name="T:Fourth.Automation.Framework.Mobile.Finders.AccessibilityId">
+            <summary>
+            Provides a custom FindsBy attribute for Selenium using AccessibilityId
+            </summary>
+        </member>
+        <member name="M:Fourth.Automation.Framework.Mobile.Finders.AccessibilityId.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fourth.Automation.Framework.Mobile.Finders.AccessibilityId"/> class.
+            </summary>
+            <param name="locator">asd</param>
+        </member>
+    </members>
+</doc>
