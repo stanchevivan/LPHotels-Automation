@@ -1,0 +1,13 @@
+﻿{
+    "stepAssemblies": [
+        {
+            "assembly": "Fourth.Automation.Framework.Core"
+        },
+        {
+            "assembly": "Fourth.Automation.Framework.Reporting"
+        },
+        {
+            "assembly": "Fourth.Automation.SpecFlow.Extensions"
+        }
+    ]
+}

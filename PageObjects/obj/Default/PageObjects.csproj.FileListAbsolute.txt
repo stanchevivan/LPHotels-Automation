@@ -1,0 +1,3 @@
+/Users/IStanchev/LPHotels.Automation/PageObjects/bin/Default/PageObjects.dll
+/Users/IStanchev/LPHotels.Automation/PageObjects/obj/Default/PageObjects.csprojAssemblyReference.cache
+/Users/IStanchev/LPHotels.Automation/PageObjects/obj/Default/PageObjects.dll
