@@ -71,14 +71,18 @@ namespace Tests.UI.FeaturesAndSteps
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Open create shift window")]
-        public virtual void OpenCreateShiftWindow()
+        [NUnit.Framework.TestCaseAttribute("QA", new string[] {
+                "QA"}, Category="QA")]
+        [NUnit.Framework.TestCaseAttribute("local", new string[] {
+                "local"}, Category="local")]
+        public virtual void OpenCreateShiftWindow(string environment, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Open create shift window", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Open create shift window", null, exampleTags);
 #line 3
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 4
- testRunner.Given("LPH app is open", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 5
  testRunner.When("shift window is open at \"5\" \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 6

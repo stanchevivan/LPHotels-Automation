@@ -12,9 +12,9 @@ namespace PageObjects
         {
         }
 
-        public void OpenLPH()
+        public void OpenLPH(string environemnt)
         {
-            Driver.Navigate().GoToUrl("localhost:3000");
+            Driver.Navigate().GoToUrl(environemnt);
         }
     }
 }
