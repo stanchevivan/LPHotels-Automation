@@ -12,7 +12,7 @@ namespace MockAPI
 
         public MockServer()
         {
-            server = FluentMockServer.Start(8080);
+            server = FluentMockServer.Start(4329);
         }
 
         public void MockGet(string path, int status, string response)
