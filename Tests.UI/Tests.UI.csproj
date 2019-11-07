@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.props" Condition="Exists('..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.props')" />
   <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.props" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.props')" />
@@ -168,11 +168,16 @@
     <Compile Include="Support\ContainerConfig.cs" />
     <Compile Include="Support\Hooks.cs" />
     <Compile Include="Support\MockHooks.cs" />
+    <Compile Include="Features and Steps\DashboardSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="App.config" />
     <None Include="App.Chrome.config" />
+    <None Include="Support\Environments.json" />
+    <None Include="Features and Steps\Dashboard.feature">
+      <LastGenOutput>Dashboard.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features and Steps\" />
@@ -187,16 +192,14 @@
       <Project>{363D4E8B-40F3-4DEF-8C30-E5FE6866A3FF}</Project>
       <Name>Mock.API</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PageObjects\PageObjects.csproj">
+      <Project>{B85A0614-AA34-4FA6-A9AC-04D2F3491016}</Project>
+      <Name>PageObjects</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SpecFlow.NUnit.3.0.225\build\SpecFlow.NUnit.targets" Condition="Exists('..\packages\SpecFlow.NUnit.3.0.225\build\SpecFlow.NUnit.targets')" />
   <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.targets" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.props'))" />
-    <Error Condition="!Exists('..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.targets'))" />
-  </Target>
-  <Import Project="..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.targets" Condition="Exists('..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.targets')" />
+  <Import Project="..\packages\SlowMonkey.1.1.1\build\SlowMonkey.targets" Condition="Exists('..\packages\SlowMonkey.1.1.1\build\SlowMonkey.targets')" />
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.78.0.3904.7000\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.78.0.3904.7000\build\Selenium.WebDriver.ChromeDriver.targets')" />
 </Project>
