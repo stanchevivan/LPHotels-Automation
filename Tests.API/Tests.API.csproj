@@ -329,6 +329,7 @@
     <Folder Include="Generators\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExampleOfUsingToken.cs" />
     <Compile Include="Facade\BaseFacade.cs" />
     <Compile Include="Facade\ScheduleFacade.cs" />
     <Compile Include="Infrastructure\LpHotelsDbContext.cs" />
@@ -343,6 +344,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{b165267d-16e8-492d-8d17-ea2fe4cf7e2c}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{2f8cb427-56fe-498c-8967-d5b4d944add2}</Project>
+      <Name>Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
