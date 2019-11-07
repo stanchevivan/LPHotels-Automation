@@ -1,11 +1,11 @@
 ﻿using System;
-using Fourth.LabourProductivity.Scheduling.Domain.Models;
+using TeamHours.DomainModel;
 
 namespace Tests.API.Infrastructure
 {
     public interface ILpHotelsMainUnitOfWork : IDisposable
     {
-        IRepository<Employee> Employees { get; }
+        IRepository<Location> Location { get; }
 
         int Save();
     }

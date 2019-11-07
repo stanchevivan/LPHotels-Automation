@@ -7,11 +7,11 @@ using Fourth.TH.Automation.RestDriver;
 
 namespace Tests.API.Facade
 {
-    //public class ScheduleFacade : BaseFacade
-    //{
-    //    //public ScheduleFacade(IRestDriver drivere) : base(driver)
-    //    //{
-    //    //    Request = Driver.CreateRequest();
-    //    //}
-    //}
+    public class ScheduleFacade : BaseFacade
+    {
+        public ScheduleFacade(IRestDriver driver) : base(driver)
+        {
+            Request = Driver.CreateRequest();
+        }
+    }
 }

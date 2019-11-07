@@ -1,5 +1,6 @@
 ﻿using System;
 using Fourth.LabourProductivity.Scheduling.Domain.Models;
+using TeamHours.DomainModel;
 
 namespace Tests.API.Infrastructure
 {
@@ -20,9 +21,13 @@ namespace Tests.API.Infrastructure
             GC.SuppressFinalize(this);
         }
 
-        public IRepository<Employee> Employees => _repositoryFactory.GetRepository<Employee>();
+        public IRepository<Location> Location => _repositoryFactory.GetRepository<Location>();
 
-        public IRepository<Employee> CustomerJobTitles => throw new NotImplementedException();
+        public IRepository<Location> Employees => throw new NotImplementedException();
+
+        //public IRepository<Employee> CustomerJobTitles => throw new NotImplementedException();
+
+        //IRepository<Location> ILpHotelsMainUnitOfWork.Employees => throw new NotImplementedException();
 
         public int Save()
         {

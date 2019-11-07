@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using TeamHours.DomainModel;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Fourth.LabourProductivity.Scheduling.Domain.Models;
-
 namespace Tests.API.Infrastructure
 {
     public class LpHotelsDbContext : DbContext
@@ -21,7 +16,7 @@ namespace Tests.API.Infrastructure
         {
         }
 
-        //public virtual DbSet<EmployeeEntity> Employees { get; set; }
+        public virtual DbSet<Location> Location { get; set; }
 
     }
 }
