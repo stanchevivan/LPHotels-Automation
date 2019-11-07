@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using PageObjects;
 using TechTalk.SpecFlow;
+using Tests.UI.Support;
 
 namespace Tests.UI.FeaturesandSteps
 {
@@ -19,13 +20,14 @@ namespace Tests.UI.FeaturesandSteps
         public void WhenDataForItemsIsSet(int x, int y)
         {
             dashboardPage.OpenShiftWindow(x, y);
-            System.Threading.Thread.Sleep(3000);
         }
 
-        [Given(@"LPH app is open")]
-        public void LPHAppIsOpen()
+        [Given(@"LPH app is open on ""(.*)""")]
+        public void LPHAppIsOpen(string environment)
         {
-            dashboardPage.OpenLPH();
+            ConfigurationReader.Initialize(environment);
+
+            dashboardPage.OpenLPH(ConfigurationReader.URL);
         }
 
         [Then(@"shift popover is present")]

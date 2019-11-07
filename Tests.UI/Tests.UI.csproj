@@ -26,11 +26,14 @@
     <Compile Include="Support\Hooks.cs" />
     <Compile Include="Support\MockHooks.cs" />
     <Compile Include="Features and Steps\DashboardSteps.cs" />
+    <Compile Include="Support\ConfigurationReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="App.Chrome.config" />
-    <None Include="Support\Environments.json" />
+    <None Include="Support\Environments.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Features and Steps\Dashboard.feature">
       <LastGenOutput>Dashboard.feature.cs</LastGenOutput>
     </None>
@@ -126,6 +129,7 @@
     <Reference Include="Fourth.Automation.Framework.Reporting">
       <HintPath>..\packages\Fourth.Automation.Framework.Reporting.5.0.76\lib\net45\Fourth.Automation.Framework.Reporting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.targets" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.targets')" />
