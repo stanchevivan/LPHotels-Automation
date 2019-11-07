@@ -1,10 +1,9 @@
-﻿using System;
-using Fourth.Automation.Framework.Page;
+﻿using System.Collections.Generic;
+using Common.Helpers;
 using Fourth.Automation.Framework.Extension;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using System.Collections.Generic;
-using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.PageObjects;
 
 namespace PageObjects
 {
@@ -12,7 +11,11 @@ namespace PageObjects
     {
         public DashboardPage(IWebDriver webDriver) : base(webDriver)
         {
+            PageFactory.InitElements(webDriver, this);
         }
+
+        [FindsBy(How = How.CssSelector, Using = ".lphf_role-group")]
+        private IWebElement ScheduleSection1 { get; set; }
 
         protected IWebElement Button => Driver.FindElement(By.CssSelector("[data-test-id='lphf_review-tna-btn']"));
         protected IWebElement ScheduleSection => Driver.FindElement(By.CssSelector(".lphf_role-group"));
@@ -23,29 +26,29 @@ namespace PageObjects
 
         public void OpenShiftWindow(int x, int y)
         {
-            //System.Threading.Thread.Sleep(5000);
-            //new WebDriverWait(Driver, TimeSpan.FromSeconds(30)).Until(driver => Button.Exist());
-            //Driver.WaitElementToExists(ScheduleSection);
-            int w = 500;
-            while (w >= 0)
-            {
-                try
-                {
-                    ScheduleSection.Exist();
-                    break;
-                }
-                catch (NoSuchElementException ex)
-                {
-                    if (w == 0)
-                    {
-                        throw ex;
-                    }
-                }
-                System.Threading.Thread.Sleep(20);
-                w--;
-            }
+            Driver.WaitElementToExists(ScheduleSection1);
 
-            new Actions(Driver).MoveToElement(ScheduleSections[3]).MoveByOffset(x, y).Click().Perform();
+            // Wait when element is not using FindsBy
+            //int w = 500;
+            //while (w >= 0)
+            //{
+            //    try
+            //    {
+            //        ScheduleSection.Exist();
+            //        break;
+            //    }
+            //    catch (NoSuchElementException ex)
+            //    {
+            //        if (w == 0)
+            //        {
+            //            throw ex;
+            //        }
+            //    }
+            //    System.Threading.Thread.Sleep(20);
+            //    w--;
+            //}
+
+            ScheduleSections[3].Do(Driver).ClickOffSet(5, 5);
         }
     }
 }
