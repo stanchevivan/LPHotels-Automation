@@ -20,7 +20,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="app.Default.config">
+      <DependentUpon>app.config</DependentUpon>
+      <IsTransformFile>true</IsTransformFile>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -352,6 +358,8 @@
     <Compile Include="Facade\BaseFacade.cs" />
     <Compile Include="Facade\ScheduleFacade.cs" />
     <Compile Include="Features and Steps\LocationsSteps.cs" />
+    <Compile Include="Framework\Session.cs" />
+    <Compile Include="Framework\SessionException.cs" />
     <Compile Include="Generators\LocationEntityGenerator.cs" />
     <Compile Include="Infrastructure\LpHotelsDbContext.cs" />
     <Compile Include="Infrastructure\ILpHotelsMainUnitOfWork.cs" />
@@ -382,6 +390,7 @@
     <Error Condition="!Exists('..\packages\Grpc.Core.1.14.1\build\net45\Grpc.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Grpc.Core.1.14.1\build\net45\Grpc.Core.targets'))" />
     <Error Condition="!Exists('..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.props'))" />
     <Error Condition="!Exists('..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.SlowCheetah.3.2.26\build\Microsoft.VisualStudio.SlowCheetah.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.SlowCheetah.3.2.26\build\Microsoft.VisualStudio.SlowCheetah.targets'))" />
   </Target>
   <Import Project="..\packages\Grpc.Core.1.14.1\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.1.14.1\build\net45\Grpc.Core.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -390,4 +399,5 @@
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
   <Import Project="..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.targets" Condition="Exists('..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.targets')" />
+  <Import Project="..\packages\Microsoft.VisualStudio.SlowCheetah.3.2.26\build\Microsoft.VisualStudio.SlowCheetah.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.SlowCheetah.3.2.26\build\Microsoft.VisualStudio.SlowCheetah.targets')" />
 </Project>
