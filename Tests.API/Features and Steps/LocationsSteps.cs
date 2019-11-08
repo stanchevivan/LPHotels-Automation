@@ -1,8 +1,8 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Linq;
 using Common;
 using TechTalk.SpecFlow;
+using Tests.API.Framework;
 using Tests.API.Generators;
 using Tests.API.Infrastructure;
 
@@ -18,7 +18,7 @@ namespace Tests.API.Features_and_Steps
         public LocationsSteps(ILpHotelsMainUnitOfWork lpHotelsMainUnitOfWork)
         {
             _lpHotelsMainUnitOfWork = lpHotelsMainUnitOfWork;
-           // _locationFacade = locationFacade;
+            // _locationFacade = locationFacade;
         }
 
         [Given(@"(.*) locations are created and saved into database")]
@@ -44,3 +44,5 @@ namespace Tests.API.Features_and_Steps
                 Session.Set(locations, Constants.Data.Location, true);
             }
         }
+    }
+}
