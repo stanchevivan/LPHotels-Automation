@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.props" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.props')" />
   <Import Project="..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.props" Condition="Exists('..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.props')" />
   <Import Project="..\packages\NUnit3TestAdapter.3.15.1\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.15.1\build\net35\NUnit3TestAdapter.props')" />
   <Import Project="..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" />
@@ -18,6 +19,12 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\Default</OutputPath>
     <WarningLevel>4</WarningLevel>
+    <DefineConstants>CODE_ANALYSIS;</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -27,6 +34,7 @@
       <DependentUpon>app.config</DependentUpon>
       <IsTransformFile>true</IsTransformFile>
     </None>
+    <None Include="Features and Steps\Features\LocationsSteps.feature" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -357,9 +365,10 @@
     <Compile Include="ExampleOfUsingToken.cs" />
     <Compile Include="Facade\BaseFacade.cs" />
     <Compile Include="Facade\ScheduleFacade.cs" />
-    <Compile Include="Features and Steps\LocationsSteps.cs" />
+    <Compile Include="Features and Steps\Steps\LocationsSteps.cs" />
     <Compile Include="Framework\Session.cs" />
     <Compile Include="Framework\SessionException.cs" />
+    <Compile Include="Generators\BankHolidayEntityGenerator.cs" />
     <Compile Include="Generators\LocationEntityGenerator.cs" />
     <Compile Include="Infrastructure\LpHotelsDbContext.cs" />
     <Compile Include="Infrastructure\ILpHotelsMainUnitOfWork.cs" />
@@ -390,6 +399,8 @@
     <Error Condition="!Exists('..\packages\Grpc.Core.1.14.1\build\net45\Grpc.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Grpc.Core.1.14.1\build\net45\Grpc.Core.targets'))" />
     <Error Condition="!Exists('..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.props'))" />
     <Error Condition="!Exists('..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.targets'))" />
+    <Error Condition="!Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.props'))" />
+    <Error Condition="!Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.SlowCheetah.3.2.26\build\Microsoft.VisualStudio.SlowCheetah.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.SlowCheetah.3.2.26\build\Microsoft.VisualStudio.SlowCheetah.targets'))" />
   </Target>
   <Import Project="..\packages\Grpc.Core.1.14.1\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.1.14.1\build\net45\Grpc.Core.targets')" />
@@ -399,5 +410,6 @@
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
   <Import Project="..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.targets" Condition="Exists('..\packages\SpecFlow.Autofac.3.0.225\build\SpecFlow.Autofac.targets')" />
+  <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.targets" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.targets')" />
   <Import Project="..\packages\Microsoft.VisualStudio.SlowCheetah.3.2.26\build\Microsoft.VisualStudio.SlowCheetah.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.SlowCheetah.3.2.26\build\Microsoft.VisualStudio.SlowCheetah.targets')" />
 </Project>

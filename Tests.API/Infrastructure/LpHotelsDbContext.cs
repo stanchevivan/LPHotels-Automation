@@ -3,11 +3,11 @@ using TeamHours.DomainModel;
 using System.Data.Entity;
 namespace Tests.API.Infrastructure
 {
-    public class LpHotelsDbContext : DbContext
+    public class LpHotelsDbContext : TeamHoursDatabase
     {
-        private const string CONNECTION_STRING = "LpHotelsDataBase";
+        private static string CONNECTION_STRING = System.Configuration.ConfigurationManager.ConnectionStrings["LpHotelsDataBase"].ConnectionString;
 
-        public LpHotelsDbContext() : this($"name={CONNECTION_STRING}")
+        public LpHotelsDbContext() : this(CONNECTION_STRING)
         {
 
         }
@@ -15,8 +15,5 @@ namespace Tests.API.Infrastructure
         public LpHotelsDbContext(string nameOrConnectionString) : base(nameOrConnectionString)
         {
         }
-
-        public virtual DbSet<Location> Location { get; set; }
-
     }
 }
