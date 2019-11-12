@@ -21,6 +21,8 @@ namespace Common
 
             public const string Location = "Location";
 
+            public const string Locations = "Locations";
+
         }
 
         public static class ErrorMessages

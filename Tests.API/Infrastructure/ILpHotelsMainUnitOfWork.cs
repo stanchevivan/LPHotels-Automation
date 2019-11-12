@@ -7,6 +7,8 @@ namespace Tests.API.Infrastructure
     {
         IRepository<Location> Location { get; }
 
+        IRepository<BankHoliday> BankHoliday { get; }
+
         int Save();
     }
 }

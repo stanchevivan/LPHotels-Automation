@@ -7,7 +7,7 @@ using Bogus;
 
 namespace Tests.API.Generators
 {
-    class LocationEntityGenerator : BaseGenerator<Location>
+   public  class LocationEntityGenerator : BaseGenerator<Location>
     {
         public static readonly string CustomerCanonicalId = ConfigurationManager.AppSettings["CustomerCanonicalId"];
 
@@ -17,8 +17,11 @@ namespace Tests.API.Generators
             {
                 l.Code = f.Database.Random.AlphaNumeric(10);
                 l.Name = f.Name.Random.AlphaNumeric(7);
-                l.Latitude = f.Random.Double();
-                l.Longitude = f.Random.Double();
+                l.Latitude = 1;
+                l.Longitude = 1;
+                l.WeekStartDay = 1;
+                l.PostCode = "2gfdgdf";
+                l.Training = true;
             });
 
             return locationFaker.Generate(count);
