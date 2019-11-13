@@ -9,7 +9,7 @@ namespace Tests.API.Generators
 {
    public  class LocationEntityGenerator : BaseGenerator<Location>
     {
-        public static readonly string CustomerCanonicalId = ConfigurationManager.AppSettings["CustomerCanonicalId"];
+        //public static readonly string CustomerCanonicalId = ConfigurationManager.AppSettings["CustomerCanonicalId"];
 
         protected override IEnumerable<Location> BuildModels(int count)
         {

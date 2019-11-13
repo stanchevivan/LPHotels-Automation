@@ -13,7 +13,7 @@ namespace Tests.API.Generators
 
         protected override IEnumerable<BankHoliday> BuildModels(int count)
         {
-            var locationFaker = new Faker<BankHoliday>().Rules((f, b) =>
+            var bankFaker = new Faker<BankHoliday>().Rules((f, b) =>
             {
                 b.Date = DateTime.UtcNow;
                 b.Name = "test";
@@ -22,7 +22,7 @@ namespace Tests.API.Generators
 
             });
 
-            return locationFaker.Generate(count);
+            return bankFaker.Generate(count);
         }
     }
 }
