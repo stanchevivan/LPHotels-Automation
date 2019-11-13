@@ -13,7 +13,7 @@ namespace Tests.API.Generators
 
         protected override IEnumerable<Department> BuildModels(int count)
         {
-            var locationFaker = new Faker<Department>().Rules((f, d) =>
+            var departmentFaker = new Faker<Department>().Rules((f, d) =>
             {
                 d.Code = f.Database.Random.AlphaNumeric(10);
                 d.Name = f.Name.Random.AlphaNumeric(7);
@@ -22,7 +22,7 @@ namespace Tests.API.Generators
                 d.HoursAfterMidnightDayCutoff = 5;
             });
 
-            return locationFaker.Generate(count);
+            return departmentFaker.Generate(count);
         }
     }
 }

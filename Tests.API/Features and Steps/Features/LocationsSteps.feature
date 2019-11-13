@@ -3,8 +3,20 @@
 	As a math idiot
 	I want to be told the sum of two numbers
 
-Scenario: Add Test Locations
-	Given 1 locations are created and saved into database
 
+
+Scenario Outline: Add test
+    Given 1 employees are created and saved into database
+	    And  1 areas are created and saved into database
+	Examples: 
+| count |
+| 1     |
+
+
+
+
+
+
+@Organisation
 Scenario: Add Test Bank
 	Given bank are created and saved into database

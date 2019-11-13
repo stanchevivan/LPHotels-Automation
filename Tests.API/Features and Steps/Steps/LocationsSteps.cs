@@ -34,7 +34,7 @@ namespace Tests.API.Features_and_Steps.Steps
 
             locations.ForEach(x => x.OrganisationID = 1);
              _lpHotelsMainUnitOfWork.Location.AddRange(locations);
-             _lpHotelsMainUnitOfWork.Save();
+             _lpHotelsMainUnitOfWork.SaveAsync();
 
             if (count == 1)
             {
@@ -56,7 +56,7 @@ namespace Tests.API.Features_and_Steps.Steps
             try
             {
                 _lpHotelsMainUnitOfWork.BankHoliday.Add(bank);
-                _lpHotelsMainUnitOfWork.Save();
+                _lpHotelsMainUnitOfWork.SaveAsync();
             }
             catch(Exception e)
             {

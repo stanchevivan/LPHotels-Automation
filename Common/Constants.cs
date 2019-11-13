@@ -21,7 +21,21 @@ namespace Common
 
             public const string Location = "Location";
 
+            public const string Employee = "Employee";
+
+            public const string Employees = "Employees";
+
             public const string Locations = "Locations";
+
+            public const string Departments = "Departments";
+
+            public const string Department = "Department";
+
+            public const string Organisation = "Organisation";
+
+            public const string Areas = "Areas";
+
+            public const string Area = "Area";
 
         }
 

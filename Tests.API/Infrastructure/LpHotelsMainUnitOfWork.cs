@@ -1,6 +1,4 @@
 ﻿using System;
-using Fourth.LabourProductivity.Scheduling.Domain.Models;
-using TeamHours.DomainModel;
 using TeamHours.DomainModel;
 
 namespace Tests.API.Infrastructure
@@ -26,13 +24,23 @@ namespace Tests.API.Infrastructure
 
         public IRepository<BankHoliday> BankHoliday => _repositoryFactory.GetRepository<BankHoliday>();
 
+        public IRepository<Organisation> Orgasization => _repositoryFactory.GetRepository<Organisation>();
+
+        public IRepository<Organisation> Organisation => throw new NotImplementedException();
+
+        public IRepository<Department> Department => _repositoryFactory.GetRepository<Department>();
+
+        public IRepository<TempStaff> TempStaff => _repositoryFactory.GetRepository<TempStaff>();
+
+        public IRepository<TempArea> TempArea => _repositoryFactory.GetRepository<TempArea>();
+
         //public IRepository<Location> Employees => throw new NotImplementedException();
 
         //IRepository<BankHoliday> ILpHotelsMainUnitOfWork.BankHoliday => throw new NotImplementedException();
 
         //IRepository<Location> ILpHotelsMainUnitOfWork.Employees => throw new NotImplementedException();
 
-        public int Save()
+        public int SaveAsync()
         {
             return _lpHotelsMainDataContext.SaveChanges();
         }

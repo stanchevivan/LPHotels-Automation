@@ -10,7 +10,7 @@ namespace Tests.API
     {
         public async Task Test()
         {
-            var token = TokenGenerator.Get("standaloneqa", 2);
+            var token = TokenGenerator.Get("lpfh_automationqa", 14019);
 
 
             var client = new HttpClient();

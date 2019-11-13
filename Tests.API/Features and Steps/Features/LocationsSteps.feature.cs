@@ -71,28 +71,33 @@ namespace Tests.API.FeaturesAndSteps.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add Test Locations")]
-        public virtual void AddTestLocations()
+        [NUnit.Framework.DescriptionAttribute("Add test")]
+        [NUnit.Framework.TestCaseAttribute("1", null)]
+        public virtual void AddTest(string count, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Test Locations", null, ((string[])(null)));
-#line 6
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add test", null, exampleTags);
+#line 8
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 7
- testRunner.Given("1 locations are created and saved into database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 9
+    testRunner.Given("1 employees are created and saved into database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 10
+     testRunner.And("1 areas are created and saved into database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add Test Bank")]
+        [NUnit.Framework.CategoryAttribute("Organisation")]
         public virtual void AddTestBank()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Test Bank", null, ((string[])(null)));
-#line 9
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Test Bank", null, new string[] {
+                        "Organisation"});
+#line 21
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 10
+#line 22
  testRunner.Given("bank are created and saved into database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             this.ScenarioCleanup();

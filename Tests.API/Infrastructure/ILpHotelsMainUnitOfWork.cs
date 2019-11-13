@@ -9,6 +9,14 @@ namespace Tests.API.Infrastructure
 
         IRepository<BankHoliday> BankHoliday { get; }
 
-        int Save();
+        IRepository<Organisation> Organisation { get; }
+
+        IRepository<Department> Department { get; }
+
+        IRepository<TempStaff> TempStaff { get; }
+
+        IRepository<TempArea> TempArea { get; }
+
+        int SaveAsync();
     }
 }
