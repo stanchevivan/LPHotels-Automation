@@ -6,8 +6,8 @@
 
 
 Scenario Outline: Add test
-    Given 1 employees are created and saved into database
-	    And  1 areas are created and saved into database
+    Given 3 shifts are created and saved into database
+	   # And  1 areas are created and saved into database
 	Examples: 
 | count |
 | 1     |

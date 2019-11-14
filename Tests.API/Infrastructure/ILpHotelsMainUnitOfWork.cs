@@ -17,6 +17,14 @@ namespace Tests.API.Infrastructure
 
         IRepository<TempArea> TempArea { get; }
 
+        IRepository<TempRole> TempRole { get; }
+
+        IRepository<JobTitle> JobTitle { get; }
+
+        IRepository<StaffPayInfo> StaffPayInfo { get; }
+
+        IRepository<TempShift> TempShift { get; }
+
         int SaveAsync();
     }
 }

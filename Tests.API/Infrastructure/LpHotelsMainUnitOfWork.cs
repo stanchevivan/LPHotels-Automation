@@ -24,9 +24,7 @@ namespace Tests.API.Infrastructure
 
         public IRepository<BankHoliday> BankHoliday => _repositoryFactory.GetRepository<BankHoliday>();
 
-        public IRepository<Organisation> Orgasization => _repositoryFactory.GetRepository<Organisation>();
-
-        public IRepository<Organisation> Organisation => throw new NotImplementedException();
+        public IRepository<Organisation> Organisation => _repositoryFactory.GetRepository<Organisation>();
 
         public IRepository<Department> Department => _repositoryFactory.GetRepository<Department>();
 
@@ -34,11 +32,13 @@ namespace Tests.API.Infrastructure
 
         public IRepository<TempArea> TempArea => _repositoryFactory.GetRepository<TempArea>();
 
-        //public IRepository<Location> Employees => throw new NotImplementedException();
+        public IRepository<TempRole> TempRole => _repositoryFactory.GetRepository<TempRole>();
 
-        //IRepository<BankHoliday> ILpHotelsMainUnitOfWork.BankHoliday => throw new NotImplementedException();
+        public IRepository<JobTitle> JobTitle => _repositoryFactory.GetRepository<JobTitle>();
 
-        //IRepository<Location> ILpHotelsMainUnitOfWork.Employees => throw new NotImplementedException();
+        public IRepository<StaffPayInfo> StaffPayInfo => _repositoryFactory.GetRepository<StaffPayInfo>();
+
+        public IRepository<TempShift> TempShift => _repositoryFactory.GetRepository<TempShift>();
 
         public int SaveAsync()
         {
