@@ -11,7 +11,7 @@ namespace Common
         public const int BatchImportCount = 5;
         public static class Headers
         {
-            public const string OrganizationHeader = "X-Fourth-Org";
+            public const string OrganizationHeader = "Authorization";
 
             public const string UserHeader = "X-Fourth-UserID";
         }
@@ -37,6 +37,29 @@ namespace Common
 
             public const string Area = "Area";
 
+            public const string Role = "Role";
+
+            public const string Roles = "Roles";
+
+            public const string JobTitle = "JobTitle";
+
+            public const string JobTitles = "JobTitles";
+
+            public const string MainAssignment = "MainAssignment";
+
+            public const string Shifts = "Shifts";
+
+            public const string Shift = "Shift";
+
+        }
+
+        public static class Enpoints
+        {
+            public const string Locations = "Locations";
+
+            public const string Departments = "Departments";
+
+            public const string Shifts = "Shifts";
         }
 
         public static class ErrorMessages

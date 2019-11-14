@@ -35,6 +35,7 @@
       <IsTransformFile>true</IsTransformFile>
     </None>
     <None Include="Features and Steps\Features\LocationsSteps.feature" />
+    <None Include="Features and Steps\Features\ShiftsTests.feature" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -366,17 +367,23 @@
     <Compile Include="Facade\BaseFacade.cs" />
     <Compile Include="Facade\ScheduleFacade.cs" />
     <Compile Include="Facade\ShiftsFacade.cs" />
+    <Compile Include="Features and Steps\CommonSteps.cs" />
     <Compile Include="Features and Steps\PreconditionSteps.cs" />
     <Compile Include="Features and Steps\Steps\LocationsSteps.cs" />
+    <Compile Include="Features and Steps\Steps\ShiftsSteps.cs" />
     <Compile Include="Framework\ScenarioStepsOrder.cs" />
     <Compile Include="Framework\Session.cs" />
     <Compile Include="Framework\SessionException.cs" />
     <Compile Include="Generators\AreaEntityGenerator.cs" />
     <Compile Include="Generators\BankHolidayEntityGenerator.cs" />
     <Compile Include="Generators\DepartmentEntityGenerator.cs" />
+    <Compile Include="Generators\JobTitleEntityGenerator.cs" />
     <Compile Include="Generators\LocationEntityGenerator.cs" />
+    <Compile Include="Generators\MainAssignmentEntityGenerator.cs" />
     <Compile Include="Generators\OrganisationEntityGenerator.cs" />
     <Compile Include="Generators\EmployeeEntityGenerator.cs" />
+    <Compile Include="Generators\RoleEntityGenerator.cs" />
+    <Compile Include="Generators\ShiftEntityGenerator.cs" />
     <Compile Include="Infrastructure\LpHotelsDbContext.cs" />
     <Compile Include="Infrastructure\ILpHotelsMainUnitOfWork.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
@@ -384,6 +391,7 @@
     <Compile Include="Infrastructure\Repository.cs" />
     <Compile Include="Infrastructure\RepositoryFactory.cs" />
     <Compile Include="Models\LocationsEntity.cs" />
+    <Compile Include="RestDriverExtensions.cs" />
     <Compile Include="Setup\ContainerConfig.cs" />
   </ItemGroup>
   <ItemGroup>
