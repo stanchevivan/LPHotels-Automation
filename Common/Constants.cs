@@ -51,15 +51,23 @@ namespace Common
 
             public const string Shift = "Shift";
 
+            public const string UpdatedShift = "UpdatedShift";
+
         }
 
         public static class Enpoints
         {
-            public const string Locations = "Locations";
+            public const string Locations = "locations";
 
-            public const string Departments = "Departments";
+            public const string Departments = "departments";
 
-            public const string Shifts = "Shifts";
+            public const string Shifts = "shifts";
+
+            public const string From = "srom";
+
+            public const string To = "to";
+
+            public const string SchedulePeriod = "schedule-period";
         }
 
         public static class ErrorMessages
