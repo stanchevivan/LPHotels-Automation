@@ -9,7 +9,7 @@ namespace Tests.API
     {
         public static IRequest AddFourthHeaders(this IRequest request)
         {
-            var token = "Bearer" + " " + TokenGenerator.Get("lpfh_automationqa", 14019);
+            var token = "Bearer " + TokenGenerator.Get("lpfh_automationqa", 14019);
             var header = new List<Header>
             {
                 new Header
@@ -18,6 +18,7 @@ namespace Tests.API
                     Value = token
                 }
             };
+
             request.AddHeaders(header);
             return request;
         }

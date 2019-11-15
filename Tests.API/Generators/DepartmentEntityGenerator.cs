@@ -4,6 +4,7 @@ using Fourth.TestTools.Generators;
 using TeamHours.DomainModel;
 using Bogus;
 using Common;
+using System;
 
 namespace Tests.API.Generators
 {
@@ -20,6 +21,7 @@ namespace Tests.API.Generators
                 d.LocationID = RandomGenerator.RandomIntBetween(5,7);
                 d.Deleted = false;
                 d.HoursAfterMidnightDayCutoff = 5;
+                d.StartDate = DateTime.UtcNow;
             });
 
             return departmentFaker.Generate(count);

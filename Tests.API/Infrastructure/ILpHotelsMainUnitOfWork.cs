@@ -25,6 +25,8 @@ namespace Tests.API.Infrastructure
 
         IRepository<TempShift> TempShift { get; }
 
+        IRepository<User> User { get; }
+
         int SaveAsync();
     }
 }

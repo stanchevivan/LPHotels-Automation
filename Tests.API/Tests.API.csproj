@@ -384,6 +384,7 @@
     <Compile Include="Generators\EmployeeEntityGenerator.cs" />
     <Compile Include="Generators\RoleEntityGenerator.cs" />
     <Compile Include="Generators\ShiftEntityGenerator.cs" />
+    <Compile Include="Generators\UserEntityGenerator.cs" />
     <Compile Include="Infrastructure\LpHotelsDbContext.cs" />
     <Compile Include="Infrastructure\ILpHotelsMainUnitOfWork.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />

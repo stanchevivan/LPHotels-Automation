@@ -40,6 +40,8 @@ namespace Tests.API.Infrastructure
 
         public IRepository<TempShift> TempShift => _repositoryFactory.GetRepository<TempShift>();
 
+        public IRepository<User> User => _repositoryFactory.GetRepository<User>();
+
         public int SaveAsync()
         {
             return _lpHotelsMainDataContext.SaveChanges();
