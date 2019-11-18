@@ -74,7 +74,8 @@ namespace Tests.UI.FeaturesAndSteps
         [NUnit.Framework.TestCaseAttribute("QA", new string[] {
                 "QA"}, Category="QA")]
         [NUnit.Framework.TestCaseAttribute("local", new string[] {
-                "local"}, Category="local")]
+                "local",
+                "MockGet"}, Category="local,MockGet")]
         public virtual void OpenCreateShiftWindow(string environment, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Open create shift window", null, exampleTags);
@@ -87,6 +88,26 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("shift window is open at \"5\" \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 6
     testRunner.Then("shift popover is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Shift Block is displayed in Schedule Grid")]
+        [NUnit.Framework.TestCaseAttribute("QA", new string[] {
+                "QA"}, Category="QA")]
+        [NUnit.Framework.TestCaseAttribute("local", new string[] {
+                "local"}, Category="local")]
+        public virtual void ShiftBlockIsDisplayedInScheduleGrid(string environment, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shift Block is displayed in Schedule Grid", null, exampleTags);
+#line 18
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 19
+    testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 20
+    testRunner.Then("shift blocks are present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

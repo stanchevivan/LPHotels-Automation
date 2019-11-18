@@ -1,0 +1,22 @@
+﻿{
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "locations/2/department",
+          "IgnoreCase": true
+        }
+      ]
+    },
+    "Method": "GET"
+  },
+  "Response": {
+    "StatusCode": 402,
+    "Headers": {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "http://localhost:3000",
+      "Access-Control-Allow-Headers": "Authorization, Content-Type, X-Fourth-Org, X-Fourth-UserID"
+    }
+  }
+}

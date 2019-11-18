@@ -4,6 +4,21 @@ Scenario Outline: Open create shift window
 	Given LPH app is open on "<environment>"
 	When shift window is open at "5" "5"
     Then shift popover is present
+
+    @QA
+    Examples:
+    |environment|
+    |QA         |
+
+    @local @MockGet
+    Examples:
+    |environment|
+    |local      |
+
+Scenario Outline: Shift Block is displayed in Schedule Grid
+    Given LPH app is open on "<environment>"
+    Then shift blocks are present
+
     @QA
     Examples:
     |environment|
@@ -13,3 +28,5 @@ Scenario Outline: Open create shift window
     Examples:
     |environment|
     |local      |
+
+    

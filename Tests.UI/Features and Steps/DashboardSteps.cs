@@ -35,5 +35,11 @@ namespace Tests.UI.FeaturesandSteps
         {
             Assert.That(dashboardPage.IsShiftPopoverPresent, Is.True);
         }
+
+        [Then(@"shift blocks are present")]
+        public void ShiftBlocksArePresent()
+        {
+            Assert.That(dashboardPage.AreShiftBlocksPresent, Is.True);
+        }
     }
 }

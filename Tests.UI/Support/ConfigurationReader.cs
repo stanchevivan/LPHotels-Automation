@@ -12,7 +12,7 @@ namespace Tests.UI.Support
 
         static ConfigurationReader()
         {
-            string result = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Support/Environments.config"));
+            string result = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Support/Environments.json"));
             configuration = JsonValue.Parse(result);
         }
 

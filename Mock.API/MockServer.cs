@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
@@ -8,20 +9,31 @@ namespace MockAPI
 {
     public class MockServer
     {
-        private readonly FluentMockServer server;
+        private FluentMockServer server;
 
-        public MockServer()
+        public void Start()
         {
-            server = FluentMockServer.Start(4329);
+            server = FluentMockServer.StartWithAdminInterface(new[] { "http://+:3300" });
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+
+            server.ReadStaticMappings($"{path}Mappings");
+
+            Console.WriteLine("STARTED:" + server.IsStarted);
+            var mm = server.Mappings;
+            foreach (var item in mm)
+            {
+                Console.WriteLine(item.Path);
+            }
+            Console.WriteLine(server.Mappings);
         }
 
         public void MockGet(string path, int status, string response)
         {
+            Console.WriteLine("AA AA AA MOCKGET MOCK.API");
             server
-                .Given(Request.Create().WithPath(u => u.Contains(path)).UsingGet())
+                .Given(Request.Create().WithPath(u => u.Contains(path)).UsingAnyMethod())
                 .RespondWith(Response.Create()
                     .WithStatusCode(status)
-                    .WithHeader("Content-Type", "application/json")
                     .WithBody(response));
         }
 
@@ -34,6 +46,11 @@ namespace MockAPI
                     .WithStatusCode(status)
                     .WithHeader("Content-Type", "application/json")
                     .WithBody(response));
+        }
+
+        public void Stop()
+        {
+            server.Stop();
         }
     }
 }
