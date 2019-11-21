@@ -12,7 +12,13 @@ namespace MockAPI
 
         public MockServer()
         {
-            server = FluentMockServer.Start(4329);
+            //server = FluentMockServer.StartWithAdminInterface(new[] { "https://+:3300" });
+            server = FluentMockServer.Start(3300);
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+
+            server.ReadStaticMappings($"{path}Mappings");
+
+            Console.WriteLine("STARTED:" + server.IsStarted);
         }
 
         public void MockGet(string path, int status, string response)

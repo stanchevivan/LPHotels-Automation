@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
@@ -11,11 +12,11 @@ namespace PageObjects
             PageFactory.InitElements(webDriver, this);
         }
 
-        protected IList<IWebElement> Days => Driver.FindElements(By.CssSelector(".MuiPickersDay-day:not(.MuiPickersDay-hidden"));
-
+        protected IList<IWebElement> days => Driver.FindElements(By.CssSelector(".MuiPickersDay-day:not(.MuiPickersDay-hidden"));
+        
         public void SelectDay(int day)
         {
-            Days[day - 1].Click();
+            days[day - 1].Click();
         }
     }
 }
