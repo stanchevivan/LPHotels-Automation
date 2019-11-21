@@ -23,13 +23,21 @@ namespace Common
 
             public const string Employee = "Employee";
 
+            public const string EmployeeAnotherOrganisation = "EmployeeAnotherOrganisation";
+
             public const string Employees = "Employees";
 
             public const string Locations = "Locations";
 
+            public const string LocationAnotherOrganisation = "LocationAnotherOrganisation";
+
             public const string Departments = "Departments";
 
             public const string Department = "Department";
+
+            public const string DepartmentAnotherLocation = "DepartmentAnotherLocation";
+
+            public const string DepartmentAnotherOrganisation = "DepartmentAnotherOrganisation";
 
             public const string Organisation = "Organisation";
 
@@ -37,7 +45,11 @@ namespace Common
 
             public const string Area = "Area";
 
+            public const string AreaAnotherOrganisation = "AreaAnotherOrganisation";
+
             public const string Role = "Role";
+
+            public const string RoleAnoderOrganisation = "RoleAnoderOrganisation";
 
             public const string Roles = "Roles";
 
@@ -47,11 +59,19 @@ namespace Common
 
             public const string MainAssignment = "MainAssignment";
 
+            public const string MainAssignmentAnotherOrganisation = "MainAssignmentAnotherOrganisation";
+
             public const string Shifts = "Shifts";
 
             public const string Shift = "Shift";
 
+            public const string AnotherOrganisationShift = "AnotherOrganisationShift";
+
+            public const string AnotherShift = "AnotherShift";
+
             public const string UpdatedShift = "UpdatedShift";
+
+            public const string ShiftToDelete = "ShiftToDelete";
 
         }
 
@@ -72,7 +92,9 @@ namespace Common
 
         public static class ErrorMessages
         {
-            public const string MissingRecordInDatabase = "There is not record in the database";
+            public const string MissingRecordInDatabase = "There is no record in the database";
+
+            public const string UnexpectedRecordInDatabase = "There are unexpected records in the database";
         }
     }
 }

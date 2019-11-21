@@ -72,15 +72,22 @@ namespace Tests.API.FeaturesAndSteps.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add test")]
+        [NUnit.Framework.CategoryAttribute("CreateLocation")]
         [NUnit.Framework.TestCaseAttribute("1", null)]
         public virtual void AddTest(string count, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add test", null, exampleTags);
+            string[] @__tags = new string[] {
+                    "CreateLocation"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add test", null, @__tags);
 #line 8
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 9
-    testRunner.Given("3 shifts are created and saved into database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("1 departments are created and saved into database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             this.ScenarioCleanup();
         }

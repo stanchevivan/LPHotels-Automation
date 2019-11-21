@@ -1,11 +1,9 @@
 ﻿using System.Linq;
 using Common;
-using Infrastructure.Security;
 using TechTalk.SpecFlow;
 using Tests.API.Framework;
 using Tests.API.Generators;
 using Tests.API.Infrastructure;
-using TeamHours.DomainModel;
 
 namespace Tests.API.Features_and_Steps.PreconditionSteps
 {
@@ -19,19 +17,19 @@ namespace Tests.API.Features_and_Steps.PreconditionSteps
             _lpHotelsMainUnitOfWork = lpHotelsMainUnitOfWork;
         }
 
-        [Given(@"(.*) locations are created and saved into database")]
+        [Given(@"(.*)locations are created and saved into database")]
         public void LocationsAreCreated(int count)
         {
-            //var organisation = Session.Get<OrganisationEntity>(Constants.Data.Organization);
-            var organisation = 123;
+            var organisationId = 1;//Session.Get<OrganisationEntity>(Constants.Data.Organization);
 
             var locations = new LocationEntityGenerator().GenerateMultiple(count, x =>
             {
-                x.Name = "ShouldBeReturned" + RandomGenerator.OnlyNumeric(2);
+                x.Name = "LocationQaAutomation" + RandomGenerator.OnlyNumeric(4);
+                x.OrganisationID = organisationId;
             }).ToList();
 
-            locations.ForEach(x => x.OrganisationID = 1);
             _lpHotelsMainUnitOfWork.Location.AddRange(locations);
+            //_lpHotelsMainUnitOfWork.Location.RemoveRange(Locations);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
             if (count == 1)
@@ -44,10 +42,28 @@ namespace Tests.API.Features_and_Steps.PreconditionSteps
             }
         }
 
+        [Given(@"Location for another organisation is created and saved into database")]
+        public void LocationsForAnotherOrganisationAreCreated()
+        {
+            var organisationId = 159;//Session.Get<OrganisationEntity>(Constants.Data.);
+
+            var location = new LocationEntityGenerator().GenerateSingle(x =>
+            {
+                x.Name = "LocationAnotherOrganisation";
+                x.OrganisationID = organisationId;
+            });
+
+            _lpHotelsMainUnitOfWork.Location.Add(location);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(location, Constants.Data.LocationAnotherOrganisation);
+
+        }
+
         [Given(@"(.*) departments are created and saved into database")]
         public void DepartmentsAreCreated(int count)
         {
-            var locationId = 1;
+            var locationId = 1;//fromsession
 
             var departments = new DepartmentEntityGenerator().GenerateMultiple(count, d =>
             {
@@ -66,6 +82,40 @@ namespace Tests.API.Features_and_Steps.PreconditionSteps
             {
                 Session.Set(departments, Constants.Data.Departments, true);
             }
+        }
+
+        [Given(@"Department for another Location in same organisation is created and saved into database")]
+        public void DepartmentAnotherLocationSameOrganisation()
+        {
+            var locationId = 127560;//fromsession
+
+            var department = new DepartmentEntityGenerator().GenerateSingle(d =>
+            {
+                d.Name = "TestDep" + RandomGenerator.OnlyNumeric(2);
+                d.LocationID = locationId;
+            });
+
+            _lpHotelsMainUnitOfWork.Department.Add(department);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(department, Constants.Data.DepartmentAnotherLocation);
+        }
+
+        [Given(@"Department for another organisation is created and saved into database")]
+        public void DepartmentAnotherOrganisation()
+        {
+            var anotherOrganisationLocationId = 127559;//fromsession
+
+            var department = new DepartmentEntityGenerator().GenerateSingle(d =>
+            {
+                d.Name = "DepAnotherOrganisation" + RandomGenerator.OnlyNumeric(2);
+                d.LocationID = anotherOrganisationLocationId;
+            });
+
+            _lpHotelsMainUnitOfWork.Department.Add(department);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(department, Constants.Data.DepartmentAnotherOrganisation);
         }
 
         [Given(@"(.*) employees are created and saved into database")]
@@ -91,6 +141,23 @@ namespace Tests.API.Features_and_Steps.PreconditionSteps
             }
         }
 
+        [Given(@"Employee for another Organisation is created and saved into database")]
+        public void EmployeeForAnotherOrganisation()
+        {
+            var organisationId = 159;// Session.Get<OrganisationEntity>(Constants.Data.Organization);
+
+            var employee = new EmployeeEntityGenerator().GenerateSingle( x =>
+            {
+                x.OrganisationID = organisationId;
+                x.Forename = "QaAnotherOrganisation";
+            });
+
+            _lpHotelsMainUnitOfWork.TempStaff.Add(employee);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+                Session.Set(employee, Constants.Data.Employee);
+        }
+
         [Given(@"(.*) areas are created and saved into database")]
         public void AreasAreCreated(int count)
         {
@@ -112,6 +179,22 @@ namespace Tests.API.Features_and_Steps.PreconditionSteps
             {
                 Session.Set(areas, Constants.Data.Areas, true);
             }
+        }
+
+        [Given(@"Area for another Organissation is created and saved into database")]
+        public void AreasForAnotherOrganisationIsCreated()
+        {
+            var organisationId = 159;// Session.Get<OrganisationEntity>(Constants.Data.Organization);
+
+            var area = new AreaEntityGenerator().GenerateSingle( x =>
+            {
+                x.OrganisationID = organisationId;
+            });
+
+            _lpHotelsMainUnitOfWork.TempArea.Add(area);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(area, Constants.Data.Area, true);
         }
 
         [Given(@"(.*) roles are created and saved into database")]
@@ -138,6 +221,24 @@ namespace Tests.API.Features_and_Steps.PreconditionSteps
             {
                 Session.Set(roles, Constants.Data.Roles, true);
             }
+        }
+
+        [Given(@"Role for another Organisation is created and saved into database")]
+        public void RolesAnotherOrganisationIsCreated()
+        {
+            var anotherOrganisationId = 159;// Session.Get<Organisation>(Constants.Data.Organisation).ID;
+            var anotherAreaId = 93025; //Session.Get<TempArea>(Constants.Data.Area).ID;
+
+            var role = new RoleEntityGenerator().GenerateSingle(x =>
+            {
+                x.OrganisationID = anotherOrganisationId;
+                x.TempAreaID = anotherAreaId;
+            });
+
+            _lpHotelsMainUnitOfWork.TempRole.Add(role);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(role, Constants.Data.RoleAnoderOrganisation);
         }
 
         [Given(@"(.*) jobTitles are created and saved into database")]
@@ -167,13 +268,30 @@ namespace Tests.API.Features_and_Steps.PreconditionSteps
             }
         }
 
+        [Given(@"JobTitle for another organisation is created and saved into database")]
+        public void JobTitleForAnotherOrganisationAreCreated()
+        {
+            var organisationId = 159;// Session.Get<Organisation>(Constants.Data.Organisation).ID;
+            var roleId = 93025;// Session.Get<TempRole>(Constants.Data.Role);
+            var jobTitle = new JobTitleEntityGenerator().GenerateSingle(x =>
+            {
+                x.OrganisationID = organisationId;
+                x.TempRoleID = roleId;
+            });
+
+            _lpHotelsMainUnitOfWork.JobTitle.Add(jobTitle);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(jobTitle, Constants.Data.JobTitle, true);
+        }
+
         [Given(@"MainAssignment is created and saved into database")]
         public void MainassignmentIsCreated()
         {
             var roleId = 184025;//Session.Get<TempRole>(Constants.Data.Role).ID;
-            var departmentId = 189847;//Session.Get<Department>(Constants.Data.Department).ID;
-            var employeeId = 171832;//Session.Get<TempStaff>(Constants.Data.Employee).ID;
-            var jobTitle = 1193317;// Session.Get<JobTitle>(Constants.Data.JobTitle).ID;
+            var departmentId = 189851;//Session.Get<Department>(Constants.Data.Department).ID;
+            var employeeId = 171848;//Session.Get<TempStaff>(Constants.Data.Employee).ID;
+            var jobTitle = 1193318;// Session.Get<JobTitle>(Constants.Data.JobTitle).ID;
 
             var mainAssignment = new MainAssignmentEntityGenerator().GenerateSingle(x =>
             {
@@ -187,6 +305,28 @@ namespace Tests.API.Features_and_Steps.PreconditionSteps
             _lpHotelsMainUnitOfWork.SaveAsync();
 
                 Session.Set(mainAssignment, Constants.Data.MainAssignment);
+        }
+
+        [Given(@"MainAssignment for anoder organisation is created and saved into database")]
+        public void MainassignmentAnotherOrganisationIsCreated()
+        {
+            var roleId = 184029;//Session.Get<TempRole>(Constants.Data.Role).ID;
+            var departmentId = 189850;//Session.Get<Department>(Constants.Data.Department).ID;
+            var employeeId = 171847;//Session.Get<TempStaff>(Constants.Data.Employee).ID;
+            var jobTitle = 1193319;// Session.Get<JobTitle>(Constants.Data.JobTitle).ID;
+
+            var mainAssignment = new MainAssignmentEntityGenerator().GenerateSingle(x =>
+            {
+                x.TempStaffID = employeeId;
+                x.HomeDepartmentID = departmentId;
+                x.PrimaryRoleID = roleId;
+                x.JobTitleID = jobTitle;
+            });
+
+            _lpHotelsMainUnitOfWork.StaffPayInfo.Add(mainAssignment);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(mainAssignment, Constants.Data.MainAssignment);
         }
 
         [Given(@"(.*) shifts are created and saved into database")]
@@ -214,6 +354,66 @@ namespace Tests.API.Features_and_Steps.PreconditionSteps
             {
                 Session.Set(shifts, Constants.Data.Shifts, true);
             }
+        }
+
+        [Given(@"Shift for depatment in another organisation is created and saved into database")]
+        public void ShiftsForAnotherOrganisation()
+        {
+            var roleIdAnotherOrganisation = 184029;//Session.Get<TempRole>(Constants.Data.).ID;
+            var departmentIdAnotherOrganisation = 189850;//Session.Get<Department>(Constants.Data.).ID;
+            var employeeIdAnotherOrganisation = 171847;//Session.Get<TempStaff>(Constants.Data.Employee).ID;
+
+            var shift = new ShiftEntityGenerator().GenerateSingle(x =>
+            {
+                x.DepartmentID = departmentIdAnotherOrganisation;
+                x.TempStaffID = employeeIdAnotherOrganisation;
+                x.TempRoleID = roleIdAnotherOrganisation;
+            });
+
+            _lpHotelsMainUnitOfWork.TempShift.Add(shift);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+             Session.Set(shift, Constants.Data.AnotherOrganisationShift);
+        }
+
+        [Given(@"Shift for department in same oraganisation, but in another location, is created and saved into database")]
+        public void ShiftsForAnotherLocation()
+        {
+            var roleId = 1;//Session.Get<TempRole>(Constants.Data.).ID;
+            var departmentIdAnotherLocation = 189851;//Session.Get<Department>(Constants.Data.).ID;
+            var employeeId = 1;//Session.Get<TempStaff>(Constants.Data.).ID;
+
+            var shift = new ShiftEntityGenerator().GenerateSingle(x =>
+            {
+                x.DepartmentID = departmentIdAnotherLocation;
+                x.TempStaffID = employeeId;
+                x.TempRoleID = roleId;
+            });
+
+            _lpHotelsMainUnitOfWork.TempShift.Add(shift);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(shift, Constants.Data.AnotherShift);
+        }
+
+        [Given(@"Shift for another department in same location is created and saved into database")]
+        public void ShiftsForAnotherDepartment()
+        {
+            var roleIdAnotherDepartment = 1;//Session.Get<TempRole>(Constants.Data.).ID;
+            var departmentIdAnotherDepartment = 189851;//Session.Get<Department>(Constants.Data.).ID;
+            var employeeIdAnotherDepartment = 1;//Session.Get<TempStaff>(Constants.Data.).ID;
+
+            var shift = new ShiftEntityGenerator().GenerateSingle(x =>
+            {
+                x.DepartmentID = departmentIdAnotherDepartment;
+                x.TempStaffID = employeeIdAnotherDepartment;
+                x.TempRoleID = roleIdAnotherDepartment;
+            });
+
+            _lpHotelsMainUnitOfWork.TempShift.Add(shift);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(shift, Constants.Data.AnotherShift);
         }
     }
 }
