@@ -234,6 +234,7 @@
       <HintPath>..\packages\SpecFlow.Autofac.3.0.225\lib\net45\SpecFlow.Autofac.SpecFlowPlugin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="Newtonsoft.Json">
@@ -361,7 +362,9 @@
     </Reference>
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="ExampleOfUsingToken.cs" />
     <Compile Include="Facade\BaseFacade.cs" />
@@ -371,6 +374,7 @@
     <Compile Include="Features and Steps\PreconditionSteps.cs" />
     <Compile Include="Features and Steps\Steps\LocationsSteps.cs" />
     <Compile Include="Features and Steps\Steps\ShiftsSteps.cs" />
+    <Compile Include="Models\UpdateShiftModel.cs" />
     <Compile Include="Framework\ScenarioStepsOrder.cs" />
     <Compile Include="Framework\Session.cs" />
     <Compile Include="Framework\SessionException.cs" />
@@ -391,7 +395,8 @@
     <Compile Include="Infrastructure\LpHotelsMainUnitOfWork.cs" />
     <Compile Include="Infrastructure\Repository.cs" />
     <Compile Include="Infrastructure\RepositoryFactory.cs" />
-    <Compile Include="Models\LocationsEntity.cs" />
+    <Compile Include="Models\CreateShiftModel.cs" />
+    <Compile Include="Models\DeleteShiftModel.cs" />
     <Compile Include="RestDriverExtensions.cs" />
     <Compile Include="Setup\ContainerConfig.cs" />
   </ItemGroup>
@@ -399,6 +404,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{b165267d-16e8-492d-8d17-ea2fe4cf7e2c}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataSeeding\DataSeeding.csproj">
+      <Project>{7a5544b6-b30b-434e-8d3b-346cdea6ccec}</Project>
+      <Name>DataSeeding</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{2f8cb427-56fe-498c-8967-d5b4d944add2}</Project>

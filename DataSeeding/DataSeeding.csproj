@@ -298,10 +298,6 @@
       <Project>{2f8cb427-56fe-498c-8967-d5b4d944add2}</Project>
       <Name>Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tests.API\Tests.API.csproj">
-      <Project>{35DE4FDD-6583-4E08-955E-3584E85D5DDA}</Project>
-      <Name>Tests.API</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />

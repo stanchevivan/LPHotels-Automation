@@ -2,6 +2,7 @@
 using Common;
 using Fourth.TH.Automation.RestDriver;
 using Newtonsoft.Json;
+using Tests.API.Models;
 
 namespace Tests.API.Facade
 {
@@ -12,7 +13,7 @@ namespace Tests.API.Facade
             Request = Driver.CreateRequest();
         }
 
-        public IResponse CreateShift(string locationId, string departmentId, TempShift shift)
+        public IResponse CreateShift(string locationId, string departmentId, CreateShiftModel shift)
         {
             return BuildRequest()
                 .AddResource(Constants.Enpoints.Locations)
@@ -26,7 +27,7 @@ namespace Tests.API.Facade
 
         }
         
-        public IResponse UpdateShift(string locationId, string departmentId, string shiftId, TempShift shift)
+        public IResponse UpdateShift(string locationId, string departmentId, string shiftId, UpdateShiftModel shift)
         {
             return BuildRequest()
                 .AddResource(Constants.Enpoints.Locations)
@@ -41,7 +42,7 @@ namespace Tests.API.Facade
 
         }
 
-        public IResponse DeleteShift(string locationId, string departmentId, string shiftId)
+        public IResponse DeleteShift(string locationId, string departmentId, string shiftId, DeleteShiftModel shift)
         {
             return BuildRequest()
                 .AddResource(Constants.Enpoints.Locations)
@@ -50,6 +51,7 @@ namespace Tests.API.Facade
                 .AddResource(departmentId)
                 .AddResource(Constants.Enpoints.Shifts)
                 .AddResource(shiftId)
+                .AddJsonBodyParameter(JsonConvert.SerializeObject(shift))
                 .Delete()
                 .ExecuteRequest();
 
