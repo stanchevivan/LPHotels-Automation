@@ -13,7 +13,7 @@ namespace Tests.API.Facade
             Request = Driver.CreateRequest();
         }
 
-        public IResponse CreateShift(string locationId, string departmentId, CreateShiftModel shift)
+        public IResponse CreateShift(string locationId, string departmentId, DataSeeding.Models.CreateShiftModel shift)
         {
             return BuildRequest()
                 .AddResource(Constants.Enpoints.Locations)

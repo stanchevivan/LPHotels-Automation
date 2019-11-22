@@ -1,4 +1,6 @@
 ﻿
+using DataSeeding.Models;
+
 namespace Tests.API.Models
 {
     public class UpdateShiftModel : CreateShiftModel

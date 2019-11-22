@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
-using Tests.API.Framework;
+using DataSeeding.Framework;
 
 namespace Tests.API.Features_and_Steps
 {

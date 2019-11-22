@@ -6,7 +6,7 @@ using TeamHours.DomainModel;
 using Bogus;
 using Common;
 
-namespace Tests.API.Generators
+namespace DataSeeding.Generators
 {
     public class EmployeeEntityGenerator : BaseGenerator<TempStaff>
     {

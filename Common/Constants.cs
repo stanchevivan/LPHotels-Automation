@@ -9,6 +9,9 @@ namespace Common
     public static class Constants
     {
         public const int BatchImportCount = 5;
+
+        public const int OgranisationId = 1;
+
         public static class Headers
         {
             public const string OrganizationHeader = "Authorization";

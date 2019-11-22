@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Tests.API.Infrastructure
+namespace DataSeeding.Infrastructure
 {
     public interface IRepository<TEntity> : IDisposable
     {

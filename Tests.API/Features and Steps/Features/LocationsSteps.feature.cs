@@ -87,7 +87,11 @@ namespace Tests.API.FeaturesAndSteps.Features
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 9
-    testRunner.Given("1 departments are created and saved into database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("Shift is created to be imported", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 10
+ testRunner.When("Create Shift endpoint is requested with CorrectData and <id>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 11
+ testRunner.And("The status code of the response should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -99,10 +103,10 @@ this.ScenarioInitialize(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Test Bank", null, new string[] {
                         "Organisation"});
-#line 21
+#line 24
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 22
+#line 25
  testRunner.Given("bank are created and saved into database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             this.ScenarioCleanup();

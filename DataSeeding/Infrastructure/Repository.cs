@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace Tests.API.Infrastructure
+namespace DataSeeding.Infrastructure
 {
     public class Repository<TEntity> : IRepository<TEntity>, IDisposable where TEntity : class
     {

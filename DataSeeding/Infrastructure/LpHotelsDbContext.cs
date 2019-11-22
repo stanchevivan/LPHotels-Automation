@@ -1,7 +1,7 @@
 ﻿using System;
 using TeamHours.DomainModel;
 using System.Data.Entity;
-namespace Tests.API.Infrastructure
+namespace DataSeeding.Infrastructure
 {
     public class LpHotelsDbContext : TeamHoursDatabase
     {
