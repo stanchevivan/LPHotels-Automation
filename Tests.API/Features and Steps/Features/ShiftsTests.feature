@@ -10,6 +10,13 @@
 #	Then The status code of the response should be 200
 #	    And Created shift should be added in the db
 
+@CreateLocation
+@CreateArea
+@CreateRole
+@CreateDepartment
+@CreateJobTitle
+@CreateEmployee
+@CreateAssignment
 
 Scenario Outline: CreateShift endpoint should return correct results
 	Given NewShift is created to be imported
@@ -18,7 +25,7 @@ Scenario Outline: CreateShift endpoint should return correct results
 	    | Break2Minutes | <Break2Minutes> |
 	    | StartDateTime | <StartDateTime> |
 	    | EndDateTime   | <EndDateTime>   |
-	When Create Shift endpoint is requested with correctData and <id>
+	When Create Shift endpoint is requested with CorrectData and <id>
 	Then The status code of the response should be 200
 	    And Created shift should be added in the db
 Examples: 

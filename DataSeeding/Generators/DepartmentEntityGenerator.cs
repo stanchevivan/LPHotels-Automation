@@ -6,12 +6,10 @@ using Bogus;
 using Common;
 using System;
 
-namespace Tests.API.Generators
+namespace DataSeeding.Generators
 {
-    class DepartmentEntityGenerator : BaseGenerator<Department>
+    public class DepartmentEntityGenerator : BaseGenerator<Department>
     {
-        public static readonly string CustomerCanonicalId = ConfigurationManager.AppSettings["CustomerCanonicalId"];
-
         protected override IEnumerable<Department> BuildModels(int count)
         {
             var departmentFaker = new Faker<Department>().Rules((f, d) =>

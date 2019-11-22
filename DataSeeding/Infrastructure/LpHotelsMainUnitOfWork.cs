@@ -1,7 +1,7 @@
 ﻿using System;
 using TeamHours.DomainModel;
 
-namespace Tests.API.Infrastructure
+namespace DataSeeding.Infrastructure
 {
     public class LpHotelsMainUnitOfWork : ILpHotelsMainUnitOfWork
     {

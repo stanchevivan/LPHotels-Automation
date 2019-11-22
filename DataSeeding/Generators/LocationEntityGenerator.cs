@@ -5,7 +5,7 @@ using Fourth.TestTools.Generators;
 using TeamHours.DomainModel;
 using Bogus;
 
-namespace Tests.API.Generators
+namespace DataSeeding.Generators
 {
    public  class LocationEntityGenerator : BaseGenerator<Location>
     {

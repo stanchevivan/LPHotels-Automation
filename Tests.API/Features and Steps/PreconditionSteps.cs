@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using Common;
+using DataSeeding.Framework;
+using DataSeeding.Generators;
+using DataSeeding.Infrastructure;
 using TechTalk.SpecFlow;
-using Tests.API.Framework;
-using Tests.API.Generators;
-using Tests.API.Infrastructure;
 
 namespace Tests.API.Features_and_Steps.PreconditionSteps
 {

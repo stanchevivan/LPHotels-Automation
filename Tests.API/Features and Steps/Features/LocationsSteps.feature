@@ -6,7 +6,10 @@
 
 @CreateLocation
 Scenario Outline: Add test
-    Given 1 departments are created and saved into database
+    Given Shift is created to be imported
+	When Create Shift endpoint is requested with CorrectData and <id>
+	And  The status code of the response should be 200
+	#And Shift is deleted
 	   # And  1 areas are created and saved into database
 	Examples: 
 | count |

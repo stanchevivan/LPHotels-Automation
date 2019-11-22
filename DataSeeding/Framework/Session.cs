@@ -6,7 +6,7 @@ using Fourth.TH.Automation.RestDriver;
 using RestSharp.Extensions;
 using TechTalk.SpecFlow;
 
-namespace Tests.API.Framework
+namespace DataSeeding.Framework
 {
     public static class Session
     {
@@ -70,6 +70,13 @@ namespace Tests.API.Framework
         {
             var dict = ScenarioContext.Current.Where(x => x.Value != null && x.Value.GetType() == type);
             var list = dict.Select(x => x.Value.ChangeType(type)).ToList();
+            return list;
+        }
+
+        public static IEnumerable<object> GetAll()
+        {
+            var dict = ScenarioContext.Current.Where(x => x.Value != null);
+            var list = dict.Select(x => x.Value).ToList();
             return list;
         }
     }

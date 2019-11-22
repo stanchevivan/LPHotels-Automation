@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using TechTalk.SpecFlow;
-using Tests.API.Infrastructure;
-using Tests.API.Generators;
-using Tests.API.Framework;
+using DataSeeding.Infrastructure;
+using DataSeeding.Generators;
+using DataSeeding.Framework;
 using Common;
 
 namespace DataSeeding.Steps

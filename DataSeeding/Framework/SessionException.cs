@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Tests.API.Framework
+namespace DataSeeding.Framework
 {
     public class SessionException : SystemException
     {

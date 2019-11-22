@@ -5,7 +5,7 @@ using Bogus;
 using Fourth.TestTools.Generators;
 using TeamHours.DomainModel;
 
-namespace Tests.API.Generators
+namespace DataSeeding.Generators
 {
     public class BankHolidayEntityGenerator : BaseGenerator<BankHoliday>
     {

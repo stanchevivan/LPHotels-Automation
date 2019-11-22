@@ -2,10 +2,10 @@
 using System.Data.Entity;
 using System.Linq;
 using TechTalk.SpecFlow;
-using Tests.API.Infrastructure;
-using Tests.API.Generators;
+using DataSeeding.Infrastructure;
+using DataSeeding.Generators;
 using Common;
-using Tests.API.Framework;
+using DataSeeding.Framework;
 using System.Threading.Tasks;
 
 namespace DataSeeding.DataSetupSteps
@@ -59,36 +59,11 @@ namespace DataSeeding.DataSetupSteps
         [AfterScenario("Organisation", Order = 1)]
         public async Task DeleteOrganisation()
         {
-            var organisationToDelete = Session.Get<TeamHours.DomainModel.Organisation>(Constants.Data.Organisation);
-            _lpHotelsUnitOfWork.Organisation.Remove(organisationToDelete);
-            _lpHotelsUnitOfWork.SaveAsync();
+            //var organisationToDelete = Session.Get<TeamHours.DomainModel.Organisation>(Constants.Data.Organisation);
+            //_lpHotelsUnitOfWork.Organisation.Remove(organisationToDelete);
+            //_lpHotelsUnitOfWork.SaveAsync();
         }
 
-        [BeforeScenario("CreateLocation", Order = 1)]
-        public void LocationAreCreated()
-        {
-            System.Console.WriteLine("HELLO !! ! ! ! !");
-            var organisationId = 1;//Session.Get<OrganisationEntity>(Constants.Data.Organization);
-
-            var location = new LocationEntityGenerator().GenerateSingle( x =>
-            {
-                x.Name = "LocationQaAutomation" + RandomGenerator.OnlyNumeric(4);
-                x.OrganisationID = organisationId;
-            });
-
-            _lpHotelsUnitOfWork.Location.Add(location);
-            _lpHotelsUnitOfWork.SaveAsync();
-
-              Session.Set(location, Constants.Data.Location);
-
-        }
-
-        [AfterScenario("CreateLocation", Order = 1)]
-        public async Task DeleteLocation()
-        {
-            var locationToDelete = Session.Get<TeamHours.DomainModel.Location>(Constants.Data.Location);
-            _lpHotelsUnitOfWork.Location.Remove(locationToDelete);
-            _lpHotelsUnitOfWork.SaveAsync();
-        }
+       
     }
 }

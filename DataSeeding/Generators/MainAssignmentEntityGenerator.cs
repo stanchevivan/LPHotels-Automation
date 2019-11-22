@@ -6,9 +6,9 @@ using TeamHours.DomainModel;
 using Bogus;
 using Common;
 
-namespace Tests.API.Generators
+namespace DataSeeding.Generators
 {
-    class MainAssignmentEntityGenerator : BaseGenerator<StaffPayInfo>
+    public class MainAssignmentEntityGenerator : BaseGenerator<StaffPayInfo>
     {
         protected override IEnumerable<StaffPayInfo> BuildModels(int count)
         {

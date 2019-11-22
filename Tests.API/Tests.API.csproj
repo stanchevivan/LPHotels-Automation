@@ -39,6 +39,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="specflow.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -375,27 +378,6 @@
     <Compile Include="Features and Steps\Steps\LocationsSteps.cs" />
     <Compile Include="Features and Steps\Steps\ShiftsSteps.cs" />
     <Compile Include="Models\UpdateShiftModel.cs" />
-    <Compile Include="Framework\ScenarioStepsOrder.cs" />
-    <Compile Include="Framework\Session.cs" />
-    <Compile Include="Framework\SessionException.cs" />
-    <Compile Include="Generators\AreaEntityGenerator.cs" />
-    <Compile Include="Generators\BankHolidayEntityGenerator.cs" />
-    <Compile Include="Generators\DepartmentEntityGenerator.cs" />
-    <Compile Include="Generators\JobTitleEntityGenerator.cs" />
-    <Compile Include="Generators\LocationEntityGenerator.cs" />
-    <Compile Include="Generators\MainAssignmentEntityGenerator.cs" />
-    <Compile Include="Generators\OrganisationEntityGenerator.cs" />
-    <Compile Include="Generators\EmployeeEntityGenerator.cs" />
-    <Compile Include="Generators\RoleEntityGenerator.cs" />
-    <Compile Include="Generators\ShiftEntityGenerator.cs" />
-    <Compile Include="Generators\UserEntityGenerator.cs" />
-    <Compile Include="Infrastructure\LpHotelsDbContext.cs" />
-    <Compile Include="Infrastructure\ILpHotelsMainUnitOfWork.cs" />
-    <Compile Include="Infrastructure\IRepository.cs" />
-    <Compile Include="Infrastructure\LpHotelsMainUnitOfWork.cs" />
-    <Compile Include="Infrastructure\Repository.cs" />
-    <Compile Include="Infrastructure\RepositoryFactory.cs" />
-    <Compile Include="Models\CreateShiftModel.cs" />
     <Compile Include="Models\DeleteShiftModel.cs" />
     <Compile Include="RestDriverExtensions.cs" />
     <Compile Include="Setup\ContainerConfig.cs" />

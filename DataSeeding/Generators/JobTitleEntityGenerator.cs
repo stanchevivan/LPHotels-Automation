@@ -5,9 +5,9 @@ using Fourth.TestTools.Generators;
 using TeamHours.DomainModel;
 using Bogus;
 using Common;
-namespace Tests.API.Generators
+namespace DataSeeding.Generators
 {
-    class JobTitleEntityGenerator : BaseGenerator<JobTitle>
+    public class JobTitleEntityGenerator : BaseGenerator<JobTitle>
     {
         protected override IEnumerable<JobTitle> BuildModels(int count)
         {
