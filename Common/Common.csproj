@@ -31,7 +31,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomGenerator.cs" />
     <Compile Include="Helpers\Do.cs" />
-    <Compile Include="Helpers\Get.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

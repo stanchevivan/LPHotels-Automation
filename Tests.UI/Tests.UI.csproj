@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\SpecFlow.NUnit.3.0.225\build\SpecFlow.NUnit.props" Condition="Exists('..\packages\SpecFlow.NUnit.3.0.225\build\SpecFlow.NUnit.props')" />
   <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.props" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.props')" />
@@ -39,9 +39,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features and Steps\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="specflow.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -51,10 +49,6 @@
     <ProjectReference Include="..\PageObjects\PageObjects.csproj">
       <Project>{B85A0614-AA34-4FA6-A9AC-04D2F3491016}</Project>
       <Name>PageObjects</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mock.API\Mock.API.csproj">
-      <Project>{856E57CC-D154-437D-8D1B-3AA6E534F4CB}</Project>
-      <Name>Mock.API</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
