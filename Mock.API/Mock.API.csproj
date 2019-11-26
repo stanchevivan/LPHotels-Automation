@@ -2,28 +2,35 @@
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.Extensions.Configuration.UserSecrets.2.1.1\build\netstandard2.0\Microsoft.Extensions.Configuration.UserSecrets.props" Condition="Exists('..\packages\Microsoft.Extensions.Configuration.UserSecrets.2.1.1\build\netstandard2.0\Microsoft.Extensions.Configuration.UserSecrets.props')" />
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{363D4E8B-40F3-4DEF-8C30-E5FE6866A3FF}</ProjectGuid>
+    <ProjectGuid>{856E57CC-D154-437D-8D1B-3AA6E534F4CB}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Mock.API</RootNamespace>
-    <AssemblyName>Mock.API</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>Mock.API</RootNamespace>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Default</OutputPath>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Mappings\Request.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MockServer.cs" />
     <Compile Include="Scripting.native.cs" />
     <Compile Include="Scripting.Extensions.cs" />
     <Compile Include="Scripting.evaluator.cs" />
+    <Compile Include="MockServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Fare">
@@ -343,7 +350,7 @@
       <HintPath>..\packages\XPath2.Extensions.1.0.6.1\lib\net40\XPath2.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="WireMock.Net">
-      <HintPath>..\packages\WireMock.Net.1.0.36\lib\net461\WireMock.Net.dll</HintPath>
+      <HintPath>..\packages\WireMock.Net.1.0.37\lib\net461\WireMock.Net.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
   </ItemGroup>

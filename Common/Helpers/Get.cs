@@ -1,56 +1,51 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Fourth.Automation.Framework.Page;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 
 namespace Common.Helpers
 {
-    public static class Get_Extension
+    public static class Do_Extension
     {
-        public static Get Get(this IWebElement element)
+        public static Do Do(this IWebElement element, IWebDriver driver)
         {
-            return new Get(element);
+            return new Do(element, driver);
         }
     }
 
-    public class Get
+    public class Do : BasePage
     {
         readonly IWebElement webElement;
 
-        public Get(IWebElement element)
+        public Do(IWebElement element, IWebDriver webDriver) : base(webDriver)
         {
             webElement = element;
         }
 
-        public List<string> Classes => webElement.GetAttribute("class").Split(' ').ToList();
-        public string Text => webElement.Text;
-        public bool ElementDisplayed => webElement.Displayed;
-        public bool ElementEnabled => webElement.Enabled;
-
-        public bool ElementPresent
+        public void ClickOffSet(int x, int y)
         {
-            get
+            new Actions(Driver).MoveToElement(webElement).MoveByOffset(x, y).Click().Perform();
+        }
+
+        public void WaitToExist()
+        {
+            int w = 500;
+            while (w >= 0)
             {
                 try
                 {
                     var t = webElement.TagName;
+                    break;
                 }
-                catch (NoSuchElementException)
+                catch (NoSuchElementException ex)
                 {
-                    return false;
+                    if (w == 0)
+                    {
+                        throw ex;
+                    }
                 }
-
-                return true;
+                System.Threading.Thread.Sleep(20);
+                w--;
             }
-        }
-
-        public bool HasClass(string className)
-        {
-            return Classes.Contains(className);
-        }
-
-        public bool HasAttribute(string attributeName)
-        {
-            return !string.IsNullOrEmpty(webElement.GetAttribute(attributeName));
         }
     }
 }
