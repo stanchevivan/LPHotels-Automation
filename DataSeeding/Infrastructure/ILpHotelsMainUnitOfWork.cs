@@ -27,6 +27,8 @@ namespace DataSeeding.Infrastructure
 
         IRepository<User> User { get; }
 
+        IRepository<UserLevel> UserLevel { get; }
+
         int SaveAsync();
     }
 }

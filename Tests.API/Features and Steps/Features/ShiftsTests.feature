@@ -29,12 +29,24 @@ Scenario Outline: CreateShift endpoint should return correct results
 	Then The status code of the response should be 200
 	    And Created shift should be added in the db
 Examples: 
-| Break1Minutes | Break2Minutes | StartDateTime    | EndDateTime      |
-| 15            | 25            | 2019-12-01 08:09 | 2019-12-01 10:09 |
-| 0             | 0             | 2019-12-01 08:09 | 2019-12-01 10:09 |
+| TestCase               | Break1Minutes | Break2Minutes | StartDateTime    | EndDateTime      |
+| 1.InTeFutureWithBreaks | 15            | 25            | 2021-12-02 08:09 | 2021-12-02 10:09 |
+| 2.WithoutBreaks        | 0             | 0             | 2021-12-02 08:09 | 2021-12-02 10:09 |
+| 3.ShiftInThePast       | 15            | 25            | 2019-11-15 08:09 | 2019-11-15 10:09 |
 
 
-Scenario Outline: CreateShift endpoint should return error
+@CreateLocation
+@CreateArea
+@CreateAreaAnotherOrganisation
+@CreateRole
+@CreateRoleForAnotherOrganisation
+@CreateDepartment
+@CreateDepartmentAnotherLocationSameOrganisation
+@CreateJobTitle
+@CreateEmployee
+@CreateAnotherOrganisationEmployee
+@CreateAssignment
+Scenario Outline: CreateShift endpoint should return error when body's data is incorrect
 	Given Shift is created to be imported with invalid data <invalidData>
 	    | Field         | Value           |
 	    | Break1Minutes | <Break1Minutes> |
@@ -43,20 +55,32 @@ Scenario Outline: CreateShift endpoint should return error
 	    | EndDateTime   | <EndDateTime>   |
 	    | EmployeeId    | <Id>            |
 	    | RoleId        | <Id>            |
-	When Create Shift endpoint is requested with correctData and <id>
+	When Create Shift endpoint is requested with CorrectData and <id>
 	Then The status code of the response should be 200
 	    #And Error <errorMessage> should be returned
 		And Shift should not be added in the db
 Examples: 
-| TestCase                                | invalidData                | Id      | Break1Minutes | Break2Minutes | StartDateTime    | EndDateTime      | errorMessage                                                                             |
-| 1.WhenEmployeeIsInvalid                 | shiftWithInvalidEmployeeId | 1234567 | 15            | 25            | 2019-12-07 08:09 | 2019-12-07 10:09 | "oops, Some error happened."                                                             |
-| 2.WhenEmployeeIsEmpty                   | shiftWithInvalidEmployeeId | 1234567 | 15            | 25            | 2019-12-07 08:09 | 2019-12-07 10:09 | "oops, Some error happened."                                                             |
-| 3.WhenRoleIsInvalid                     | shiftWithInvalidEmployeeId | 1234567 | 15            | 25            | 2019-12-07 08:09 | 2019-12-05 10:09 | "The selected member of staff is not available for scheduling on this role on this date" |
-| 4.WhenRoleIsEmpty                       | shiftWithInvalidEmployeeId | 1234567 | 15            | 25            | 2019-12-07 08:09 | 2019-12-05 10:09 | "oops, Some error happened.                                                              |
-| 5.WhenEmployeeIsFromAnotherOrganisation | shiftWithInvalidEmployeeId | 1234567 | 15            | 25            | 2019-12-07 08:09 | 2019-12-05 10:09 | "The selected member of staff is not available for scheduling on this date"              |
-| 6.WhenRoleIsFromAnotherOrganisation     | shiftWithInvalidEmployeeId | 1234567 | 15            | 25            | 2019-12-07 08:09 | 2019-12-05 10:09 | "The selected member of staff is not available for scheduling on this role on this date" |
+| TestCase                                | invalidData                              | Id      | Break1Minutes | Break2Minutes | StartDateTime    | EndDateTime      | errorMessage                                                                             |
+| 1.WhenEmployeeIsInvalid                 | shiftWithInvalidEmployeeId               | 1234567 | 15            | 25            | 2019-12-07 08:09 | 2019-12-07 10:09 | "oops, Some error happened."                                                             |
+| 2.WhenEmployeeIsEmpty                   | shiftWithInvalidEmployeeId               | 1234567 | 15            | 25            | 2019-12-07 08:09 | 2019-12-07 10:09 | "oops, Some error happened."                                                             |
+| 3.WhenRoleIsInvalid                     | shiftWithInvalidRoleId                   | 1234567 | 15            | 25            | 2019-12-07 08:09 | 2019-12-07 10:09 | "The selected member of staff is not available for scheduling on this role on this date" |
+| 4.WhenRoleIsEmpty                       | shiftWithInvalidRoleId                   | 1234567 | 15            | 25            | 2019-12-07 08:09 | 2019-12-07 10:09 | "oops, Some error happened.                                                              |
+| 5.WhenEmployeeIsFromAnotherOrganisation | shiftWithEmployeeFromAnotherOrganisation | 1234567 | 15            | 25            | 2019-12-07 08:09 | 2019-12-07 10:09 | "The selected member of staff is not available for scheduling on this date"              |
+| 6.WhenRoleIsFromAnotherOrganisation     | shiftWithRoleFromAnotherOrganisation               | 1234567 | 15            | 25            | 2019-12-07 08:09 | 2019-12-07 10:09 | "The selected member of staff is not available for scheduling on this role on this date" |
 
 
+@CreateLocation
+@CreateLocations
+@CreateArea
+@CreateAreaAnotherOrganisation
+@CreateRole
+@CreateRoleForAnotherOrganisation
+@CreateDepartment
+@CreateDepartmentAnotherLocationSameOrganisation
+@CreateJobTitle
+@CreateEmployee
+@CreateAnotherOrganisationEmployee
+@CreateAssignment
 Scenario Outline: CreateShift endpoint should return error for incorrect dates
 	Given NewShift is created to be imported
 	    | Field         | Value           |
@@ -64,19 +88,31 @@ Scenario Outline: CreateShift endpoint should return error for incorrect dates
 	    | Break2Minutes | <Break2Minutes> |
 	    | StartDateTime | <StartDateTime> |
 	    | EndDateTime   | <EndDateTime>   |
-	When Create Shift endpoint is requested with correctData and <id>
+	When Create Shift endpoint is requested with CorrectData and <id>
 	Then The status code of the response should be 200
 	    #And Error <errorMessage> should be returned
 		And Shift should not be added in the db
 Examples: 
 | TestCase                           | Break1Minutes | Break2Minutes | StartDateTime    | EndDateTime      | errorMessage                                                                |
-| 1.ShiftInThePast                   | 15            | 25            | 2019-11-15 08:09 | 2019-11-15 10:09 | "ok."                                                                       |
-| 2.WhenBreaksBiggerThenShift        | 30            | 30            | 2019-12-07 01:09 | 2019-12-07 02:00 | "Shift must be longer than total break time added"                          |
-| 3.WhenBreakBiggerThenShift         | 0             | 60            | 2019-12-07 02:09 | 2019-12-07 03:00 | "Shift must be longer than total break time added"                          |
-| 4.WhenShiftIsBeforeAssignmentStart | 15            | 25            | 2019-12-07 03:09 | 2019-12-07 04:00 | "The selected member of staff is not available for scheduling on this date" |
-| 5.WhenShiftEndIsBeforeShiftStart   | 15            | 25            | 2019-12-07 04:09 | 2019-12-07 05:00 | "Shift must be longer than total break time added"                          |
+#| 1.ShiftInThePast                   | 15            | 25            | 2019-11-15 08:09 | 2019-11-15 10:09 | "ok."                                                                       |
+| 2.WhenBreaksBiggerThenShift        | 30            | 30            | 2025-12-07 01:09 | 2025-12-07 02:00 | "Shift must be longer than total break time added"                          |
+| 3.WhenBreakBiggerThenShift         | 0             | 60            | 2025-12-07 02:09 | 2025-12-07 03:00 | "Shift must be longer than total break time added"                          |
+| 4.WhenShiftIsBeforeAssignmentStart | 15            | 25            | 2018-12-07 03:09 | 2018-12-07 04:00 | "The selected member of staff is not available for scheduling on this date" |
+| 5.WhenShiftEndIsBeforeShiftStart   | 15            | 25            | 2025-12-07 06:09 | 2025-12-07 05:00 | "Shift must be longer than total break time added"                          |
 
 
+@CreateLocation
+@CreateLocations
+@CreateArea
+@CreateAreaAnotherOrganisation
+@CreateRole
+@CreateRoleForAnotherOrganisation
+@CreateDepartment
+@CreateDepartmentAnotherLocationSameOrganisation
+@CreateJobTitle
+@CreateEmployee
+@CreateAnotherOrganisationEmployee
+@CreateAssignment
 Scenario Outline: CreateShift endpoint should return error for overlaping shifts
 	Given NewShift is created to be imported
 	    | Field         | Value           |
@@ -84,7 +120,7 @@ Scenario Outline: CreateShift endpoint should return error for overlaping shifts
 	    | Break2Minutes | <Break2Minutes> |
 	    | StartDateTime | <StartDateTime> |
 	    | EndDateTime   | <EndDateTime>   |
-	    And Create Shift endpoint is requested with correctData and <id>
+	    And Create Shift endpoint is requested with CorrectData and <id>
 	    And The status code of the response should be 200
 	    And NewShift is created to be imported
 	    | Field         | Value           |
@@ -92,7 +128,7 @@ Scenario Outline: CreateShift endpoint should return error for overlaping shifts
 	    | Break2Minutes | <Break2Minutes> |
 	    | StartDateTime | <StartDateTime> |
 	    | EndDateTime   | <EndDateTime>   |
-	When Create Shift endpoint is requested with correctData and <id>
+	When Create Shift endpoint is requested with CorrectData and <id>
 	Then The status code of the response should be 200
 	    #And Error <errorMessage> should be returned
 		And Shift should not be added in the db
@@ -101,15 +137,32 @@ Examples:
 | 15            | 25            | 2025-11-17 08:09 | 2025-11-17 10:09 | "The shift could not be added because it overlaps with another"        |
 
 
+@CreateLocation
+@CreateLocations
+@LocationForAnotherOrganisation
+@CreateArea
+@CreateAreaAnotherOrganisation
+@CreateRole
+@CreateRoleForAnotherOrganisation
+@CreateDepartment
+@CreateDepartmentAnotherOrganisation
+@CreateDepartmentAnotherLocationSameOrganisation
+@CreateJobTitle
+@CreateEmployee
+@CreateAnotherOrganisationEmployee
+@CreateAssignment
 Scenario Outline: CreateShift endpoint should return error for incorrect locationId or departmentId
 	When Create Shift endpoint is requested with <data> and <id>
 	Then The status code of the response should be <code>
 Examples: 
-| TestCase            | data                | id     | code |
-| 1.MissingLocation   | InvalidLocationId   |        | 404  |
-| 2.InvalidLocation   | InvalidLocationId   | 123456 | 401  |
-| 3.MissingDepartment | InvalidDepartmentId |        | 404  |
-| 4.InvalidDepartment | InvalidDepartmentId | 123456 | 404  |
+| TestCase                                        | data                                          | id     | code |
+| 1.MissingLocation                               | InvalidLocationId                             |        | 404  |
+| 2.InvalidLocation                               | InvalidLocationId                             | 123456 | 401  |
+| 3.MissingDepartment                             | InvalidDepartmentId                           |        | 404  |
+| 4.InvalidDepartment                             | InvalidDepartmentId                           | 123456 | 404  |
+| 5.LocationAnotherOrganisation                   | LocationFromAnatherOrganisation               | 123456 | 401  |
+| 6.DepartmentAnotherOrganisation                 | DepartmentFromAnatherOrganisation             | 123456 | 404  |
+| 7.DepartmentFromAnatherLocationSameOrganisation | DepartmentFromAnatherLocationSameOrganisation | 123456 | 401  |
 #|5.location+dep anotherorgForourToken
 #| 3.AnotherOrganisationLocation | shiftWithInvalidLocationId |    | 401  |
 

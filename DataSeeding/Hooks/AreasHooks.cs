@@ -22,23 +22,31 @@ namespace DataSeeding.Hooks
         [BeforeScenario("CreateArea", Order = ScenarioStepsOrder.Area)]
         public void AreaIsCreated()
         {
+            var organisationId = Constants.OgranisationId;
             var area = new AreaEntityGenerator().GenerateSingle( x =>
             {
-                x.OrganisationID = Constants.OgranisationId;
+                x.OrganisationID = organisationId;
             });
 
             _lpHotelsMainUnitOfWork.TempArea.Add(area);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
-            Session.Set(area, Constants.Data.Area, true);
+            Session.Set(area, Constants.Data.Area);
         }
 
-        //[AfterScenario("CreateArea", Order = ScenarioStepsOrder.Area)]
-        //public async Task DeleteArea()
-        //{
-        //    var areaToDelete = Session.Get<TempArea>(Constants.Data.Area);
-        //    _lpHotelsMainUnitOfWork.TempArea.Remove(areaToDelete);
-        //    _lpHotelsMainUnitOfWork.SaveAsync();
-        //}
+        [BeforeScenario("CreateAreaAnotherOrganisation", Order = ScenarioStepsOrder.Area)]
+        public void AreaAnotherOrganisationIsCreated()
+        {
+            var organisationId = Constants.AnotherOgranisationId;
+            var area = new AreaEntityGenerator().GenerateSingle(x =>
+            {
+                x.OrganisationID = organisationId;
+            });
+
+            _lpHotelsMainUnitOfWork.TempArea.Add(area);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(area, Constants.Data.AreaAnotherOrganisation);
+        }
     }
 }

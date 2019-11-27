@@ -79,9 +79,10 @@ namespace Tests.API.FeaturesAndSteps.Features
         [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
         [NUnit.Framework.CategoryAttribute("CreateEmployee")]
         [NUnit.Framework.CategoryAttribute("CreateAssignment")]
-        [NUnit.Framework.TestCaseAttribute("15", "25", "2019-12-01 08:09", "2019-12-01 10:09", null)]
-        [NUnit.Framework.TestCaseAttribute("0", "0", "2019-12-01 08:09", "2019-12-01 10:09", null)]
-        public virtual void CreateShiftEndpointShouldReturnCorrectResults(string break1Minutes, string break2Minutes, string startDateTime, string endDateTime, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("1.InTeFutureWithBreaks", "15", "25", "2021-12-02 08:09", "2021-12-02 10:09", null)]
+        [NUnit.Framework.TestCaseAttribute("2.WithoutBreaks", "0", "0", "2021-12-02 08:09", "2021-12-02 10:09", null)]
+        [NUnit.Framework.TestCaseAttribute("3.ShiftInThePast", "15", "25", "2019-11-15 08:09", "2019-11-15 10:09", null)]
+        public virtual void CreateShiftEndpointShouldReturnCorrectResults(string testCase, string break1Minutes, string break2Minutes, string startDateTime, string endDateTime, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "CreateLocation",
@@ -128,19 +129,46 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("CreateShift endpoint should return error")]
+        [NUnit.Framework.DescriptionAttribute("CreateShift endpoint should return error when body\'s data is incorrect")]
+        [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateArea")]
+        [NUnit.Framework.CategoryAttribute("CreateAreaAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateRole")]
+        [NUnit.Framework.CategoryAttribute("CreateRoleForAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherLocationSameOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateAnotherOrganisationEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateAssignment")]
         [NUnit.Framework.TestCaseAttribute("1.WhenEmployeeIsInvalid", "shiftWithInvalidEmployeeId", "1234567", "15", "25", "2019-12-07 08:09", "2019-12-07 10:09", "\"oops, Some error happened.\"", null)]
         [NUnit.Framework.TestCaseAttribute("2.WhenEmployeeIsEmpty", "shiftWithInvalidEmployeeId", "1234567", "15", "25", "2019-12-07 08:09", "2019-12-07 10:09", "\"oops, Some error happened.\"", null)]
-        [NUnit.Framework.TestCaseAttribute("3.WhenRoleIsInvalid", "shiftWithInvalidEmployeeId", "1234567", "15", "25", "2019-12-07 08:09", "2019-12-05 10:09", "\"The selected member of staff is not available for scheduling on this role on thi" +
+        [NUnit.Framework.TestCaseAttribute("3.WhenRoleIsInvalid", "shiftWithInvalidRoleId", "1234567", "15", "25", "2019-12-07 08:09", "2019-12-07 10:09", "\"The selected member of staff is not available for scheduling on this role on thi" +
             "s date\"", null)]
-        [NUnit.Framework.TestCaseAttribute("4.WhenRoleIsEmpty", "shiftWithInvalidEmployeeId", "1234567", "15", "25", "2019-12-07 08:09", "2019-12-05 10:09", "\"oops, Some error happened.", null)]
-        [NUnit.Framework.TestCaseAttribute("5.WhenEmployeeIsFromAnotherOrganisation", "shiftWithInvalidEmployeeId", "1234567", "15", "25", "2019-12-07 08:09", "2019-12-05 10:09", "\"The selected member of staff is not available for scheduling on this date\"", null)]
-        [NUnit.Framework.TestCaseAttribute("6.WhenRoleIsFromAnotherOrganisation", "shiftWithInvalidEmployeeId", "1234567", "15", "25", "2019-12-07 08:09", "2019-12-05 10:09", "\"The selected member of staff is not available for scheduling on this role on thi" +
+        [NUnit.Framework.TestCaseAttribute("4.WhenRoleIsEmpty", "shiftWithInvalidRoleId", "1234567", "15", "25", "2019-12-07 08:09", "2019-12-07 10:09", "\"oops, Some error happened.", null)]
+        [NUnit.Framework.TestCaseAttribute("5.WhenEmployeeIsFromAnotherOrganisation", "shiftWithEmployeeFromAnotherOrganisation", "1234567", "15", "25", "2019-12-07 08:09", "2019-12-07 10:09", "\"The selected member of staff is not available for scheduling on this date\"", null)]
+        [NUnit.Framework.TestCaseAttribute("6.WhenRoleIsFromAnotherOrganisation", "shiftWithRoleFromAnotherOrganisation", "1234567", "15", "25", "2019-12-07 08:09", "2019-12-07 10:09", "\"The selected member of staff is not available for scheduling on this role on thi" +
             "s date\"", null)]
-        public virtual void CreateShiftEndpointShouldReturnError(string testCase, string invalidData, string id, string break1Minutes, string break2Minutes, string startDateTime, string endDateTime, string errorMessage, string[] exampleTags)
+        public virtual void CreateShiftEndpointShouldReturnErrorWhenBodysDataIsIncorrect(string testCase, string invalidData, string id, string break1Minutes, string break2Minutes, string startDateTime, string endDateTime, string errorMessage, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CreateShift endpoint should return error", null, exampleTags);
-#line 37
+            string[] @__tags = new string[] {
+                    "CreateLocation",
+                    "CreateArea",
+                    "CreateAreaAnotherOrganisation",
+                    "CreateRole",
+                    "CreateRoleForAnotherOrganisation",
+                    "CreateDepartment",
+                    "CreateDepartmentAnotherLocationSameOrganisation",
+                    "CreateJobTitle",
+                    "CreateEmployee",
+                    "CreateAnotherOrganisationEmployee",
+                    "CreateAssignment"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CreateShift endpoint should return error when body\'s data is incorrect", null, @__tags);
+#line 49
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -165,13 +193,13 @@ this.ScenarioInitialize(scenarioInfo);
             table2.AddRow(new string[] {
                         "RoleId",
                         string.Format("{0}", id)});
-#line 38
+#line 50
  testRunner.Given(string.Format("Shift is created to be imported with invalid data {0}", invalidData), ((string)(null)), table2, "Given ");
-#line 46
- testRunner.When("Create Shift endpoint is requested with correctData and <id>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 47
+#line 58
+ testRunner.When("Create Shift endpoint is requested with CorrectData and <id>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 59
  testRunner.Then("The status code of the response should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 49
+#line 61
   testRunner.And("Shift should not be added in the db", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -179,15 +207,43 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("CreateShift endpoint should return error for incorrect dates")]
-        [NUnit.Framework.TestCaseAttribute("1.ShiftInThePast", "15", "25", "2019-11-15 08:09", "2019-11-15 10:09", "\"ok.\"", null)]
-        [NUnit.Framework.TestCaseAttribute("2.WhenBreaksBiggerThenShift", "30", "30", "2019-12-07 01:09", "2019-12-07 02:00", "\"Shift must be longer than total break time added\"", null)]
-        [NUnit.Framework.TestCaseAttribute("3.WhenBreakBiggerThenShift", "0", "60", "2019-12-07 02:09", "2019-12-07 03:00", "\"Shift must be longer than total break time added\"", null)]
-        [NUnit.Framework.TestCaseAttribute("4.WhenShiftIsBeforeAssignmentStart", "15", "25", "2019-12-07 03:09", "2019-12-07 04:00", "\"The selected member of staff is not available for scheduling on this date\"", null)]
-        [NUnit.Framework.TestCaseAttribute("5.WhenShiftEndIsBeforeShiftStart", "15", "25", "2019-12-07 04:09", "2019-12-07 05:00", "\"Shift must be longer than total break time added\"", null)]
+        [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateLocations")]
+        [NUnit.Framework.CategoryAttribute("CreateArea")]
+        [NUnit.Framework.CategoryAttribute("CreateAreaAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateRole")]
+        [NUnit.Framework.CategoryAttribute("CreateRoleForAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherLocationSameOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateAnotherOrganisationEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateAssignment")]
+        [NUnit.Framework.TestCaseAttribute("2.WhenBreaksBiggerThenShift", "30", "30", "2025-12-07 01:09", "2025-12-07 02:00", "\"Shift must be longer than total break time added\"", null)]
+        [NUnit.Framework.TestCaseAttribute("3.WhenBreakBiggerThenShift", "0", "60", "2025-12-07 02:09", "2025-12-07 03:00", "\"Shift must be longer than total break time added\"", null)]
+        [NUnit.Framework.TestCaseAttribute("4.WhenShiftIsBeforeAssignmentStart", "15", "25", "2018-12-07 03:09", "2018-12-07 04:00", "\"The selected member of staff is not available for scheduling on this date\"", null)]
+        [NUnit.Framework.TestCaseAttribute("5.WhenShiftEndIsBeforeShiftStart", "15", "25", "2025-12-07 06:09", "2025-12-07 05:00", "\"Shift must be longer than total break time added\"", null)]
         public virtual void CreateShiftEndpointShouldReturnErrorForIncorrectDates(string testCase, string break1Minutes, string break2Minutes, string startDateTime, string endDateTime, string errorMessage, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CreateShift endpoint should return error for incorrect dates", null, exampleTags);
-#line 60
+            string[] @__tags = new string[] {
+                    "CreateLocation",
+                    "CreateLocations",
+                    "CreateArea",
+                    "CreateAreaAnotherOrganisation",
+                    "CreateRole",
+                    "CreateRoleForAnotherOrganisation",
+                    "CreateDepartment",
+                    "CreateDepartmentAnotherLocationSameOrganisation",
+                    "CreateJobTitle",
+                    "CreateEmployee",
+                    "CreateAnotherOrganisationEmployee",
+                    "CreateAssignment"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CreateShift endpoint should return error for incorrect dates", null, @__tags);
+#line 84
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -206,13 +262,13 @@ this.ScenarioInitialize(scenarioInfo);
             table3.AddRow(new string[] {
                         "EndDateTime",
                         string.Format("{0}", endDateTime)});
-#line 61
+#line 85
  testRunner.Given("NewShift is created to be imported", ((string)(null)), table3, "Given ");
-#line 67
- testRunner.When("Create Shift endpoint is requested with correctData and <id>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 68
+#line 91
+ testRunner.When("Create Shift endpoint is requested with CorrectData and <id>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 92
  testRunner.Then("The status code of the response should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 70
+#line 94
   testRunner.And("Shift should not be added in the db", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -220,11 +276,40 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("CreateShift endpoint should return error for overlaping shifts")]
+        [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateLocations")]
+        [NUnit.Framework.CategoryAttribute("CreateArea")]
+        [NUnit.Framework.CategoryAttribute("CreateAreaAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateRole")]
+        [NUnit.Framework.CategoryAttribute("CreateRoleForAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherLocationSameOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateAnotherOrganisationEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateAssignment")]
         [NUnit.Framework.TestCaseAttribute("15", "25", "2025-11-17 08:09", "2025-11-17 10:09", "\"The shift could not be added because it overlaps with another\"", null)]
         public virtual void CreateShiftEndpointShouldReturnErrorForOverlapingShifts(string break1Minutes, string break2Minutes, string startDateTime, string endDateTime, string errorMessage, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CreateShift endpoint should return error for overlaping shifts", null, exampleTags);
-#line 80
+            string[] @__tags = new string[] {
+                    "CreateLocation",
+                    "CreateLocations",
+                    "CreateArea",
+                    "CreateAreaAnotherOrganisation",
+                    "CreateRole",
+                    "CreateRoleForAnotherOrganisation",
+                    "CreateDepartment",
+                    "CreateDepartmentAnotherLocationSameOrganisation",
+                    "CreateJobTitle",
+                    "CreateEmployee",
+                    "CreateAnotherOrganisationEmployee",
+                    "CreateAssignment"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CreateShift endpoint should return error for overlaping shifts", null, @__tags);
+#line 116
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -243,11 +328,11 @@ this.ScenarioInitialize(scenarioInfo);
             table4.AddRow(new string[] {
                         "EndDateTime",
                         string.Format("{0}", endDateTime)});
-#line 81
+#line 117
  testRunner.Given("NewShift is created to be imported", ((string)(null)), table4, "Given ");
-#line 87
-     testRunner.And("Create Shift endpoint is requested with correctData and <id>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 88
+#line 123
+     testRunner.And("Create Shift endpoint is requested with CorrectData and <id>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 124
      testRunner.And("The status code of the response should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -265,13 +350,13 @@ this.ScenarioInitialize(scenarioInfo);
             table5.AddRow(new string[] {
                         "EndDateTime",
                         string.Format("{0}", endDateTime)});
-#line 89
+#line 125
      testRunner.And("NewShift is created to be imported", ((string)(null)), table5, "And ");
-#line 95
- testRunner.When("Create Shift endpoint is requested with correctData and <id>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 96
+#line 131
+ testRunner.When("Create Shift endpoint is requested with CorrectData and <id>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 132
  testRunner.Then("The status code of the response should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 98
+#line 134
   testRunner.And("Shift should not be added in the db", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -280,20 +365,56 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("CreateShift endpoint should return error for incorrect locationId or departmentId" +
             "")]
+        [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateLocations")]
+        [NUnit.Framework.CategoryAttribute("LocationForAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateArea")]
+        [NUnit.Framework.CategoryAttribute("CreateAreaAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateRole")]
+        [NUnit.Framework.CategoryAttribute("CreateRoleForAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherLocationSameOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateAnotherOrganisationEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateAssignment")]
         [NUnit.Framework.TestCaseAttribute("1.MissingLocation", "InvalidLocationId", "", "404", null)]
         [NUnit.Framework.TestCaseAttribute("2.InvalidLocation", "InvalidLocationId", "123456", "401", null)]
         [NUnit.Framework.TestCaseAttribute("3.MissingDepartment", "InvalidDepartmentId", "", "404", null)]
         [NUnit.Framework.TestCaseAttribute("4.InvalidDepartment", "InvalidDepartmentId", "123456", "404", null)]
+        [NUnit.Framework.TestCaseAttribute("5.LocationAnotherOrganisation", "LocationFromAnatherOrganisation", "123456", "401", null)]
+        [NUnit.Framework.TestCaseAttribute("6.DepartmentAnotherOrganisation", "DepartmentFromAnatherOrganisation", "123456", "404", null)]
+        [NUnit.Framework.TestCaseAttribute("7.DepartmentFromAnatherLocationSameOrganisation", "DepartmentFromAnatherLocationSameOrganisation", "123456", "401", null)]
         public virtual void CreateShiftEndpointShouldReturnErrorForIncorrectLocationIdOrDepartmentId(string testCase, string data, string id, string code, string[] exampleTags)
         {
+            string[] @__tags = new string[] {
+                    "CreateLocation",
+                    "CreateLocations",
+                    "LocationForAnotherOrganisation",
+                    "CreateArea",
+                    "CreateAreaAnotherOrganisation",
+                    "CreateRole",
+                    "CreateRoleForAnotherOrganisation",
+                    "CreateDepartment",
+                    "CreateDepartmentAnotherOrganisation",
+                    "CreateDepartmentAnotherLocationSameOrganisation",
+                    "CreateJobTitle",
+                    "CreateEmployee",
+                    "CreateAnotherOrganisationEmployee",
+                    "CreateAssignment"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CreateShift endpoint should return error for incorrect locationId or departmentId" +
-                    "", null, exampleTags);
-#line 104
+                    "", null, @__tags);
+#line 154
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 105
+#line 155
  testRunner.When(string.Format("Create Shift endpoint is requested with {0} and {1}", data, id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 106
+#line 156
  testRunner.Then(string.Format("The status code of the response should be {0}", code), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -304,18 +425,18 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void UpdateShift()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update Shift", null, ((string[])(null)));
-#line 117
+#line 170
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 118
+#line 171
     testRunner.Given("1 shifts are created and saved into database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 119
+#line 172
      testRunner.And("Shift is updated to be imported", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 120
+#line 173
  testRunner.When("Update Shift endpoint is requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 121
+#line 174
  testRunner.Then("The status code of the response should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 122
+#line 175
      testRunner.And("Shift should be updated in the db", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -326,18 +447,18 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void DeleteShift()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete Shift", null, ((string[])(null)));
-#line 125
+#line 178
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 126
+#line 179
     testRunner.Given("1 shifts are created and saved into database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 127
+#line 180
      testRunner.And("Delete Shift model is created to be imported", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 128
+#line 181
  testRunner.When("Delete Shift endpoint is requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 129
+#line 182
  testRunner.Then("The status code of the response should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 130
+#line 183
      testRunner.And("Shift should be deleted from db", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -348,12 +469,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void DeleteShiftEnpoindShouldReturnErrorWithInvalidLocationIdOrdepartmentId()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete Shift enpoind should return error with invalid locationId ordepartmentId", null, ((string[])(null)));
-#line 132
+#line 185
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 133
+#line 186
  testRunner.When("Delete Shift endpoint is requested with <invalidData> and <id>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 134
+#line 187
  testRunner.Then("The status code of the response should be <code>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -364,12 +485,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void DeleteShiftEnpoindShouldReturnErrorWithInvalidShiftId()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete Shift enpoind should return error with invalid shiftId", null, ((string[])(null)));
-#line 143
+#line 196
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 144
+#line 197
  testRunner.When("Delete Shift endpoint is requested with <invalidData> and <id>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 145
+#line 198
  testRunner.Then("The status code of the response should be <code>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

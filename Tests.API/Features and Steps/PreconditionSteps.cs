@@ -98,7 +98,7 @@ namespace Tests.API.Features_and_Steps.PreconditionSteps
             _lpHotelsMainUnitOfWork.Department.Add(department);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
-            Session.Set(department, Constants.Data.DepartmentAnotherLocation);
+            Session.Set(department, Constants.Data.DepartmentAnotherLocationSameOrganisation);
         }
 
         [Given(@"Department for another organisation is created and saved into database")]

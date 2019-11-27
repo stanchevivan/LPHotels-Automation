@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TeamHours.DomainModel;
 
 namespace DataSeeding.Infrastructure
 {
@@ -11,6 +12,8 @@ namespace DataSeeding.Infrastructure
         void Add(TEntity entity);
 
         void AddRange(IEnumerable<TEntity> entities);
+
+        void Attach(TEntity entity);
 
         void Remove(TEntity entity);
 

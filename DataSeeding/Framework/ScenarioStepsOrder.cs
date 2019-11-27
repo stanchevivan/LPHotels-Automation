@@ -2,9 +2,13 @@
 {
     public class ScenarioStepsOrder
     {
-        //public const int Organisation = 1;
+        public const int Organisation = 1;
 
-        public const int Location = 1;
+        public const int UserLevels = 2;
+
+        public const int User = 3;
+
+        public const int Location = 100;
 
         public const int Area = 200;
 
