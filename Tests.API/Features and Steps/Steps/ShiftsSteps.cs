@@ -193,10 +193,10 @@ namespace Tests.API.Features_and_Steps.Steps
         [When(@"NewShift is created to be imported")]
         public void NewShiftIsCreatedToBeImported(Table table)
         {
-            var employeeId = 171832;//Session.Get<TempStaff>(Constants.Data.Employee).ID;
-            var roleId = 184025;//Session.Get<TempRole>(Constants.Data.Role).ID;
+            var employeeId = Session.Get<TempStaff>(Constants.Data.Employee).ID;
+            var roleId = Session.Get<TempRole>(Constants.Data.Role).ID;
 
-            var createshift = new DataSeeding.Models.CreateShiftModel();
+            var createshift = new CreateShiftModel();
             GeneralHelpers.SetValues(table.CreateSet<Parameters>(), createshift);
             createshift.EmployeeId = employeeId;
             createshift.RoleId = roleId;
@@ -237,7 +237,7 @@ namespace Tests.API.Features_and_Steps.Steps
             switch (invalidData)
             {
                 case "shiftWithInvalidEmployeeId":
-                    var roleId = 184025;//Session.Get<TempRole>(Constants.Data.Role).ID;
+                    var roleId = Session.Get<TempRole>(Constants.Data.Role).ID;
                     var createShiftwithInvalidemployee = new CreateShiftModel();
                     GeneralHelpers.SetValues(table.CreateSet<Parameters>(), createShiftwithInvalidemployee);
                     createShiftwithInvalidemployee.RoleId = roleId;
@@ -246,7 +246,7 @@ namespace Tests.API.Features_and_Steps.Steps
                     break;
 
                 case "shiftWithInvalidRoleId":
-                    var employeeId = 171832;//Session.Get<TempStaff>(Constants.Data.Employee).ID;
+                    var employeeId = Session.Get<TempStaff>(Constants.Data.Employee).ID;
                     var createShiftwithInvalidRole = new CreateShiftModel();
                     GeneralHelpers.SetValues(table.CreateSet<Parameters>(), createShiftwithInvalidRole);
                     createShiftwithInvalidRole.EmployeeId = employeeId;
@@ -255,12 +255,25 @@ namespace Tests.API.Features_and_Steps.Steps
                     break;
 
                 case "shiftWithEmployeeFromAnotherOrganisation":
-                    var employeeIdAnotherOrganisation = 171846;//Session.Get<TempStaff>(Constants.Data.Employee).ID;
+                    var roleIdForShift = Session.Get<TempRole>(Constants.Data.Role).ID;
+                    var employeeIdAnotherOrganisation = Session.Get<TempStaff>(Constants.Data.EmployeeAnotherOrganisation).ID;
                     var createShiftAnotherOrganisationEmployee = new CreateShiftModel();
                     GeneralHelpers.SetValues(table.CreateSet<Parameters>(), createShiftAnotherOrganisationEmployee);
                     createShiftAnotherOrganisationEmployee.EmployeeId = employeeIdAnotherOrganisation;
+                    createShiftAnotherOrganisationEmployee.RoleId = roleIdForShift;
                     createShiftAnotherOrganisationEmployee.Notes = RandomGenerator.AlphaNumeric(10) + "QaAutomatioNotes";
                     Session.Set(createShiftAnotherOrganisationEmployee, Constants.Data.Shift);
+                    break;
+
+                case "shiftWithRoleFromAnotherOrganisation":
+                    var roleIdForAnotherOrganisation = Session.Get<TempRole>(Constants.Data.RoleAnoderOrganisation).ID;
+                    var employeeIdForShift = Session.Get<TempStaff>(Constants.Data.Employee).ID;
+                    var createShiftAnotherOrganisationRole = new CreateShiftModel();
+                    GeneralHelpers.SetValues(table.CreateSet<Parameters>(), createShiftAnotherOrganisationRole);
+                    createShiftAnotherOrganisationRole.EmployeeId = employeeIdForShift;
+                    createShiftAnotherOrganisationRole.RoleId = roleIdForAnotherOrganisation;
+                    createShiftAnotherOrganisationRole.Notes = RandomGenerator.AlphaNumeric(10) + "QaAutomatioNotes";
+                    Session.Set(createShiftAnotherOrganisationRole, Constants.Data.Shift);
                     break;
             }
         }
@@ -269,29 +282,49 @@ namespace Tests.API.Features_and_Steps.Steps
         [When(@"Create Shift endpoint is requested with (.*) and (.*)")]
         public void CreateShiftEndpointIsRequested(string data, string id)
         {
+            var shiftToImport = new CreateShiftModel();
+            var departmentId = "";
+            var locationId ="";
             switch (data)
             {
                 case "InvalidLocationId":
-                    var shiftToImportDummy1 = new DataSeeding.Models.CreateShiftModel();
-                    var departmentId = 189847.ToString();//Session.Get<Department>(Constants.Data.Department).ID;
-                    var responseInvalidLocation = _shiftsFacade.CreateShift(id, departmentId, shiftToImportDummy1);
-                    //GeneralHelpers.SetValues(table.CreateSet<Parameters>(), responseInvalidLocation);
+                    var departmentId1 = Session.Get<Department>(Constants.Data.Department).ID.ToString();
+                    var responseInvalidLocation = _shiftsFacade.CreateShift(id, departmentId, shiftToImport);
                     Session.SetResponse(responseInvalidLocation);
                     break;
 
+                case "LocationFromAnatherOrganisation":
+                    locationId = Session.Get<Location>(Constants.Data.LocationAnotherOrganisation).ID.ToString();
+                    departmentId = Session.Get<Department>(Constants.Data.Department).ID.ToString();
+                    var responseLocationAnotherOrg = _shiftsFacade.CreateShift(locationId, departmentId, shiftToImport);
+                    Session.SetResponse(responseLocationAnotherOrg);
+                    break;
+
+                case "DepartmentFromAnatherOrganisation":
+                    locationId = Session.Get<Location>(Constants.Data.Location).ID.ToString();
+                    departmentId = Session.Get<Department>(Constants.Data.DepartmentAnotherOrganisation).ID.ToString();
+                    var responseDepartmentAnotherOrg = _shiftsFacade.CreateShift(locationId, departmentId, shiftToImport);
+                    Session.SetResponse(responseDepartmentAnotherOrg);
+                    break;
+
+                case "DepartmentFromAnatherLocationSameOrganisation":
+                    locationId = Session.Get<Location>(Constants.Data.Location).ID.ToString();
+                    departmentId = Session.Get<Department>(Constants.Data.DepartmentAnotherLocationSameOrganisation).ID.ToString();
+                    var responseDepartmentAnotherLocSameOrg = _shiftsFacade.CreateShift(locationId, departmentId, shiftToImport);
+                    Session.SetResponse(responseDepartmentAnotherLocSameOrg);
+                    break;
+
                 case "InvalidDepartmentId":
-                    var shiftToImportDummy2 = new DataSeeding.Models.CreateShiftModel();
-                    var locationId = 127554.ToString();////Session.Get<Location>(Constants.Data.Location).ID;
-                    var responseInvalidDepartment = _shiftsFacade.CreateShift(id, id, shiftToImportDummy2);
+                    locationId = Session.Get<Location>(Constants.Data.Location).ID.ToString();
+                    var responseInvalidDepartment = _shiftsFacade.CreateShift(id, id, shiftToImport);
                     Session.SetResponse(responseInvalidDepartment);
                     break;
 
                 case "CorrectData":
-                    var shiftToImport = Session.Get<DataSeeding.Models.CreateShiftModel>(Constants.Data.Shift);
-                    var correctLocationId1 = 127554.ToString();////Session.Get<Location>(Constants.Data.Location).ID;
-                    var correctDepartmentId1 = 189847.ToString();//Session.Get<Department>(Constants.Data.Department).ID;
-                    //shiftToImport = Session.Get<CreateShiftModel>(Constants.Data.Shift);
-                    var response = _shiftsFacade.CreateShift(correctLocationId1, correctDepartmentId1, shiftToImport);
+                    shiftToImport = Session.Get<CreateShiftModel>(Constants.Data.Shift);
+                    var correctLocationId = Session.Get<Location>(Constants.Data.Location).ID.ToString();
+                    var correctDepartmentId = Session.Get<Department>(Constants.Data.Department).ID.ToString();
+                    var response = _shiftsFacade.CreateShift(correctLocationId, correctDepartmentId, shiftToImport);
                     Session.SetResponse(response);
                     break;
             }

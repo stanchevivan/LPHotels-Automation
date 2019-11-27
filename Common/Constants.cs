@@ -12,11 +12,13 @@ namespace Common
 
         public const int OgranisationId = 1;
 
+        public const int AnotherOgranisationId = 159;
+
         public static class Headers
         {
             public const string OrganizationHeader = "Authorization";
 
-            public const string UserHeader = "X-Fourth-UserID";
+            public const string Reset = "reset";
         }
         public static class Data
         {
@@ -38,7 +40,7 @@ namespace Common
 
             public const string Department = "Department";
 
-            public const string DepartmentAnotherLocation = "DepartmentAnotherLocation";
+            public const string DepartmentAnotherLocationSameOrganisation = "DepartmentAnotherLocationSameOrganisation";
 
             public const string DepartmentAnotherOrganisation = "DepartmentAnotherOrganisation";
 
@@ -75,6 +77,10 @@ namespace Common
             public const string UpdatedShift = "UpdatedShift";
 
             public const string ShiftToDelete = "ShiftToDelete";
+
+            public const string User = "User";
+
+            public const string UserLevel = "UserLevel";
 
         }
 

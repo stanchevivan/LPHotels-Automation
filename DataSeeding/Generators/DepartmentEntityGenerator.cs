@@ -19,7 +19,7 @@ namespace DataSeeding.Generators
                 d.LocationID = RandomGenerator.RandomIntBetween(5,7);
                 d.Deleted = false;
                 d.HoursAfterMidnightDayCutoff = 5;
-                d.StartDate = DateTime.UtcNow;
+                d.StartDate = DateTime.Today.AddDays(-2);
             });
 
             return departmentFaker.Generate(count);

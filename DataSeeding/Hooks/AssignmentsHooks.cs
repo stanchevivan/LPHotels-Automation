@@ -23,7 +23,7 @@ namespace DataSeeding.Hooks
             _lpHotelsMainUnitOfWork = lpHotelsMainUnitOfWork;
         }
 
-        [BeforeScenario("CreateAssignmen", Order = ScenarioStepsOrder.Assignment)]
+        [BeforeScenario("CreateAssignment", Order = ScenarioStepsOrder.Assignment)]
         public void AssignmenIsCreated()
         {
             var roleId = Session.Get<TempRole>(Constants.Data.Role).ID;
@@ -44,13 +44,5 @@ namespace DataSeeding.Hooks
 
             Session.Set(mainAssignment, Constants.Data.MainAssignment);
         }
-
-        //[AfterScenario("CreateAssignmen", Order = ScenarioStepsOrder.Assignment)]
-        //public async Task DeleteAssignmen()
-        //{
-        //    var assignmenToDelete = Session.Get<StaffPayInfo>(Constants.Data.MainAssignment);
-        //    _lpHotelsMainUnitOfWork.StaffPayInfo.Remove(assignmenToDelete);
-        //    _lpHotelsMainUnitOfWork.SaveAsync();
-        //}
     }
 }

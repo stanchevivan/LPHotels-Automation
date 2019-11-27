@@ -26,9 +26,10 @@ namespace DataSeeding.Hooks
         [BeforeScenario("CreateEmployee", Order = ScenarioStepsOrder.Employee)]
         public void EmployeeIsCreated()
         {
+            var organisationId = Common.Constants.OgranisationId;
             var employee = new EmployeeEntityGenerator().GenerateSingle( x =>
             {
-                x.OrganisationID = Constants.OgranisationId;
+                x.OrganisationID = organisationId;
             });
 
             _lpHotelsMainUnitOfWork.TempStaff.Add(employee);
@@ -37,13 +38,20 @@ namespace DataSeeding.Hooks
             Session.Set(employee, Constants.Data.Employee, true);
         }
 
-        //[AfterScenario("CreateEmployee", Order = ScenarioStepsOrder.Employee)]
-        //public async Task DeleteEmployee()
-        //{
-        //    var employeeToDelete = Session.Get<TempStaff>(Constants.Data.Employee);
-        //    _lpHotelsMainUnitOfWork.TempStaff.Remove(employeeToDelete);
-        //    _lpHotelsMainUnitOfWork.SaveAsync();
-        //}
+        [BeforeScenario("CreateAnotherOrganisationEmployee", Order = ScenarioStepsOrder.Employee)]
+        public void EmployeeAnotherOrganisationIsCreated()
+        {
+            var organisationId = Constants.AnotherOgranisationId;
+            var employee = new EmployeeEntityGenerator().GenerateSingle(x =>
+            {
+                x.OrganisationID = organisationId;
+            });
+
+            _lpHotelsMainUnitOfWork.TempStaff.Add(employee);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(employee, Constants.Data.EmployeeAnotherOrganisation);
+        }
     }
 }
 

@@ -12,32 +12,27 @@ using TechTalk.SpecFlow;
 
 namespace DataSeeding.Hooks
 {
-    [Binding]
-    public class JobTitlesHooks
+   // [Binding]
+    public class UserLevelsHooks
     {
-
         private readonly ILpHotelsMainUnitOfWork _lpHotelsMainUnitOfWork;
 
-        public JobTitlesHooks(ILpHotelsMainUnitOfWork lpHotelsMainUnitOfWork)
+        public UserLevelsHooks(ILpHotelsMainUnitOfWork lpHotelsMainUnitOfWork)
         {
             _lpHotelsMainUnitOfWork = lpHotelsMainUnitOfWork;
         }
 
-        [BeforeScenario("CreateJobTitle", Order = ScenarioStepsOrder.JobTitle)]
-        public void JobTitleIsCreated()
+        [BeforeScenario("CreateUserLevel", Order = ScenarioStepsOrder.UserLevels)]
+        public async Task CreateUserLevel()
         {
-            var organisationId = Common.Constants.OgranisationId;
-            var roleId = Session.Get<TempRole>(Constants.Data.Role).ID;
-            var jobTitle = new JobTitleEntityGenerator().GenerateSingle(x =>
+            var organisationId = Session.Get<Organisation>(Constants.Data.Organisation).ID;
+            var userLevelEntity = new UserLevelEntityGenerator().GenerateSingle(x =>
             {
                 x.OrganisationID = organisationId;
-                x.TempRoleID = roleId;
             });
-
-            _lpHotelsMainUnitOfWork.JobTitle.Add(jobTitle);
+            _lpHotelsMainUnitOfWork.UserLevel.Add(userLevelEntity);
             _lpHotelsMainUnitOfWork.SaveAsync();
-
-            Session.Set(jobTitle, Constants.Data.JobTitle, true);
+            Session.Set(userLevelEntity, Constants.Data.UserLevel);
         }
     }
 }

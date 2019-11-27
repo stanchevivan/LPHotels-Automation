@@ -39,12 +39,36 @@ namespace DataSeeding.Hooks
             Session.Set(department, Constants.Data.Department);
         }
 
-        //[AfterScenario("CreateDepartment", Order = ScenarioStepsOrder.Department)]
-        //public async Task DeleteDepartment()
-        //{
-        //    var departmentToDelete = Session.Get<Department>(Constants.Data.Department);
-        //    _lpHotelsMainUnitOfWork.Department.Remove(departmentToDelete);
-        //    _lpHotelsMainUnitOfWork.SaveAsync();
-        //}
+        [BeforeScenario("CreateDepartmentAnotherLocationSameOrganisation", Order = ScenarioStepsOrder.Department)]
+        public void DepartmentAnotherLocationSameOrganisationIsCreated()
+        {
+            var locationId = Session.Get<List<Location>>(Constants.Data.Locations)[2].ID;
+            var department = new DepartmentEntityGenerator().GenerateSingle(d =>
+            {
+                d.Name = "TestDep" + RandomGenerator.OnlyNumeric(2);
+                d.LocationID = locationId;
+            });
+
+            _lpHotelsMainUnitOfWork.Department.Add(department);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(department, Constants.Data.DepartmentAnotherLocationSameOrganisation);
+        }
+
+        [BeforeScenario("CreateDepartmentAnotherOrganisation", Order = ScenarioStepsOrder.Department)]
+        public void DepartmentAnotherOrganisationIsCreated()
+        {
+            var locationId = Session.Get<Location>(Constants.Data.LocationAnotherOrganisation).ID;
+            var department = new DepartmentEntityGenerator().GenerateSingle(d =>
+            {
+                d.Name = "TestDep" + RandomGenerator.OnlyNumeric(2);
+                d.LocationID = locationId;
+            });
+
+            _lpHotelsMainUnitOfWork.Department.Add(department);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(department, Constants.Data.DepartmentAnotherOrganisation);
+        }
     }
 }

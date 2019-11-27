@@ -15,7 +15,7 @@ namespace DataSeeding.Generators
             var mainAssignmentFaker = new Faker<StaffPayInfo>().Rules((f, a) =>
             {
                 //a.TempStaffID = employeeId from tempStaff ;
-                a.FromDate = DateTime.UtcNow;
+                a.FromDate = DateTime.UtcNow.AddYears(-1);
                 //a.HomeDepartmentID = from department;
                 a.Rate = RandomGenerator.RandomIntBetween(1, 5);
                 //a.PrimaryRoleID = from role

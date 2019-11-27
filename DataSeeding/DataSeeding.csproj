@@ -331,6 +331,12 @@
       <HintPath>..\packages\Utf8Json.1.3.7\lib\net47\Utf8Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Z.EntityFramework.Extensions.Classic, Version=4.0.20.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Extensions.Classic.4.0.20\lib\net45\Z.EntityFramework.Extensions.Classic.dll</HintPath>
+    </Reference>
+    <Reference Include="Z.Expressions.Eval, Version=3.0.7.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.Expressions.Eval.3.0.7\lib\net45\Z.Expressions.Eval.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
@@ -348,6 +354,7 @@
     <Compile Include="Generators\RoleEntityGenerator.cs" />
     <Compile Include="Generators\ShiftEntityGenerator.cs" />
     <Compile Include="Generators\UserEntityGenerator.cs" />
+    <Compile Include="Generators\UserLevelEntityGenerator.cs" />
     <Compile Include="Hooks\AreasHooks.cs" />
     <Compile Include="Hooks\AssignmentsHooks.cs" />
     <Compile Include="Hooks\CommonHooks.cs" />
@@ -358,6 +365,8 @@
     <Compile Include="Hooks\LocationsHooks.cs" />
     <Compile Include="Hooks\OrganisationHooks.cs" />
     <Compile Include="Hooks\ShiftsHooks.cs" />
+    <Compile Include="Hooks\UserLevelsHooks.cs" />
+    <Compile Include="Hooks\UsersHooks.cs" />
     <Compile Include="Infrastructure\ILpHotelsMainUnitOfWork.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\LpHotelsDbContext.cs" />

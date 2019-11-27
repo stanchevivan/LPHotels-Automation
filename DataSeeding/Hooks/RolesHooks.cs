@@ -25,10 +25,11 @@ namespace DataSeeding.Hooks
         [BeforeScenario("CreateRole", Order = ScenarioStepsOrder.Role)]
         public void RoleIsCreated()
         {
-            var areaId = Session.Get<TempRole>(Constants.Data.Area).ID;
+            var organisationId = Constants.OgranisationId;
+            var areaId = Session.Get<TempArea>(Constants.Data.Area).ID;
             var role = new RoleEntityGenerator().GenerateSingle(x =>
             {
-                x.OrganisationID = Constants.OgranisationId;
+                x.OrganisationID = organisationId;
                 x.TempAreaID = areaId;
             });
 
@@ -38,12 +39,21 @@ namespace DataSeeding.Hooks
             Session.Set(role, Constants.Data.Role);
         }
 
-        //[AfterScenario("CreateRole", Order = ScenarioStepsOrder.Role)]
-        //public async Task DeleteRole()
-        //{
-        //    var roleToDelete = Session.Get<TempRole>(Constants.Data.Role);
-        //    _lpHotelsMainUnitOfWork.TempRole.Remove(roleToDelete);
-        //    _lpHotelsMainUnitOfWork.SaveAsync();
-        //}
+        [BeforeScenario("CreateRoleForAnotherOrganisation", Order = ScenarioStepsOrder.Role)]
+        public void RoleForAnotherOrganisationIsCreated()
+        {
+            var organisationId = Constants.AnotherOgranisationId;
+            var areaId = Session.Get<TempArea>(Constants.Data.AreaAnotherOrganisation).ID;
+            var role = new RoleEntityGenerator().GenerateSingle(x =>
+            {
+                x.OrganisationID = organisationId;
+                x.TempAreaID = areaId;
+            });
+
+            _lpHotelsMainUnitOfWork.TempRole.Add(role);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(role, Constants.Data.RoleAnoderOrganisation);
+        }
     }
 }

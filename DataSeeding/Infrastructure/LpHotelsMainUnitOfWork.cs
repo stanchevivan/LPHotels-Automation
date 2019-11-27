@@ -42,6 +42,8 @@ namespace DataSeeding.Infrastructure
 
         public IRepository<User> User => _repositoryFactory.GetRepository<User>();
 
+        public IRepository<UserLevel> UserLevel => _repositoryFactory.GetRepository<UserLevel>();
+
         public int SaveAsync()
         {
             return _lpHotelsMainDataContext.SaveChanges();

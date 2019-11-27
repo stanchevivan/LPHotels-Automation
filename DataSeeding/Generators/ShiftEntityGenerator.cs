@@ -18,8 +18,8 @@ namespace DataSeeding.Generators
                 //s.TempStaffID = from employee
                 //s.TempRoleID = from role
                 s.ChargedDate = DateTime.UtcNow.AddDays(2);
-                s.StartDateTime = DateTime.UtcNow.AddDays(2);
-                s.EndDateTime = DateTime.UtcNow.AddDays(2).AddHours(2);
+                s.StartDateTime = DateTime.UtcNow.AddDays(RandomGenerator.RandomIntBetween(10,300));
+                s.EndDateTime = s.StartDateTime.AddHours(2);
                 s.Break1DurationInMinutes = RandomGenerator.RandomIntBetween(1, 10);
                 s.Break2DurationInMinutes = RandomGenerator.RandomIntBetween(1, 10);
                 s.Notes = f.Random.AlphaNumeric(5) + "QANotes";

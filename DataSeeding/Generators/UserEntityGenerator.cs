@@ -14,11 +14,10 @@ namespace DataSeeding.Generators
         {
             var userFaker = new Faker<User>().Rules((f, u) =>
             {
-                //u.UserLevelID = from userlevel
                 u.EmailAddress = RandomGenerator.OnlyNumeric(10) + "@" + RandomGenerator.OnlyNumeric(5) + ".com";
                 u.Surname = "QaAutomationUserSurname";
                 u.Forename = "QaAutomationUserForename";
-               // u.
+                u.EncryptedPassword = RandomGenerator.OnlyNumeric(15);
             });
             return userFaker.Generate(count);
         }
