@@ -2,6 +2,7 @@
 using Autofac.Features.ResolveAnything;
 using DataSeeding.Infrastructure;
 using Fourth.Automation.Framework.RestApi;
+using Fourth.Automation.SpecFlow.Extensions;
 using SpecFlow.Autofac;
 using System;
 using System.Linq;
@@ -17,13 +18,14 @@ namespace Tests.WebService
             var builder = new ContainerBuilder();
 
             builder.RegisterAssemblyModules(
-                typeof(RestModule).Assembly);
+                typeof(RestModule).Assembly,
+                typeof(SpecFlowModule).Assembly);
+
+            builder.RegisterType<LpHotelsMainUnitOfWork>().As<ILpHotelsMainUnitOfWork>();
 
             builder.RegisterTypes(typeof(ContainerConfig).Assembly.GetTypes()
                 .Where(t => Attribute.IsDefined(t, typeof(BindingAttribute))).ToArray()).SingleInstance();
-            builder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
-
-            builder.RegisterType<LpHotelsMainUnitOfWork>().As<ILpHotelsMainUnitOfWork>();
+            builder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());           
 
             return builder;
         }
