@@ -425,18 +425,18 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void UpdateShift()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update Shift", null, ((string[])(null)));
-#line 170
+#line 168
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 171
+#line 169
     testRunner.Given("1 shifts are created and saved into database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 172
+#line 170
      testRunner.And("Shift is updated to be imported", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 173
+#line 171
  testRunner.When("Update Shift endpoint is requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 174
+#line 172
  testRunner.Then("The status code of the response should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 175
+#line 173
      testRunner.And("Shift should be updated in the db", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -444,21 +444,51 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Delete Shift")]
+        [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateLocations")]
+        [NUnit.Framework.CategoryAttribute("LocationForAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateArea")]
+        [NUnit.Framework.CategoryAttribute("CreateAreaAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateRole")]
+        [NUnit.Framework.CategoryAttribute("CreateRoleForAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherLocationSameOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateAnotherOrganisationEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateAssignment")]
+        [NUnit.Framework.CategoryAttribute("CreateShift")]
         public virtual void DeleteShift()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete Shift", null, ((string[])(null)));
-#line 178
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete Shift", null, new string[] {
+                        "CreateLocation",
+                        "CreateLocations",
+                        "LocationForAnotherOrganisation",
+                        "CreateArea",
+                        "CreateAreaAnotherOrganisation",
+                        "CreateRole",
+                        "CreateRoleForAnotherOrganisation",
+                        "CreateDepartment",
+                        "CreateDepartmentAnotherOrganisation",
+                        "CreateDepartmentAnotherLocationSameOrganisation",
+                        "CreateJobTitle",
+                        "CreateEmployee",
+                        "CreateAnotherOrganisationEmployee",
+                        "CreateAssignment",
+                        "CreateShift"});
+#line 190
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 179
+#line 191
     testRunner.Given("1 shifts are created and saved into database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 180
+#line 192
      testRunner.And("Delete Shift model is created to be imported", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 181
+#line 193
  testRunner.When("Delete Shift endpoint is requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 182
+#line 194
  testRunner.Then("The status code of the response should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 183
+#line 195
      testRunner.And("Shift should be deleted from db", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -469,12 +499,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void DeleteShiftEnpoindShouldReturnErrorWithInvalidLocationIdOrdepartmentId()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete Shift enpoind should return error with invalid locationId ordepartmentId", null, ((string[])(null)));
-#line 185
+#line 197
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 186
+#line 198
  testRunner.When("Delete Shift endpoint is requested with <invalidData> and <id>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 187
+#line 199
  testRunner.Then("The status code of the response should be <code>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -485,12 +515,12 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void DeleteShiftEnpoindShouldReturnErrorWithInvalidShiftId()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete Shift enpoind should return error with invalid shiftId", null, ((string[])(null)));
-#line 196
+#line 208
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 197
+#line 209
  testRunner.When("Delete Shift endpoint is requested with <invalidData> and <id>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 198
+#line 210
  testRunner.Then("The status code of the response should be <code>", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

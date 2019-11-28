@@ -34,7 +34,6 @@
       <DependentUpon>app.config</DependentUpon>
       <IsTransformFile>true</IsTransformFile>
     </None>
-    <None Include="Features and Steps\Features\LocationsSteps.feature" />
     <None Include="Features and Steps\Features\ShiftsTests.feature" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -365,9 +364,7 @@
     </Reference>
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="ExampleOfUsingToken.cs" />
     <Compile Include="Facade\BaseFacade.cs" />
@@ -375,7 +372,6 @@
     <Compile Include="Facade\ShiftsFacade.cs" />
     <Compile Include="Features and Steps\CommonSteps.cs" />
     <Compile Include="Features and Steps\PreconditionSteps.cs" />
-    <Compile Include="Features and Steps\Steps\LocationsSteps.cs" />
     <Compile Include="Features and Steps\Steps\ShiftsSteps.cs" />
     <Compile Include="Models\UpdateShiftModel.cs" />
     <Compile Include="Models\DeleteShiftModel.cs" />
