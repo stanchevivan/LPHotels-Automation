@@ -339,7 +339,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Framework\ScenarioStepsOrder.cs" />
     <Compile Include="Framework\Session.cs" />
     <Compile Include="Framework\SessionException.cs" />
@@ -375,8 +374,6 @@
     <Compile Include="Infrastructure\RepositoryFactory.cs" />
     <Compile Include="Models\CreateShiftModel.cs" />
     <Compile Include="Setup\ContainerConfig.cs" />
-    <Compile Include="Steps\CreateOrganizationSteps.cs" />
-    <Compile Include="Steps\CreateEmployeeSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

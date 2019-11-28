@@ -163,8 +163,6 @@ Examples:
 | 5.LocationAnotherOrganisation                   | LocationFromAnatherOrganisation               | 123456 | 401  |
 | 6.DepartmentAnotherOrganisation                 | DepartmentFromAnatherOrganisation             | 123456 | 404  |
 | 7.DepartmentFromAnatherLocationSameOrganisation | DepartmentFromAnatherLocationSameOrganisation | 123456 | 401  |
-#|5.location+dep anotherorgForourToken
-#| 3.AnotherOrganisationLocation | shiftWithInvalidLocationId |    | 401  |
 
 
 Scenario: Update Shift
@@ -174,7 +172,21 @@ Scenario: Update Shift
 	Then The status code of the response should be 200
 	    And Shift should be updated in the db
 
-
+@CreateLocation
+@CreateLocations
+@LocationForAnotherOrganisation
+@CreateArea
+@CreateAreaAnotherOrganisation
+@CreateRole
+@CreateRoleForAnotherOrganisation
+@CreateDepartment
+@CreateDepartmentAnotherOrganisation
+@CreateDepartmentAnotherLocationSameOrganisation
+@CreateJobTitle
+@CreateEmployee
+@CreateAnotherOrganisationEmployee
+@CreateAssignment
+@CreateShift
 Scenario: Delete Shift
     Given 1 shifts are created and saved into database
 	    And Delete Shift model is created to be imported
