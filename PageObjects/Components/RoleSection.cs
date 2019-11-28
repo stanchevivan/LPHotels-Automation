@@ -14,12 +14,21 @@ namespace PageObjects
             PageFactory.InitElements(webDriver, this);
         }
 
-        public string RoleName => webElement.GetAttribute("data-test-id");
-        public IList<Employee> Employees;
+        private IWebElement roleName => webElement.FindElement(By.CssSelector(".row-name-header-inner > span:first-of-type"));
+        private IWebElement employeeSection;
+        private IList<IWebElement> employees => employeeSection.FindElements(By.CssSelector(".employee-name-row"));
 
-        public Employee GetEmployee(string name)
+        public string Rolename => roleName.Text;
+        public IList<Employee> Employees => employees.Select(e => new Employee(Driver, e)).ToList();
+
+        public Employee GetEmployee(string initials)
         {
-            return Employees.First(x => x.Id == name);
+            return Employees.First(x => x.Initials == initials);
+        }
+
+        public void AssociateEmployees(IWebElement employeeSection)
+        {
+            this.employeeSection = employeeSection;
         }
     }
 }

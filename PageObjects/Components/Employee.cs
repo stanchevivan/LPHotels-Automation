@@ -13,9 +13,13 @@ namespace PageObjects
             this.webElement = webElement;
             PageFactory.InitElements(webDriver, this);
         }
+        private IWebElement initials => webElement.FindElement(By.CssSelector(".employee-initials"));
+
+        public string Initials => initials.Text;
 
         public string Id => webElement.GetAttribute("data-test-id");
         public string Role => webElement.GetAttribute("data-test-id");
+
 
         public new IList<ShiftItem> ShiftItems => base.ShiftItems.Where(x => x.EmployeeId == Id).ToList();
 

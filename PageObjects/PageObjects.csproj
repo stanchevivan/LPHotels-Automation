@@ -7,6 +7,8 @@
     <RootNamespace>PageObjects</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Default</OutputPath>
     <WarningLevel>4</WarningLevel>

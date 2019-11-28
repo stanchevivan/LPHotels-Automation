@@ -16,7 +16,7 @@ namespace PageObjects
             PageFactory.InitElements(webDriver, this);
         }
 
-        [FindsBy(How = How.CssSelector, Using = ".lphf_role-group")]
+        [FindsBy(How = How.CssSelector, Using = ".left-drawer")]
         private IWebElement ScheduleSection1 { get; set; }
 
         protected IWebElement Button => Driver.FindElement(By.CssSelector("[data-test-id='lphf_review-tna-btn']"));
@@ -26,6 +26,8 @@ namespace PageObjects
 
         protected IList<IWebElement> employees => Driver.FindElements(By.CssSelector(".employee-name-row"));
         protected IList<Employee> Employees => employees.Select(e => new Employee(Driver, e)).ToList();
+
+        protected IList<IWebElement> employeSections => Driver.FindElements(By.CssSelector(".row-name-header + div"));
 
         protected IList<IWebElement> shiftItems => Driver.FindElements(By.CssSelector(".lphf_shift-item"));
         public IList<ShiftItem> ShiftItems => shiftItems.Select(e => new ShiftItem(Driver, e)).ToList();
@@ -37,37 +39,32 @@ namespace PageObjects
 
         public RoleSection GetRoleSection(string roleName)
         {
-            var roleSection = RoleSections.First(x => x.RoleName == roleName);
-            roleSection.Employees = Employees.Where(x => x.Role == roleName).ToList();
+            int indexOfRole = -1;
+            for (int i = 0; i < RoleSections.Count; i++)
+            {
+                if (RoleSections[i].Rolename == roleName)
+                {
+                    indexOfRole = i;
+                    break;
+                }
+            }
+            System.Console.WriteLine("INDAX IS:" + indexOfRole);
+            var roleSection = RoleSections[indexOfRole];
+
+            roleSection.AssociateEmployees(employeSections[indexOfRole]);
 
             return roleSection;
         }
 
         public void OpenShiftWindow(int x, int y)
         {
+            
+            ScheduleSections[16].Do(Driver).ClickOffSet(5, 5);
+        }
+
+        public void WaitToLoad()
+        {
             Driver.WaitElementToExists(ScheduleSection1);
-
-            // Wait when element is not using FindsBy
-            //int w = 500;
-            //while (w >= 0)
-            //{
-            //    try
-            //    {
-            //        ScheduleSection.Exist();
-            //        break;
-            //    }
-            //    catch (NoSuchElementException ex)
-            //    {
-            //        if (w == 0)
-            //        {
-            //            throw ex;
-            //        }
-            //    }
-            //    System.Threading.Thread.Sleep(20);
-            //    w--;
-            //}
-
-            ScheduleSections[3].Do(Driver).ClickOffSet(5, 5);
         }
     }
 }

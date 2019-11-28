@@ -31,8 +31,8 @@ namespace Tests.API.FeaturesAndSteps.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ShiftsTests", "\tAs a user \r\n\tI want to be able to save and edit shifts\r\n\tso that I can create a " +
-                    "schedule", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ShiftsTests", "\tAs a user \n\tI want to be able to save and edit shifts\n\tso that I can create a sc" +
+                    "hedule", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
