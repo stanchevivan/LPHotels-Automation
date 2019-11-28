@@ -147,7 +147,12 @@
     <None Include="packages.config" />
     <None Include="specflow.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DataSeeding\DataSeeding.csproj">
+      <Project>{7a5544b6-b30b-434e-8d3b-346cdea6ccec}</Project>
+      <Name>DataSeeding</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
