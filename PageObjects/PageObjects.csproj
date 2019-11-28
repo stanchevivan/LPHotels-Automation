@@ -15,6 +15,10 @@
     <Compile Include="DashboardPage.cs" />
     <Compile Include="LPHBasePage.cs" />
     <Compile Include="ShiftPopoverPage.cs" />
+    <Compile Include="Components\ShiftItem.cs" />
+    <Compile Include="Components\Calendar.cs" />
+    <Compile Include="Components\Employee.cs" />
+    <Compile Include="Components\RoleSection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

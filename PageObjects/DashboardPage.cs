@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Common.Helpers;
 using Fourth.Automation.Framework.Extension;
 using OpenQA.Selenium;
@@ -22,7 +24,24 @@ namespace PageObjects
         protected IList<IWebElement> ScheduleSections => Driver.FindElements(By.CssSelector(".lphf_role-group .lphf_grid"));
         protected IWebElement ShiftPopover => Driver.FindElement(By.CssSelector("form.lphf_shift-popover"));
 
+        protected IList<IWebElement> employees => Driver.FindElements(By.CssSelector(".employee-name-row"));
+        protected IList<Employee> Employees => employees.Select(e => new Employee(Driver, e)).ToList();
+
+        protected IList<IWebElement> shiftItems => Driver.FindElements(By.CssSelector(".lphf_shift-item"));
+        public IList<ShiftItem> ShiftItems => shiftItems.Select(e => new ShiftItem(Driver, e)).ToList();
+
+        protected IList<IWebElement> roleSections => Driver.FindElements(By.CssSelector(".row-name-header"));
+        protected IList<RoleSection> RoleSections => roleSections.Select(e => new RoleSection(Driver, e)).ToList();
+
         public bool IsShiftPopoverPresent => ShiftPopover.Exist();
+
+        public RoleSection GetRoleSection(string roleName)
+        {
+            var roleSection = RoleSections.First(x => x.RoleName == roleName);
+            roleSection.Employees = Employees.Where(x => x.Role == roleName).ToList();
+
+            return roleSection;
+        }
 
         public void OpenShiftWindow(int x, int y)
         {
