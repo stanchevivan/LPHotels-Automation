@@ -139,11 +139,11 @@
   <ItemGroup>
     <Compile Include="ContainerConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Steps\ShiftSteps.cs" />
+    <Compile Include="Steps\ShiftsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Features\ShiftFeature.feature" />
+    <None Include="Features\ShiftsFeature.feature" />
     <None Include="packages.config" />
     <None Include="specflow.json" />
   </ItemGroup>

@@ -8,12 +8,12 @@ using TechTalk.SpecFlow;
 namespace Tests.WebService.Steps
 {
     [Binding]
-    internal class ShiftSteps
+    internal class ShiftsSteps
     {
         private readonly ScenarioContext context;
         private readonly RestSession restSession;
 
-        public ShiftSteps(ScenarioContext context, RestSession restSession)
+        public ShiftsSteps(ScenarioContext context, RestSession restSession)
         {
             this.context = context;
             this.restSession = restSession;
