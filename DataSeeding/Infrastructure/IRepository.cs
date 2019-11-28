@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TeamHours.DomainModel;
 
-namespace Tests.API.Infrastructure
+namespace DataSeeding.Infrastructure
 {
     public interface IRepository<TEntity> : IDisposable
     {
@@ -11,6 +12,8 @@ namespace Tests.API.Infrastructure
         void Add(TEntity entity);
 
         void AddRange(IEnumerable<TEntity> entities);
+
+        void Attach(TEntity entity);
 
         void Remove(TEntity entity);
 

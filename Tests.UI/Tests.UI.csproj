@@ -16,6 +16,10 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\Chrome</OutputPath>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Default|AnyCPU'">
+    <OutputPath>bin\Default\</OutputPath>
   </PropertyGroup>
   <!-- <PropertyGroup>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
@@ -71,6 +75,10 @@
     <Reference Include="Polly">
       <HintPath>..\packages\Polly.5.9.0\lib\net45\Polly.dll</HintPath>
     </Reference>
+    <Reference Include="System.Json, Version=2.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Json.4.6.0\lib\netstandard2.0\System.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="WebDriver">
       <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
     </Reference>
@@ -123,7 +131,9 @@
     <Reference Include="Fourth.Automation.Framework.Reporting">
       <HintPath>..\packages\Fourth.Automation.Framework.Reporting.5.0.76\lib\net45\Fourth.Automation.Framework.Reporting.dll</HintPath>
     </Reference>
-    <Reference Include="System.Json" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.targets" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.0.225\build\SpecFlow.Tools.MsBuild.Generation.targets')" />

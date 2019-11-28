@@ -12,7 +12,8 @@ using Fourth.Orchestration.Messaging;
 using Fourth.Orchestration.Messaging.Azure;
 using Fourth.Orchestration.Storage.Azure;
 using Autofac.Features.ResolveAnything;
-using Tests.API.Infrastructure;
+using DataSeeding.Infrastructure;
+using Tests.API.Facade;
 
 namespace Tests.API.Setup
 {
@@ -42,6 +43,8 @@ namespace Tests.API.Setup
             //builder.RegisterType<LoginUnitOfWork>().As<ILoginUnitOfWork>();
             builder.RegisterType<LpHotelsMainUnitOfWork>().As<ILpHotelsMainUnitOfWork>();
             //builder.RegisterType<SqlContextFactory>().As<IContextFactory>();
+            builder.RegisterType<ShiftsFacade>().As<ShiftsFacade>();
+         
             builder.RegisterType<AnyConcreteTypeNotAlreadyRegisteredSource>();
             builder.RegisterType<AzureMessageStore>().As<IMessageStore>().UsingConstructor();
             builder.RegisterType<AzureMessagingFactory>().As<IMessagingFactory>().UsingConstructor(typeof(IMessageStore));

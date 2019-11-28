@@ -12,5 +12,11 @@ namespace Tests.API.Facade
         }
 
         protected IRequest Request { get; set; }
+
+        public IRequest BuildRequest()
+        {
+            return Request
+                .AddFourthHeaders();
+        }
     }
 }

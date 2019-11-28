@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using TeamHours.DomainModel;
 
-namespace Tests.API.Infrastructure
+namespace DataSeeding.Infrastructure
 {
     public class Repository<TEntity> : IRepository<TEntity>, IDisposable where TEntity : class
     {
@@ -27,6 +28,10 @@ namespace Tests.API.Infrastructure
         public void AddRange(IEnumerable<TEntity> entities)
         {
             _database.Set<TEntity>().AddRange(entities);
+        }
+        public void Attach(TEntity entity)
+        {
+            _database.Set<TEntity>().Attach(entity);
         }
 
         public void Remove(TEntity entity)
