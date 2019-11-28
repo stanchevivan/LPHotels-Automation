@@ -2,6 +2,12 @@
   "stepAssemblies": [
     {
       "assembly": "Fourth.Automation.Framework.RestApi"
+    },
+    {
+      "assembly": "Fourth.Automation.SpecFlow.Extensions"
+    },
+    {
+      "assembly": "DataSeeding"
     }
   ]
 }

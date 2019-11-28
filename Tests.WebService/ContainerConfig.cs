@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Features.ResolveAnything;
+using DataSeeding.Infrastructure;
 using Fourth.Automation.Framework.RestApi;
 using SpecFlow.Autofac;
 using System;
@@ -21,6 +22,8 @@ namespace Tests.WebService
             builder.RegisterTypes(typeof(ContainerConfig).Assembly.GetTypes()
                 .Where(t => Attribute.IsDefined(t, typeof(BindingAttribute))).ToArray()).SingleInstance();
             builder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
+
+            builder.RegisterType<LpHotelsMainUnitOfWork>().As<ILpHotelsMainUnitOfWork>();
 
             return builder;
         }
