@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Common;
+﻿using Common;
 using DataSeeding.Framework;
 using DataSeeding.Generators;
 using DataSeeding.Infrastructure;
@@ -16,7 +11,6 @@ namespace DataSeeding.Hooks
     [Binding]
     public class ShiftsHooks
     {
-
         private readonly ILpHotelsMainUnitOfWork lpHotelsMainUnitOfWork;
         private readonly ScenarioContext context;
 
