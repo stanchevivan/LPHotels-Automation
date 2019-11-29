@@ -10,13 +10,84 @@
 @CreateJobTitle
 @CreateEmployee
 @CreateAssignment
-Scenario: Post Shift
+@PostShift
+Scenario Outline: Post Shift
 	Given the /locations/{locationId}/departments/{departmentId}/shifts/ resource
 	 And the following url segments
 	 | Name         | Value          |
-	 | locationId   | $Location.Id   |
-	 | departmentId | $Department.Id |
-	 And request has a shift as a body
+	 | locationId   | $Location.ID   |
+	 | departmentId | $Department.ID |
+	 And request has a shift as a body with parameters
+	 | Field         | Value           |
+	 | Break1Minutes | <Break1Minutes> |
+	 | Break2Minutes | <Break2Minutes> |
+	 | StartDateTime | <StartDateTime> |
+	 | EndDateTime   | <EndDateTime>   |
 	When a POST request is executed
 	Then HTTP Code is 200
 	 And the shift is created
+	Examples: 
+| TestCase               | Break1Minutes | Break2Minutes | StartDateTime    | EndDateTime      |
+| 1.InTeFutureWithBreaks | 15            | 25            | 2021-12-02 08:09 | 2021-12-02 10:09 |
+| 2.WithoutBreaks        | 0             | 0             | 2021-12-02 08:09 | 2021-12-02 10:09 |
+| 3.ShiftInThePast       | 15            | 25            | 2019-11-15 08:09 | 2019-11-15 10:09 |
+
+@CreateLocation
+@CreateArea
+@CreateRole
+@CreateDepartment
+@CreateJobTitle
+@CreateEmployee
+@CreateAssignment
+@PostShift
+Scenario Outline: Post Shift invalid data
+	Given the /locations/{locationId}/departments/{departmentId}/shifts/ resource
+	 And the following url segments
+	 | Name         | Value          |
+	 | locationId   | $Location.ID   |
+	 | departmentId | $Department.ID |
+	 And request has a shift as a body with parameters
+	 | Field         | Value            |
+	 | EmployeeId    | <EmployeeId>     |
+	 | RoldeId       | <RoldeId>        |
+	 | Break1Minutes | 15               |
+	 | Break2Minutes | 25               |
+	 | StartDateTime | 2019-12-07 08:09 |
+	 | EndDateTime   | 2019-12-07 10:09 |
+	When a POST request is executed
+	Then HTTP Code is 200
+	 And the shift is created
+	Examples: 
+| TestCase          | EmployeeId   | RoldeId  |
+| 1.WrongEmployeeId | 1234567      | $Role.ID |
+| 2.WrongRoldeId    | $Employee.ID | 1234567  |  
+
+@CreateAreaAnotherOrganisation
+@CreateLocation
+@CreateArea
+@CreateRole
+@CreateDepartmentAnotherLocationSameOrganisation
+@CreateJobTitle
+@CreateEmployee
+@CreateAssignment
+@PostShift
+Scenario Outline: Post Shift from department from another location
+	Given the /locations/{locationId}/departments/{departmentId}/shifts/ resource
+	 And the following url segments
+	 | Name         | Value          |
+	 | locationId   | $Location.ID   |
+	 | departmentId | $Department.ID |
+	 And request has a shift as a body with parameters
+	 | Field         | Value           |
+	 | Break1Minutes | <Break1Minutes> |
+	 | Break2Minutes | <Break2Minutes> |
+	 | StartDateTime | <StartDateTime> |
+	 | EndDateTime   | <EndDateTime>   |
+	When a POST request is executed
+	Then HTTP Code is 200
+	 And the shift is created
+	Examples: 
+| TestCase               | Break1Minutes | Break2Minutes | StartDateTime    | EndDateTime      |
+| 1.InTeFutureWithBreaks | 15            | 25            | 2021-12-02 08:09 | 2021-12-02 10:09 |
+| 2.WithoutBreaks        | 0             | 0             | 2021-12-02 08:09 | 2021-12-02 10:09 |
+| 3.ShiftInThePast       | 15            | 25            | 2019-11-15 08:09 | 2019-11-15 10:09 |

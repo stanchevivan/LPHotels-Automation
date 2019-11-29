@@ -8,17 +8,17 @@ using TechTalk.SpecFlow;
 namespace Tests.WebService.Hooks
 {
     [Binding]
-    internal class Hook
+    internal class AuthenticationHook
     {
         private const string RESET_HEADER = "9abdc4a5-7d84-4533-a61b-6a01d386700e";
         private readonly RestSession restSession;
-        public Hook(RestSession restSession)
+        public AuthenticationHook(RestSession restSession)
         {
             this.restSession = restSession;
         }
 
         [BeforeScenario]
-        public void AuthenticationHook()
+        public void AuthenticatioSetup()
         {
             var organisationSubdomain = ConfigurationManager.AppSettings["OrganisationSubdomain"];
             var token = $"Bearer {TokenGenerator.Get(organisationSubdomain, 14019)}";

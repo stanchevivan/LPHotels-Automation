@@ -26,7 +26,7 @@ namespace LPHotels.Automation.Support
         [BeforeScenario(Order = 1)]
         public void StartMockServer()
         {
-            server.Start();
+            //server.Start();
         }
 
         [BeforeScenario(Order = 999)]
@@ -79,7 +79,7 @@ namespace LPHotels.Automation.Support
         [AfterScenario]
         public void AfterScenario()
         {
-            server.Stop();
+            //server.Stop();
         }
     }
 }

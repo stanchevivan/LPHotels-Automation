@@ -83,25 +83,28 @@ namespace Tests.WebService.Features
         [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
         [NUnit.Framework.CategoryAttribute("CreateEmployee")]
         [NUnit.Framework.CategoryAttribute("CreateAssignment")]
-        public virtual void PostShift()
+        [NUnit.Framework.CategoryAttribute("PostShift")]
+        [NUnit.Framework.TestCaseAttribute("1.InTeFutureWithBreaks", "15", "25", "2021-12-02 08:09", "2021-12-02 10:09", null)]
+        [NUnit.Framework.TestCaseAttribute("2.WithoutBreaks", "0", "0", "2021-12-02 08:09", "2021-12-02 10:09", null)]
+        [NUnit.Framework.TestCaseAttribute("3.ShiftInThePast", "15", "25", "2019-11-15 08:09", "2019-11-15 10:09", null)]
+        public virtual void PostShift(string testCase, string break1Minutes, string break2Minutes, string startDateTime, string endDateTime, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "CreateLocation",
                     "CreateArea",
                     "CreateRole",
                     "CreateDepartment",
                     "CreateJobTitle",
                     "CreateEmployee",
-                    "CreateAssignment"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Post Shift", null, new string[] {
-                        "CreateLocation",
-                        "CreateArea",
-                        "CreateRole",
-                        "CreateDepartment",
-                        "CreateJobTitle",
-                        "CreateEmployee",
-                        "CreateAssignment"});
-#line 13
+                    "CreateAssignment",
+                    "PostShift"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Post Shift", null, @__tags);
+#line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -121,7 +124,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 14
+#line 15
  testRunner.Given("the /locations/{locationId}/departments/{departmentId}/shifts/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -129,23 +132,237 @@ this.ScenarioInitialize(scenarioInfo);
                             "Value"});
                 table1.AddRow(new string[] {
                             "locationId",
-                            "$Location.Id"});
+                            "$Location.ID"});
                 table1.AddRow(new string[] {
                             "departmentId",
-                            "$Department.Id"});
-#line 15
+                            "$Department.ID"});
+#line 16
   testRunner.And("the following url segments", ((string)(null)), table1, "And ");
 #line hidden
-#line 19
-  testRunner.And("request has a shift as a body", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table2.AddRow(new string[] {
+                            "Break1Minutes",
+                            string.Format("{0}", break1Minutes)});
+                table2.AddRow(new string[] {
+                            "Break2Minutes",
+                            string.Format("{0}", break2Minutes)});
+                table2.AddRow(new string[] {
+                            "StartDateTime",
+                            string.Format("{0}", startDateTime)});
+                table2.AddRow(new string[] {
+                            "EndDateTime",
+                            string.Format("{0}", endDateTime)});
 #line 20
+  testRunner.And("request has a shift as a body with parameters", ((string)(null)), table2, "And ");
+#line hidden
+#line 26
  testRunner.When("a POST request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 21
+#line 27
  testRunner.Then("HTTP Code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 22
+#line 28
+  testRunner.And("the shift is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Post Shift invalid data")]
+        [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateArea")]
+        [NUnit.Framework.CategoryAttribute("CreateRole")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateAssignment")]
+        [NUnit.Framework.CategoryAttribute("PostShift")]
+        [NUnit.Framework.TestCaseAttribute("1.WrongEmployeeId", "1234567", "$Role.ID", null)]
+        [NUnit.Framework.TestCaseAttribute("2.WrongRoldeId", "$Employee.ID", "1234567", null)]
+        public virtual void PostShiftInvalidData(string testCase, string employeeId, string roldeId, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "CreateLocation",
+                    "CreateArea",
+                    "CreateRole",
+                    "CreateDepartment",
+                    "CreateJobTitle",
+                    "CreateEmployee",
+                    "CreateAssignment",
+                    "PostShift"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Post Shift invalid data", null, @__tags);
+#line 43
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 44
+ testRunner.Given("the /locations/{locationId}/departments/{departmentId}/shifts/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "Value"});
+                table3.AddRow(new string[] {
+                            "locationId",
+                            "$Location.ID"});
+                table3.AddRow(new string[] {
+                            "departmentId",
+                            "$Department.ID"});
+#line 45
+  testRunner.And("the following url segments", ((string)(null)), table3, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table4.AddRow(new string[] {
+                            "EmployeeId",
+                            string.Format("{0}", employeeId)});
+                table4.AddRow(new string[] {
+                            "RoldeId",
+                            string.Format("{0}", roldeId)});
+                table4.AddRow(new string[] {
+                            "Break1Minutes",
+                            "15"});
+                table4.AddRow(new string[] {
+                            "Break2Minutes",
+                            "25"});
+                table4.AddRow(new string[] {
+                            "StartDateTime",
+                            "2019-12-07 08:09"});
+                table4.AddRow(new string[] {
+                            "EndDateTime",
+                            "2019-12-07 10:09"});
+#line 49
+  testRunner.And("request has a shift as a body with parameters", ((string)(null)), table4, "And ");
+#line hidden
+#line 57
+ testRunner.When("a POST request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 58
+ testRunner.Then("HTTP Code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 59
+  testRunner.And("the shift is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Post Shift from department from another location")]
+        [NUnit.Framework.CategoryAttribute("CreateAreaAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateArea")]
+        [NUnit.Framework.CategoryAttribute("CreateRole")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherLocationSameOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateAssignment")]
+        [NUnit.Framework.CategoryAttribute("PostShift")]
+        [NUnit.Framework.TestCaseAttribute("1.InTeFutureWithBreaks", "15", "25", "2021-12-02 08:09", "2021-12-02 10:09", null)]
+        [NUnit.Framework.TestCaseAttribute("2.WithoutBreaks", "0", "0", "2021-12-02 08:09", "2021-12-02 10:09", null)]
+        [NUnit.Framework.TestCaseAttribute("3.ShiftInThePast", "15", "25", "2019-11-15 08:09", "2019-11-15 10:09", null)]
+        public virtual void PostShiftFromDepartmentFromAnotherLocation(string testCase, string break1Minutes, string break2Minutes, string startDateTime, string endDateTime, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "CreateAreaAnotherOrganisation",
+                    "CreateLocation",
+                    "CreateArea",
+                    "CreateRole",
+                    "CreateDepartmentAnotherLocationSameOrganisation",
+                    "CreateJobTitle",
+                    "CreateEmployee",
+                    "CreateAssignment",
+                    "PostShift"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Post Shift from department from another location", null, @__tags);
+#line 74
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 75
+ testRunner.Given("the /locations/{locationId}/departments/{departmentId}/shifts/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "Value"});
+                table5.AddRow(new string[] {
+                            "locationId",
+                            "$Location.ID"});
+                table5.AddRow(new string[] {
+                            "departmentId",
+                            "$Department.ID"});
+#line 76
+  testRunner.And("the following url segments", ((string)(null)), table5, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table6.AddRow(new string[] {
+                            "Break1Minutes",
+                            string.Format("{0}", break1Minutes)});
+                table6.AddRow(new string[] {
+                            "Break2Minutes",
+                            string.Format("{0}", break2Minutes)});
+                table6.AddRow(new string[] {
+                            "StartDateTime",
+                            string.Format("{0}", startDateTime)});
+                table6.AddRow(new string[] {
+                            "EndDateTime",
+                            string.Format("{0}", endDateTime)});
+#line 80
+  testRunner.And("request has a shift as a body with parameters", ((string)(null)), table6, "And ");
+#line hidden
+#line 86
+ testRunner.When("a POST request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 87
+ testRunner.Then("HTTP Code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 88
   testRunner.And("the shift is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
