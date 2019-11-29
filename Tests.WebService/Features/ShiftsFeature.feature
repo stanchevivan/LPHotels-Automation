@@ -49,18 +49,18 @@ Scenario Outline: Post Shift invalid data
 	 And request has a shift as a body with parameters
 	 | Field         | Value            |
 	 | EmployeeId    | <EmployeeId>     |
-	 | RoldeId       | <RoldeId>        |
+	 | RoleId        | <RoleId>         |
 	 | Break1Minutes | 15               |
 	 | Break2Minutes | 25               |
 	 | StartDateTime | 2019-12-07 08:09 |
 	 | EndDateTime   | 2019-12-07 10:09 |
 	When a POST request is executed
-	Then HTTP Code is 200
-	 And the shift is created
+	Then HTTP Code is 400
+	
 	Examples: 
-| TestCase          | EmployeeId   | RoldeId  |
-| 1.WrongEmployeeId | 1234567      | $Role.ID |
-| 2.WrongRoldeId    | $Employee.ID | 1234567  |  
+| TestCase          | EmployeeId | RoleId  |
+| 1.WrongEmployeeId | 1234567    |         |
+| 2.WrongRoldeId    |            | 1234567 |  
 
 @CreateAreaAnotherOrganisation
 @CreateLocation
@@ -84,8 +84,8 @@ Scenario Outline: Post Shift from department from another location
 	 | StartDateTime | <StartDateTime> |
 	 | EndDateTime   | <EndDateTime>   |
 	When a POST request is executed
-	Then HTTP Code is 200
-	 And the shift is created
+	Then HTTP Code is 400
+
 	Examples: 
 | TestCase               | Break1Minutes | Break2Minutes | StartDateTime    | EndDateTime      |
 | 1.InTeFutureWithBreaks | 15            | 25            | 2021-12-02 08:09 | 2021-12-02 10:09 |

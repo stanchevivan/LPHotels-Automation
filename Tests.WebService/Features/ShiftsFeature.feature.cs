@@ -180,9 +180,9 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.CategoryAttribute("CreateEmployee")]
         [NUnit.Framework.CategoryAttribute("CreateAssignment")]
         [NUnit.Framework.CategoryAttribute("PostShift")]
-        [NUnit.Framework.TestCaseAttribute("1.WrongEmployeeId", "1234567", "$Role.ID", null)]
-        [NUnit.Framework.TestCaseAttribute("2.WrongRoldeId", "$Employee.ID", "1234567", null)]
-        public virtual void PostShiftInvalidData(string testCase, string employeeId, string roldeId, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("1.WrongEmployeeId", "1234567", "", null)]
+        [NUnit.Framework.TestCaseAttribute("2.WrongRoldeId", "", "1234567", null)]
+        public virtual void PostShiftInvalidData(string testCase, string employeeId, string roleId, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "CreateLocation",
@@ -241,8 +241,8 @@ this.ScenarioInitialize(scenarioInfo);
                             "EmployeeId",
                             string.Format("{0}", employeeId)});
                 table4.AddRow(new string[] {
-                            "RoldeId",
-                            string.Format("{0}", roldeId)});
+                            "RoleId",
+                            string.Format("{0}", roleId)});
                 table4.AddRow(new string[] {
                             "Break1Minutes",
                             "15"});
@@ -262,10 +262,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("a POST request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 58
- testRunner.Then("HTTP Code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 59
-  testRunner.And("the shift is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("HTTP Code is 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -360,10 +357,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("a POST request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 87
- testRunner.Then("HTTP Code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 88
-  testRunner.And("the shift is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("HTTP Code is 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
