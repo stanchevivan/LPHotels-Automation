@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Common.Helpers
 {
@@ -17,9 +15,12 @@ namespace Common.Helpers
 
             foreach (var tableParameter in tableParameters)
             {
-                var param = objectToSetValuesFor.GetType().GetProperty(tableParameter.Field);
-                var typeToSet = Nullable.GetUnderlyingType(param.PropertyType) ?? param.PropertyType;
-                param.SetValue(objectToSetValuesFor, Convert.ChangeType(tableParameter.Value, typeToSet));
+                if (tableParameter.Value != string.Empty)
+                {
+                    var param = objectToSetValuesFor.GetType().GetProperty(tableParameter.Field);
+                    var typeToSet = Nullable.GetUnderlyingType(param.PropertyType) ?? param.PropertyType;
+                    param.SetValue(objectToSetValuesFor, Convert.ChangeType(tableParameter.Value, typeToSet));
+                }
             }
         }
     }

@@ -25,5 +25,37 @@ namespace Common.Helpers
         {
             new Actions(Driver).MoveToElement(webElement).MoveByOffset(x, y).Click().Perform();
         }
+
+        public void WaitToExist()
+        {
+            int w = 500;
+            while (w >= 0)
+            {
+                try
+                {
+                    var t = webElement.TagName;
+                    break;
+                }
+                catch (NoSuchElementException ex)
+                {
+                    if (w == 0)
+                    {
+                        throw ex;
+                    }
+                }
+                System.Threading.Thread.Sleep(20);
+                w--;
+            }
+        }
+
+        public void ClickAndhold()
+        {
+            new Actions(Driver).ClickAndHold(webElement);
+        }
+
+        public void DragAndDropToOffset(int x, int y)
+        {
+            new Actions(Driver).DragAndDropToOffset(webElement, x, y);
+        }
     }
 }

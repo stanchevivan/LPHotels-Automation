@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Common;
+﻿using Common;
 using DataSeeding.Framework;
 using DataSeeding.Generators;
 using DataSeeding.Infrastructure;
+using DataSeeding.Models;
 using TeamHours.DomainModel;
 using TechTalk.SpecFlow;
 
@@ -15,20 +11,21 @@ namespace DataSeeding.Hooks
     [Binding]
     public class ShiftsHooks
     {
+        private readonly ILpHotelsMainUnitOfWork lpHotelsMainUnitOfWork;
+        private readonly ScenarioContext context;
 
-        private readonly ILpHotelsMainUnitOfWork _lpHotelsMainUnitOfWork;
-
-        public ShiftsHooks(ILpHotelsMainUnitOfWork lpHotelsMainUnitOfWork)
+        public ShiftsHooks(ILpHotelsMainUnitOfWork lpHotelsMainUnitOfWork, ScenarioContext context)
         {
-            _lpHotelsMainUnitOfWork = lpHotelsMainUnitOfWork;
+            this.lpHotelsMainUnitOfWork = lpHotelsMainUnitOfWork;
+            this.context = context;
         }
 
         [BeforeScenario("CreateShift", Order = ScenarioStepsOrder.Shift)]
         public void ShiftIsCreated()
         {
-            var roleId = Session.Get<TempRole>(Constants.Data.Role).ID;
-            var departmentId = Session.Get<Department>(Constants.Data.Department).ID;
-            var employeeId = Session.Get<TempStaff>(Constants.Data.Employee).ID;
+            var roleId = context.Get<TempRole>(Constants.Data.Role).ID;
+            var departmentId = context.Get<Department>(Constants.Data.Department).ID;
+            var employeeId = context.Get<TempStaff>(Constants.Data.Employee).ID;
 
             var shift = new ShiftEntityGenerator().GenerateSingle(x =>
             {
@@ -37,9 +34,22 @@ namespace DataSeeding.Hooks
                 x.TempRoleID = roleId;
             });
 
-            _lpHotelsMainUnitOfWork.TempShift.Add(shift);
-            _lpHotelsMainUnitOfWork.SaveAsync();
-            Session.Set(shift, Constants.Data.Shift);
+            lpHotelsMainUnitOfWork.TempShift.Add(shift);
+            lpHotelsMainUnitOfWork.SaveAsync();
+            context.Set(shift, Constants.Data.Shift);
+        }
+
+        [BeforeScenario("PostShift", Order = ScenarioStepsOrder.Shift)]
+        public void CreateShiftModel()
+        {
+            var employeeId = context.Get<TempStaff>(Constants.Data.Employee).ID;
+            var roleId = context.Get<TempRole>(Constants.Data.Role).ID;
+
+            var createshift = new CreateShiftModel();
+            createshift.EmployeeId = employeeId;
+            createshift.RoleId = roleId;
+            createshift.Notes = RandomGenerator.AlphaNumeric(10) + "QaAutomatioNotes";
+            context.Set(createshift, Constants.Data.Shift);
         }
     }
 }

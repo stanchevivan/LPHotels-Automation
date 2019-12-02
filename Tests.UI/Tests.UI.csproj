@@ -50,13 +50,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Mock.API\Mock.API.csproj">
+      <Project>{856e57cc-d154-437d-8d1b-3aa6e534f4cb}</Project>
+      <Name>Mock.API</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PageObjects\PageObjects.csproj">
       <Project>{B85A0614-AA34-4FA6-A9AC-04D2F3491016}</Project>
       <Name>PageObjects</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mock.API\Mock.API.csproj">
-      <Project>{856E57CC-D154-437D-8D1B-3AA6E534F4CB}</Project>
-      <Name>Mock.API</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
