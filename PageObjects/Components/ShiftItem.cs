@@ -25,8 +25,10 @@ namespace PageObjects
         protected IWebElement startTime => webElement.FindElement(By.CssSelector(".start-time"));
         protected IWebElement endTime => webElement.FindElement(By.CssSelector(".end-time"));
 
-        protected IWebElement rightHandle => webElement.FindElement(By.CssSelector(".right-handle"));
-        protected IWebElement leftHandle => webElement.FindElement(By.CssSelector(".left-handle"));
+        protected IWebElement rightHandle => webElement.FindElement(By.CssSelector(".right-handle > .handle-dot"));
+        protected IWebElement leftHandle => webElement.FindElement(By.CssSelector(".left-handle > .handle-dot"));
+
+        protected IWebElement roleSymbol => webElement.FindElement(By.CssSelector(".role-symbol"));
 
         public string StartTime => startTime.Text;
         public string Endtime => endTime.Text;
@@ -34,16 +36,20 @@ namespace PageObjects
         public string Id => new Regex(@"(?<=shiftId:)\d+").Match(webElement.GetAttribute("data-test-id)")).Value;
         public string EmployeeId => new Regex(@"(?<=employeeId:)\d+").Match(webElement.GetAttribute("data-test-id)")).Value;
 
-        public void DragLeft(int offset)
+        public string Symbol => roleSymbol.Text;
+
+        public void ExpandLeft(int offset)
         {
-            leftHandle.Click();
-            new Actions(Driver).DragAndDropToOffset(leftHandle, offset, 0);
+            webElement.Click();
+            webElement.Click();
+            new Actions(Driver).DragAndDropToOffset(leftHandle, offset, 0).Build().Perform();
         }
 
-        public void DragRight(int offset)
+        public void ExpandRight(int offset)
         {
-            rightHandle.Click();
-            new Actions(Driver).DragAndDropToOffset(rightHandle, offset, 0);
+            webElement.Click();
+            webElement.Click();
+            new Actions(Driver).DragAndDropToOffset(rightHandle, offset, 0).Build().Perform();
         }
 
         public void Click()
