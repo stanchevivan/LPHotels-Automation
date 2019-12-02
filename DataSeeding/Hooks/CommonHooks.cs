@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Common;
+﻿using Common;
 using DataSeeding.Framework;
 using DataSeeding.Infrastructure;
+using System.Linq;
+using System.Threading.Tasks;
 using TeamHours.DomainModel;
 using TechTalk.SpecFlow;
 
@@ -97,7 +94,6 @@ namespace DataSeeding.Hooks
                                 _lpHotelsMainUnitOfWork.TempArea.Attach(areaAnotherOrganisationToDelete);
                                 _lpHotelsMainUnitOfWork.TempArea.Remove(areaAnotherOrganisationToDelete);
                             };
-
                         }
                         break;
 
@@ -118,13 +114,12 @@ namespace DataSeeding.Hooks
                                 _lpHotelsMainUnitOfWork.Department.Remove(departmentToDelete);
                             };
 
-                            var departmentAnotherLocationSameOrganisationToDelete = Session.Get<Department>(Constants.Data.DepartmentAnotherLocationSameOrganisation);
-                            if (departmentAnotherLocationSameOrganisationToDelete != null)
-                            {
-                                _lpHotelsMainUnitOfWork.Department.Attach(departmentAnotherLocationSameOrganisationToDelete);
-                                _lpHotelsMainUnitOfWork.Department.Remove(departmentAnotherLocationSameOrganisationToDelete);
-                            };
-
+                            //var departmentAnotherLocationSameOrganisationToDelete = Session.Get<Department>(Constants.Data.DepartmentAnotherLocationSameOrganisation);
+                            //if (departmentAnotherLocationSameOrganisationToDelete != null)
+                            //{
+                            //    _lpHotelsMainUnitOfWork.Department.Attach(departmentAnotherLocationSameOrganisationToDelete);
+                            //    _lpHotelsMainUnitOfWork.Department.Remove(departmentAnotherLocationSameOrganisationToDelete);
+                            //};
                         }
                         break;
 
@@ -136,12 +131,12 @@ namespace DataSeeding.Hooks
                                 _lpHotelsMainUnitOfWork.TempStaff.Attach(employeeToDelete);
                                 _lpHotelsMainUnitOfWork.TempStaff.Remove(employeeToDelete);
                             };
-                            var employeeAnotherOrganisationToDelete = Session.Get<TempStaff>(Constants.Data.EmployeeAnotherOrganisation);
-                            if (employeeAnotherOrganisationToDelete != null)
-                            {
-                                _lpHotelsMainUnitOfWork.TempStaff.Attach(employeeAnotherOrganisationToDelete);
-                                _lpHotelsMainUnitOfWork.TempStaff.Remove(employeeAnotherOrganisationToDelete);
-                            }
+                            //var employeeAnotherOrganisationToDelete = Session.Get<TempStaff>(Constants.Data.EmployeeAnotherOrganisation);
+                            //if (employeeAnotherOrganisationToDelete != null)
+                            //{
+                            //    _lpHotelsMainUnitOfWork.TempStaff.Attach(employeeAnotherOrganisationToDelete);
+                            //    _lpHotelsMainUnitOfWork.TempStaff.Remove(employeeAnotherOrganisationToDelete);
+                            //}
                         }
                         break;
 
@@ -162,13 +157,12 @@ namespace DataSeeding.Hooks
                                 _lpHotelsMainUnitOfWork.TempRole.Remove(roleToDelete);
                             };
 
-                            var roleAnotherOrganisationToDelete = Session.Get<TempRole>(Constants.Data.RoleAnoderOrganisation);
-                            if (roleAnotherOrganisationToDelete != null)
-                            {
-                                _lpHotelsMainUnitOfWork.TempRole.Attach(roleAnotherOrganisationToDelete);
-                                _lpHotelsMainUnitOfWork.TempRole.Remove(roleAnotherOrganisationToDelete);
-                            };
-
+                            //var roleAnotherOrganisationToDelete = Session.Get<TempRole>(Constants.Data.RoleAnoderOrganisation);
+                            //if (roleAnotherOrganisationToDelete != null)
+                            //{
+                            //    _lpHotelsMainUnitOfWork.TempRole.Attach(roleAnotherOrganisationToDelete);
+                            //    _lpHotelsMainUnitOfWork.TempRole.Remove(roleAnotherOrganisationToDelete);
+                            //};
                         }
                         break;
 

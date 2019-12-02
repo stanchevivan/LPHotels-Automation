@@ -1,23 +1,20 @@
 ﻿using System;
-using Fourth.Automation.Framework.Core;
-using Fourth.Automation.Framework.Mobile.Resolvers;
-using NUnit.Framework;
-using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
 namespace LPHotels.Automation.Support
 {
-    //[Binding]
+    [Binding]
     public class MockHooks
     {
         private ScenarioContext scenarioContext;
+        private readonly MockAPI.MockServer server;
 
-        public MockHooks(ScenarioContext scenarioContext)
+        public MockHooks(ScenarioContext scenarioContext, MockAPI.MockServer server)
         {
             this.scenarioContext = scenarioContext;
+            this.server = server;
         }
 
-        MockAPI.MockServer server;
         bool shouldMockGet;
         bool shouldMockPost;
 
@@ -29,16 +26,17 @@ namespace LPHotels.Automation.Support
         [BeforeScenario(Order = 1)]
         public void StartMockServer()
         {
-            server = new MockAPI.MockServer();
+            //server.Start();
         }
 
         [BeforeScenario(Order = 999)]
         public void DoMock()
         {
-            if (shouldMockGet)
-            {
-                server.MockGet(path, status, response);
-            }
+            //if (shouldMockGet)
+            //{
+                //Console.WriteLine("AA AA AA SERVER DOMOCK");
+                //server.MockGet(path, status, response);
+            //}
 
             if (shouldMockPost)
             {
@@ -56,6 +54,17 @@ namespace LPHotels.Automation.Support
             shouldMockGet = true;
         }
 
+        [BeforeScenario(Order = 500), Scope(Tag = "MockGet")]
+        public void MockGet()
+        {
+            Console.WriteLine("AA AA AA MOCKGET HOOK");
+            path = "http://localhost:3300/locations/2/departments/2/from/2019-03-07/to/2019-03-09/schedule-period";
+            response = "INVALID RESPONSE";
+            status = 402;
+
+            shouldMockGet = true;
+        }
+
         [BeforeScenario, Scope(Tag = "MockValidSave")]
         public void MockSave()
         {
@@ -65,6 +74,12 @@ namespace LPHotels.Automation.Support
             status = 402;
 
             shouldMockPost = true;
+        }
+
+        [AfterScenario]
+        public void AfterScenario()
+        {
+            //server.Stop();
         }
     }
 }
