@@ -3,7 +3,7 @@ using TechTalk.SpecFlow;
 
 namespace LPHotels.Automation.Support
 {
-    [Binding]
+    //[Binding]
     public class MockHooks
     {
         private ScenarioContext scenarioContext;

@@ -21,6 +21,7 @@
     <Compile Include="Components\Calendar.cs" />
     <Compile Include="Components\Employee.cs" />
     <Compile Include="Components\RoleSection.cs" />
+    <Compile Include="Components\ShiftDetails.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

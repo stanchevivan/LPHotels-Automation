@@ -1,5 +1,6 @@
 using System;
 using NUnit.Framework;
+using OpenQA.Selenium.Interactions;
 using PageObjects;
 using TechTalk.SpecFlow;
 using Tests.UI.Support;
@@ -11,18 +12,19 @@ namespace Tests.UI.FeaturesandSteps
     {
         readonly DashboardPage dashboardPage;
         readonly LPHBasePage lPHBasePage;
+        readonly ShiftDetails shiftDetails;
 
-        public DashboardSteps(LPHBasePage lPHBasePage, DashboardPage dashboardPage)
+        public DashboardSteps(LPHBasePage lPHBasePage, DashboardPage dashboardPage, ShiftDetails shiftDetails)
         {
             this.dashboardPage = dashboardPage;
             this.lPHBasePage = lPHBasePage;
+            this.shiftDetails = shiftDetails;
         }
 
         [When(@"shift window is open at ""(.*)"" ""(.*)""")]
         public void WhenDataForItemsIsSet(int x, int y)
         {
             dashboardPage.OpenShiftWindow(x, y);
-            //dashboardPage.GetRoleSection("M").GetEmployee("employee-name-row-0").GetShift("9:00", "14:00");
         }
 
         [Given(@"LPH app is open on ""(.*)""")]
@@ -43,8 +45,44 @@ namespace Tests.UI.FeaturesandSteps
         [When(@"Test step")]
         public void TestStep()
         {
-            dashboardPage.GetRoleSection("C").GetEmployee("CC").GetShift("7:00", "16:00").Click();
-            System.Threading.Thread.Sleep(10000);
+        }
+
+        [When(@"Shift details are opened for Role ""(.*)"" Employee ""(.*)"" Start time ""(.*)"" End time ""(.*)""")]
+        public void ShiftDetailsAreOpened(string role, string employee, string startTime, string endtime)
+        {
+            dashboardPage.GetRoleSection(role).GetEmployee(employee).GetShift(startTime, endtime).OpenDetails();
+        }
+
+        [When(@"Shift details Start time is set to ""(.*)"" and End Time is set to ""(.*)""")]
+        public void ShiftDetailsTimesAreSet(string startTime, string endTime)
+        {
+            if (!string.IsNullOrEmpty(startTime))
+            {
+                shiftDetails.StartTime = startTime;
+            }
+
+            if (!string.IsNullOrEmpty(endTime))
+            {
+                shiftDetails.EndTime = endTime;
+            }
+        }
+
+        [When(@"Shift details Cancel button is clicked")]
+        public void ShiftDetailsCancelButtonIsClicked()
+        {
+            shiftDetails.UseCancelButton();
+        }
+
+        [When(@"Shift details Save button is clicked")]
+        public void ShiftDetailsSaveButtonIsClicked()
+        {
+            shiftDetails.UseSaveButton();
+        }
+
+        [When(@"Shift details Delete button is clicked")]
+        public void ShiftDetailsDeleteButtonIsClicked()
+        {
+            shiftDetails.UseDeleteButton();
         }
     }
 }

@@ -29,9 +29,6 @@ namespace PageObjects
 
         protected IList<IWebElement> employeSections => Driver.FindElements(By.CssSelector(".row-name-header + div"));
 
-        protected IList<IWebElement> shiftItems => Driver.FindElements(By.CssSelector(".lphf_shift-item"));
-        public IList<ShiftItem> ShiftItems => shiftItems.Select(e => new ShiftItem(Driver, e)).ToList();
-
         protected IList<IWebElement> roleSections => Driver.FindElements(By.CssSelector(".row-name-header"));
         protected IList<RoleSection> RoleSections => roleSections.Select(e => new RoleSection(Driver, e)).ToList();
 
@@ -48,10 +45,10 @@ namespace PageObjects
                     break;
                 }
             }
-            System.Console.WriteLine("INDAX IS:" + indexOfRole);
+
             var roleSection = RoleSections[indexOfRole];
 
-            roleSection.AssociateEmployees(employeSections[indexOfRole]);
+            roleSection.AssociateEmployeeSection(employeSections[indexOfRole]);
 
             return roleSection;
         }

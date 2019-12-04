@@ -8,7 +8,7 @@ namespace PageObjects
 {
     public class ShiftItem : LPHBasePage
     {
-		private IWebElement webElement;
+        private IWebElement webElement;
 
         public ShiftItem(IWebDriver webDriver, IWebElement webElement) : base(webDriver)
         {
@@ -24,23 +24,34 @@ namespace PageObjects
         }
         protected IWebElement startTime => webElement.FindElement(By.CssSelector(".start-time"));
         protected IWebElement endTime => webElement.FindElement(By.CssSelector(".end-time"));
-
         protected IWebElement rightHandle => webElement.FindElement(By.CssSelector(".right-handle > .handle-dot"));
         protected IWebElement leftHandle => webElement.FindElement(By.CssSelector(".left-handle > .handle-dot"));
-
         protected IWebElement roleSymbol => webElement.FindElement(By.CssSelector(".role-symbol"));
+
+        public string Id
+        {
+            get
+            {
+                var testAttribute = webElement.GetAttribute("data-test-id");
+                return Regex.Match(testAttribute, @"(?<=shiftId:)\d+").Value;
+            }
+        }
+
+        public string EmployeeId
+        {
+            get
+            {
+                var testAttribute = webElement.GetAttribute("data-test-id");
+                return Regex.Match(testAttribute, @"(?<=employeeId:)\d+").Value;
+            }
+        }
 
         public string StartTime => startTime.Text;
         public string Endtime => endTime.Text;
-
-        public string Id => new Regex(@"(?<=shiftId:)\d+").Match(webElement.GetAttribute("data-test-id)")).Value;
-        public string EmployeeId => new Regex(@"(?<=employeeId:)\d+").Match(webElement.GetAttribute("data-test-id)")).Value;
-
-        public string Symbol => roleSymbol.Text;
+        public string RoleSymbol => roleSymbol.Text;
 
         public void ExpandLeft(int offset)
         {
-            webElement.Click();
             webElement.Click();
             new Actions(Driver).DragAndDropToOffset(leftHandle, offset, 0).Build().Perform();
         }
@@ -48,13 +59,12 @@ namespace PageObjects
         public void ExpandRight(int offset)
         {
             webElement.Click();
-            webElement.Click();
             new Actions(Driver).DragAndDropToOffset(rightHandle, offset, 0).Build().Perform();
         }
 
-        public void Click()
+        public void OpenDetails()
         {
-            webElement.Click();
+            new Actions(Driver).DoubleClick(webElement).Build().Perform();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 
@@ -18,7 +19,17 @@ namespace PageObjects
         private IWebElement employeeSection;
         private IList<IWebElement> employees => employeeSection.FindElements(By.CssSelector(".employee-name-row"));
 
+        public string Id
+        {
+            get
+            {
+                var testAttribute = webElement.GetAttribute("data-test-id");
+                return Regex.Match(testAttribute, @"(?<=role-name-)\d+").Value;
+            }
+        }
+
         public string Rolename => roleName.Text;
+
         public IList<Employee> Employees => employees.Select(e => new Employee(Driver, e)).ToList();
 
         public Employee GetEmployee(string initials)
@@ -26,7 +37,7 @@ namespace PageObjects
             return Employees.First(x => x.Initials == initials);
         }
 
-        public void AssociateEmployees(IWebElement employeeSection)
+        public void AssociateEmployeeSection(IWebElement employeeSection)
         {
             this.employeeSection = employeeSection;
         }

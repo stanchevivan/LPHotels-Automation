@@ -111,6 +111,29 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Test Shift")]
+        [NUnit.Framework.TestCaseAttribute("local", new string[] {
+                "local"}, Category="local")]
+        public virtual void TestShift(string environment, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Shift", null, exampleTags);
+#line 32
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 33
+    testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 34
+    testRunner.When("Shift details are opened for Role \"C\" Employee \"MS\" Start time \"11:00\" End time \"" +
+                    "2:15\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 35
+        testRunner.And("Shift details Start time is set to \"22:11\" and End Time is set to \"23:21\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 36
+        testRunner.And("Shift details Cancel button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
