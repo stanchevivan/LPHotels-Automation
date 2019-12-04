@@ -40,6 +40,8 @@ namespace Common
 
             public const string Department = "Department";
 
+            public const string AnotherDepartmentSameLocation = "AnotherDepartmentSameLocation";
+
             public const string DepartmentAnotherLocationSameOrganisation = "DepartmentAnotherLocationSameOrganisation";
 
             public const string DepartmentAnotherOrganisation = "DepartmentAnotherOrganisation";
@@ -70,9 +72,17 @@ namespace Common
 
             public const string Shift = "Shift";
 
+            public const string ShiftModel = "ShiftModel";
+
+            public const string ShiftModelD = "ShiftModelD";
+
             public const string AnotherOrganisationShift = "AnotherOrganisationShift";
 
-            public const string AnotherShift = "AnotherShift";
+            public const string ShiftAnotherLocationSameOrganisation = "ShiftAnotherLocationSameOrganisation";
+
+            public const string ShiftLocationAnotherOrganisation = "ShiftLocationAnotherOrganisation";
+
+            public const string ShiftSameLocationAnotherDepartment = "ShiftSameLocationAnotherDepartment";
 
             public const string UpdatedShift = "UpdatedShift";
 

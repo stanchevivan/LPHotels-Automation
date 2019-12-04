@@ -24,6 +24,10 @@
 
         public const int Shift = 800;
 
-        public const int DeleteAfterScenario = 999;
+        public const int DeleteDepartment = 901;
+
+        public const int DeleteLocation = 902;
+
+        //public const int DeleteAfterScenario = 999;
     }
 }

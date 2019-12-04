@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.Extensions.Configuration.UserSecrets.2.1.1\build\netstandard2.0\Microsoft.Extensions.Configuration.UserSecrets.props" Condition="Exists('..\packages\Microsoft.Extensions.Configuration.UserSecrets.2.1.1\build\netstandard2.0\Microsoft.Extensions.Configuration.UserSecrets.props')" />
   <PropertyGroup>
@@ -23,13 +23,11 @@
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Mappings\Request.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Scripting.native.cs" />
-    <Compile Include="Scripting.Extensions.cs" />
-    <Compile Include="Scripting.evaluator.cs" />
     <Compile Include="MockServer.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -343,20 +341,18 @@
     <Reference Include="Mono.CSharp">
       <HintPath>..\packages\CS-Script.bin.3.29.0\lib\net46\Mono.CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="WireMock.Net, Version=1.0.38.0, Culture=neutral, PublicKeyToken=c8d65537854e1f03, processorArchitecture=MSIL">
+      <HintPath>..\packages\WireMock.Net.1.0.38\lib\net461\WireMock.Net.dll</HintPath>
+    </Reference>
     <Reference Include="XPath2">
       <HintPath>..\packages\XPath2.1.0.6.1\lib\net40\XPath2.dll</HintPath>
     </Reference>
     <Reference Include="XPath2.Extensions">
       <HintPath>..\packages\XPath2.Extensions.1.0.6.1\lib\net40\XPath2.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="WireMock.Net">
-      <HintPath>..\packages\WireMock.Net.1.0.37\lib\net461\WireMock.Net.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mappings\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Extensions.Configuration.UserSecrets.2.1.1\build\netstandard2.0\Microsoft.Extensions.Configuration.UserSecrets.targets" Condition="Exists('..\packages\Microsoft.Extensions.Configuration.UserSecrets.2.1.1\build\netstandard2.0\Microsoft.Extensions.Configuration.UserSecrets.targets')" />
 </Project>

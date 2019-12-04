@@ -17,16 +17,18 @@ namespace DataSeeding.Hooks
     public class DepartmentsHooks
     {
         private readonly ILpHotelsMainUnitOfWork _lpHotelsMainUnitOfWork;
+        private readonly ScenarioContext context;
 
-        public DepartmentsHooks(ILpHotelsMainUnitOfWork lpHotelsMainUnitOfWork)
+        public DepartmentsHooks(ILpHotelsMainUnitOfWork lpHotelsMainUnitOfWork, ScenarioContext context)
         {
             _lpHotelsMainUnitOfWork = lpHotelsMainUnitOfWork;
+            this.context = context;
         }
 
         [BeforeScenario("CreateDepartment", Order = ScenarioStepsOrder.Department)]
         public void DepartmentIsCreated()
         {
-            var locationId = Session.Get<Location>(Constants.Data.Location).ID;
+            var locationId = context.Get<Location>(Constants.Data.Location).ID;
             var department = new DepartmentEntityGenerator().GenerateSingle(d =>
             {
                 d.Name = "TestDep" + RandomGenerator.OnlyNumeric(2);
@@ -36,13 +38,29 @@ namespace DataSeeding.Hooks
             _lpHotelsMainUnitOfWork.Department.Add(department);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
-            Session.Set(department, Constants.Data.Department);
+            context.Set(department, Constants.Data.Department);
+        }
+
+        [BeforeScenario("CreateAnotherDepartmentSameLocation", Order = ScenarioStepsOrder.Department)]
+        public void AnotherDepartmentSameLocation()
+        {
+            var locationId = context.Get<Location>(Constants.Data.Location).ID;
+            var department = new DepartmentEntityGenerator().GenerateSingle(d =>
+            {
+                d.Name = "TestDep" + RandomGenerator.OnlyNumeric(2);
+                d.LocationID = locationId;
+            });
+
+            _lpHotelsMainUnitOfWork.Department.Add(department);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            context.Set(department, Constants.Data.AnotherDepartmentSameLocation);
         }
 
         [BeforeScenario("CreateDepartmentAnotherLocationSameOrganisation", Order = ScenarioStepsOrder.Department)]
         public void DepartmentAnotherLocationSameOrganisationIsCreated()
         {
-            var locationId = Session.Get<List<Location>>(Constants.Data.Locations)[2].ID;
+            var locationId = context.Get<List<Location>>(Constants.Data.Locations)[2].ID;
             var department = new DepartmentEntityGenerator().GenerateSingle(d =>
             {
                 d.Name = "TestDep" + RandomGenerator.OnlyNumeric(2);
@@ -52,13 +70,13 @@ namespace DataSeeding.Hooks
             _lpHotelsMainUnitOfWork.Department.Add(department);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
-            Session.Set(department, Constants.Data.DepartmentAnotherLocationSameOrganisation);
+            context.Set(department, Constants.Data.DepartmentAnotherLocationSameOrganisation);
         }
 
         [BeforeScenario("CreateDepartmentAnotherOrganisation", Order = ScenarioStepsOrder.Department)]
         public void DepartmentAnotherOrganisationIsCreated()
         {
-            var locationId = Session.Get<Location>(Constants.Data.LocationAnotherOrganisation).ID;
+            var locationId = context.Get<Location>(Constants.Data.LocationAnotherOrganisation).ID;
             var department = new DepartmentEntityGenerator().GenerateSingle(d =>
             {
                 d.Name = "TestDep" + RandomGenerator.OnlyNumeric(2);
@@ -68,7 +86,16 @@ namespace DataSeeding.Hooks
             _lpHotelsMainUnitOfWork.Department.Add(department);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
-            Session.Set(department, Constants.Data.DepartmentAnotherOrganisation);
+            context.Set(department, Constants.Data.DepartmentAnotherOrganisation);
+        }
+
+       // [AfterScenario("CreateDepartment", Order = ScenarioStepsOrder.DeleteDepartment)]
+        public void DeleteDepartment()
+        {
+            var departmentToDelete = context.Get<Department>(Constants.Data.Department);
+            _lpHotelsMainUnitOfWork.Department.Attach(departmentToDelete);
+            _lpHotelsMainUnitOfWork.Department.Remove(departmentToDelete);
+            _lpHotelsMainUnitOfWork.SaveAsync();
         }
     }
 }

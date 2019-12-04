@@ -13,10 +13,12 @@ namespace DataSeeding
     public class LocationsHooks
     {
         private readonly ILpHotelsMainUnitOfWork _lpHotelsMainUnitOfWork;
+        private readonly ScenarioContext context;
 
 
-        public LocationsHooks(ILpHotelsMainUnitOfWork lpHotelsMainUnitOfWork)
+        public LocationsHooks(ILpHotelsMainUnitOfWork lpHotelsMainUnitOfWork, ScenarioContext context)
         {
+            this.context = context;
             _lpHotelsMainUnitOfWork = lpHotelsMainUnitOfWork;
         }
 
@@ -33,7 +35,7 @@ namespace DataSeeding
             _lpHotelsMainUnitOfWork.Location.Add(location);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
-            Session.Set(location, Constants.Data.Location);
+            context.Set(location, Constants.Data.Location);
         }
 
         [BeforeScenario("CreateLocations", Order = ScenarioStepsOrder.Location)]
@@ -49,7 +51,7 @@ namespace DataSeeding
             _lpHotelsMainUnitOfWork.Location.AddRange(locations);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
-            Session.Set(locations, Constants.Data.Locations);
+            context.Set(locations, Constants.Data.Locations);
         }
 
         [BeforeScenario("LocationForAnotherOrganisation", Order = ScenarioStepsOrder.Location)]
@@ -65,7 +67,16 @@ namespace DataSeeding
             _lpHotelsMainUnitOfWork.Location.Add(location);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
-            Session.Set(location, Constants.Data.LocationAnotherOrganisation);
+            context.Set(location, Constants.Data.LocationAnotherOrganisation);
+        }
+
+       // [AfterScenario("CreateLocation", Order = ScenarioStepsOrder.DeleteLocation)]
+        public void DeleteLocation()
+        {
+            var locationToDelete = context.Get<Location>(Constants.Data.Location);
+            _lpHotelsMainUnitOfWork.Location.Attach(locationToDelete);
+            _lpHotelsMainUnitOfWork.Location.Remove(locationToDelete);
+            _lpHotelsMainUnitOfWork.SaveAsync();
         }
     }
 }

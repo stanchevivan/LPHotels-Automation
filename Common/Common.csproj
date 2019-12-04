@@ -43,8 +43,9 @@
     <Reference Include="BoDi, Version=1.4.1.0, Culture=neutral, PublicKeyToken=ff7cd5ea2744b496, processorArchitecture=MSIL">
       <HintPath>..\packages\BoDi.1.4.1\lib\net45\BoDi.dll</HintPath>
     </Reference>
-    <Reference Include="Fourth.Orchestration.Model, Version=1.3.180.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fourth.Orchestration.Model.1.3.180\lib\net452\Fourth.Orchestration.Model.dll</HintPath>
+    <Reference Include="Fourth.Orchestration.Model, Version=1.3.183.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fourth.Orchestration.Model.1.3.183\lib\net452\Fourth.Orchestration.Model.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Fourth.TestTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fourth.TestTools.2.0.134\lib\461\Fourth.TestTools.dll</HintPath>

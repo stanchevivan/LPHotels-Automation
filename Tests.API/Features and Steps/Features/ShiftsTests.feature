@@ -9,7 +9,7 @@
 #	When Create Shift endpoint is requested to create shift for given location and department
 #	Then The status code of the response should be 200
 #	    And Created shift should be added in the db
-
+#ok
 @CreateLocation
 @CreateArea
 @CreateRole
@@ -57,7 +57,7 @@ Scenario Outline: CreateShift endpoint should return error when body's data is i
 	    | RoleId        | <Id>            |
 	When Create Shift endpoint is requested with CorrectData and <id>
 	Then The status code of the response should be 200
-	    #And Error <errorMessage> should be returned
+	    And Error <errorMessage> should be returned
 		And Shift should not be added in the db
 Examples: 
 | TestCase                                | invalidData                              | Id      | Break1Minutes | Break2Minutes | StartDateTime    | EndDateTime      | errorMessage                                                                             |
@@ -208,7 +208,7 @@ Examples:
 Scenario: Delete Shift enpoind should return error with invalid shiftId
 	When Delete Shift endpoint is requested with <invalidData> and <id>
 	Then The status code of the response should be <code>
-	    #And Shift should be deleted from db
+	    And Shift should be deleted from db
 Examples: 
 | data           | id     | code | error                   |
 | InvalidShiftId | 123456 | 200  | "Shift does not exist." |

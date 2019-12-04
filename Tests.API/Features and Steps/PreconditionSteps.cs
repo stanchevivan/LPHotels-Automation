@@ -393,7 +393,7 @@ namespace Tests.API.Features_and_Steps.PreconditionSteps
             _lpHotelsMainUnitOfWork.TempShift.Add(shift);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
-            Session.Set(shift, Constants.Data.AnotherShift);
+            //Session.Set(shift, Constants.Data.AnotherShift);
         }
 
         [Given(@"Shift for another department in same location is created and saved into database")]
@@ -413,7 +413,7 @@ namespace Tests.API.Features_and_Steps.PreconditionSteps
             _lpHotelsMainUnitOfWork.TempShift.Add(shift);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
-            Session.Set(shift, Constants.Data.AnotherShift);
+            //Session.Set(shift, Constants.Data.AnotherShift);
         }
     }
 }

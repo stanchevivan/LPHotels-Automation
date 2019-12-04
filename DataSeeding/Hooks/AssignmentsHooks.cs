@@ -23,7 +23,7 @@ namespace DataSeeding.Hooks
             _lpHotelsMainUnitOfWork = lpHotelsMainUnitOfWork;
         }
 
-        [BeforeScenario("CreateAssignment", Order = ScenarioStepsOrder.Assignment)]
+        [BeforeScenario("CreateMainAssignment", Order = ScenarioStepsOrder.Assignment)]
         public void AssignmenIsCreated()
         {
             var roleId = Session.Get<TempRole>(Constants.Data.Role).ID;
@@ -43,6 +43,28 @@ namespace DataSeeding.Hooks
             _lpHotelsMainUnitOfWork.SaveAsync();
 
             Session.Set(mainAssignment, Constants.Data.MainAssignment);
+        }
+
+        [BeforeScenario("MainAssignmentForEmployeeAnotherOrganisation", Order = ScenarioStepsOrder.Assignment)]
+        public void AssignmenForAnotherOrganisation()
+        {
+            var roleId = Session.Get<TempRole>(Constants.Data.RoleAnoderOrganisation).ID;
+            var departmentId = Session.Get<Department>(Constants.Data.DepartmentAnotherOrganisation).ID;
+            var employeeId = Session.Get<TempStaff>(Constants.Data.EmployeeAnotherOrganisation).ID;
+            //var jobTitle = Session.Get<JobTitle>(Constants.Data.JobTitle).ID;
+
+            var mainAssignment = new MainAssignmentEntityGenerator().GenerateSingle(x =>
+            {
+                x.TempStaffID = employeeId;
+                x.HomeDepartmentID = departmentId;
+                x.PrimaryRoleID = roleId;
+                //x.JobTitleID = jobTitle;
+            });
+
+            _lpHotelsMainUnitOfWork.StaffPayInfo.Add(mainAssignment);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(mainAssignment, Constants.Data.MainAssignmentAnotherOrganisation);
         }
     }
 }

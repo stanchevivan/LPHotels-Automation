@@ -39,7 +39,7 @@ namespace DataSeeding.Hooks
             context.Set(shift, Constants.Data.Shift);
         }
 
-        [BeforeScenario("PostShift", Order = ScenarioStepsOrder.Shift)]
+        [BeforeScenario("PostShiftModel", Order = ScenarioStepsOrder.Shift)]
         public void CreateShiftModel()
         {
             var employeeId = context.Get<TempStaff>(Constants.Data.Employee).ID;
@@ -49,7 +49,16 @@ namespace DataSeeding.Hooks
             createshift.EmployeeId = employeeId;
             createshift.RoleId = roleId;
             createshift.Notes = RandomGenerator.AlphaNumeric(10) + "QaAutomatioNotes";
-            context.Set(createshift, Constants.Data.Shift);
+            context.Set(createshift, Constants.Data.ShiftModel);
+        }
+
+        [BeforeScenario("DeleteShiftModel", Order = ScenarioStepsOrder.Shift)]
+        public void DeleteShiftModel()
+        {
+            var employeeId = context.Get<TempStaff>(Constants.Data.Employee).ID;
+            var deleteShiftModel = new DeleteShiftModel();
+            deleteShiftModel.EmployeeId = employeeId;
+            context.Set(deleteShiftModel, Constants.Data.ShiftModel);
         }
     }
 }

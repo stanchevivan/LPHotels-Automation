@@ -16,9 +16,11 @@ namespace DataSeeding.Hooks
     public class RolesHooks
     {
         private readonly ILpHotelsMainUnitOfWork _lpHotelsMainUnitOfWork;
+        private readonly ScenarioContext context;
 
-        public RolesHooks(ILpHotelsMainUnitOfWork lpHotelsMainUnitOfWork)
+        public RolesHooks(ILpHotelsMainUnitOfWork lpHotelsMainUnitOfWork, ScenarioContext context)
         {
+            this.context = context;
             _lpHotelsMainUnitOfWork = lpHotelsMainUnitOfWork;
         }
 
@@ -26,7 +28,7 @@ namespace DataSeeding.Hooks
         public void RoleIsCreated()
         {
             var organisationId = Constants.OgranisationId;
-            var areaId = Session.Get<TempArea>(Constants.Data.Area).ID;
+            var areaId = context.Get<TempArea>(Constants.Data.Area).ID;
             var role = new RoleEntityGenerator().GenerateSingle(x =>
             {
                 x.OrganisationID = organisationId;
@@ -36,14 +38,14 @@ namespace DataSeeding.Hooks
             _lpHotelsMainUnitOfWork.TempRole.Add(role);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
-            Session.Set(role, Constants.Data.Role);
+            context.Set(role, Constants.Data.Role);
         }
 
         [BeforeScenario("CreateRoleForAnotherOrganisation", Order = ScenarioStepsOrder.Role)]
         public void RoleForAnotherOrganisationIsCreated()
         {
             var organisationId = Constants.AnotherOgranisationId;
-            var areaId = Session.Get<TempArea>(Constants.Data.AreaAnotherOrganisation).ID;
+            var areaId = context.Get<TempArea>(Constants.Data.AreaAnotherOrganisation).ID;
             var role = new RoleEntityGenerator().GenerateSingle(x =>
             {
                 x.OrganisationID = organisationId;
@@ -53,7 +55,7 @@ namespace DataSeeding.Hooks
             _lpHotelsMainUnitOfWork.TempRole.Add(role);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
-            Session.Set(role, Constants.Data.RoleAnoderOrganisation);
+            context.Set(role, Constants.Data.RoleAnoderOrganisation);
         }
     }
 }
