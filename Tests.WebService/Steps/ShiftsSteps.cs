@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Linq;
+using System.Threading;
 using Common;
 using Common.Helpers;
 using DataSeeding.Framework;
@@ -40,19 +41,34 @@ namespace Tests.WebService.Steps
             restSession.Client.Execute(restSession.Request);
         }
 
-        [Given(@"request has a body with EmployeeAnotherOrganisatoin")]
-        public void GivenRequestHasAShiftAsABodyInvalidEmployee(Table table)
+        [Given(@"request has a shift as a body to be updated")]
+        [When(@"request has a shift as a body to be updated")]
+        public void GivenRequestHasAShiftAsABodyToBeUpdated(Table table)
         {
-            var roleIdForShift = context.Get<TempRole>(Constants.Data.Role).ID;
-            var employeeIdAnotherOrganisation = context.Get<TempStaff>(Constants.Data.EmployeeAnotherOrganisation).ID;
-            var createShiftAnotherOrganisationEmployee = new DataSeeding.Models.CreateShiftModel();
-            GeneralHelpers.SetValues(table.CreateSet<Parameters>(), createShiftAnotherOrganisationEmployee);
-            createShiftAnotherOrganisationEmployee.EmployeeId = employeeIdAnotherOrganisation;
-            createShiftAnotherOrganisationEmployee.RoleId = roleIdForShift;
-            createShiftAnotherOrganisationEmployee.Notes = RandomGenerator.AlphaNumeric(10) + "QaAutomatioNotes";
-            context.Set(createShiftAnotherOrganisationEmployee, Constants.Data.Shift);
+            var shiftId = context.Get<TempShift>(Constants.Data.Shift).ID;
+            var shift = context.Get<CreateShiftModel>(Constants.Data.ShiftModel);
+            shift.Id = shiftId;
+            GeneralHelpers.SetValues(table.CreateSet<Parameters>(), shift);
+            restSession.Request.AddJsonBody(JsonConvert.SerializeObject(shift));
+            restSession.Client.Execute(restSession.Request);
         }
 
+        //[Given(@"request has a body with EmployeeAnotherOrganisatoin")]
+        //public void GivenRequestHasAShiftAsABodyInvalidEmployee(Table table)
+        //{
+        //    var roleIdForShift = context.Get<TempRole>(Constants.Data.Role).ID;
+        //    var employeeIdAnotherOrganisation = context.Get<TempStaff>(Constants.Data.EmployeeAnotherOrganisation).ID;
+        //    var createShiftAnotherOrganisationEmployee = new DataSeeding.Models.CreateShiftModel();
+        //    GeneralHelpers.SetValues(table.CreateSet<Parameters>(), createShiftAnotherOrganisationEmployee);
+        //    createShiftAnotherOrganisationEmployee.EmployeeId = employeeIdAnotherOrganisation;
+        //    createShiftAnotherOrganisationEmployee.RoleId = roleIdForShift;
+        //    createShiftAnotherOrganisationEmployee.Notes = RandomGenerator.AlphaNumeric(10) + "QaAutomatioNotes";
+        //    context.Set(createShiftAnotherOrganisationEmployee, Constants.Data.Shift);
+        //}
+
+
+
+        ///to be deleted
         [Given(@"request has a body with parameters(.*)")]
         public void ShiftIsCreatedToBeImportedWithInvalidRole(string invalidData, Table table)
         {
@@ -191,6 +207,23 @@ namespace Tests.WebService.Steps
             {
                 Assert.AreEqual(expectedShift.RoleId.ToString(), restResponse.SelectToken("roleId").ToString(), "Wrong RoleId");
                 Assert.AreEqual(expectedShift.EmployeeId.ToString(), restResponse.SelectToken("employeeId").ToString(), "Wrong employeeId");
+            });
+        }
+
+        [When(@"the shift is updated")]
+        [Then(@"the shift is updated")]
+        public void TheShiftIsUpdated()
+        {
+             var restResponse = restSession.Response;
+            var expectedShift = context.Get<TempShift>(Constants.Data.Shift);
+            var actualShift = _lpHotelsMainUnitOfWork.TempShift.GetAll().AsNoTracking().FirstOrDefault(x => x.ID == expectedShift.ID);
+            Assert.IsNotNull(actualShift, Constants.ErrorMessages.UnexpectedRecordInDatabase);
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(expectedShift.TempRoleID, actualShift.TempRoleID, "Wrong RoleId");
+                Assert.AreEqual(expectedShift.TempStaffID, actualShift.TempStaffID, "Wrong employeeId");
+                Assert.AreEqual(actualShift.Notes.ToString(),"updated", "shift is not updated");              
             });
         }
 

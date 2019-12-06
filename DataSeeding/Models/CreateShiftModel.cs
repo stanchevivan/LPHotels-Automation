@@ -8,6 +8,8 @@ namespace DataSeeding.Models
 {
     public class CreateShiftModel
     {
+        public int Id { get; set; }
+
         public int EmployeeId { get; set; }
 
         public int RoleId { get; set; }

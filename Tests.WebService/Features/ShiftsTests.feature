@@ -1,7 +1,8 @@
-﻿Feature: ShiftsFeature
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
+﻿Feature: ShiftsTests
+
+	As a user 
+	I want to be able to save and edit shifts
+	so that I can create a schedule
 
 @CreateLocation
 @CreateArea
@@ -91,7 +92,7 @@ Scenario Outline: Post Shift
 @CreateEmployee
 @CreateMainAssignment
 @PostShiftModel
-Scenario Outline: CreateShift endpoint should return error for incorrect dates
+Scenario Outline: Create Shift endpoint should return error for incorrect dates
 	Given the /locations/{locationId}/departments/{departmentId}/shifts/ resource
 		And the following url segments
 	    | Name         | Value          |
@@ -109,28 +110,20 @@ Scenario Outline: CreateShift endpoint should return error for incorrect dates
 	Examples: 
 	| TestCase                           | Break1Minutes | Break2Minutes | StartDateTime    | EndDateTime      | errorMessage                                                                | Code |
 	| 2.WhenBreaksBiggerThenShift        | 30            | 30            | 2025-12-07 01:09 | 2025-12-07 02:00 | "Shift must be longer than total break time added"                          | 400  |
-	| 3.WhenBreakBiggerThenShift         | 0             | 60            | 2025-12-07 02:09 | 2025-12-07 03:00 | "Shift must be longer than total break time added"                          |     400 |
-	#| 4.WhenShiftIsBeforeAssignmentStart | 15            | 25            | 2018-12-07 03:09 | 2018-12-07 04:00 | "The selected member of staff is not available for scheduling on this date" |     200 |
-	| 5.WhenShiftEndIsBeforeShiftStart   | 15            | 25            | 2025-12-07 06:09 | 2025-12-07 05:00 | "Shift must be longer than total break time added"                          |   400   |
+	| 3.WhenBreakBiggerThenShift         | 0             | 60            | 2025-12-07 02:09 | 2025-12-07 03:00 | "Shift must be longer than total break time added"                          | 400  |
+	| 4.WhenShiftIsBeforeAssignmentStart | 15            | 25            | 2017-12-07 03:09 | 2017-12-07 04:00 | "The selected member of staff is not available for scheduling on this date" | 400  |
+	| 5.WhenShiftEndIsBeforeShiftStart   | 15            | 25            | 2025-12-07 06:09 | 2025-12-07 05:00 | "Shift must be longer than total break time added"                          | 400  |
 
 
 
-#ok
+
 @CreateLocation
-@CreateAreaAnotherOrganisation
+@CreateLocations
 @LocationForAnotherOrganisation
-@CreateArea
-@CreateRole
-@CreateRoleForAnotherOrganisation
 @CreateDepartment
+@CreateDepartmentAnotherLocationSameOrganisation
 @CreateDepartmentAnotherOrganisation
-@CreateJobTitle
-@CreateEmployee
-@CreateAnotherOrganisationEmployee
-@CreateMainAssignment
-@MainAssignmentForEmployeeAnotherOrganisation
-@CreateShift
-Scenario Outline: Post Shift should return error when missing locationId, departmentId or shiftId
+Scenario Outline: Post Shift should return error when missing locationId, departmentId
 	Given the /locations/{locationId}/departments/{departmentId}/shifts/{id}/ resource
 	    And the following url segments
 	    | Name         | Value          |
@@ -139,11 +132,14 @@ Scenario Outline: Post Shift should return error when missing locationId, depart
 	When a DELETE request is executed
 	Then HTTP Code is <Code>
 	Examples: 
-| TestCase            | locationId   | departmentId   | Code |
-| 1.MissingLocation   |              | $Department.ID | 404  |
-| 2.InvalidLocation   | 123456       | $Department.ID | 401  |
-| 3.MissingDepartment | $Location.ID |                | 404  |
-| 4.InvalidDepartment | $Location.ID | 123456         | 404  |
+| TestCase                                    | locationId                      | departmentId                                  | Code |
+| 1.MissingLocation                           |                                 | $Department.ID                                | 404  |
+| 2.InvalidLocation                           | 123456                          | $Department.ID                                | 401  |
+| 3.MissingDepartment                         | $Location.ID                    |                                               | 404  |
+| 4.InvalidDepartment                         | $Location.ID                    | 123456                                        | 404  |
+| 5.DepartmentAnotherLocationSameOrganisation | $Location.ID                    | $DepartmentAnotherLocationSameOrganisation.ID | 401  |
+| 6.DepartmentAnotherOrganisation             | $Location.ID                    | $DepartmentAnotherOrganisation.ID             | 404  |
+| 7.DepartmentAnotherOrganisation             | $LocationAnotherOrganisation.ID | $Department.ID                                | 401  |
 
 
 
@@ -185,6 +181,152 @@ Examples:
 
 
 
+######update
+
+
+@CreateLocation
+@CreateArea
+@CreateRole
+@CreateDepartment
+@CreateJobTitle
+@CreateEmployee
+@CreateMainAssignment
+@PostShiftModel
+@CreateShift
+Scenario Outline: Update Shift
+	Given the /locations/{locationId}/departments/{departmentId}/shifts/ resource
+		And the following url segments
+	    | Name         | Value          |
+		| locationId   | $Location.ID   |
+		| departmentId | $Department.ID |
+		And request has a shift as a body to be updated
+		| Field         | Value           |
+		| Break1Minutes | <Break1Minutes> |
+		| Break2Minutes | <Break2Minutes> |
+		| StartDateTime | <StartDateTime> |
+		| EndDateTime   | <EndDateTime>   |
+		| Notes         | updated         |	
+	When a PUT request is executed
+	Then HTTP Code is 200
+	    And the shift is updated
+	Examples: 
+| TestCase               | Break1Minutes | Break2Minutes | StartDateTime    | EndDateTime      |
+| 1.InTeFutureWithBreaks | 15            | 25            | 2022-12-02 08:09 | 2022-12-02 10:09 |
+| 2.WithoutBreaks        | 0             | 0             | 2022-12-02 08:09 | 2022-12-02 10:09 |
+| 3.ShiftInThePast       | 15            | 25            | 2019-10-15 08:09 | 2019-10-15 10:09 |
+
+
+@CreateLocation
+@CreateArea
+@CreateRole
+@CreateDepartment
+@CreateJobTitle
+@CreateEmployee
+@CreateMainAssignment
+@PostShiftModel
+@CreateShift
+Scenario Outline: Update Shift endpoint should return error for incorrect dates
+	Given the /locations/{locationId}/departments/{departmentId}/shifts/ resource
+		And the following url segments
+	    | Name         | Value          |
+		| locationId   | $Location.ID   |
+		| departmentId | $Department.ID |
+		And request has a shift as a body to be updated
+		| Field         | Value           |
+		| Break1Minutes | <Break1Minutes> |
+		| Break2Minutes | <Break2Minutes> |
+		| StartDateTime | <StartDateTime> |
+		| EndDateTime   | <EndDateTime>   |
+		| Notes         | updated         |	
+	When a PUT request is executed
+	Then HTTP Code is <Code>
+	    And the shift is updated
+	Examples: 
+	| TestCase                           | Break1Minutes | Break2Minutes | StartDateTime    | EndDateTime      | errorMessage                                                                | Code |
+	| 2.WhenBreaksBiggerThenShift        | 30            | 30            | 2025-12-07 01:09 | 2025-12-07 02:00 | "Shift must be longer than total break time added"                          | 400  |
+	| 3.WhenBreakBiggerThenShift         | 0             | 60            | 2025-12-07 02:09 | 2025-12-07 03:00 | "Shift must be longer than total break time added"                          |     400 |
+	| 4.WhenShiftIsBeforeAssignmentStart | 15            | 25            | 2017-12-07 03:09 | 2017-12-07 04:00 | "The selected member of staff is not available for scheduling on this date" |     200 |
+	| 5.WhenShiftEndIsBeforeShiftStart   | 15            | 25            | 2025-12-07 06:09 | 2025-12-07 05:00 | "Shift must be longer than total break time added"                          |   400   |
+
+
+
+
+@CreateLocation
+@CreateArea
+@CreateRole
+@CreateDepartment
+@CreateJobTitle
+@CreateEmployee
+@CreateMainAssignment
+@PostShiftModel
+Scenario Outline: Update Shift endpoint should return error when overlapping
+    Given create and save shift in db
+		 | Field         | Value            |
+		 | StartDateTime | 2025-12-07 10:09 |
+		 | EndDateTime   | 2025-12-07 12:00 |
+		 | ChargedDate   | 2025-12-07       |
+		 
+		And create and save shift in db
+	    | Field         | Value            |
+	    | StartDateTime | 2025-12-07 16:09 |
+	    | EndDateTime   | 2025-12-07 20:00 |
+	    | ChargedDate   | 2025-12-07       |
+		
+	    And  the /locations/{locationId}/departments/{departmentId}/shifts/ resource
+		And the following url segments
+	    | Name         | Value          |
+		| locationId   | $Location.ID   |
+		| departmentId | $Department.ID |
+		And request has a shift as a body to be updated
+		| Field         | Value            |
+		| StartDateTime | 2025-12-07 10:09 |
+		| EndDateTime   | 2025-12-07 12:00 |
+		| Notes         | updated          |		
+	When a PUT request is executed
+	Then HTTP Code is <Code>
+	    And Error <errorMessage> should be returned
+	Examples: 
+| errorMessage                                                  | Code |
+| The shift could not be added because it overlaps with another | 400  |
+
+
+
+
+
+
+
+@CreateLocation
+@CreateLocations
+@LocationForAnotherOrganisation
+@CreateDepartment
+@CreateDepartmentAnotherLocationSameOrganisation
+@CreateDepartmentAnotherOrganisation
+Scenario Outline: Update Shift should return error when missing locationId, departmentId
+	Given the /locations/{locationId}/departments/{departmentId}/shifts/{id}/ resource
+	    And the following url segments
+	    | Name         | Value          |
+	    | locationId   | <locationId>   |
+	    | departmentId | <departmentId> |
+	When a PUT request is executed
+	Then HTTP Code is <Code>
+	Examples: 
+| TestCase                                    | locationId                      | departmentId                                  | Code |
+| 1.MissingLocation                           |                                 | $Department.ID                                | 404  |
+| 2.InvalidLocation                           | 123456                          | $Department.ID                                | 401  |
+| 3.MissingDepartment                         | $Location.ID                    |                                               | 404  |
+| 4.InvalidDepartment                         | $Location.ID                    | 123456                                        | 404  |
+| 5.DepartmentAnotherLocationSameOrganisation | $Location.ID                    | $DepartmentAnotherLocationSameOrganisation.ID | 401  |
+| 6.DepartmentAnotherOrganisation             | $Location.ID                    | $DepartmentAnotherOrganisation.ID             | 404  |
+| 7.DepartmentAnotherOrganisation             | $LocationAnotherOrganisation.ID | $Department.ID                                | 401  |
+
+
+
+
+
+
+
+
+
 #delete
 
 @CreateLocation
@@ -217,12 +359,14 @@ Examples:
 
 
 @CreateLocation
+@CreateLocations
 @CreateAreaAnotherOrganisation
 @LocationForAnotherOrganisation
 @CreateArea
 @CreateRole
 @CreateRoleForAnotherOrganisation
 @CreateDepartment
+@CreateDepartmentAnotherLocationSameOrganisation
 @CreateDepartmentAnotherOrganisation
 @CreateJobTitle
 @CreateEmployee
@@ -240,11 +384,14 @@ Scenario Outline: Delete Shift should return error when missing locationId, depa
 	When a DELETE request is executed
 	Then HTTP Code is <Code>
 	Examples: 
-| TestCase            | locationId   | departmentId   | shiftId   | Code |
-| 1.MissingLocation   |              | $Department.ID | $Shift.ID | 404  |
-| 2.InvalidLocation   | 123456       | $Department.ID | $Shift.ID | 401  |
-| 3.MissingDepartment | $Location.ID |                | $Shift.ID | 404  |
-| 4.InvalidDepartment | $Location.ID | 123456         | $Shift.ID | 404  |
+| TestCase                                    | locationId                      | departmentId                                  | shiftId   | Code |
+| 1.MissingLocation                           |                                 | $Department.ID                                | $Shift.ID | 404  |
+| 2.InvalidLocation                           | 123456                          | $Department.ID                                | $Shift.ID | 401  |
+| 3.MissingDepartment                         | $Location.ID                    |                                               | $Shift.ID | 404  |
+| 4.InvalidDepartment                         | $Location.ID                    | 123456                                        | $Shift.ID | 404  |
+| 5.DepartmentAnotherLocationSameOrganisation | $Location.ID                    | $DepartmentAnotherLocationSameOrganisation.ID | $Shift.ID | 401  |
+| 6.DepartmentAnotherOrganisation             | $Location.ID                    | $DepartmentAnotherOrganisation.ID             | $Shift.ID | 404  |
+| 7.DepartmentAnotherOrganisation             | $LocationAnotherOrganisation.ID | $Department.ID                                | $Shift.ID | 401  |
 
 
 @CreateLocation

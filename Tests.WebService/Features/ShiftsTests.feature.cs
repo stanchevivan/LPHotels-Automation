@@ -20,22 +20,22 @@ namespace Tests.WebService.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("ShiftsFeature")]
-    public partial class ShiftsFeatureFeature
+    [NUnit.Framework.DescriptionAttribute("ShiftsTests")]
+    public partial class ShiftsTestsFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "ShiftsFeature.feature"
+#line 1 "ShiftsTests.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ShiftsFeature", "\tAs a user \r\n\tI want to be able to save and edit shifts\r\n\tso that I can create a " +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ShiftsTests", "\tAs a user \r\n\tI want to be able to save and edit shifts\r\n\tso that I can create a " +
                     "schedule", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -104,7 +104,7 @@ namespace Tests.WebService.Features
             }
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Post Shift", null, @__tags);
-#line 14
+#line 15
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -124,46 +124,46 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 15
+#line 16
  testRunner.Given("the /locations/{locationId}/departments/{departmentId}/shifts/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table2.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "locationId",
                             "$Location.ID"});
-                table2.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "departmentId",
                             "$Department.ID"});
-#line 16
-  testRunner.And("the following url segments", ((string)(null)), table2, "And ");
+#line 17
+  testRunner.And("the following url segments", ((string)(null)), table4, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                             "Field",
                             "Value"});
-                table3.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "Break1Minutes",
                             string.Format("{0}", break1Minutes)});
-                table3.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "Break2Minutes",
                             string.Format("{0}", break2Minutes)});
-                table3.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "StartDateTime",
                             string.Format("{0}", startDateTime)});
-                table3.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "EndDateTime",
                             string.Format("{0}", endDateTime)});
-#line 20
-  testRunner.And("request has a shift as a body with parameters", ((string)(null)), table3, "And ");
-#line hidden
-#line 26
- testRunner.When("a POST request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 21
+  testRunner.And("request has a shift as a body with parameters", ((string)(null)), table5, "And ");
 #line hidden
 #line 27
- testRunner.Then("HTTP Code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("a POST request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 28
+ testRunner.Then("HTTP Code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 29
      testRunner.And("the shift is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -201,7 +201,7 @@ this.ScenarioInitialize(scenarioInfo);
             }
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create Shift endpoint should return error for incorrect dates", null, @__tags);
-#line 94
+#line 95
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -221,46 +221,46 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 95
+#line 96
  testRunner.Given("the /locations/{locationId}/departments/{departmentId}/shifts/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table4.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "locationId",
                             "$Location.ID"});
-                table4.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "departmentId",
                             "$Department.ID"});
-#line 96
-  testRunner.And("the following url segments", ((string)(null)), table4, "And ");
+#line 97
+  testRunner.And("the following url segments", ((string)(null)), table6, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                             "Field",
                             "Value"});
-                table5.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Break1Minutes",
                             string.Format("{0}", break1Minutes)});
-                table5.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Break2Minutes",
                             string.Format("{0}", break2Minutes)});
-                table5.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "StartDateTime",
                             string.Format("{0}", startDateTime)});
-                table5.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "EndDateTime",
                             string.Format("{0}", endDateTime)});
-#line 100
-  testRunner.And("request has a shift as a body with parameters", ((string)(null)), table5, "And ");
-#line hidden
-#line 106
- testRunner.When("a POST request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 101
+  testRunner.And("request has a shift as a body with parameters", ((string)(null)), table7, "And ");
 #line hidden
 #line 107
- testRunner.Then(string.Format("HTTP Code is {0}", code), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("a POST request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 108
+ testRunner.Then(string.Format("HTTP Code is {0}", code), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 109
      testRunner.And(string.Format("Error {0} should be returned", errorMessage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -270,47 +270,34 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Post Shift should return error when missing locationId, departmentId")]
         [NUnit.Framework.CategoryAttribute("CreateLocation")]
-        [NUnit.Framework.CategoryAttribute("CreateAreaAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateLocations")]
         [NUnit.Framework.CategoryAttribute("LocationForAnotherOrganisation")]
-        [NUnit.Framework.CategoryAttribute("CreateArea")]
-        [NUnit.Framework.CategoryAttribute("CreateRole")]
-        [NUnit.Framework.CategoryAttribute("CreateRoleForAnotherOrganisation")]
         [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherLocationSameOrganisation")]
         [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherOrganisation")]
-        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
-        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
-        [NUnit.Framework.CategoryAttribute("CreateAnotherOrganisationEmployee")]
-        [NUnit.Framework.CategoryAttribute("CreateMainAssignment")]
-        [NUnit.Framework.CategoryAttribute("MainAssignmentForEmployeeAnotherOrganisation")]
-        [NUnit.Framework.CategoryAttribute("CreateShift")]
         [NUnit.Framework.TestCaseAttribute("1.MissingLocation", "", "$Department.ID", "404", null)]
         [NUnit.Framework.TestCaseAttribute("2.InvalidLocation", "123456", "$Department.ID", "401", null)]
         [NUnit.Framework.TestCaseAttribute("3.MissingDepartment", "$Location.ID", "", "404", null)]
         [NUnit.Framework.TestCaseAttribute("4.InvalidDepartment", "$Location.ID", "123456", "404", null)]
+        [NUnit.Framework.TestCaseAttribute("5.DepartmentAnotherLocationSameOrganisation", "$Location.ID", "$DepartmentAnotherLocationSameOrganisation.ID", "401", null)]
+        [NUnit.Framework.TestCaseAttribute("6.DepartmentAnotherOrganisation", "$Location.ID", "$DepartmentAnotherOrganisation.ID", "404", null)]
+        [NUnit.Framework.TestCaseAttribute("7.DepartmentAnotherOrganisation", "$LocationAnotherOrganisation.ID", "$Department.ID", "401", null)]
         public virtual void PostShiftShouldReturnErrorWhenMissingLocationIdDepartmentId(string testCase, string locationId, string departmentId, string code, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "CreateLocation",
-                    "CreateAreaAnotherOrganisation",
+                    "CreateLocations",
                     "LocationForAnotherOrganisation",
-                    "CreateArea",
-                    "CreateRole",
-                    "CreateRoleForAnotherOrganisation",
                     "CreateDepartment",
-                    "CreateDepartmentAnotherOrganisation",
-                    "CreateJobTitle",
-                    "CreateEmployee",
-                    "CreateAnotherOrganisationEmployee",
-                    "CreateMainAssignment",
-                    "MainAssignmentForEmployeeAnotherOrganisation",
-                    "CreateShift"};
+                    "CreateDepartmentAnotherLocationSameOrganisation",
+                    "CreateDepartmentAnotherOrganisation"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Post Shift should return error when missing locationId, departmentId", null, @__tags);
-#line 134
+#line 126
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -330,25 +317,25 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 135
+#line 127
  testRunner.Given("the /locations/{locationId}/departments/{departmentId}/shifts/{id}/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table6.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "locationId",
                             string.Format("{0}", locationId)});
-                table6.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "departmentId",
                             string.Format("{0}", departmentId)});
-#line 136
-     testRunner.And("the following url segments", ((string)(null)), table6, "And ");
+#line 128
+     testRunner.And("the following url segments", ((string)(null)), table8, "And ");
 #line hidden
-#line 140
+#line 132
  testRunner.When("a DELETE request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 141
+#line 133
  testRunner.Then(string.Format("HTTP Code is {0}", code), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -383,7 +370,7 @@ this.ScenarioInitialize(scenarioInfo);
             }
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Post Shift endpoint should return error for overlaping shifts", null, @__tags);
-#line 159
+#line 154
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -403,70 +390,70 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 160
+#line 155
  testRunner.Given("the /locations/{locationId}/departments/{departmentId}/shifts/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table7.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "locationId",
                             "$Location.ID"});
-                table7.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "departmentId",
                             "$Department.ID"});
-#line 161
-  testRunner.And("the following url segments", ((string)(null)), table7, "And ");
+#line 156
+  testRunner.And("the following url segments", ((string)(null)), table9, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                             "Field",
                             "Value"});
-                table8.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Break1Minutes",
                             string.Format("{0}", break1Minutes)});
-                table8.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Break2Minutes",
                             string.Format("{0}", break2Minutes)});
-                table8.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "StartDateTime",
                             string.Format("{0}", startDateTime)});
-                table8.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "EndDateTime",
                             string.Format("{0}", endDateTime)});
-#line 165
-  testRunner.And("request has a shift as a body with parameters", ((string)(null)), table8, "And ");
+#line 160
+  testRunner.And("request has a shift as a body with parameters", ((string)(null)), table10, "And ");
 #line hidden
-#line 171
+#line 166
  testRunner.When("a POST request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 172
+#line 167
  testRunner.Then("HTTP Code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                             "Field",
                             "Value"});
-                table9.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "Break1Minutes",
                             string.Format("{0}", break1Minutes)});
-                table9.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "Break2Minutes",
                             string.Format("{0}", break2Minutes)});
-                table9.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "StartDateTime",
                             string.Format("{0}", startDateTime)});
-                table9.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "EndDateTime",
                             string.Format("{0}", endDateTime)});
-#line 173
-     testRunner.And("request has a shift as a body with parameters", ((string)(null)), table9, "And ");
+#line 168
+     testRunner.And("request has a shift as a body with parameters", ((string)(null)), table11, "And ");
 #line hidden
-#line 179
+#line 174
      testRunner.And("a POST request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 180
+#line 175
  testRunner.Then("HTTP Code is 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 181
+#line 176
      testRunner.And(string.Format("Error {0} should be returned", errorMessage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -505,7 +492,7 @@ this.ScenarioInitialize(scenarioInfo);
             }
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update Shift", null, @__tags);
-#line 201
+#line 196
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -525,49 +512,49 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 202
+#line 197
  testRunner.Given("the /locations/{locationId}/departments/{departmentId}/shifts/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table10.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "locationId",
                             "$Location.ID"});
-                table10.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "departmentId",
                             "$Department.ID"});
-#line 203
-  testRunner.And("the following url segments", ((string)(null)), table10, "And ");
+#line 198
+  testRunner.And("the following url segments", ((string)(null)), table12, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                             "Field",
                             "Value"});
-                table11.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Break1Minutes",
                             string.Format("{0}", break1Minutes)});
-                table11.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Break2Minutes",
                             string.Format("{0}", break2Minutes)});
-                table11.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "StartDateTime",
                             string.Format("{0}", startDateTime)});
-                table11.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "EndDateTime",
                             string.Format("{0}", endDateTime)});
-                table11.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "Notes",
                             "updated"});
-#line 207
-  testRunner.And("request has a shift as a body to be updated", ((string)(null)), table11, "And ");
+#line 202
+  testRunner.And("request has a shift as a body to be updated", ((string)(null)), table13, "And ");
 #line hidden
-#line 214
+#line 209
  testRunner.When("a PUT request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 215
+#line 210
  testRunner.Then("HTTP Code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 216
+#line 211
      testRunner.And("the shift is updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -607,7 +594,7 @@ this.ScenarioInitialize(scenarioInfo);
             }
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update Shift endpoint should return error for incorrect dates", null, @__tags);
-#line 233
+#line 228
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -627,49 +614,49 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 234
+#line 229
  testRunner.Given("the /locations/{locationId}/departments/{departmentId}/shifts/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table12.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "locationId",
                             "$Location.ID"});
-                table12.AddRow(new string[] {
+                table14.AddRow(new string[] {
                             "departmentId",
                             "$Department.ID"});
-#line 235
-  testRunner.And("the following url segments", ((string)(null)), table12, "And ");
+#line 230
+  testRunner.And("the following url segments", ((string)(null)), table14, "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                             "Field",
                             "Value"});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Break1Minutes",
                             string.Format("{0}", break1Minutes)});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Break2Minutes",
                             string.Format("{0}", break2Minutes)});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "StartDateTime",
                             string.Format("{0}", startDateTime)});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "EndDateTime",
                             string.Format("{0}", endDateTime)});
-                table13.AddRow(new string[] {
+                table15.AddRow(new string[] {
                             "Notes",
                             "updated"});
-#line 239
-  testRunner.And("request has a shift as a body to be updated", ((string)(null)), table13, "And ");
+#line 234
+  testRunner.And("request has a shift as a body to be updated", ((string)(null)), table15, "And ");
 #line hidden
-#line 246
+#line 241
  testRunner.When("a PUT request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 247
+#line 242
  testRunner.Then(string.Format("HTTP Code is {0}", code), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 248
+#line 243
      testRunner.And("the shift is updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -704,7 +691,7 @@ this.ScenarioInitialize(scenarioInfo);
             }
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update Shift endpoint should return error when overlapping", null, @__tags);
-#line 267
+#line 262
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -724,71 +711,74 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                             "Field",
                             "Value"});
-                table14.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "StartDateTime",
                             "2025-12-07 10:09"});
-                table14.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "EndDateTime",
                             "2025-12-07 12:00"});
-                table14.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "ChargedDate",
                             "2025-12-07"});
-#line 268
-    testRunner.Given("create and save shift in db", ((string)(null)), table14, "Given ");
-#line hidden
-                TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Field",
-                            "Value"});
-                table15.AddRow(new string[] {
-                            "StartDateTime",
-                            "2025-12-07 16:09"});
-                table15.AddRow(new string[] {
-                            "EndDateTime",
-                            "2025-12-07 20:00"});
-                table15.AddRow(new string[] {
-                            "ChargedDate",
-                            "2025-12-07"});
-#line 274
-  testRunner.And("create and save shift in db", ((string)(null)), table15, "And ");
-#line hidden
-#line 280
-     testRunner.And("the /locations/{locationId}/departments/{departmentId}/shifts/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-                TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Name",
-                            "Value"});
-                table16.AddRow(new string[] {
-                            "locationId",
-                            "$Location.ID"});
-                table16.AddRow(new string[] {
-                            "departmentId",
-                            "$Department.ID"});
-#line 281
-  testRunner.And("the following url segments", ((string)(null)), table16, "And ");
+#line 263
+    testRunner.Given("create and save shift in db", ((string)(null)), table16, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
                             "Field",
                             "Value"});
                 table17.AddRow(new string[] {
                             "StartDateTime",
-                            "2025-12-07 10:09"});
+                            "2025-12-07 16:09"});
                 table17.AddRow(new string[] {
                             "EndDateTime",
-                            "2025-12-07 12:00"});
+                            "2025-12-07 20:00"});
                 table17.AddRow(new string[] {
+                            "ChargedDate",
+                            "2025-12-07"});
+#line 269
+  testRunner.And("create and save shift in db", ((string)(null)), table17, "And ");
+#line hidden
+#line 275
+     testRunner.And("the /locations/{locationId}/departments/{departmentId}/shifts/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "Value"});
+                table18.AddRow(new string[] {
+                            "locationId",
+                            "$Location.ID"});
+                table18.AddRow(new string[] {
+                            "departmentId",
+                            "$Department.ID"});
+#line 276
+  testRunner.And("the following url segments", ((string)(null)), table18, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table19.AddRow(new string[] {
+                            "StartDateTime",
+                            "2025-12-07 10:09"});
+                table19.AddRow(new string[] {
+                            "EndDateTime",
+                            "2025-12-07 12:00"});
+                table19.AddRow(new string[] {
                             "Notes",
                             "updated"});
-#line 285
-  testRunner.And("request has a shift as a body to be updated", ((string)(null)), table17, "And ");
+#line 280
+  testRunner.And("request has a shift as a body to be updated", ((string)(null)), table19, "And ");
 #line hidden
-#line 290
+#line 285
  testRunner.When("a PUT request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 292
-     testRunner.And("the shift is updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 286
+ testRunner.Then(string.Format("HTTP Code is {0}", code), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 287
+     testRunner.And(string.Format("Error {0} should be returned", errorMessage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -797,47 +787,34 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Update Shift should return error when missing locationId, departmentId")]
         [NUnit.Framework.CategoryAttribute("CreateLocation")]
-        [NUnit.Framework.CategoryAttribute("CreateAreaAnotherOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateLocations")]
         [NUnit.Framework.CategoryAttribute("LocationForAnotherOrganisation")]
-        [NUnit.Framework.CategoryAttribute("CreateArea")]
-        [NUnit.Framework.CategoryAttribute("CreateRole")]
-        [NUnit.Framework.CategoryAttribute("CreateRoleForAnotherOrganisation")]
         [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherLocationSameOrganisation")]
         [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherOrganisation")]
-        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
-        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
-        [NUnit.Framework.CategoryAttribute("CreateAnotherOrganisationEmployee")]
-        [NUnit.Framework.CategoryAttribute("CreateMainAssignment")]
-        [NUnit.Framework.CategoryAttribute("MainAssignmentForEmployeeAnotherOrganisation")]
-        [NUnit.Framework.CategoryAttribute("CreateShift")]
         [NUnit.Framework.TestCaseAttribute("1.MissingLocation", "", "$Department.ID", "404", null)]
         [NUnit.Framework.TestCaseAttribute("2.InvalidLocation", "123456", "$Department.ID", "401", null)]
         [NUnit.Framework.TestCaseAttribute("3.MissingDepartment", "$Location.ID", "", "404", null)]
         [NUnit.Framework.TestCaseAttribute("4.InvalidDepartment", "$Location.ID", "123456", "404", null)]
+        [NUnit.Framework.TestCaseAttribute("5.DepartmentAnotherLocationSameOrganisation", "$Location.ID", "$DepartmentAnotherLocationSameOrganisation.ID", "401", null)]
+        [NUnit.Framework.TestCaseAttribute("6.DepartmentAnotherOrganisation", "$Location.ID", "$DepartmentAnotherOrganisation.ID", "404", null)]
+        [NUnit.Framework.TestCaseAttribute("7.DepartmentAnotherOrganisation", "$LocationAnotherOrganisation.ID", "$Department.ID", "401", null)]
         public virtual void UpdateShiftShouldReturnErrorWhenMissingLocationIdDepartmentId(string testCase, string locationId, string departmentId, string code, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "CreateLocation",
-                    "CreateAreaAnotherOrganisation",
+                    "CreateLocations",
                     "LocationForAnotherOrganisation",
-                    "CreateArea",
-                    "CreateRole",
-                    "CreateRoleForAnotherOrganisation",
                     "CreateDepartment",
-                    "CreateDepartmentAnotherOrganisation",
-                    "CreateJobTitle",
-                    "CreateEmployee",
-                    "CreateAnotherOrganisationEmployee",
-                    "CreateMainAssignment",
-                    "MainAssignmentForEmployeeAnotherOrganisation",
-                    "CreateShift"};
+                    "CreateDepartmentAnotherLocationSameOrganisation",
+                    "CreateDepartmentAnotherOrganisation"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update Shift should return error when missing locationId, departmentId", null, @__tags);
-#line 317
+#line 304
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -857,25 +834,25 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 318
+#line 305
  testRunner.Given("the /locations/{locationId}/departments/{departmentId}/shifts/{id}/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table18.AddRow(new string[] {
+                table20.AddRow(new string[] {
                             "locationId",
                             string.Format("{0}", locationId)});
-                table18.AddRow(new string[] {
+                table20.AddRow(new string[] {
                             "departmentId",
                             string.Format("{0}", departmentId)});
-#line 319
-     testRunner.And("the following url segments", ((string)(null)), table18, "And ");
+#line 306
+     testRunner.And("the following url segments", ((string)(null)), table20, "And ");
 #line hidden
-#line 323
+#line 310
  testRunner.When("a PUT request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 324
+#line 311
  testRunner.Then(string.Format("HTTP Code is {0}", code), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -912,7 +889,7 @@ this.ScenarioInitialize(scenarioInfo);
             }
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete Shift", null, @__tags);
-#line 351
+#line 341
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -932,34 +909,34 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 352
+#line 342
  testRunner.Given("the /locations/{locationId}/departments/{departmentId}/shifts/{id}/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table19.AddRow(new string[] {
+                table21.AddRow(new string[] {
                             "locationId",
                             "$Location.ID"});
-                table19.AddRow(new string[] {
+                table21.AddRow(new string[] {
                             "departmentId",
                             "$Department.ID"});
-                table19.AddRow(new string[] {
+                table21.AddRow(new string[] {
                             "id",
                             "$Shift.ID"});
-#line 353
-     testRunner.And("the following url segments", ((string)(null)), table19, "And ");
+#line 343
+     testRunner.And("the following url segments", ((string)(null)), table21, "And ");
 #line hidden
-#line 358
+#line 348
   testRunner.And("request has the following body", string.Format("{0}\r\n", employeeId), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 363
+#line 353
  testRunner.When("a DELETE request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 364
+#line 354
  testRunner.Then("HTTP Code is 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 365
+#line 355
      testRunner.And("shift should be deleted from db", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -970,12 +947,14 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.DescriptionAttribute("Delete Shift should return error when missing locationId, departmentId or shiftId" +
             "")]
         [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateLocations")]
         [NUnit.Framework.CategoryAttribute("CreateAreaAnotherOrganisation")]
         [NUnit.Framework.CategoryAttribute("LocationForAnotherOrganisation")]
         [NUnit.Framework.CategoryAttribute("CreateArea")]
         [NUnit.Framework.CategoryAttribute("CreateRole")]
         [NUnit.Framework.CategoryAttribute("CreateRoleForAnotherOrganisation")]
         [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherLocationSameOrganisation")]
         [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherOrganisation")]
         [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
         [NUnit.Framework.CategoryAttribute("CreateEmployee")]
@@ -987,16 +966,21 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestCaseAttribute("2.InvalidLocation", "123456", "$Department.ID", "$Shift.ID", "401", null)]
         [NUnit.Framework.TestCaseAttribute("3.MissingDepartment", "$Location.ID", "", "$Shift.ID", "404", null)]
         [NUnit.Framework.TestCaseAttribute("4.InvalidDepartment", "$Location.ID", "123456", "$Shift.ID", "404", null)]
+        [NUnit.Framework.TestCaseAttribute("5.DepartmentAnotherLocationSameOrganisation", "$Location.ID", "$DepartmentAnotherLocationSameOrganisation.ID", "$Shift.ID", "401", null)]
+        [NUnit.Framework.TestCaseAttribute("6.DepartmentAnotherOrganisation", "$Location.ID", "$DepartmentAnotherOrganisation.ID", "$Shift.ID", "404", null)]
+        [NUnit.Framework.TestCaseAttribute("7.DepartmentAnotherOrganisation", "$LocationAnotherOrganisation.ID", "$Department.ID", "$Shift.ID", "401", null)]
         public virtual void DeleteShiftShouldReturnErrorWhenMissingLocationIdDepartmentIdOrShiftId(string testCase, string locationId, string departmentId, string shiftId, string code, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "CreateLocation",
+                    "CreateLocations",
                     "CreateAreaAnotherOrganisation",
                     "LocationForAnotherOrganisation",
                     "CreateArea",
                     "CreateRole",
                     "CreateRoleForAnotherOrganisation",
                     "CreateDepartment",
+                    "CreateDepartmentAnotherLocationSameOrganisation",
                     "CreateDepartmentAnotherOrganisation",
                     "CreateJobTitle",
                     "CreateEmployee",
@@ -1011,7 +995,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete Shift should return error when missing locationId, departmentId or shiftId" +
                     "", null, @__tags);
-#line 385
+#line 377
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -1031,28 +1015,28 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 386
+#line 378
  testRunner.Given("the /locations/{locationId}/departments/{departmentId}/shifts/{id}/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table20.AddRow(new string[] {
+                table22.AddRow(new string[] {
                             "locationId",
                             string.Format("{0}", locationId)});
-                table20.AddRow(new string[] {
+                table22.AddRow(new string[] {
                             "departmentId",
                             string.Format("{0}", departmentId)});
-                table20.AddRow(new string[] {
+                table22.AddRow(new string[] {
                             "id",
                             string.Format("{0}", shiftId)});
-#line 387
-     testRunner.And("the following url segments", ((string)(null)), table20, "And ");
+#line 379
+     testRunner.And("the following url segments", ((string)(null)), table22, "And ");
 #line hidden
-#line 392
+#line 384
  testRunner.When("a DELETE request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 393
+#line 385
  testRunner.Then(string.Format("HTTP Code is {0}", code), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1109,7 +1093,7 @@ this.ScenarioInitialize(scenarioInfo);
             }
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete Shift should return error when shiftId is incorrect", null, @__tags);
-#line 419
+#line 414
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -1129,34 +1113,34 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 420
+#line 415
 testRunner.Given(string.Format("shift for depatment with {0} is created and saved into database", locationData), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 421
+#line 416
      testRunner.And("the /locations/{locationId}/departments/{departmentId}/shifts/{id}/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table21.AddRow(new string[] {
+                table23.AddRow(new string[] {
                             "locationId",
                             "$Location.ID"});
-                table21.AddRow(new string[] {
+                table23.AddRow(new string[] {
                             "departmentId",
                             "$Department.ID"});
-                table21.AddRow(new string[] {
+                table23.AddRow(new string[] {
                             "id",
                             string.Format("{0}", shiftId)});
-#line 422
-     testRunner.And("the following url segments", ((string)(null)), table21, "And ");
+#line 417
+     testRunner.And("the following url segments", ((string)(null)), table23, "And ");
 #line hidden
-#line 427
+#line 422
  testRunner.When("a DELETE request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 428
+#line 423
  testRunner.Then(string.Format("HTTP Code is {0}", code), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 429
+#line 424
      testRunner.And(string.Format("Error {0} should be returned", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -1204,7 +1188,7 @@ testRunner.Given(string.Format("shift for depatment with {0} is created and save
             }
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete Shift should return error when body is with incorrect EmployeeId", null, @__tags);
-#line 453
+#line 448
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -1224,38 +1208,38 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 454
+#line 449
     testRunner.Given("shift for depatment with sameLocationSameOrganisation is created and saved into d" +
                         "atabase", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 455
+#line 450
      testRunner.And("the /locations/{locationId}/departments/{departmentId}/shifts/{id}/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table22.AddRow(new string[] {
+                table24.AddRow(new string[] {
                             "locationId",
                             "$Location.ID"});
-                table22.AddRow(new string[] {
+                table24.AddRow(new string[] {
                             "departmentId",
                             "$Department.ID"});
-                table22.AddRow(new string[] {
+                table24.AddRow(new string[] {
                             "id",
                             "$Shift.ID"});
-#line 456
-     testRunner.And("the following url segments", ((string)(null)), table22, "And ");
+#line 451
+     testRunner.And("the following url segments", ((string)(null)), table24, "And ");
 #line hidden
-#line 461
+#line 456
      testRunner.And("request has the following body", string.Format("{0}\r\n", employeeId), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 466
+#line 461
  testRunner.When("a DELETE request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 467
+#line 462
  testRunner.Then("HTTP Code is 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 468
+#line 463
      testRunner.And(string.Format("Error {0} should be returned", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }

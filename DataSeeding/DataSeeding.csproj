@@ -388,12 +388,14 @@
     <Compile Include="Generators\MainAssignmentEntityGenerator.cs" />
     <Compile Include="Generators\OrganisationEntityGenerator.cs" />
     <Compile Include="Generators\RoleEntityGenerator.cs" />
+    <Compile Include="Generators\DailyPeriodEntityGenerator.cs" />
     <Compile Include="Generators\ShiftEntityGenerator.cs" />
     <Compile Include="Generators\UserEntityGenerator.cs" />
     <Compile Include="Generators\UserLevelEntityGenerator.cs" />
     <Compile Include="Hooks\AreasHooks.cs" />
     <Compile Include="Hooks\AssignmentsHooks.cs" />
     <Compile Include="Hooks\CommonHooks.cs" />
+    <Compile Include="Hooks\DailyPeriodHooks.cs" />
     <Compile Include="Hooks\RolesHooks.cs" />
     <Compile Include="Hooks\DepartmentsHooks.cs" />
     <Compile Include="Hooks\EmployeesHooks.cs" />

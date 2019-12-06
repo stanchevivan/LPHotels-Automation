@@ -8,6 +8,8 @@
 
         public const int User = 3;
 
+        public const int DailyPeriod = 4;
+
         public const int Location = 100;
 
         public const int Area = 200;

@@ -40,6 +40,8 @@ namespace DataSeeding.Infrastructure
 
         public IRepository<TempShift> TempShift => _repositoryFactory.GetRepository<TempShift>();
 
+        public IRepository<DailyPeriod> DailyPeriod => _repositoryFactory.GetRepository<DailyPeriod>();
+
         public IRepository<User> User => _repositoryFactory.GetRepository<User>();
 
         public IRepository<UserLevel> UserLevel => _repositoryFactory.GetRepository<UserLevel>();
