@@ -15,6 +15,11 @@ Scenario Outline: Open create shift window
     |environment|
     |local      |
 
+    @local
+    Examples:
+    |environment|
+    |local      |
+
 Scenario Outline: Shift Block is displayed in Schedule Grid
     Given LPH app is open on "<environment>"
     Then shift blocks are present
@@ -31,11 +36,9 @@ Scenario Outline: Shift Block is displayed in Schedule Grid
 
 Scenario Outline: Test Shift
     Given LPH app is open on "<environment>"
-    When Shift details are opened for Role "C" Employee "MS" Start time "11:00" End time "2:15"
-        * Shift details Start time is set to "22:11" and End Time is set to "23:21"
-        * Shift details Cancel button is clicked
+    When test step
 
-    @local
+    @QA
     Examples:
     |environment|
     |local      |
@@ -54,23 +57,23 @@ Scenario Outline: Test Shift
 
     Scenario Outline: Create shift
     Given LPH app is open on "<environment>"
-    When shift window is open at "5" "5"
-        * Shift details Start time is set to "12:11" and End Time is set to "13:21"
+    When new shift window is open for Role "C" Employee "II" for "10:00"
+        * Shift details Start time is set to "10:11" and End Time is set to "11:21"
         * Shift details Save button is clicked
-    Then Shift for Role "C" Employee "MS" Start time "12:11" End time "13:21" is "not visible"
+    Then Shift for Role "C" Employee "II" Start time "10:11" End time "11:21" is "visible"
 
-    @local
+    @QA
     Examples:
     |environment|
-    |local      |
+    |QA         |
 
     Scenario Outline: Delete shift
     Given LPH app is open on "<environment>"
-    When Shift details are opened for Role "C" Employee "MS" Start time "11:00" End time "2:15"
+    When Shift details are opened for Role "C" Employee "II" Start time "10:11" End time "11:21"
         * Shift details Delete button is clicked
-    Then Shift for Role "C" Employee "MS" Start time "11:00" End time "2:15" is "not visible"
+    Then Shift for Role "C" Employee "II" Start time "10:11" End time "11:21" is "not visible"
 
-    @local
+    @QA
     Examples:
     |environment|
-    |local      |
+    |QA         |

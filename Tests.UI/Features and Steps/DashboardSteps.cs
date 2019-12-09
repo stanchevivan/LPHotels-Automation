@@ -42,15 +42,11 @@ namespace Tests.UI.FeaturesandSteps
             Assert.That(dashboardPage.IsShiftPopoverPresent, Is.True);
         }
 
-        [When(@"Test step")]
-        public void TestStep()
-        {
-        }
-
         [When(@"Shift details are opened for Role ""(.*)"" Employee ""(.*)"" Start time ""(.*)"" End time ""(.*)""")]
         public void ShiftDetailsAreOpened(string role, string employee, string startTime, string endtime)
         {
             dashboardPage.GetRoleSection(role).GetEmployee(employee).GetShift(startTime, endtime).OpenDetails();
+            shiftDetails.WaitToAppear();
         }
 
         [When(@"Shift details Start time is set to ""(.*)"" and End Time is set to ""(.*)""")]
@@ -71,24 +67,34 @@ namespace Tests.UI.FeaturesandSteps
         public void ShiftDetailsCancelButtonIsClicked()
         {
             shiftDetails.UseCancelButton();
+            shiftDetails.WaitToDisappear();
         }
 
         [When(@"Shift details Save button is clicked")]
         public void ShiftDetailsSaveButtonIsClicked()
         {
             shiftDetails.UseSaveButton();
+            shiftDetails.WaitToDisappear();
         }
 
         [When(@"Shift details Delete button is clicked")]
         public void ShiftDetailsDeleteButtonIsClicked()
         {
             shiftDetails.UseDeleteButton();
+            shiftDetails.WaitToDisappear();
         }
 
-        [Then(@"Shift for Role ""(.*)"" Employee ""(.*)"" Start time ""(.*)"" End time ""(.*)"" is (visible|not visible)")]
+        [Then(@"Shift for Role ""(.*)"" Employee ""(.*)"" Start time ""(.*)"" End time ""(.*)"" is ""(visible|not visible)""")]
         public void ShiftIsVisible(string role, string employee, string startTime, string endtime, string status)
         {
-            Assert.That(dashboardPage.GetRoleSection(role).GetEmployee(employee).GetShift(startTime, endtime),status=="visible"? Is.Not.Null : Is.Null);
+            Assert.That(dashboardPage.GetRoleSection(role).GetEmployee(employee).GetShift(startTime, endtime), status == "visible" ? Is.Not.Null : Is.Null);
+        }
+
+        [When(@"new shift window is open for Role ""(.*)"" Employee ""(.*)"" for ""(.*)""")]
+        public void NewShiftWindowIsOpenForRoleEmployee(string role, string employee, string hour)
+        {
+            dashboardPage.GetRoleSection(role).GetEmployee(employee).OpenNewShiftWindow(hour);
+            shiftDetails.WaitToAppear();
         }
     }
 }

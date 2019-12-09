@@ -46,8 +46,8 @@ namespace PageObjects
             }
         }
 
-        public string StartTime => startTime.Text;
-        public string Endtime => endTime.Text;
+        public string StartTime => startTime.GetAttribute("textContent");
+        public string EndTime => endTime.GetAttribute("textContent");
         public string RoleSymbol => roleSymbol.Text;
 
         public void ExpandLeft(int offset)

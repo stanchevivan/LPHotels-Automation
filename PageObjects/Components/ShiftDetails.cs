@@ -18,10 +18,14 @@ namespace PageObjects
         private IWebElement startTime => Driver.FindElement(By.CssSelector(".lphf_shift-popover__section [type='time']:first-of-type"));
         private IWebElement endTime => Driver.FindElement(By.CssSelector(".lphf_shift-popover__section [type='time']:last-of-type"));
 
-        private IWebElement cancelButton => Driver.FindElement(By.CssSelector(".btn-"));
-        private IWebElement saveButton => Driver.FindElement(By.CssSelector(".save-button"));
-        private IWebElement deleteButton => Driver.FindElement(By.CssSelector(".btn-red-border-font"));
+        [FindsBy(How = How.CssSelector, Using = ".save-button")]
+        private IWebElement saveButton { get; set; }
 
+        [FindsBy(How = How.CssSelector, Using = ".btn-")]
+        private IWebElement cancelButton { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".btn-red-border-font")]
+        private IWebElement deleteButton { get; set; }
 
         public string StartTime
         {
@@ -51,17 +55,31 @@ namespace PageObjects
 
         public void UseCancelButton()
         {
-            new Actions(Driver).MoveToElement(cancelButton).Click();
+            new Actions(Driver).MoveToElement(cancelButton).Click().Build().Perform();
         }
 
         public void UseSaveButton()
         {
-            new Actions(Driver).MoveToElement(saveButton).Click();
+            new Actions(Driver).MoveToElement(saveButton).Click().Build().Perform();
         }
 
         public void UseDeleteButton()
         {
-            new Actions(Driver).MoveToElement(deleteButton).Click();
+            new Actions(Driver).MoveToElement(deleteButton).Click().Build().Perform();
+        }
+
+        public void WaitToAppear()
+        {
+            Driver.WaitIsClickable(deleteButton);
+            // TODO: Replace sleep with wait for refresh of shifts
+            System.Threading.Thread.Sleep(100);
+        }
+
+        public void WaitToDisappear()
+        {
+            Driver.WaitElementToDisappear(deleteButton);
+            // TODO: Replace sleep with wait
+            System.Threading.Thread.Sleep(100);
         }
     }
 }

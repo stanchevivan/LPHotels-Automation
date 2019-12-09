@@ -18,14 +18,10 @@ namespace PageObjects
 
         [FindsBy(How = How.CssSelector, Using = ".left-drawer")]
         private IWebElement ScheduleSection1 { get; set; }
-
-        protected IWebElement Button => Driver.FindElement(By.CssSelector("[data-test-id='lphf_review-tna-btn']"));
-        protected IWebElement ScheduleSection => Driver.FindElement(By.CssSelector(".lphf_role-group"));
-        protected IList<IWebElement> ScheduleSections => Driver.FindElements(By.CssSelector(".lphf_role-group .lphf_grid"));
+        
+        protected IList<IWebElement> activeGridsList => Driver.FindElements(By.CssSelector(".swiper-slide-active .lphf_role-group .lphf_grid"));
+        
         protected IWebElement ShiftPopover => Driver.FindElement(By.CssSelector("form.lphf_shift-popover"));
-
-        protected IList<IWebElement> employees => Driver.FindElements(By.CssSelector(".employee-name-row"));
-        protected IList<Employee> Employees => employees.Select(e => new Employee(Driver, e)).ToList();
 
         protected IList<IWebElement> employeSections => Driver.FindElements(By.CssSelector(".row-name-header + div"));
 
@@ -49,6 +45,7 @@ namespace PageObjects
             var roleSection = RoleSections[indexOfRole];
 
             roleSection.AssociateEmployeeSection(employeSections[indexOfRole]);
+            roleSection.AssociateGrid(activeGridsList[indexOfRole]);
 
             return roleSection;
         }
@@ -56,7 +53,7 @@ namespace PageObjects
         public void OpenShiftWindow(int x, int y)
         {
             
-            ScheduleSections[16].Do(Driver).ClickOffSet(5, 5);
+            activeGridsList[16].Do(Driver).ClickOffSet(5, 5);
         }
 
         public void WaitToLoad()
