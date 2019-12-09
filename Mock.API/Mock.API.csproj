@@ -27,9 +27,6 @@
     <None Include="Mappings\Request.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Scripting.native.cs" />
-    <Compile Include="Scripting.Extensions.cs" />
-    <Compile Include="Scripting.evaluator.cs" />
     <Compile Include="MockServer.cs" />
   </ItemGroup>
   <ItemGroup>

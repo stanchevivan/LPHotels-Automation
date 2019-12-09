@@ -84,5 +84,11 @@ namespace Tests.UI.FeaturesandSteps
         {
             shiftDetails.UseDeleteButton();
         }
+
+        [Then(@"Shift for Role ""(.*)"" Employee ""(.*)"" Start time ""(.*)"" End time ""(.*)"" is (visible|not visible)")]
+        public void ShiftIsVisible(string role, string employee, string startTime, string endtime, string status)
+        {
+            Assert.That(dashboardPage.GetRoleSection(role).GetEmployee(employee).GetShift(startTime, endtime),status=="visible"? Is.Not.Null : Is.Null);
+        }
     }
 }

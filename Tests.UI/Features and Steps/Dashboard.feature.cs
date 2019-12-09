@@ -134,6 +134,81 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Edit shift")]
+        [NUnit.Framework.TestCaseAttribute("local", new string[] {
+                "local"}, Category="local")]
+        public virtual void EditShift(string environment, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit shift", null, exampleTags);
+#line 43
+    this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 44
+    testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 45
+    testRunner.When("Shift details are opened for Role \"C\" Employee \"MS\" Start time \"11:00\" End time \"" +
+                    "2:15\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 46
+        testRunner.And("Shift details Start time is set to \"22:11\" and End Time is set to \"23:21\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 47
+        testRunner.And("Shift details Save button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 48
+    testRunner.Then("Shift for Role \"C\" Employee \"MS\" Start time \"22:11\" End time \"23:21\" is \"visible\"" +
+                    "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create shift")]
+        [NUnit.Framework.TestCaseAttribute("local", new string[] {
+                "local"}, Category="local")]
+        public virtual void CreateShift(string environment, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create shift", null, exampleTags);
+#line 55
+    this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 56
+    testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 57
+    testRunner.When("shift window is open at \"5\" \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 58
+        testRunner.And("Shift details Start time is set to \"12:11\" and End Time is set to \"13:21\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 59
+        testRunner.And("Shift details Save button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 60
+    testRunner.Then("Shift for Role \"C\" Employee \"MS\" Start time \"12:11\" End time \"13:21\" is \"not visi" +
+                    "ble\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Delete shift")]
+        [NUnit.Framework.TestCaseAttribute("local", new string[] {
+                "local"}, Category="local")]
+        public virtual void DeleteShift(string environment, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete shift", null, exampleTags);
+#line 67
+    this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 68
+    testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 69
+    testRunner.When("Shift details are opened for Role \"C\" Employee \"MS\" Start time \"11:00\" End time \"" +
+                    "2:15\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 70
+        testRunner.And("Shift details Delete button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 71
+    testRunner.Then("Shift for Role \"C\" Employee \"MS\" Start time \"11:00\" End time \"2:15\" is \"not visib" +
+                    "le\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
