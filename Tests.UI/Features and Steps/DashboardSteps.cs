@@ -42,11 +42,6 @@ namespace Tests.UI.FeaturesandSteps
             Assert.That(dashboardPage.IsShiftPopoverPresent, Is.True);
         }
 
-        [When(@"Test step")]
-        public void TestStep()
-        {
-        }
-
         [When(@"Shift details are opened for Role ""(.*)"" Employee ""(.*)"" Start time ""(.*)"" End time ""(.*)""")]
         public void ShiftDetailsAreOpened(string role, string employee, string startTime, string endtime)
         {
@@ -83,6 +78,13 @@ namespace Tests.UI.FeaturesandSteps
         public void ShiftDetailsDeleteButtonIsClicked()
         {
             shiftDetails.UseDeleteButton();
+        }
+
+        [When(@"test step")]
+        public void TestStep()
+        {
+            dashboardPage.GetRoleSection("C").GetEmployee("PP").OpenNewShiftWindow("10:00");
+            System.Threading.Thread.Sleep(3000);
         }
     }
 }

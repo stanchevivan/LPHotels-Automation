@@ -14,9 +14,10 @@ namespace PageObjects
             this.webElement = webElement;
             PageFactory.InitElements(webDriver, this);
         }
+        private IWebElement employeeSection;
+        private IWebElement grid;
 
         private IWebElement roleName => webElement.FindElement(By.CssSelector(".row-name-header-inner > span:first-of-type"));
-        private IWebElement employeeSection;
         private IList<IWebElement> employees => employeeSection.FindElements(By.CssSelector(".employee-name-row"));
 
         public string Id
@@ -30,7 +31,7 @@ namespace PageObjects
 
         public string Rolename => roleName.Text;
 
-        public IList<Employee> Employees => employees.Select(e => new Employee(Driver, e)).ToList();
+        public IList<Employee> Employees => employees.Select(e => new Employee(Driver, grid, e)).ToList();
 
         public Employee GetEmployee(string initials)
         {
@@ -40,6 +41,11 @@ namespace PageObjects
         public void AssociateEmployeeSection(IWebElement employeeSection)
         {
             this.employeeSection = employeeSection;
+        }
+
+        public void AssociateGrid(IWebElement grid)
+        {
+            this.grid = grid;
         }
     }
 }

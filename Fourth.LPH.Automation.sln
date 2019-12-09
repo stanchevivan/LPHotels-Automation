@@ -55,6 +55,8 @@ Global
 		{2F8CB427-56FE-498C-8967-D5B4D944ADD2}.Chrome|Any CPU.Build.0 = Debug|Any CPU
 		{856E57CC-D154-437D-8D1B-3AA6E534F4CB}.Chrome|Any CPU.ActiveCfg = Debug|Any CPU
 		{856E57CC-D154-437D-8D1B-3AA6E534F4CB}.Chrome|Any CPU.Build.0 = Debug|Any CPU
+		{640B6E5A-D885-42B0-817F-EEC2355C561A}.Chrome|Any CPU.ActiveCfg = Debug|Any CPU
+		{640B6E5A-D885-42B0-817F-EEC2355C561A}.Chrome|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
