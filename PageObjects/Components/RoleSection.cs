@@ -35,7 +35,14 @@ namespace PageObjects
 
         public Employee GetEmployee(string initials)
         {
-            return Employees.First(x => x.Initials == initials);
+            var employee = Employees.FirstOrDefault(x => x.Initials == initials);
+
+            if (employee == null)
+            {
+                throw new System.Exception($"Employee with initials {initials} not found !");
+            }
+
+            return employee;
         }
 
         public void AssociateEmployeeSection(IWebElement employeeSection)

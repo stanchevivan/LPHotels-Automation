@@ -46,7 +46,14 @@ namespace PageObjects
 
         public ShiftItem GetShift(string startTime, string endTime)
         {
-            return ShiftItems.FirstOrDefault(x => x.StartTime == startTime && x.EndTime == endTime);
+            var shift = ShiftItems.FirstOrDefault(x => x.StartTime == startTime && x.EndTime == endTime);
+
+            if (shift == null)
+            {
+                throw new Exception($"For employee {Initials}, no shift is found with start time: {startTime} and end time {endTime} !");
+            }
+            return shift;
+
         }
 
         public void OpenNewShiftWindow(string hour)

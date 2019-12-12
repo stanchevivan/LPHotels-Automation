@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium.Interactions;
 using PageObjects;
@@ -87,7 +88,10 @@ namespace Tests.UI.FeaturesandSteps
         [Then(@"Shift for Role ""(.*)"" Employee ""(.*)"" Start time ""(.*)"" End time ""(.*)"" is ""(visible|not visible)""")]
         public void ShiftIsVisible(string role, string employee, string startTime, string endtime, string status)
         {
-            Assert.That(dashboardPage.GetRoleSection(role).GetEmployee(employee).GetShift(startTime, endtime), status == "visible" ? Is.Not.Null : Is.Null);
+            Assert.That(dashboardPage.GetRoleSection(role).GetEmployee(employee)
+                .ShiftItems.Any(x => x.StartTime == startTime && x.EndTime == endtime),
+                status == "visible" ? Is.True : Is.Not.True,
+                $"Shift with start time:{startTime} and end time:{endtime} should {(status == "visible" ? "exist" : "not exist")}, but it {(status == "visible" ? "does not" : "does")} !" );
         }
 
         [When(@"new shift window is open for Role ""(.*)"" Employee ""(.*)"" for ""(.*)""")]

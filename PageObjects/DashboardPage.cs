@@ -26,22 +26,18 @@ namespace PageObjects
         protected IList<IWebElement> employeSections => Driver.FindElements(By.CssSelector(".row-name-header + div"));
 
         protected IList<IWebElement> roleSections => Driver.FindElements(By.CssSelector(".row-name-header"));
-        protected IList<RoleSection> RoleSections => roleSections.Select(e => new RoleSection(Driver, e)).ToList();
+        protected List<RoleSection> RoleSections => roleSections.Select(e => new RoleSection(Driver, e)).ToList();
 
         public bool IsShiftPopoverPresent => ShiftPopover.Exist();
 
         public RoleSection GetRoleSection(string roleName)
         {
-            int indexOfRole = -1;
-            for (int i = 0; i < RoleSections.Count; i++)
-            {
-                if (RoleSections[i].Rolename == roleName)
-                {
-                    indexOfRole = i;
-                    break;
-                }
-            }
+            int indexOfRole = RoleSections.FindIndex(x => x.Rolename == roleName);
 
+            if (indexOfRole == -1)
+            {
+                throw new System.Exception($"Role with name {roleName} not found !");
+            }
             var roleSection = RoleSections[indexOfRole];
 
             roleSection.AssociateEmployeeSection(employeSections[indexOfRole]);
