@@ -23,18 +23,18 @@ namespace Common.Helpers
             return entity;
         }
 
-      //  public static TEntity GetDecoratedData<TEntity>(this IResponse response)
-      //where TEntity : class
-      //  {
-      //      string jsonContent = response.Content;
+        public static TEntity GetDecoratedData<TEntity>(this IResponse response)
+      where TEntity : class
+        {
+            string jsonContent = response.Content;
 
-      //      if (response.Content == string.Empty)
-      //      {
-      //          throw new Exception($"Response is Empty, {response.StatusCodeNumber}, {response.StatusCodeText}");
-      //      }
+            if (response.Content == string.Empty)
+            {
+                throw new Exception($"Response is Empty, {response.StatusCodeNumber}, {response.StatusCodeText}");
+            }
 
-      //      var entity = JsonConvert.DeserializeObject<DecoratedResponse<TEntity>>(jsonContent);
-      //      return entity.value;
-      //  }
+            var entity = JsonConvert.DeserializeObject<DecoratedResponse<TEntity>>(jsonContent);
+            return entity.value;
+        }
     }
 }

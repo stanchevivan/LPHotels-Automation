@@ -89,5 +89,33 @@ namespace DataSeeding.Hooks
 
             Session.Set(mainAssignment, Constants.Data.MainAssignmentAnotherOrganisation);
         }
+
+
+        [BeforeScenario("CreateMainAssignments", Order = ScenarioStepsOrder.Assignment)]
+        public void AssignmentsAreCreated()
+        {
+            var roleId = Session.Get<TempRole>(Constants.Data.Role).ID;
+            var departmentId = Session.Get<Department>(Constants.Data.Department).ID;
+            var employees = Session.Get<List<TempStaff>>(Constants.Data.Employees);
+            var jobTitle = Session.Get<JobTitle>(Constants.Data.JobTitle).ID;
+            var assignments = new List<StaffPayInfo>();
+
+            var mainAssignments = new MainAssignmentEntityGenerator().GenerateMultiple(5,x =>
+            {
+                x.HomeDepartmentID = departmentId;
+                x.PrimaryRoleID = roleId;
+                x.JobTitleID = jobTitle;
+            }).ToList();
+            for (int i = 0; i < mainAssignments.Count; i++)
+            {
+                mainAssignments[i].TempStaffID = employees[i].ID;
+
+            }
+            assignments.AddRange(mainAssignments);
+            _lpHotelsMainUnitOfWork.StaffPayInfo.AddRange(mainAssignments);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+        }
+
     }
+
 }

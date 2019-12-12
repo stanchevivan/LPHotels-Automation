@@ -89,7 +89,7 @@ namespace DataSeeding.Hooks
             context.Set(department, Constants.Data.DepartmentAnotherOrganisation);
         }
 
-       // [AfterScenario("CreateDepartment", Order = ScenarioStepsOrder.DeleteDepartment)]
+       // [AfterScenario("CreateDepartment", Order = ScenarioStepsOrder.Department)]
         public void DeleteDepartment()
         {
             var departmentToDelete = context.Get<Department>(Constants.Data.Department);

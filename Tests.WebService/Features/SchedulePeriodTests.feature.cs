@@ -77,34 +77,54 @@ namespace Tests.WebService.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Get Schedule period")]
         [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateLocations")]
+        [NUnit.Framework.CategoryAttribute("LocationForAnotherOrganisation")]
         [NUnit.Framework.CategoryAttribute("CreateArea")]
+        [NUnit.Framework.CategoryAttribute("CreateAreaAnotherOrganisation")]
         [NUnit.Framework.CategoryAttribute("CreateRole")]
+        [NUnit.Framework.CategoryAttribute("CreateRoleForAnotherOrganisation")]
         [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateAnotherDepartmentSameLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherLocationSameOrganisation")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartmentAnotherOrganisation")]
         [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
         [NUnit.Framework.CategoryAttribute("CreateEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateAnotherOrganisationEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployees")]
         [NUnit.Framework.CategoryAttribute("CreateMainAssignment")]
-        [NUnit.Framework.CategoryAttribute("PostShiftModel")]
-        [NUnit.Framework.TestCaseAttribute("1.InTeFutureWithBreaks", "15", "25", "2022-12-02 08:09", "2022-12-02 10:09", null)]
-        [NUnit.Framework.TestCaseAttribute("2.WithoutBreaks", "0", "0", "2022-12-02 08:09", "2022-12-02 10:09", null)]
-        [NUnit.Framework.TestCaseAttribute("3.ShiftInThePast", "15", "25", "2019-10-15 08:09", "2019-10-15 10:09", null)]
+        [NUnit.Framework.CategoryAttribute("CreateMainAssignments")]
+        [NUnit.Framework.CategoryAttribute("MainAssignmentForEmployeeAnotherOrganisation")]
+        [NUnit.Framework.TestCaseAttribute("1.InTeFutureWithBreaks", "15", "25", "2022-01-02 08:09", "2022-12-02 10:09", null)]
+        [NUnit.Framework.TestCaseAttribute("2.WithoutBreaks", "0", "0", "2022-01-02 08:09", "2022-1-02 10:09", null)]
+        [NUnit.Framework.TestCaseAttribute("3.ShiftInThePast", "15", "25", "2019-01-15 08:09", "2019-01-15 10:09", null)]
         public virtual void GetSchedulePeriod(string testCase, string break1Minutes, string break2Minutes, string startDateTime, string endDateTime, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "CreateLocation",
+                    "CreateLocations",
+                    "LocationForAnotherOrganisation",
                     "CreateArea",
+                    "CreateAreaAnotherOrganisation",
                     "CreateRole",
+                    "CreateRoleForAnotherOrganisation",
                     "CreateDepartment",
+                    "CreateAnotherDepartmentSameLocation",
+                    "CreateDepartmentAnotherLocationSameOrganisation",
+                    "CreateDepartmentAnotherOrganisation",
                     "CreateJobTitle",
                     "CreateEmployee",
+                    "CreateAnotherOrganisationEmployee",
+                    "CreateEmployees",
                     "CreateMainAssignment",
-                    "PostShiftModel"};
+                    "CreateMainAssignments",
+                    "MainAssignmentForEmployeeAnotherOrganisation"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get Schedule period", null, @__tags);
-#line 16
+#line 26
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -124,33 +144,614 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 17
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table3.AddRow(new string[] {
+                            "StartDateTime",
+                            "2030-01-15 07:09"});
+                table3.AddRow(new string[] {
+                            "EndDateTime",
+                            "2030-01-15 08:00"});
+                table3.AddRow(new string[] {
+                            "ChargedDate",
+                            "2030-01-15"});
+#line 27
+    testRunner.Given("SchedulePeriod data is created for departments", ((string)(null)), table3, "Given ");
+#line hidden
+#line 33
  testRunner.Given("the /locations/{locationId}/departments/{departmentId}/from/{from}/to/{to}/schedu" +
                         "le-period/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table1.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "locationId",
                             "$Location.ID"});
-                table1.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "departmentId",
                             "$Department.ID"});
-                table1.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "from",
-                            "2019-11-12"});
-                table1.AddRow(new string[] {
+                            "2030-01-15"});
+                table4.AddRow(new string[] {
                             "to",
-                            "2019-11-22"});
-#line 18
-  testRunner.And("the following url segments", ((string)(null)), table1, "And ");
+                            "2030-01-18"});
+#line 34
+  testRunner.And("the following url segments", ((string)(null)), table4, "And ");
 #line hidden
-#line 24
+#line 41
  testRunner.When("a GET request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 26
-     testRunner.And("the shift is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 43
+     testRunner.And("response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Get Schedule period for transition shift")]
+        [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateArea")]
+        [NUnit.Framework.CategoryAttribute("CreateRole")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployees")]
+        [NUnit.Framework.CategoryAttribute("CreateMainAssignment")]
+        public virtual void GetSchedulePeriodForTransitionShift()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "CreateLocation",
+                    "CreateArea",
+                    "CreateRole",
+                    "CreateDepartment",
+                    "CreateJobTitle",
+                    "CreateEmployee",
+                    "CreateEmployees",
+                    "CreateMainAssignment"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get Schedule period for transition shift", null, new string[] {
+                        "CreateLocation",
+                        "CreateArea",
+                        "CreateRole",
+                        "CreateDepartment",
+                        "CreateJobTitle",
+                        "CreateEmployee",
+                        "CreateEmployees",
+                        "CreateMainAssignment"});
+#line 59
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table5.AddRow(new string[] {
+                            "StartDateTime",
+                            "2030-02-01 02:09"});
+                table5.AddRow(new string[] {
+                            "EndDateTime",
+                            "2030-02-02 08:00"});
+                table5.AddRow(new string[] {
+                            "ChargedDate",
+                            "2030-02-02"});
+#line 60
+    testRunner.Given("create and save shift in db", ((string)(null)), table5, "Given ");
+#line hidden
+#line 66
+ testRunner.Given("the /locations/{locationId}/departments/{departmentId}/from/{from}/to/{to}/schedu" +
+                        "le-period/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "Value"});
+                table6.AddRow(new string[] {
+                            "locationId",
+                            "$Location.ID"});
+                table6.AddRow(new string[] {
+                            "departmentId",
+                            "$Department.ID"});
+                table6.AddRow(new string[] {
+                            "from",
+                            "2030-02-01"});
+                table6.AddRow(new string[] {
+                            "to",
+                            "2030-02-02"});
+#line 67
+  testRunner.And("the following url segments", ((string)(null)), table6, "And ");
+#line hidden
+#line 74
+ testRunner.When("a GET request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 76
+     testRunner.And("response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Get Schedule period for employee with assignment in the future or in the past")]
+        [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateArea")]
+        [NUnit.Framework.CategoryAttribute("CreateRole")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployees")]
+        [NUnit.Framework.TestCaseAttribute("1.AssignmentInTheFuture", "2030-02-06", "", "2030-02-04", "2030-02-06", null)]
+        [NUnit.Framework.TestCaseAttribute("2.AssignmentInThePast", "2018-02-04", "2019-11-11", "2019-11-11", "2019-11-12", null)]
+        public virtual void GetSchedulePeriodForEmployeeWithAssignmentInTheFutureOrInThePast(string testCase, string fromDate, string toDate, string from, string to, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "CreateLocation",
+                    "CreateArea",
+                    "CreateRole",
+                    "CreateDepartment",
+                    "CreateJobTitle",
+                    "CreateEmployee",
+                    "CreateEmployees"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get Schedule period for employee with assignment in the future or in the past", null, @__tags);
+#line 86
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table7.AddRow(new string[] {
+                            "FromDate",
+                            string.Format("{0}", fromDate)});
+                table7.AddRow(new string[] {
+                            "ToDate",
+                            string.Format("{0}", toDate)});
+#line 87
+    testRunner.Given("create assignment", ((string)(null)), table7, "Given ");
+#line hidden
+#line 91
+ testRunner.Given("the /locations/{locationId}/departments/{departmentId}/from/{from}/to/{to}/schedu" +
+                        "le-period/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "Value"});
+                table8.AddRow(new string[] {
+                            "locationId",
+                            "$Location.ID"});
+                table8.AddRow(new string[] {
+                            "departmentId",
+                            "$Department.ID"});
+                table8.AddRow(new string[] {
+                            "from",
+                            string.Format("{0}", from)});
+                table8.AddRow(new string[] {
+                            "to",
+                            string.Format("{0}", to)});
+#line 92
+  testRunner.And("the following url segments", ((string)(null)), table8, "And ");
+#line hidden
+#line 98
+ testRunner.When("a GET request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 100
+     testRunner.And("response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Get Schedule period for employee with main and non main assignments with differen" +
+            "t roles and departments")]
+        [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateArea")]
+        [NUnit.Framework.CategoryAttribute("CreateRole")]
+        [NUnit.Framework.CategoryAttribute("CreateAnotherRole")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateAnotherDepartmentSameLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
+        [NUnit.Framework.TestCaseAttribute("1.AssignmentInTheFuture", "2030-03-02", "", "2030-03-03", "", "2030-03-01", "2030-03-04", null)]
+        public virtual void GetSchedulePeriodForEmployeeWithMainAndNonMainAssignmentsWithDifferentRolesAndDepartments(string testCase, string fromDateMain, string toDateMain, string fromDateNonMain, string toDateNonMain, string from, string to, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "CreateLocation",
+                    "CreateArea",
+                    "CreateRole",
+                    "CreateAnotherRole",
+                    "CreateDepartment",
+                    "CreateAnotherDepartmentSameLocation",
+                    "CreateJobTitle",
+                    "CreateEmployee"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get Schedule period for employee with main and non main assignments with differen" +
+                    "t roles and departments", null, @__tags);
+#line 117
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table9.AddRow(new string[] {
+                            "FromDate",
+                            string.Format("{0}", fromDateMain)});
+                table9.AddRow(new string[] {
+                            "ToDate",
+                            string.Format("{0}", toDateMain)});
+#line 118
+    testRunner.Given("create assignment", ((string)(null)), table9, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table10.AddRow(new string[] {
+                            "FromDate",
+                            string.Format("{0}", fromDateNonMain)});
+                table10.AddRow(new string[] {
+                            "ToDate",
+                            string.Format("{0}", toDateNonMain)});
+#line 122
+  testRunner.And("create non main assignment for another department, same location", ((string)(null)), table10, "And ");
+#line hidden
+#line 126
+     testRunner.And("the /locations/{locationId}/departments/{departmentId}/from/{from}/to/{to}/schedu" +
+                        "le-period/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "Value"});
+                table11.AddRow(new string[] {
+                            "locationId",
+                            "$Location.ID"});
+                table11.AddRow(new string[] {
+                            "departmentId",
+                            "$Department.ID"});
+                table11.AddRow(new string[] {
+                            "from",
+                            string.Format("{0}", from)});
+                table11.AddRow(new string[] {
+                            "to",
+                            string.Format("{0}", to)});
+#line 127
+  testRunner.And("the following url segments", ((string)(null)), table11, "And ");
+#line hidden
+#line 133
+ testRunner.When("a GET request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 135
+     testRunner.And("response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Get Schedule period for employee with shifts for non main assignments with anothe" +
+            "r department, same location")]
+        [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateArea")]
+        [NUnit.Framework.CategoryAttribute("CreateRole")]
+        [NUnit.Framework.CategoryAttribute("CreateAnotherRole")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateAnotherDepartmentSameLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
+        [NUnit.Framework.TestCaseAttribute("1.AssignmentInTheFuture", "2030-03-05", "", "2030-03-06", "", "2030-03-04", "2030-03-07", null)]
+        public virtual void GetSchedulePeriodForEmployeeWithShiftsForNonMainAssignmentsWithAnotherDepartmentSameLocation(string testCase, string fromDateMain, string toDateMain, string fromDateNonMain, string toDateNonMain, string from, string to, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "CreateLocation",
+                    "CreateArea",
+                    "CreateRole",
+                    "CreateAnotherRole",
+                    "CreateDepartment",
+                    "CreateAnotherDepartmentSameLocation",
+                    "CreateJobTitle",
+                    "CreateEmployee"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get Schedule period for employee with shifts for non main assignments with anothe" +
+                    "r department, same location", null, @__tags);
+#line 151
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table12.AddRow(new string[] {
+                            "FromDate",
+                            string.Format("{0}", fromDateMain)});
+                table12.AddRow(new string[] {
+                            "ToDate",
+                            string.Format("{0}", toDateMain)});
+#line 152
+    testRunner.Given("create assignment", ((string)(null)), table12, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table13.AddRow(new string[] {
+                            "FromDate",
+                            string.Format("{0}", fromDateNonMain)});
+                table13.AddRow(new string[] {
+                            "ToDate",
+                            string.Format("{0}", toDateNonMain)});
+#line 156
+  testRunner.And("create non main assignment for another department, same location", ((string)(null)), table13, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table14.AddRow(new string[] {
+                            "StartDateTime",
+                            "2030-03-05  08:09"});
+                table14.AddRow(new string[] {
+                            "EndDateTime",
+                            "2030-03-05  10:00"});
+                table14.AddRow(new string[] {
+                            "ChargedDate",
+                            "2030-03-05"});
+#line 160
+  testRunner.And("create and save shift in db", ((string)(null)), table14, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table15.AddRow(new string[] {
+                            "StartDateTime",
+                            "2030-03-06 08:09"});
+                table15.AddRow(new string[] {
+                            "EndDateTime",
+                            "2030-03-06 10:00"});
+                table15.AddRow(new string[] {
+                            "ChargedDate",
+                            "2030-03-06"});
+#line 165
+   testRunner.And("create and save shift in db for another department and role", ((string)(null)), table15, "And ");
+#line hidden
+#line 170
+     testRunner.And("the /locations/{locationId}/departments/{departmentId}/from/{from}/to/{to}/schedu" +
+                        "le-period/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "Value"});
+                table16.AddRow(new string[] {
+                            "locationId",
+                            "$Location.ID"});
+                table16.AddRow(new string[] {
+                            "departmentId",
+                            "$Department.ID"});
+                table16.AddRow(new string[] {
+                            "from",
+                            string.Format("{0}", from)});
+                table16.AddRow(new string[] {
+                            "to",
+                            string.Format("{0}", to)});
+#line 171
+  testRunner.And("the following url segments", ((string)(null)), table16, "And ");
+#line hidden
+#line 177
+ testRunner.When("a GET request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 179
+     testRunner.And("response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Get Schedule period for employee with shifts for non main assignments with anothe" +
+            "r department, different location")]
+        [NUnit.Framework.CategoryAttribute("CreateLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateArea")]
+        [NUnit.Framework.CategoryAttribute("CreateRole")]
+        [NUnit.Framework.CategoryAttribute("CreateAnotherRole")]
+        [NUnit.Framework.CategoryAttribute("CreateDepartment")]
+        [NUnit.Framework.CategoryAttribute("CreateAnotherDepartmentSameLocation")]
+        [NUnit.Framework.CategoryAttribute("CreateJobTitle")]
+        [NUnit.Framework.CategoryAttribute("CreateEmployee")]
+        [NUnit.Framework.TestCaseAttribute("1.AssignmentInTheFuture", "2030-03-05", "", "2030-03-06", "", "2030-03-04", "2030-03-07", null)]
+        public virtual void GetSchedulePeriodForEmployeeWithShiftsForNonMainAssignmentsWithAnotherDepartmentDifferentLocation(string testCase, string fromDateMain, string toDateMain, string fromDateNonMain, string toDateNonMain, string from, string to, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "CreateLocation",
+                    "CreateArea",
+                    "CreateRole",
+                    "CreateAnotherRole",
+                    "CreateDepartment",
+                    "CreateAnotherDepartmentSameLocation",
+                    "CreateJobTitle",
+                    "CreateEmployee"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get Schedule period for employee with shifts for non main assignments with anothe" +
+                    "r department, different location", null, @__tags);
+#line 194
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table17.AddRow(new string[] {
+                            "FromDate",
+                            string.Format("{0}", fromDateMain)});
+                table17.AddRow(new string[] {
+                            "ToDate",
+                            string.Format("{0}", toDateMain)});
+#line 195
+    testRunner.Given("create assignment", ((string)(null)), table17, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table18.AddRow(new string[] {
+                            "FromDate",
+                            string.Format("{0}", fromDateNonMain)});
+                table18.AddRow(new string[] {
+                            "ToDate",
+                            string.Format("{0}", toDateNonMain)});
+#line 199
+  testRunner.And("create non main assignment for another location, same organisation", ((string)(null)), table18, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table19.AddRow(new string[] {
+                            "StartDateTime",
+                            "2030-03-05  08:09"});
+                table19.AddRow(new string[] {
+                            "EndDateTime",
+                            "2030-03-05  10:00"});
+                table19.AddRow(new string[] {
+                            "ChargedDate",
+                            "2030-03-05"});
+#line 203
+  testRunner.And("create and save shift in db", ((string)(null)), table19, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table20.AddRow(new string[] {
+                            "StartDateTime",
+                            "2030-03-06 08:09"});
+                table20.AddRow(new string[] {
+                            "EndDateTime",
+                            "2030-03-06 10:00"});
+                table20.AddRow(new string[] {
+                            "ChargedDate",
+                            "2030-03-06"});
+#line 208
+   testRunner.And("create and save shift in db for another location, same organisation", ((string)(null)), table20, "And ");
+#line hidden
+#line 213
+     testRunner.And("the /locations/{locationId}/departments/{departmentId}/from/{from}/to/{to}/schedu" +
+                        "le-period/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "Value"});
+                table21.AddRow(new string[] {
+                            "locationId",
+                            "$Location.ID"});
+                table21.AddRow(new string[] {
+                            "departmentId",
+                            "$Department.ID"});
+                table21.AddRow(new string[] {
+                            "from",
+                            string.Format("{0}", from)});
+                table21.AddRow(new string[] {
+                            "to",
+                            string.Format("{0}", to)});
+#line 214
+  testRunner.And("the following url segments", ((string)(null)), table21, "And ");
+#line hidden
+#line 220
+ testRunner.When("a GET request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 222
+     testRunner.And("response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -11,7 +11,7 @@
 @CreateDepartmentAnotherLocationSameOrganisation
 @CreateDepartmentAnotherOrganisation
 Scenario: Get Settings
-    Given Daily peroods are created for departments
+    Given Daily periods are created for departments
 	Given the /locations/{locationId}/departments/{departmentId}/Settings/ resource
 		And the following url segments
 	    | Name         | Value          |

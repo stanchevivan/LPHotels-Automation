@@ -28,6 +28,7 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Helpers\DatetimeHelpers.cs" />
+    <Compile Include="Helpers\DecoratedResponse.cs" />
     <Compile Include="Helpers\GeneralHelpers.cs" />
     <Compile Include="Helpers\JsonConvertExtentions.cs" />
     <Compile Include="Helpers\Parameters.cs" />

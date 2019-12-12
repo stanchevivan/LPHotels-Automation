@@ -1,5 +1,6 @@
 ﻿using System;
 using TeamHours.DomainModel;
+using Fourth.LabourProductivity.Scheduling.Domain.Scheduling.Models;
 
 namespace DataSeeding.Infrastructure
 {
@@ -30,6 +31,10 @@ namespace DataSeeding.Infrastructure
         IRepository<UserLevel> UserLevel { get; }
 
         IRepository<DailyPeriod> DailyPeriod { get; }
+
+        IRepository<AdditionalRole> AdditionalRole { get; }
+
+        IRepository<ScheduleDto> LabourDemandDto { get; }
 
         int SaveAsync();
     }

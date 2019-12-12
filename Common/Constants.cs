@@ -56,6 +56,8 @@ namespace Common
 
             public const string Role = "Role";
 
+            public const string AnotherRole = "AnotherRole";
+
             public const string RoleAnoderOrganisation = "RoleAnoderOrganisation";
 
             public const string Roles = "Roles";
@@ -69,6 +71,8 @@ namespace Common
             public const string FutureMainAssignment = "FutureMainAssignment";
 
             public const string MainAssignmentAnotherOrganisation = "MainAssignmentAnotherOrganisation";
+
+            public const string NonMainAssignment = "NonMainAssignment";
 
             public const string Shifts = "Shifts";
 
@@ -87,6 +91,8 @@ namespace Common
             public const string ShiftSameLocationAnotherDepartment = "ShiftSameLocationAnotherDepartment";
 
             public const string UpdatedShift = "UpdatedShift";
+
+            public const string ExpectedShifts = "ExpectedShifts";
 
             public const string ShiftToDelete = "ShiftToDelete";
 

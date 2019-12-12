@@ -167,7 +167,7 @@ namespace Tests.WebService.Steps
             // var body = context.Get<DeleteShiftModel>(Constants.Data.ShiftModel);
             //body.EmployeeId = employeeId;
             restSession.Request.AddJsonBody(deleteShift);
-            restSession.Client.Execute(restSession.Request);//to be deleted
+            //restSession.Client.Execute(restSession.Request);//to be deleted
         }
 
         //[Given(@"request has a body to be test2")]

@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Common;
-using DataSeeding.Framework;
 using DataSeeding.Generators;
 using DataSeeding.Infrastructure;
 using Fourth.Automation.Framework.RestApi.Extensions;
 using Fourth.Automation.Framework.RestApi.Steps;
-using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using TeamHours.DomainModel;
 using TechTalk.SpecFlow;
@@ -31,8 +25,8 @@ namespace Tests.WebService.Steps
             _lpHotelsMainUnitOfWork = lpHotelsMainUnitOfWork;
         }
 
-        [Given(@"Daily peroods are created for departments")]
-        public void GivenRequestHasAShiftAsABodyWithParameters()
+        [Given(@"Daily periods are created for departments")]
+        public void DailyPeriodsAreCreatedForDepartments()
         {
             var department = context.Get<Department>(Constants.Data.Department);
             var anotherDepartmentSameLocation = context.Get<Department>(Constants.Data.AnotherDepartmentSameLocation);
@@ -59,17 +53,17 @@ namespace Tests.WebService.Steps
             });
             dailyPeriods.Add(dailyPeriodsDepartmentAnotherLocationSameOrganisation);
 
-            var dailyPeriodsdepartmentAnotherOrganisation = new DailyPeriodEntityGenerator().GenerateSingle(x =>
+            var dailyPeriodsDepartmentAnotherOrganisation = new DailyPeriodEntityGenerator().GenerateSingle(x =>
             {
                 x.DepartmentID = departmentAnotherOrganisation.ID;
             });
-            dailyPeriods.Add(dailyPeriodsdepartmentAnotherOrganisation);
+            dailyPeriods.Add(dailyPeriodsDepartmentAnotherOrganisation);
 
 
             _lpHotelsMainUnitOfWork.DailyPeriod.AddRange(dailyPeriods);
             _lpHotelsMainUnitOfWork.SaveAsync();
 
-            Session.Set(dailyPeriodsCurrentDepartment, Constants.Data.DailyPeriods);
+            context.Set(dailyPeriodsCurrentDepartment, Constants.Data.DailyPeriods);
         }
 
         [Then(@"the response should be correct")]

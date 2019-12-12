@@ -38,6 +38,21 @@ namespace DataSeeding.Hooks
             Session.Set(employee, Constants.Data.Employee, true);
         }
 
+        [BeforeScenario("CreateEmployees", Order = ScenarioStepsOrder.Employee)]
+        public void EmployeesAreCreated()
+        {
+            var organisationId = Constants.OgranisationId;
+            var employees = new EmployeeEntityGenerator().GenerateMultiple(5,x =>
+            {
+                x.OrganisationID = organisationId;
+            }).ToList();
+
+            _lpHotelsMainUnitOfWork.TempStaff.AddRange(employees);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(employees, Constants.Data.Employees, true);
+        }
+
         [BeforeScenario("CreateAnotherOrganisationEmployee", Order = ScenarioStepsOrder.Employee)]
         public void EmployeeAnotherOrganisationIsCreated()
         {

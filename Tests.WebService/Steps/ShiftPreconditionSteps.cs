@@ -38,17 +38,48 @@ namespace Tests.WebService.Steps
             var departmentId = context.Get<Department>(Constants.Data.Department).ID;
             var employeeId = context.Get<TempStaff>(Constants.Data.Employee).ID;
             var roleId = context.Get<TempRole>(Constants.Data.Role).ID;
-
-            //var shift = context.Get<TempShift>(Constants.Data.Shift);
             var createShift = new TempShift();
             GeneralHelpers.SetValues(table.CreateSet<Parameters>(), createShift);
             createShift.DepartmentID = departmentId;
-            //createShift.ChargedDate = DateTime.UtcNow;
             createShift.TempStaffID = employeeId;
             createShift.Actual = true;
             createShift.TempRoleID = roleId;
-            //restSession.Request.AddJsonBody(JsonConvert.SerializeObject(shift));
-            //restSession.Client.Execute(restSession.Request);
+            _lpHotelsMainUnitOfWork.TempShift.Add(createShift);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+            context.Set(createShift, Constants.Data.Shift);
+        }
+
+        [Given(@"create and save shift in db for another department and role")]
+        [When(@"create and save shift in db for another department and role")]
+        public void CreateAndSaveShiftAnotherDepartmentAnotherRole(Table table)
+        {
+            var departmentId = context.Get<Department>(Constants.Data.AnotherDepartmentSameLocation).ID;
+            var employeeId = context.Get<TempStaff>(Constants.Data.Employee).ID;
+            var roleId = context.Get<TempRole>(Constants.Data.AnotherRole).ID;
+            var createShift = new TempShift();
+            GeneralHelpers.SetValues(table.CreateSet<Parameters>(), createShift);
+            createShift.DepartmentID = departmentId;
+            createShift.TempStaffID = employeeId;
+            createShift.Actual = true;
+            createShift.TempRoleID = roleId;
+            _lpHotelsMainUnitOfWork.TempShift.Add(createShift);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+            context.Set(createShift, Constants.Data.Shift);
+        }
+
+        [Given(@"create and save shift in db for another location, same organisation")]
+        [When(@"create and save shift in db for another location, same organisation")]
+        public void CreateAndSaveShiftAnotherLocationSameOrganisation(Table table)
+        {
+            var departmentId = context.Get<Department>(Constants.Data.DepartmentAnotherLocationSameOrganisation).ID;
+            var employeeId = context.Get<TempStaff>(Constants.Data.Employee).ID;
+            var roleId = context.Get<TempRole>(Constants.Data.AnotherRole).ID;
+            var createShift = new TempShift();
+            GeneralHelpers.SetValues(table.CreateSet<Parameters>(), createShift);
+            createShift.DepartmentID = departmentId;
+            createShift.TempStaffID = employeeId;
+            createShift.Actual = true;
+            createShift.TempRoleID = roleId;
             _lpHotelsMainUnitOfWork.TempShift.Add(createShift);
             _lpHotelsMainUnitOfWork.SaveAsync();
             context.Set(createShift, Constants.Data.Shift);

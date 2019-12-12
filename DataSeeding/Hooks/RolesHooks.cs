@@ -57,5 +57,22 @@ namespace DataSeeding.Hooks
 
             context.Set(role, Constants.Data.RoleAnoderOrganisation);
         }
+
+        [BeforeScenario("CreateAnotherRole", Order = ScenarioStepsOrder.Role)]
+        public void CreateAnotherRole()
+        {
+            var organisationId = Constants.OgranisationId;
+            var areaId = context.Get<TempArea>(Constants.Data.Area).ID;
+            var role = new RoleEntityGenerator().GenerateSingle(x =>
+            {
+                x.OrganisationID = organisationId;
+                x.TempAreaID = areaId;
+            });
+
+            _lpHotelsMainUnitOfWork.TempRole.Add(role);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            context.Set(role, Constants.Data.AnotherRole);
+        }
     }
 }

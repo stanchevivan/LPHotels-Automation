@@ -1,5 +1,6 @@
 ﻿using System;
 using TeamHours.DomainModel;
+using Fourth.LabourProductivity.Scheduling.Domain.Scheduling.Models;
 
 namespace DataSeeding.Infrastructure
 {
@@ -45,6 +46,12 @@ namespace DataSeeding.Infrastructure
         public IRepository<User> User => _repositoryFactory.GetRepository<User>();
 
         public IRepository<UserLevel> UserLevel => _repositoryFactory.GetRepository<UserLevel>();
+
+        public IRepository<AdditionalRole> AdditionalRole => _repositoryFactory.GetRepository<AdditionalRole>();
+
+        public IRepository<ScheduleDto> ScheduleDto => _repositoryFactory.GetRepository<ScheduleDto>();
+
+        public IRepository<ScheduleDto> LabourDemandDto => throw new NotImplementedException();
 
         public int SaveAsync()
         {

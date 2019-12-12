@@ -70,7 +70,7 @@ namespace DataSeeding
             context.Set(location, Constants.Data.LocationAnotherOrganisation);
         }
 
-       // [AfterScenario("CreateLocation", Order = ScenarioStepsOrder.DeleteLocation)]
+       // [AfterScenario("CreateLocation", Order = ScenarioStepsOrder.Location)]
         public void DeleteLocation()
         {
             var locationToDelete = context.Get<Location>(Constants.Data.Location);
