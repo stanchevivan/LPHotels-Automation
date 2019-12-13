@@ -9,9 +9,9 @@ using SeleniumExtras.PageObjects;
 
 namespace PageObjects
 {
-    public class DashboardPage : LPHBasePage
+    public class ScheduleGrid : LPHBasePage
     {
-        public DashboardPage(IWebDriver webDriver) : base(webDriver)
+        public ScheduleGrid(IWebDriver webDriver) : base(webDriver)
         {
             PageFactory.InitElements(webDriver, this);
         }

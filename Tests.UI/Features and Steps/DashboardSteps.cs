@@ -11,11 +11,11 @@ namespace Tests.UI.FeaturesandSteps
     [Binding]
     public class DashboardSteps
     {
-        readonly DashboardPage dashboardPage;
+        readonly ScheduleGrid dashboardPage;
         readonly LPHBasePage lPHBasePage;
         readonly ShiftDetails shiftDetails;
 
-        public DashboardSteps(LPHBasePage lPHBasePage, DashboardPage dashboardPage, ShiftDetails shiftDetails)
+        public DashboardSteps(LPHBasePage lPHBasePage, ScheduleGrid dashboardPage, ShiftDetails shiftDetails)
         {
             this.dashboardPage = dashboardPage;
             this.lPHBasePage = lPHBasePage;

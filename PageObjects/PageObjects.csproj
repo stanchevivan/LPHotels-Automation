@@ -14,14 +14,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DashboardPage.cs" />
+    <Compile Include="ScheduleGridPage.cs" />
     <Compile Include="LPHBasePage.cs" />
     <Compile Include="ShiftPopoverPage.cs" />
-    <Compile Include="Components\ShiftItem.cs" />
     <Compile Include="Components\Calendar.cs" />
-    <Compile Include="Components\Employee.cs" />
-    <Compile Include="Components\RoleSection.cs" />
-    <Compile Include="Components\ShiftDetails.cs" />
+    <Compile Include="ScheduleGraphPage.cs" />
+    <Compile Include="Components\ScheduleGrid\Employee.cs" />
+    <Compile Include="Components\ScheduleGraph\SessionPiechart.cs" />
+    <Compile Include="Components\ScheduleGraph\SessionPieChartSlice.cs" />
+    <Compile Include="Components\ScheduleGrid\RoleSection.cs" />
+    <Compile Include="Components\ScheduleGrid\ShiftItem.cs" />
+    <Compile Include="Components\ScheduleGrid\ShiftDetails.cs" />
+    <Compile Include="Components\ScheduleGraph\SessionSummary.cs" />
+    <Compile Include="Components\ScheduleGraph\SidebarDailyTotal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -96,6 +101,10 @@
       <Project>{B165267D-16E8-492D-8D17-EA2FE4CF7E2C}</Project>
       <Name>Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Components\ScheduleGrid\" />
+    <Folder Include="Components\ScheduleGraph\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
