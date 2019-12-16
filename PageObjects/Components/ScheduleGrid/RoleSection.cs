@@ -12,7 +12,6 @@ namespace PageObjects
         public RoleSection(IWebDriver webDriver, IWebElement webElement) : base(webDriver)
         {
             this.webElement = webElement;
-            PageFactory.InitElements(webDriver, this);
         }
         private IWebElement employeeSection;
         private IWebElement grid;

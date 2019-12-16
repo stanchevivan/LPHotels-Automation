@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
+using Fourth.Automation.Framework.Extension;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using SeleniumExtras.PageObjects;
 
 namespace PageObjects
@@ -14,18 +13,65 @@ namespace PageObjects
         public SessionSummary(IWebDriver webDriver, IWebElement webElement) : base(webDriver)
         {
             this.webElement = webElement;
-            PageFactory.InitElements(webDriver, this);
         }
 
-        private IWebElement piechart => Driver.FindElement(By.CssSelector(".donut-chart"));
-        public SessionPiechart PieChart => new SessionPiechart(Driver, piechart);
+        private IWebElement piechart => webElement.FindElement(By.CssSelector(".donut-chart"));
+        public Piechart PieChart => new Piechart(Driver, piechart);
 
-        private IList<IWebElement> dailyTotals => webElement.FindElements(By.CssSelector(".legend-items--wrapper"));
+        private IWebElement correct => webElement.FindElement(By.CssSelector(".legend-dot[style='background-color: rgb(68, 190, 186);'] + span"));
+        private IWebElement under => webElement.FindElement(By.CssSelector(".legend-dot[style='background-color: rgb(125, 104, 165);'] + span"));
+        private IWebElement above => webElement.FindElement(By.CssSelector(".legend-dot[style='background-color: rgb(245, 107, 93);'] + span"));
 
-        public int Correct => int.Parse(dailyTotals.First(x => x.FindElement(By.CssSelector(".legend-dot")).GetAttribute("style") == "background-color: rgb(68, 190, 186);").FindElement(By.CssSelector("span:last-of-type")).Text);
+        public int Correct
+        {
+            get
+            {
+                try
+                {
+                    correct.Exist();
+                }
+                catch (NoSuchElementException)
+                {
+                    return 0;
+                }
 
-        public int Under => int.Parse(dailyTotals.First(x => x.FindElement(By.CssSelector(".legend-dot")).GetAttribute("style") == "background-color: rgb(125, 104, 165);").FindElement(By.CssSelector("span:last-of-type")).Text);
+                return int.Parse(correct.Text);
+            }
+        }
 
-        public int Above => int.Parse(dailyTotals.First(x => x.FindElement(By.CssSelector(".legend-dot")).GetAttribute("style") == "background-color: rgb(245, 107, 93);").FindElement(By.CssSelector("span:last-of-type")).Text);
+        public int Under
+        {
+            get
+            {
+                try
+                {
+                    under.Exist();
+                }
+                catch (NoSuchElementException)
+                {
+                    return 0;
+                }
+
+                return int.Parse(under.Text);
+            }
+        }
+
+        public int Above
+        {
+            get
+            {
+                try
+                {
+                    above.Exist();
+                }
+                catch (NoSuchElementException)
+                {
+                    return 0;
+                }
+
+                return int.Parse(above.Text);
+            }
+        }
+
     }
 }

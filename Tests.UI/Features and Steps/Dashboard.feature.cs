@@ -71,6 +71,8 @@ namespace Tests.UI.FeaturesAndSteps
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Open create shift window")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
+        [NUnit.Framework.CategoryAttribute("sandbox")]
         [NUnit.Framework.TestCaseAttribute("QA", new string[] {
                 "QA"}, Category="QA")]
         [NUnit.Framework.TestCaseAttribute("local", new string[] {
@@ -80,54 +82,23 @@ namespace Tests.UI.FeaturesAndSteps
                 "local"}, Category="local")]
         public virtual void OpenCreateShiftWindow(string environment, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Open create shift window", null, exampleTags);
-#line 3
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
+            string[] @__tags = new string[] {
+                    "sandbox",
+                    "ignore"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Open create shift window", null, @__tags);
 #line 4
- testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
 #line 5
- testRunner.When("shift window is open at \"5\" \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+     testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
-    testRunner.Then("shift popover is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Shift Block is displayed in Schedule Grid")]
-        [NUnit.Framework.TestCaseAttribute("QA", new string[] {
-                "QA"}, Category="QA")]
-        [NUnit.Framework.TestCaseAttribute("local", new string[] {
-                "local"}, Category="local")]
-        public virtual void ShiftBlockIsDisplayedInScheduleGrid(string environment, string[] exampleTags)
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shift Block is displayed in Schedule Grid", null, exampleTags);
-#line 23
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 24
-    testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 25
-    testRunner.Then("shift blocks are present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Test Shift")]
-        [NUnit.Framework.TestCaseAttribute("local", new string[] {
-                "QA"}, Category="QA")]
-        public virtual void TestShift(string environment, string[] exampleTags)
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test Shift", null, exampleTags);
-#line 37
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 38
-    testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 39
-    testRunner.When("test step", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+     testRunner.When("shift window is open at \"5\" \"5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 7
+        testRunner.Then("shift popover is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -139,20 +110,20 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void EditShift(string environment, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit shift", null, exampleTags);
-#line 46
+#line 24
     this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 47
-    testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 48
-    testRunner.When("Shift details are opened for Role \"C\" Employee \"MS\" Start time \"11:00\" End time \"" +
+#line 25
+        testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 26
+        testRunner.When("Shift details are opened for Role \"C\" Employee \"MS\" Start time \"11:00\" End time \"" +
                     "2:15\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 49
-        testRunner.And("Shift details Start time is set to \"22:11\" and End Time is set to \"23:21\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line 50
-        testRunner.And("Shift details Save button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line 51
-    testRunner.Then("Shift for Role \"C\" Employee \"MS\" Start time \"22:11\" End time \"23:21\" is \"visible\"" +
+#line 27
+            testRunner.And("Shift details Start time is set to \"22:11\" and End Time is set to \"23:21\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 28
+            testRunner.And("Shift details Save button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 29
+        testRunner.Then("Shift for Role \"C\" Employee \"MS\" Start time \"22:11\" End time \"23:21\" is \"visible\"" +
                     "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -165,19 +136,19 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void CreateShift(string environment, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create shift", null, exampleTags);
-#line 58
+#line 36
     this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 59
-    testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 60
-    testRunner.When("new shift window is open for Role \"C\" Employee \"II\" for \"10:00\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 61
-        testRunner.And("Shift details Start time is set to \"10:11\" and End Time is set to \"11:21\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line 62
-        testRunner.And("Shift details Save button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line 63
-    testRunner.Then("Shift for Role \"C\" Employee \"II\" Start time \"10:11\" End time \"11:21\" is \"visible\"" +
+#line 37
+        testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 38
+        testRunner.When("new shift window is open for Role \"C\" Employee \"II\" for \"10:00\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 39
+            testRunner.And("Shift details Start time is set to \"10:11\" and End Time is set to \"11:21\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 40
+            testRunner.And("Shift details Save button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 41
+        testRunner.Then("Shift for Role \"C\" Employee \"II\" Start time \"10:11\" End time \"11:21\" is \"visible\"" +
                     "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -190,19 +161,73 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void DeleteShift(string environment, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete shift", null, exampleTags);
-#line 70
+#line 48
     this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 71
-    testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 72
-    testRunner.When("Shift details are opened for Role \"C\" Employee \"II\" Start time \"10:11\" End time \"" +
+#line 49
+        testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 50
+        testRunner.When("Shift details are opened for Role \"C\" Employee \"II\" Start time \"10:11\" End time \"" +
                     "11:21\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 73
-        testRunner.And("Shift details Delete button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
-#line 74
-    testRunner.Then("Shift for Role \"C\" Employee \"II\" Start time \"10:11\" End time \"11:21\" is \"not visi" +
+#line 51
+            testRunner.And("Shift details Delete button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "* ");
+#line 52
+        testRunner.Then("Shift for Role \"C\" Employee \"II\" Start time \"10:11\" End time \"11:21\" is \"not visi" +
                     "ble\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Daily total numbers equals sum of session totals")]
+        [NUnit.Framework.TestCaseAttribute("QA", new string[] {
+                "QA"}, Category="QA")]
+        public virtual void DailyTotalNumbersEqualsSumOfSessionTotals(string environment, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Daily total numbers equals sum of session totals", null, exampleTags);
+#line 59
+    this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 60
+        testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 61
+        testRunner.Then("Verify Daily totals equal session totals", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Daily total pie chart percentages match daily total numbers")]
+        [NUnit.Framework.TestCaseAttribute("QA", new string[] {
+                "QA"}, Category="QA")]
+        public virtual void DailyTotalPieChartPercentagesMatchDailyTotalNumbers(string environment, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Daily total pie chart percentages match daily total numbers", null, exampleTags);
+#line 68
+    this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 69
+        testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 70
+        testRunner.Then("Verify Daily Total pie chart percentages are correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Session pie chart percentages match session total numbers")]
+        [NUnit.Framework.TestCaseAttribute("QA", new string[] {
+                "QA"}, Category="QA")]
+        public virtual void SessionPieChartPercentagesMatchSessionTotalNumbers(string environment, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Session pie chart percentages match session total numbers", null, exampleTags);
+#line 77
+    this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 78
+        testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 79
+        testRunner.Then("Verify Session pie chart percentages are correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

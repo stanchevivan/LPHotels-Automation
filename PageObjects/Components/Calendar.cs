@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
 
 namespace PageObjects
 {
@@ -9,7 +7,6 @@ namespace PageObjects
     {
         public CalendarPage(IWebDriver webDriver) : base(webDriver)
         {
-            PageFactory.InitElements(webDriver, this);
         }
 
         protected IList<IWebElement> days => Driver.FindElements(By.CssSelector(".MuiPickersDay-day:not(.MuiPickersDay-hidden"));

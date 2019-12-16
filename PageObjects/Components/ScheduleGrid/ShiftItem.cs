@@ -13,7 +13,6 @@ namespace PageObjects
         public ShiftItem(IWebDriver webDriver, IWebElement webElement) : base(webDriver)
         {
             this.webElement = webElement;
-            PageFactory.InitElements(webDriver, this);
         }
 
         protected IList<IWebElement> Days => Driver.FindElements(By.CssSelector(".MuiPickersDay-day:not(.MuiPickersDay-hidden"));

@@ -1,8 +1,5 @@
-﻿using System;
-using Fourth.Automation.Framework.Extension;
-using Fourth.Automation.Framework.Page;
+﻿using Fourth.Automation.Framework.Page;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 
 namespace PageObjects
 {

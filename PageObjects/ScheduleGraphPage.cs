@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Linq;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using SeleniumExtras.PageObjects;
 
 namespace PageObjects
@@ -13,6 +12,8 @@ namespace PageObjects
             PageFactory.InitElements(webDriver, this);
         }
 
-        private IList<IWebElement> SessionSummaryList => Driver.FindElements(By.CssSelector(".swiper-slide-active .grid-single-session"));
+        private IList<IWebElement> sessionSummaryList => Driver.FindElements(By.CssSelector(".swiper-slide-active .session-block"));
+
+        public IList<SessionSummary> SessionSummaryList => sessionSummaryList.Select(e => new SessionSummary(Driver, e)).ToList();
     }
 }

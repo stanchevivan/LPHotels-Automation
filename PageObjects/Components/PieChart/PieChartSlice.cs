@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
-using SeleniumExtras.PageObjects;
 
 namespace PageObjects
 {
@@ -14,8 +10,14 @@ namespace PageObjects
         public PieChartSlice(IWebDriver webDriver, IWebElement webElement) : base(webDriver)
         {
             this.webElement = webElement;
-            PageFactory.InitElements(webDriver, this);
         }
+        public string Type => Colour switch
+        {
+            "#44beba" => "Correct",
+            "#7d68a5" => "Under",
+            "#f56b5d" => "Above",
+            _ => throw new Exception("Could not parse session slice colour!")
+        };
 
         public string Colour => webElement.GetAttribute("stroke");
         public string PercentageText => webElement.GetAttribute("stroke-dasharray").Split(' ')[0];

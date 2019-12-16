@@ -16,7 +16,6 @@ namespace PageObjects
         {
             this.webElement = webElement;
             this.grid = grid;
-            PageFactory.InitElements(webDriver, this);
         }
         private IWebElement initials => webElement.FindElement(By.CssSelector(".employee-initials"));
         private IWebElement timeline => Driver.FindElement(By.CssSelector(".swiper-slide-active .lphf_timeline"));

@@ -12,21 +12,27 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\Default</OutputPath>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ScheduleGridPage.cs" />
     <Compile Include="LPHBasePage.cs" />
-    <Compile Include="ShiftPopoverPage.cs" />
     <Compile Include="Components\Calendar.cs" />
     <Compile Include="ScheduleGraphPage.cs" />
     <Compile Include="Components\ScheduleGrid\Employee.cs" />
-    <Compile Include="Components\ScheduleGraph\SessionPiechart.cs" />
-    <Compile Include="Components\ScheduleGraph\SessionPieChartSlice.cs" />
     <Compile Include="Components\ScheduleGrid\RoleSection.cs" />
     <Compile Include="Components\ScheduleGrid\ShiftItem.cs" />
     <Compile Include="Components\ScheduleGrid\ShiftDetails.cs" />
     <Compile Include="Components\ScheduleGraph\SessionSummary.cs" />
-    <Compile Include="Components\ScheduleGraph\SidebarDailyTotal.cs" />
+    <Compile Include="Components\SidebarDailyTotal.cs" />
+    <Compile Include="Components\PieChart\Piechart.cs" />
+    <Compile Include="Components\PieChart\PieChartSlice.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -105,6 +111,7 @@
   <ItemGroup>
     <Folder Include="Components\ScheduleGrid\" />
     <Folder Include="Components\ScheduleGraph\" />
+    <Folder Include="Components\PieChart\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
