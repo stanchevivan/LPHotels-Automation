@@ -16,7 +16,7 @@ namespace PageObjects
 
         public IList<SessionSummary> SessionSummaryList => sessionSummaryList.Select(e => new SessionSummary(Driver, e)).ToList();
 
-        private IWebElement rolesDropDown => Driver.FindElement(By.CssSelector(".MuiPopover-root"));
+        private IWebElement rolesDropDown => Driver.FindElement(By.CssSelector("[data-test-id='change-role']"));
         public RolesDropDown RolesDropDown => new RolesDropDown(Driver, rolesDropDown);
     }
 }

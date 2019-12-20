@@ -182,6 +182,8 @@ namespace Tests.UI.FeaturesandSteps
         [When(@"Role ""(.*)"" is selected")]
         public void RoleIsSelected(string role)
         {
+            scheduleGraphPage.RolesDropDown.Click();
+            scheduleGraphPage.RolesDropDown.WaitToAppear();
             scheduleGraphPage.RolesDropDown.SelectRole(role);
             scheduleGraphPage.RolesDropDown.WaitToDisappear();
         }

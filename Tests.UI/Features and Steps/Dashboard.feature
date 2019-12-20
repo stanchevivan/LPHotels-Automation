@@ -58,12 +58,16 @@ Feature: Dashboard
 
     Scenario Outline: Daily total numbers equals sum of session totals
         Given LPH app is open on "<environment>"
+        When Role "<role>" is selected
         Then Verify Daily totals equal session totals
 
     @QA
     Examples:
-    |environment|
-    |QA         |
+    |environment|role|
+    |QA         |Cook|
+    |QA         |All Roles|
+    
+   
 
     Scenario Outline: Daily total pie chart percentages match daily total numbers
         Given LPH app is open on "<environment>"

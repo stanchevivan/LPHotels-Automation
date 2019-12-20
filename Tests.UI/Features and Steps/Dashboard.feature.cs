@@ -180,9 +180,11 @@ namespace Tests.UI.FeaturesAndSteps
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Daily total numbers equals sum of session totals")]
-        [NUnit.Framework.TestCaseAttribute("QA", new string[] {
+        [NUnit.Framework.TestCaseAttribute("QA", "Cook", new string[] {
                 "QA"}, Category="QA")]
-        public virtual void DailyTotalNumbersEqualsSumOfSessionTotals(string environment, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("QA", "All Roles", new string[] {
+                "QA"}, Category="QA")]
+        public virtual void DailyTotalNumbersEqualsSumOfSessionTotals(string environment, string role, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Daily total numbers equals sum of session totals", null, exampleTags);
 #line 59
@@ -191,6 +193,8 @@ namespace Tests.UI.FeaturesAndSteps
 #line 60
         testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 61
+        testRunner.When(string.Format("Role \"{0}\" is selected", role), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 62
         testRunner.Then("Verify Daily totals equal session totals", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -203,12 +207,12 @@ namespace Tests.UI.FeaturesAndSteps
         public virtual void DailyTotalPieChartPercentagesMatchDailyTotalNumbers(string environment, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Daily total pie chart percentages match daily total numbers", null, exampleTags);
-#line 68
+#line 72
     this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 69
+#line 73
         testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 70
+#line 74
         testRunner.Then("Verify Daily Total pie chart percentages are correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -221,12 +225,12 @@ namespace Tests.UI.FeaturesAndSteps
         public virtual void SessionPieChartPercentagesMatchSessionTotalNumbers(string environment, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Session pie chart percentages match session total numbers", null, exampleTags);
-#line 77
+#line 81
     this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 78
+#line 82
         testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 79
+#line 83
         testRunner.Then("Verify Session pie chart percentages are correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

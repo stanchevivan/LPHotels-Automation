@@ -14,7 +14,8 @@ namespace PageObjects
             this.webElement = webElement;
         }
 
-        IList<IWebElement> Options => webElement.FindElements(By.CssSelector(".MuiMenu-list > li > div > span"));
+        private IList<IWebElement> Options => ListBox.FindElements(By.CssSelector(".MuiMenu-list > li > div > span"));
+        private IWebElement ListBox => Driver.FindElement(By.CssSelector(".MuiMenu-list"));
 
         public void SelectRole(string role)
         {
@@ -23,7 +24,17 @@ namespace PageObjects
 
         public void WaitToDisappear()
         {
-            Driver.WaitElementToDisappear(webElement);
+            Driver.WaitElementToDisappear(ListBox);
+        }
+
+        public void Click()
+        {
+            webElement.Click();
+        }
+
+        public void WaitToAppear()
+        {
+            Driver.WaitElementToExists(ListBox);
         }
     }
 }
