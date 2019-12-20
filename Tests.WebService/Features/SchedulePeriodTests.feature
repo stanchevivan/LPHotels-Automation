@@ -11,6 +11,7 @@
 @CreateArea
 @CreateAreaAnotherOrganisation
 @CreateRole
+@CreateRoles
 @CreateRoleForAnotherOrganisation
 @CreateDepartment
 @CreateAnotherDepartmentSameLocation
@@ -21,9 +22,9 @@
 @CreateAnotherOrganisationEmployee
 @CreateEmployees
 @CreateMainAssignment
-@CreateMainAssignments
 @MainAssignmentForEmployeeAnotherOrganisation
 Scenario Outline: Get Schedule period
+Given create assignments with different roles
     Given SchedulePeriod data is created for departments
 	| Field         | Value            |
 	| StartDateTime | 2030-01-15 07:09 |
@@ -39,6 +40,8 @@ Scenario Outline: Get Schedule period
 	    | to           | 2030-01-18     |
 		
 	When a GET request is executed
+
+	#When a GET request is executed
 	#Then HTTP Code is 200
 	    And response
 	Examples: 
@@ -71,6 +74,8 @@ Scenario: Get Schedule period for transition shift
 	    | from         | 2030-02-01     |
 	    | to           | 2030-02-02     |
 		
+	When a GET request is executed
+
 	When a GET request is executed
 	#Then HTTP Code is 200
 	    And response

@@ -67,6 +67,24 @@ namespace Tests.WebService.Steps
             context.Set(createShift, Constants.Data.Shift);
         }
 
+        [Given(@"create and save shift in db for another  role same departments")]
+        [When(@"create and save shift in db for another  role same departments")]
+        public void CreateAndSaveShiftAnotherRole(Table table)
+        {
+            var departmentId = context.Get<Department>(Constants.Data.Department).ID;
+            var employeeId = context.Get<TempStaff>(Constants.Data.Employee).ID;
+            var roleId = context.Get<List<TempRole>>(Constants.Data.Roles)[1].ID;
+            var createShift = new TempShift();
+            GeneralHelpers.SetValues(table.CreateSet<Parameters>(), createShift);
+            createShift.DepartmentID = departmentId;
+            createShift.TempStaffID = employeeId;
+            createShift.Actual = true;
+            createShift.TempRoleID = roleId;
+            _lpHotelsMainUnitOfWork.TempShift.Add(createShift);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+            context.Set(createShift, Constants.Data.Shift);
+        }
+
         [Given(@"create and save shift in db for another location, same organisation")]
         [When(@"create and save shift in db for another location, same organisation")]
         public void CreateAndSaveShiftAnotherLocationSameOrganisation(Table table)
@@ -204,29 +222,7 @@ namespace Tests.WebService.Steps
                     break;
             }
         }
-
-
-
-        //[Given(@"get actual shiftId (.*) from db")]
-        //public void ShiftsIdFromDb(string data)
-        //{
-        //    switch (data)
-        //    {
-        //        case "sameLocationSameOrganisation":
-        //            var shift = context.Get<TempShift>(Constants.Data.Shift);
-        //            var shif1t = context.Get<TempShift>(Constants.Data.Shift).ID;
-        //            var actualShift = _lpHotelsMainUnitOfWork.TempShift.GetAll().Where(x => x.Notes == shift.Notes).First();
-        //            Session.Set(actualShift, Constants.Data.Shift, true);
-        //            break;
-
-        //        case "anotherShift":
-        //            var anotherShift = context.Get<TempShift>(Constants.Data.AnotherShift);
-        //            var dbShift = _lpHotelsMainUnitOfWork.TempShift.GetAll().Where(x => x.Notes == anotherShift.Notes).First();
-        //            Session.Set(dbShift, Constants.Data.Shift, true);
-        //            break;
-        //    }
-        //    _lpHotelsMainUnitOfWork.SaveAsync();
-        //}
+        
         [When(@"Error (.*) should be returned")]
         [Then(@"Error (.*) should be returned")]
         public void CorrectErrorShouldBeReturned(string errorMessage)
@@ -235,29 +231,8 @@ namespace Tests.WebService.Steps
             Assert.True(restResponse.Contains(errorMessage));
         }
     }
-
-
-
 }
 
-        //[Given(@"shift for depatment in another organisation is created and saved into database")]
-        //public void ShiftsForAnotherOrganisation()
-        //{
-        //    var roleIdAnotherOrganisation = Session.Get<TempRole>(Constants.Data.RoleAnoderOrganisation).ID;
-        //    var departmentIdAnotherOrganisation = Session.Get<Department>(Constants.Data.DepartmentAnotherOrganisation).ID;
-        //    var employeeIdAnotherOrganisation = Session.Get<TempStaff>(Constants.Data.EmployeeAnotherOrganisation).ID;
-
-        //    var shift = new ShiftEntityGenerator().GenerateSingle(x =>
-        //    {
-        //        x.DepartmentID = departmentIdAnotherOrganisation;
-        //        x.TempStaffID = employeeIdAnotherOrganisation;
-        //        x.TempRoleID = roleIdAnotherOrganisation;
-        //    });
-
-        //    _lpHotelsMainUnitOfWork.TempShift.Add(shift);
-        //    _lpHotelsMainUnitOfWork.SaveAsync();
-
-        //    Session.Set(shift, Constants.Data.AnotherOrganisationShift);
-        //}
+     
   
 

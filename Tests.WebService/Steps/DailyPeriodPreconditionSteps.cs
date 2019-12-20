@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Common;
 using Common.Helpers;
 using DataSeeding.Generators;
@@ -32,12 +29,6 @@ namespace Tests.WebService.Steps
         public void CreateDailyPeriod(Table table)
         {
             var department = context.Get<Department>(Constants.Data.Department);
-           // var anotherDepartmentSameLocation = context.Get<Department>(Constants.Data.AnotherDepartmentSameLocation);
-            //var departmentAnotherLocationSameOrganisation = context.Get<Department>(Constants.Data.DepartmentAnotherLocationSameOrganisation);
-            ///var departmentAnotherOrganisation = context.Get<Department>(Constants.Data.DepartmentAnotherOrganisation);
-
-            //var dailyPeriod = new DailyPeriod();
-
             var dailyPeriod = new DailyPeriodEntityGenerator().GenerateSingle( x =>
             {
                 x.DepartmentID = department.ID;
@@ -48,6 +39,48 @@ namespace Tests.WebService.Steps
             _lpHotelsMainUnitOfWork.SaveAsync();
 
             context.Set(dailyPeriod, Constants.Data.DailyPeriods);
+        }
+
+        [Given(@"create dailyPeriods")]
+        public void CreateDailyPeriods()
+        {
+            var department = context.Get<Department>(Constants.Data.Department);
+
+            var dailyPeriods = new List<DailyPeriod>();
+            var dailyPeriod1 = new DailyPeriodEntityGenerator().GenerateSingle(x =>
+            {
+                x.DepartmentID = department.ID;
+                x.StartMins = 300;
+                x.EndMins = 720;
+                x.Name = "Breakfast";
+            });
+            dailyPeriods.Add(dailyPeriod1);
+
+            var dailyPeriod2 = new DailyPeriodEntityGenerator().GenerateSingle(x =>
+            {
+                x.DepartmentID = department.ID;
+                x.StartMins = 720;
+                x.EndMins = 1080;
+                x.Name = "Lunch";
+            });
+            dailyPeriods.Add(dailyPeriod2);
+
+            var dailyPeriod3 = new DailyPeriodEntityGenerator().GenerateSingle(x =>
+            {
+                x.DepartmentID = department.ID;
+                x.StartMins = 1080;
+                x.EndMins = 1740;
+                x.Name = "Dinner";
+            });
+            dailyPeriods.Add(dailyPeriod3);
+
+            //GeneralHelpers.SetValues(table.CreateSet<Parameters>(), dailyPeriods);
+
+
+            _lpHotelsMainUnitOfWork.DailyPeriod.AddRange(dailyPeriods);
+            _lpHotelsMainUnitOfWork.SaveAsync();
+
+            context.Set(dailyPeriods, Constants.Data.DailyPeriods);
         }
     }
 }

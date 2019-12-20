@@ -53,6 +53,12 @@ namespace DataSeeding.Infrastructure
 
         public IRepository<ScheduleDto> LabourDemandDto => throw new NotImplementedException();
 
+        public IRepository<SalesType> SalesType => _repositoryFactory.GetRepository<SalesType>();
+
+        public IRepository<ACTUALSALES_DEPARTMENT_BYSALESTYPE_INTERVAL> ACTUALSALES_DEPARTMENT_BYSALESTYPE_INTERVAL => _repositoryFactory.GetRepository<ACTUALSALES_DEPARTMENT_BYSALESTYPE_INTERVAL>();
+
+        public IRepository<WorkloadRules> WorkloadRules => _repositoryFactory.GetRepository<WorkloadRules>();
+
         public int SaveAsync()
         {
             return _lpHotelsMainDataContext.SaveChanges();

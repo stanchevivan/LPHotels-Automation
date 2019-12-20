@@ -68,6 +68,8 @@ namespace Common
 
             public const string MainAssignment = "MainAssignment";
 
+            public const string MainAssignments = "MainAssignments";
+
             public const string FutureMainAssignment = "FutureMainAssignment";
 
             public const string MainAssignmentAnotherOrganisation = "MainAssignmentAnotherOrganisation";
@@ -103,6 +105,10 @@ namespace Common
             public const string DailyPeriod = "DailyPeriod";
 
             public const string DailyPeriods = "DailyPeriods";
+
+            public const string SalesTypes = "SalesTypes";
+
+            public const string ActualSales = "ActualSales";
         }
 
         public static class Enpoints

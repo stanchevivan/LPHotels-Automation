@@ -20,6 +20,8 @@ namespace DataSeeding.Generators
                 d.Deleted = false;
                 d.HoursAfterMidnightDayCutoff = 5;
                 d.StartDate = DateTime.Today.AddDays(-2);
+                d.ActualSalesInputEnabled = true;
+                d.LabourDemandGraphEnabled = true;
             });
 
             return departmentFaker.Generate(count);

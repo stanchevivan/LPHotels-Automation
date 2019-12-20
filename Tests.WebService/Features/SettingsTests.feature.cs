@@ -127,17 +127,17 @@ this.ScenarioInitialize(scenarioInfo);
 #line 15
  testRunner.Given("the /locations/{locationId}/departments/{departmentId}/Settings/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table22.AddRow(new string[] {
+                table40.AddRow(new string[] {
                             "locationId",
                             "$Location.ID"});
-                table22.AddRow(new string[] {
+                table40.AddRow(new string[] {
                             "departmentId",
                             "$Department.ID"});
 #line 16
-  testRunner.And("the following url segments", ((string)(null)), table22, "And ");
+  testRunner.And("the following url segments", ((string)(null)), table40, "And ");
 #line hidden
 #line 20
  testRunner.When("a GET request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -205,17 +205,17 @@ this.ScenarioInitialize(scenarioInfo);
 #line 32
  testRunner.Given("the /locations/{locationId}/departments/{departmentId}/shifts/{id}/ resource", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "Value"});
-                table23.AddRow(new string[] {
+                table41.AddRow(new string[] {
                             "locationId",
                             string.Format("{0}", locationId)});
-                table23.AddRow(new string[] {
+                table41.AddRow(new string[] {
                             "departmentId",
                             string.Format("{0}", departmentId)});
 #line 33
-     testRunner.And("the following url segments", ((string)(null)), table23, "And ");
+     testRunner.And("the following url segments", ((string)(null)), table41, "And ");
 #line hidden
 #line 37
  testRunner.When("a PUT request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

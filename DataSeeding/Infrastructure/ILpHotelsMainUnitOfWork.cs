@@ -1,6 +1,7 @@
 ﻿using System;
 using TeamHours.DomainModel;
 using Fourth.LabourProductivity.Scheduling.Domain.Scheduling.Models;
+using Fourth.LabourProductivity.Scheduling.Domain.LabourDemands.Models;
 
 namespace DataSeeding.Infrastructure
 {
@@ -35,6 +36,12 @@ namespace DataSeeding.Infrastructure
         IRepository<AdditionalRole> AdditionalRole { get; }
 
         IRepository<ScheduleDto> LabourDemandDto { get; }
+
+        IRepository<SalesType> SalesType { get; }
+
+        IRepository<ACTUALSALES_DEPARTMENT_BYSALESTYPE_INTERVAL> ACTUALSALES_DEPARTMENT_BYSALESTYPE_INTERVAL { get; }
+
+        IRepository<WorkloadRules> WorkloadRules { get; }
 
         int SaveAsync();
     }

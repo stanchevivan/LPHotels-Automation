@@ -114,6 +114,8 @@ namespace DataSeeding.Hooks
             assignments.AddRange(mainAssignments);
             _lpHotelsMainUnitOfWork.StaffPayInfo.AddRange(mainAssignments);
             _lpHotelsMainUnitOfWork.SaveAsync();
+
+            Session.Set(mainAssignments, Constants.Data.MainAssignments);
         }
 
     }

@@ -33,6 +33,7 @@
     <None Include="app.Default.config">
       <DependentUpon>app.config</DependentUpon>
       <IsTransformFile>true</IsTransformFile>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Features and Steps\Features\ShiftsTests.feature" />
     <None Include="packages.config">
@@ -105,7 +106,8 @@
       <HintPath>..\packages\Fourth.LabourProductivity.API.Client.2.1.10\lib\net461\Fourth.LabourProductivity.API.Client.dll</HintPath>
     </Reference>
     <Reference Include="Fourth.LabourProductivity.Scheduling.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fourth.LabourProductivity.Scheduling.Domain.1.0.0.1\lib\net47\Fourth.LabourProductivity.Scheduling.Domain.dll</HintPath>
+      <HintPath>..\packages\Fourth.LabourProductivity.Scheduling.Domain.2.0.1.1\lib\net47\Fourth.LabourProductivity.Scheduling.Domain.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Fourth.LabourProductivity.Shifts.Contracts, Version=1.2.38.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fourth.LabourProductivity.Shifts.Contracts.1.2.38.1\lib\net461\Fourth.LabourProductivity.Shifts.Contracts.dll</HintPath>
@@ -229,7 +231,7 @@
       <HintPath>..\packages\Rebus.3.1.2\lib\NET45\Rebus.dll</HintPath>
     </Reference>
     <Reference Include="Resources, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TeamHours.Services.29.29.1.1\lib\net47\Resources.dll</HintPath>
+      <HintPath>..\packages\Fourth.LabourProductivity.Scheduling.Domain.2.0.1.1\lib\net47\Resources.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RestSharp, Version=106.6.10.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
@@ -336,27 +338,27 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="TeamHours.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TeamHours.Services.29.29.1.1\lib\net47\TeamHours.Common.dll</HintPath>
+      <HintPath>..\packages\Fourth.LabourProductivity.Scheduling.Domain.2.0.1.1\lib\net47\TeamHours.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="TeamHours.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TeamHours.Services.29.29.1.1\lib\net47\TeamHours.Data.dll</HintPath>
+      <HintPath>..\packages\Fourth.LabourProductivity.Scheduling.Domain.2.0.1.1\lib\net47\TeamHours.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="TeamHours.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TeamHours.Services.29.29.1.1\lib\net47\TeamHours.Domain.dll</HintPath>
+      <HintPath>..\packages\Fourth.LabourProductivity.Scheduling.Domain.2.0.1.1\lib\net47\TeamHours.Domain.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="TeamHours.DomainC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TeamHours.Services.29.29.1.1\lib\net47\TeamHours.DomainC.dll</HintPath>
+      <HintPath>..\packages\Fourth.LabourProductivity.Scheduling.Domain.2.0.1.1\lib\net47\TeamHours.DomainC.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="TeamHours.DomainModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TeamHours.Services.29.29.1.1\lib\net47\TeamHours.DomainModel.dll</HintPath>
+      <HintPath>..\packages\Fourth.LabourProductivity.Scheduling.Domain.2.0.1.1\lib\net47\TeamHours.DomainModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="TeamHours.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TeamHours.Services.29.29.1.1\lib\net47\TeamHours.Infrastructure.dll</HintPath>
+      <HintPath>..\packages\Fourth.LabourProductivity.Scheduling.Domain.2.0.1.1\lib\net47\TeamHours.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="TeamHours.Integration.Converters, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -364,7 +366,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="TeamHours.Integration.MessageSender, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TeamHours.Services.29.29.1.1\lib\net47\TeamHours.Integration.MessageSender.dll</HintPath>
+      <HintPath>..\packages\Fourth.LabourProductivity.Scheduling.Domain.2.0.1.1\lib\net47\TeamHours.Integration.MessageSender.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="TeamHours.Messaging.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
