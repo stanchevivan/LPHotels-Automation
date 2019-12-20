@@ -5,7 +5,7 @@ namespace PageObjects
 {
     public class PieChartSlice : LPHBasePage
     {
-        private IWebElement webElement;
+        private readonly IWebElement webElement;
 
         public PieChartSlice(IWebDriver webDriver, IWebElement webElement) : base(webDriver)
         {

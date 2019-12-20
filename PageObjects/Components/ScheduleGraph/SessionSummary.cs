@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Fourth.Automation.Framework.Extension;
+﻿using Fourth.Automation.Framework.Extension;
 using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
 
 namespace PageObjects
 {

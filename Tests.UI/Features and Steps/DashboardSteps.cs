@@ -108,15 +108,16 @@ namespace Tests.UI.FeaturesandSteps
         [Then(@"Verify Daily totals equal session totals")]
         public void VerifyDailyTotalsEqualSessionTotals()
         {
-            Assert.Multiple(() =>
-            {
-                Assert.That(scheduleGraphPage.SessionSummaryList.Sum(x => x.Correct), Is.EqualTo(sidebarDailyTotal.Correct), "Daily Correct is not equal to the sum of sessions correct !");
-                Assert.That(scheduleGraphPage.SessionSummaryList.Sum(x => x.Above),
-                    Is.EqualTo(sidebarDailyTotal.Above), "Daily Above is not equal to the sum of sessions correct !");
-                Assert.That(scheduleGraphPage.SessionSummaryList.Sum(x => x.Under),
-                    Is.EqualTo(sidebarDailyTotal.Under), "Daily Under is not equal to the sum of sessions correct !");
-            }
-        );
+            Assert.Multiple
+                (() =>
+                    {
+                        Assert.That(scheduleGraphPage.SessionSummaryList.Sum(x => x.Correct), Is.EqualTo(sidebarDailyTotal.Correct), "Daily Correct is not equal to the sum of sessions correct !");
+                        Assert.That(scheduleGraphPage.SessionSummaryList.Sum(x => x.Above),
+                            Is.EqualTo(sidebarDailyTotal.Above), "Daily Above is not equal to the sum of sessions correct !");
+                        Assert.That(scheduleGraphPage.SessionSummaryList.Sum(x => x.Under),
+                            Is.EqualTo(sidebarDailyTotal.Under), "Daily Under is not equal to the sum of sessions correct !");
+                    }
+                 );
         }
 
         [Then(@"Verify Daily Total pie chart percentages are correct")]
@@ -176,6 +177,13 @@ namespace Tests.UI.FeaturesandSteps
                     Assert.That(underPercentage, Is.EqualTo(session.PieChart.UnderSlice.PercentageNumber), "Session Pie chart 'Under' slice has incorrect size");
                 }
             }
+        }
+
+        [When(@"Role ""(.*)"" is selected")]
+        public void RoleIsSelected(string role)
+        {
+            scheduleGraphPage.RolesDropDown.SelectRole(role);
+            scheduleGraphPage.RolesDropDown.WaitToDisappear();
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using Fourth.Automation.Framework.Extension;
+﻿using Fourth.Automation.Framework.Extension;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using SeleniumExtras.PageObjects;

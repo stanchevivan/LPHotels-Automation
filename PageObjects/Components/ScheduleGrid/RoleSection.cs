@@ -2,13 +2,12 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using OpenQA.Selenium;
-using SeleniumExtras.PageObjects;
 
 namespace PageObjects
 {
     public class RoleSection : LPHBasePage
     {
-        IWebElement webElement;
+        private readonly IWebElement webElement;
         public RoleSection(IWebDriver webDriver, IWebElement webElement) : base(webDriver)
         {
             this.webElement = webElement;

@@ -15,5 +15,8 @@ namespace PageObjects
         private IList<IWebElement> sessionSummaryList => Driver.FindElements(By.CssSelector(".swiper-slide-active .session-block"));
 
         public IList<SessionSummary> SessionSummaryList => sessionSummaryList.Select(e => new SessionSummary(Driver, e)).ToList();
+
+        private IWebElement rolesDropDown => Driver.FindElement(By.CssSelector(".MuiPopover-root"));
+        public RolesDropDown RolesDropDown => new RolesDropDown(Driver, rolesDropDown);
     }
 }

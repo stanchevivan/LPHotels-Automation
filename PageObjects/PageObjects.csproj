@@ -33,6 +33,7 @@
     <Compile Include="Components\SidebarDailyTotal.cs" />
     <Compile Include="Components\PieChart\Piechart.cs" />
     <Compile Include="Components\PieChart\PieChartSlice.cs" />
+    <Compile Include="Components\ScheduleGraph\RolesDropDown.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
