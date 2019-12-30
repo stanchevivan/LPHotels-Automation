@@ -21,40 +21,41 @@ Feature: Dashboard
     |environment|
     |local      |
 
-    Scenario Outline: Edit shift
-        Given LPH app is open on "<environment>"
-        When Shift details are opened for Role "C" Employee "MS" Start time "11:00" End time "2:15"
-            * Shift details Start time is set to "22:11" and End Time is set to "23:21"
-            * Shift details Save button is clicked
-        Then Shift for Role "C" Employee "MS" Start time "22:11" End time "23:21" is "visible"
-
-    @local
-    Examples:
-    |environment|
-    |local      |
 
     Scenario Outline: Create shift
         Given LPH app is open on "<environment>"
-        When new shift window is open for Role "C" Employee "II" for "10:00"
-            * Shift details Start time is set to "10:11" and End Time is set to "11:21"
+        When new shift window is open for Role "<role>" Employee "<employee>" for "5:00"
+            * Shift details Start time is set to "<startTime>" and End Time is set to "<endTime>"
             * Shift details Save button is clicked
-        Then Shift for Role "C" Employee "II" Start time "10:11" End time "11:21" is "visible"
+        Then Shift for Role "<role>" Employee "<employee>" Start time "<startTime>" End time "<endTime>" is "visible"
 
     @QA
     Examples:
-    |environment|
-    |QA         |
+    |environment|role|employee|startTime|endTime|
+    |QA         |R1  |SS      |5:30     |   7:30|  
+
+    Scenario Outline: Edit shift
+        Given LPH app is open on "<environment>"
+        When Shift details are opened for Role "<role>" Employee "<employee>" Start time "<oldStartTime>" End time "<oldEndTime>"
+            * Shift details Start time is set to "<newStartTime>" and End Time is set to "<newEndTime>"
+            * Shift details Save button is clicked
+        Then Shift for Role "<role>" Employee "<employee>" Start time "<newStartTime>" End time "<newEndTime>" is "visible"
+
+    @local
+    Examples:
+    |environment|role|employee|oldStartTime|oldEndTime|newStartTime|newEndTime|
+    |QA         |R1  |SS      |5:30        |7:30      |6:30        |8:30      |
 
     Scenario Outline: Delete shift
         Given LPH app is open on "<environment>"
-        When Shift details are opened for Role "C" Employee "II" Start time "10:11" End time "11:21"
+        When Shift details are opened for Role "<role>" Employee "<employee>" Start time "<startTime>" End time "<endTime>"
             * Shift details Delete button is clicked
-        Then Shift for Role "C" Employee "II" Start time "10:11" End time "11:21" is "not visible"
+        Then Shift for Role "<role>" Employee "<employee>" Start time "<startTime>" End time "<endTime>" is "not visible"
 
     @QA
     Examples:
-    |environment|
-    |QA         |
+    |environment|role|employee|startTime|endTime|
+    |QA         |R1  |SS      |6:30     |8:30   |
 
     Scenario Outline: Daily total numbers equals sum of session totals
         Given LPH app is open on "<environment>"
@@ -63,8 +64,8 @@ Feature: Dashboard
 
     @QA
     Examples:
-    |environment|role|
-    |QA         |Cook|
+    |environment|role     |
+    |QA         |Role 2   |
     |QA         |All Roles|
     
    
@@ -81,6 +82,15 @@ Feature: Dashboard
     Scenario Outline: Session pie chart percentages match session total numbers
         Given LPH app is open on "<environment>"
         Then Verify Session pie chart percentages are correct
+
+    @QA
+    Examples:
+    |environment|
+    |QA         |
+
+    Scenario Outline: Test
+        Given LPH app is open on "<environment>"
+        When Test
 
     @QA
     Examples:

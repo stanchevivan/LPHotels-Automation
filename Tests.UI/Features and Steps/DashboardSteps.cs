@@ -93,7 +93,7 @@ namespace Tests.UI.FeaturesandSteps
         public void ShiftIsVisible(string role, string employee, string startTime, string endtime, string status)
         {
             Assert.That(scheduleGridPage.GetRoleSection(role).GetEmployee(employee)
-                .ShiftItems.Any(x => x.StartTime == startTime && x.EndTime == endtime),
+                .ShiftItems.Any(x => x.StartTimeText == startTime && x.EndTimeText == endtime),
                 status == "visible" ? Is.True : Is.Not.True,
                 $"Shift with start time:{startTime} and end time:{endtime} should {(status == "visible" ? "exist" : "not exist")}, but it {(status == "visible" ? "does not" : "does")} !");
         }
@@ -186,6 +186,21 @@ namespace Tests.UI.FeaturesandSteps
             scheduleGraphPage.RolesDropDown.WaitToAppear();
             scheduleGraphPage.RolesDropDown.SelectRole(role);
             scheduleGraphPage.RolesDropDown.WaitToDisappear();
+        }
+
+        [When(@"Test")]
+        public void Test()
+        {
+            DateTime from = DateTime.Parse("15:00");
+            DateTime to = DateTime.Parse("17:00");
+
+            int count = (from roles in scheduleGridPage.GetAllRoleSections()
+                         from employees in roles.Employees
+                         from shiftItem in employees.ShiftItems
+                         where shiftItem.StartTime <= @to && shiftItem.EndTime >= @from
+                         select shiftItem).Count();
+
+            Console.WriteLine("Count is:" + count);
         }
     }
 }

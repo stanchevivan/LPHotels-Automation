@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
@@ -44,9 +45,12 @@ namespace PageObjects
             }
         }
 
-        public string StartTime => startTime.GetAttribute("textContent");
-        public string EndTime => endTime.GetAttribute("textContent");
+        public string StartTimeText => startTime.GetAttribute("textContent");
+        public string EndTimeText => endTime.GetAttribute("textContent");
         public string RoleSymbol => roleSymbol.Text;
+
+        public DateTime StartTime => DateTime.Parse(StartTimeText);
+        public DateTime EndTime => DateTime.Parse(EndTimeText);
 
         public void ExpandLeft(int offset)
         {

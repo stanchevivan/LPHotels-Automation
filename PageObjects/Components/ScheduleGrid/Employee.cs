@@ -21,7 +21,7 @@ namespace PageObjects
         private IList<IWebElement> hours => timeline.FindElements(By.CssSelector(".single-item"));
 
         protected IList<IWebElement> shiftItems => Driver.FindElements(By.CssSelector(".lphf_shift-item"));
-        public IList<ShiftItem> ShiftItems => shiftItems.Select(e => new ShiftItem(Driver, e)).Where(x => x.EmployeeId == Id).ToList();
+        public HashSet<ShiftItem> ShiftItems => shiftItems.Select(e => new ShiftItem(Driver, e)).Where(x => x.EmployeeId == Id).ToHashSet();
 
         public string Initials => initials.Text;
 
@@ -44,7 +44,7 @@ namespace PageObjects
 
         public ShiftItem GetShift(string startTime, string endTime)
         {
-            var shift = ShiftItems.FirstOrDefault(x => x.StartTime == startTime && x.EndTime == endTime);
+            var shift = ShiftItems.FirstOrDefault(x => x.StartTimeText == startTime && x.EndTimeText == endTime);
 
             if (shift == null)
             {
@@ -58,7 +58,7 @@ namespace PageObjects
         {
             var hourElement = hours.First(x => x.Text == hour);
 
-            int YOffSet = webElement.Location.Y - grid.Location.Y + (int)Math.Round((decimal)(webElement.Size.Height / 2));
+            int YOffSet = webElement.Location.Y - grid.Location.Y + 1;
             int XOffSet = hourElement.Location.X - grid.Location.X + 10;
 
             new Actions(Driver)

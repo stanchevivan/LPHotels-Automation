@@ -44,6 +44,20 @@ namespace PageObjects
             return roleSection;
         }
 
+        public IList<RoleSection> GetAllRoleSections()
+        {
+            IList<RoleSection> tempList = RoleSections;
+
+            foreach (var item in tempList)
+            {
+                int indexOfRole = RoleSections.FindIndex(x => x.Rolename == item.Rolename);
+                item.AssociateEmployeeSection(employeSections[indexOfRole]);
+                item.AssociateGrid(activeGridsList[indexOfRole]);
+            }
+
+            return tempList;
+        }
+
         public void OpenShiftWindow(int x, int y)
         {
             
@@ -53,6 +67,11 @@ namespace PageObjects
         public void WaitToLoad()
         {
             Driver.WaitElementToExists(ScheduleSection1);
+        }
+
+        public void PrintCount()
+        {
+            System.Console.WriteLine();
         }
     }
 }
