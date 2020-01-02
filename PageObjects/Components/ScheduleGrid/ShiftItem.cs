@@ -49,6 +49,8 @@ namespace PageObjects
         public string EndTimeText => endTime.GetAttribute("textContent");
         public string RoleSymbol => roleSymbol.Text;
 
+        public bool IsFromAnotherDepartment => !string.IsNullOrEmpty(RoleSymbol);
+
         public DateTime StartTime => DateTime.Parse(StartTimeText);
         public DateTime EndTime => DateTime.Parse(EndTimeText);
 
@@ -67,6 +69,15 @@ namespace PageObjects
         public void OpenDetails()
         {
             new Actions(Driver).DoubleClick(webElement).Build().Perform();
+        }
+
+        public void MoveByOffset(int offset)
+        {
+            new Actions(Driver).ClickAndHold(webElement).Build().Perform();
+            // Sleep needed for move to activate on the UI
+            System.Threading.Thread.Sleep(1000);
+            new Actions(Driver).MoveByOffset(offset, 0).Build().Perform();
+            new Actions(Driver).Release().Build().Perform();
         }
     }
 }

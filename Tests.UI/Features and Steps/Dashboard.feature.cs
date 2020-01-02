@@ -251,6 +251,103 @@ namespace Tests.UI.FeaturesAndSteps
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Drag and drop shift")]
+        [NUnit.Framework.TestCaseAttribute("local", "R1", "SS", "6:45", "9:00", "12:15", "14:30", new string[] {
+                "QA"}, Category="QA")]
+        public virtual void DragAndDropShift(string environment, string role, string employee, string oldShiftStartTime, string oldShiftEndTime, string newShiftStartTime, string newShiftEndTime, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Drag and drop shift", null, exampleTags);
+#line 100
+    this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 101
+        testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Role",
+                        "Employee",
+                        "ShiftStartTime",
+                        "ShiftEndTime",
+                        "NewShiftStartTime"});
+            table1.AddRow(new string[] {
+                        string.Format("{0}", role),
+                        string.Format("{0}", employee),
+                        string.Format("{0}", oldShiftStartTime),
+                        string.Format("{0}", oldShiftEndTime),
+                        string.Format("{0}", newShiftStartTime)});
+#line 102
+        testRunner.When("Move shift", ((string)(null)), table1, "When ");
+#line 105
+        testRunner.Then(string.Format("Shift for Role \"{0}\" Employee \"{1}\" Start time \"{2}\" End time \"{3}\" is \"visible\"", role, employee, newShiftStartTime, newShiftEndTime), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Role",
+                        "Employee",
+                        "ShiftStartTime",
+                        "ShiftEndTime",
+                        "NewShiftStartTime"});
+            table2.AddRow(new string[] {
+                        string.Format("{0}", role),
+                        string.Format("{0}", employee),
+                        string.Format("{0}", newShiftStartTime),
+                        string.Format("{0}", newShiftEndTime),
+                        string.Format("{0}", oldShiftStartTime)});
+#line 106
+        testRunner.When("Move shift", ((string)(null)), table2, "When ");
+#line 109
+        testRunner.Then(string.Format("Shift for Role \"{0}\" Employee \"{1}\" Start time \"{2}\" End time \"{3}\" is \"visible\"", role, employee, oldShiftStartTime, oldShiftEndTime), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Drag and drop shift near the border of an interval does not change shift duration" +
+            "")]
+        [NUnit.Framework.TestCaseAttribute("local", "R1", "SS", "16:30", "20:00", "16:45", "20:15", new string[] {
+                "QA"}, Category="QA")]
+        public virtual void DragAndDropShiftNearTheBorderOfAnIntervalDoesNotChangeShiftDuration(string environment, string role, string employee, string shiftStartTime, string shiftEndTime, string newShiftStartTime, string newShiftEndTime, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Drag and drop shift near the border of an interval does not change shift duration" +
+                    "", null, exampleTags);
+#line 116
+    this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 117
+        testRunner.Given(string.Format("LPH app is open on \"{0}\"", environment), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Role",
+                        "Employee",
+                        "ShiftStartTime",
+                        "ShiftEndTime",
+                        "Offset"});
+            table3.AddRow(new string[] {
+                        string.Format("{0}", role),
+                        string.Format("{0}", employee),
+                        string.Format("{0}", shiftStartTime),
+                        string.Format("{0}", shiftEndTime),
+                        "-4"});
+            table3.AddRow(new string[] {
+                        string.Format("{0}", role),
+                        string.Format("{0}", employee),
+                        string.Format("{0}", shiftStartTime),
+                        string.Format("{0}", shiftEndTime),
+                        "5"});
+            table3.AddRow(new string[] {
+                        string.Format("{0}", role),
+                        string.Format("{0}", employee),
+                        string.Format("{0}", newShiftStartTime),
+                        string.Format("{0}", newShiftEndTime),
+                        "-5"});
+#line 118
+        testRunner.When("Move shift by offset", ((string)(null)), table3, "When ");
+#line 123
+        testRunner.Then(string.Format("Shift for Role \"{0}\" Employee \"{1}\" Start time \"{2}\" End time \"{3}\" is \"visible\"", role, employee, shiftStartTime, shiftEndTime), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

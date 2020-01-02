@@ -96,3 +96,32 @@ Feature: Dashboard
     Examples:
     |environment|
     |QA         |
+
+    Scenario Outline: Drag and drop shift
+        Given LPH app is open on "<environment>"
+        When Move shift
+            |Role  |Employee  |ShiftStartTime     |ShiftEndTime     |NewShiftStartTime  |
+            |<role>|<employee>|<oldShiftStartTime>|<oldShiftEndTime>|<newShiftStartTime>|
+        Then Shift for Role "<role>" Employee "<employee>" Start time "<newShiftStartTime>" End time "<newShiftEndTime>" is "visible"
+        When Move shift
+            |Role  |Employee  |ShiftStartTime     |ShiftEndTime     |NewShiftStartTime  |
+            |<role>|<employee>|<newShiftStartTime>|<newShiftEndTime>|<oldShiftStartTime>|
+        Then Shift for Role "<role>" Employee "<employee>" Start time "<oldShiftStartTime>" End time "<oldShiftEndTime>" is "visible"
+    @QA
+    Examples:
+    |environment|role|employee|oldShiftStartTime|oldShiftEndTime|newShiftStartTime|newShiftEndTime|
+    |local      |R1  |SS      |6:45             |9:00           |12:15            |14:30          |
+
+
+    Scenario Outline: Drag and drop shift near the border of an interval does not change shift duration 
+        Given LPH app is open on "<environment>"
+        When Move shift by offset
+            |Role  |Employee  |ShiftStartTime  |ShiftEndTime        |Offset|
+            |<role>|<employee>|<shiftStartTime>|<shiftEndTime>      |    -4|
+            |<role>|<employee>|<shiftStartTime>|<shiftEndTime>      |     5|
+            |<role>|<employee>|<newShiftStartTime>|<newShiftEndTime>|    -5|
+        Then Shift for Role "<role>" Employee "<employee>" Start time "<shiftStartTime>" End time "<shiftEndTime>" is "visible"
+    @QA
+    Examples:
+    |environment|role|employee|shiftStartTime|shiftEndTime|newShiftStartTime|newShiftEndTime|
+    |local      |R1  |SS      |16:30         |20:00       |16:45            |20:15          |

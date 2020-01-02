@@ -197,10 +197,52 @@ namespace Tests.UI.FeaturesandSteps
             int count = (from roles in scheduleGridPage.GetAllRoleSections()
                          from employees in roles.Employees
                          from shiftItem in employees.ShiftItems
-                         where shiftItem.StartTime <= @to && shiftItem.EndTime >= @from
+                         where shiftItem.StartTime <= @to && shiftItem.EndTime >= @from && !shiftItem.IsFromAnotherDepartment
                          select shiftItem).Count();
 
+
+
             Console.WriteLine("Count is:" + count);
+        }
+
+        [When(@"Move shift")]
+        public void MoveShift(Table table)
+        {
+            foreach (var row in table.Rows)
+            {
+                string role = row["Role"];
+                string employee = row["Employee"];
+                string startTime = row["ShiftStartTime"];
+                string endTime = row["ShiftEndTime"];
+                string newStartTime = row["NewShiftStartTime"];
+
+                int newHour = int.Parse(newStartTime.Split(':')[0]);
+                int oldHour = int.Parse(startTime.Split(':')[0]);
+
+                int hourOffSet = 36 * (newHour - oldHour);
+
+                int newMinutes = int.Parse(newStartTime.Split(':')[1]);
+                int oldMinutes = int.Parse(startTime.Split(':')[1]);
+
+                int minuteOffSet = 9 * (newMinutes - oldMinutes) / 15;
+
+                scheduleGridPage.GetRoleSection(role).GetEmployee(employee).GetShift(startTime, endTime).MoveByOffset(hourOffSet + minuteOffSet);
+            }
+        }
+
+        [When(@"Move shift by offset")]
+        public void MoveShiftPrecise(Table table)
+        {
+            foreach (var row in table.Rows)
+            {
+                string role = row["Role"];
+                string employee = row["Employee"];
+                string startTime = row["ShiftStartTime"];
+                string endTime = row["ShiftEndTime"];
+                int offset = int.Parse(row["Offset"]);
+
+                scheduleGridPage.GetRoleSection(role).GetEmployee(employee).GetShift(startTime, endTime).MoveByOffset(offset);
+            }
         }
     }
 }
